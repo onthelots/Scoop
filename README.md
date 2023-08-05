@@ -1,4 +1,4 @@
-# ☁️ Dangle(댕글)
+# Dangle(댕글) ![appstore 1](https://github.com/onthelots/Dangle/assets/107039500/0fcadbc5-323d-41e2-908c-fd1bfb0036cf)
 > 다양한 우리 동네소식을 통해 이웃과 지역사회가 함께 소통하며 소식을 나누는 플랫폼을 구상합니다.
 
 <br> 
