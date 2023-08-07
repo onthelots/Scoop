@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8782A7CE47B00F2544C /* AppDelegate.swift */; };
 		3FACA87B2A7CE47B00F2544C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA87A2A7CE47B00F2544C /* SceneDelegate.swift */; };
-		3FACA87D2A7CE47B00F2544C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA87C2A7CE47B00F2544C /* ViewController.swift */; };
 		3FACA8822A7CE47C00F2544C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8812A7CE47C00F2544C /* Assets.xcassets */; };
 		3FACA8852A7CE47C00F2544C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8832A7CE47C00F2544C /* LaunchScreen.storyboard */; };
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
+		3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */; };
+		3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */; };
+		3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */; };
+		3FF76A2E2A80C75E00A5CA29 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A2D2A80C75E00A5CA29 /* ProfileViewController.swift */; };
+		3FF76A302A80CCD400A5CA29 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A2F2A80CCD400A5CA29 /* StartPageViewController.swift */; };
+		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,6 @@
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8782A7CE47B00F2544C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FACA87A2A7CE47B00F2544C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3FACA87C2A7CE47B00F2544C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3FACA8812A7CE47C00F2544C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FACA8842A7CE47C00F2544C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +51,12 @@
 		3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* DangleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3FF76A2D2A80C75E00A5CA29 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3FF76A2F2A80CCD400A5CA29 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
+		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,7 @@
 		3FACA86C2A7CE47B00F2544C = {
 			isa = PBXGroup;
 			children = (
+				3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */,
 				3FACA8772A7CE47B00F2544C /* Dangle */,
 				3FACA88E2A7CE47C00F2544C /* DangleTests */,
 				3FACA8982A7CE47C00F2544C /* DangleUITests */,
@@ -97,12 +108,14 @@
 		3FACA8772A7CE47B00F2544C /* Dangle */ = {
 			isa = PBXGroup;
 			children = (
-				3FACA8782A7CE47B00F2544C /* AppDelegate.swift */,
-				3FACA87A2A7CE47B00F2544C /* SceneDelegate.swift */,
-				3FACA87C2A7CE47B00F2544C /* ViewController.swift */,
-				3FACA8812A7CE47C00F2544C /* Assets.xcassets */,
-				3FACA8832A7CE47C00F2544C /* LaunchScreen.storyboard */,
+				3FF76A3A2A80D48400A5CA29 /* App */,
+				3FF76A3B2A80D4A200A5CA29 /* Resource */,
+				3FF76A382A80D46500A5CA29 /* Extensions */,
+				3FF76A372A80D45D00A5CA29 /* Utils */,
+				3FF76A362A80D43A00A5CA29 /* Networking */,
+				3FF76A3C2A80D4D800A5CA29 /* Modules */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
+				3FF76A352A80D2CB00A5CA29 /* Sign */,
 			);
 			path = Dangle;
 			sourceTree = "<group>";
@@ -124,6 +137,136 @@
 			path = DangleUITests;
 			sourceTree = "<group>";
 		};
+		3FF76A352A80D2CB00A5CA29 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A2F2A80CCD400A5CA29 /* StartPageViewController.swift */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		3FF76A362A80D43A00A5CA29 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		3FF76A372A80D45D00A5CA29 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3FF76A382A80D46500A5CA29 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3FF76A3A2A80D48400A5CA29 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3FACA8782A7CE47B00F2544C /* AppDelegate.swift */,
+				3FACA87A2A7CE47B00F2544C /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3FF76A3B2A80D4A200A5CA29 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3FACA8812A7CE47C00F2544C /* Assets.xcassets */,
+				3FACA8832A7CE47C00F2544C /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3FF76A3C2A80D4D800A5CA29 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A452A80D56300A5CA29 /* Common */,
+				3FF76A3D2A80D4E400A5CA29 /* Authentication */,
+				3FF76A422A80D51F00A5CA29 /* Home */,
+				3FF76A432A80D52900A5CA29 /* Map */,
+				3FF76A442A80D54200A5CA29 /* Profile */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3FF76A3D2A80D4E400A5CA29 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A3E2A80D4F200A5CA29 /* View */,
+				3FF76A3F2A80D4F800A5CA29 /* ViewController */,
+				3FF76A402A80D50200A5CA29 /* ViewModel */,
+				3FF76A412A80D50B00A5CA29 /* Models */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		3FF76A3E2A80D4F200A5CA29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3FF76A3F2A80D4F800A5CA29 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3FF76A402A80D50200A5CA29 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3FF76A412A80D50B00A5CA29 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3FF76A422A80D51F00A5CA29 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3FF76A432A80D52900A5CA29 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		3FF76A442A80D54200A5CA29 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A2D2A80C75E00A5CA29 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		3FF76A452A80D56300A5CA29 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +277,7 @@
 				3FACA8712A7CE47B00F2544C /* Sources */,
 				3FACA8722A7CE47B00F2544C /* Frameworks */,
 				3FACA8732A7CE47B00F2544C /* Resources */,
+				3FF76A312A80CE0800A5CA29 /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -228,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */,
 				3FACA8852A7CE47C00F2544C /* LaunchScreen.storyboard in Resources */,
 				3FACA8822A7CE47C00F2544C /* Assets.xcassets in Resources */,
 			);
@@ -249,12 +394,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3FF76A312A80CE0800A5CA29 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3FACA8712A7CE47B00F2544C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FACA87D2A7CE47B00F2544C /* ViewController.swift in Sources */,
+				3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */,
+				3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */,
+				3FF76A302A80CCD400A5CA29 /* StartPageViewController.swift in Sources */,
+				3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */,
+				3FF76A2E2A80C75E00A5CA29 /* ProfileViewController.swift in Sources */,
 				3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */,
 				3FACA87B2A7CE47B00F2544C /* SceneDelegate.swift in Sources */,
 			);
