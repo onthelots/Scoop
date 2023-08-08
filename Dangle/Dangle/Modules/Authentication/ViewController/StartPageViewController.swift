@@ -37,7 +37,10 @@ class StartPageViewController: UIViewController {
 // MARK: - StartPageViewDelegate
 extension StartPageViewController: StartPageViewDelegate {
     func signUpButtonDidTapped() {
-        //
+        let userLocationViewController = UserLocationViewController()
+        userLocationViewController.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(userLocationViewController, animated: true)
+        print("내 동네 위치찾기~")
     }
 
     // signInButtonDidTapped
