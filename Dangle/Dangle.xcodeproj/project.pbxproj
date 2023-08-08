@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2D19512A81478400A41AEC /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D19502A81478400A41AEC /* UserLocationViewController.swift */; };
+		3F45EDF32A8207790055A211 /* CoreLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45EDF22A8207790055A211 /* CoreLocationManager.swift */; };
 		3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8782A7CE47B00F2544C /* AppDelegate.swift */; };
 		3FACA87B2A7CE47B00F2544C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA87A2A7CE47B00F2544C /* SceneDelegate.swift */; };
 		3FACA8822A7CE47C00F2544C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8812A7CE47C00F2544C /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F2D19502A81478400A41AEC /* UserLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationViewController.swift; sourceTree = "<group>"; };
+		3F45EDF22A8207790055A211 /* CoreLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationManager.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8782A7CE47B00F2544C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FACA87A2A7CE47B00F2544C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F45EDF12A8207600055A211 /* UserLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3F45EDF22A8207790055A211 /* CoreLocationManager.swift */,
+			);
+			path = UserLocation;
+			sourceTree = "<group>";
+		};
 		3FACA86C2A7CE47B00F2544C = {
 			isa = PBXGroup;
 			children = (
@@ -119,8 +131,7 @@
 				3FF76A3A2A80D48400A5CA29 /* App */,
 				3FF76A3B2A80D4A200A5CA29 /* Resource */,
 				3FF76A382A80D46500A5CA29 /* Extensions */,
-				3FF76A372A80D45D00A5CA29 /* Utils */,
-				3FF76A362A80D43A00A5CA29 /* Networking */,
+				3FF76A372A80D45D00A5CA29 /* Managers */,
 				3FF76A3C2A80D4D800A5CA29 /* Modules */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
 			);
@@ -144,6 +155,16 @@
 			path = DangleUITests;
 			sourceTree = "<group>";
 		};
+		3FBB62A62A8132C500B9B1A8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3FF76A422A80D51F00A5CA29 /* Home */,
+				3FF76A432A80D52900A5CA29 /* Map */,
+				3FF76A442A80D54200A5CA29 /* Profile */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		3FF76A362A80D43A00A5CA29 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,11 +172,13 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		3FF76A372A80D45D00A5CA29 /* Utils */ = {
+		3FF76A372A80D45D00A5CA29 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3F45EDF12A8207600055A211 /* UserLocation */,
+				3FF76A362A80D43A00A5CA29 /* Networking */,
 			);
-			path = Utils;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		3FF76A382A80D46500A5CA29 /* Extensions */ = {
@@ -188,10 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				3FF76A452A80D56300A5CA29 /* Common */,
+				3FBB62A62A8132C500B9B1A8 /* Core */,
 				3FF76A3D2A80D4E400A5CA29 /* Authentication */,
-				3FF76A422A80D51F00A5CA29 /* Home */,
-				3FF76A432A80D52900A5CA29 /* Map */,
-				3FF76A442A80D54200A5CA29 /* Profile */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -220,6 +241,7 @@
 			children = (
 				3FF76A462A80DA1A00A5CA29 /* StartPageViewController.swift */,
 				3FBB62A42A811A0900B9B1A8 /* SignInViewController.swift */,
+				3F2D19502A81478400A41AEC /* UserLocationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -427,12 +449,14 @@
 			files = (
 				3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */,
 				3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */,
+				3F45EDF32A8207790055A211 /* CoreLocationManager.swift in Sources */,
 				3FF76A472A80DA1A00A5CA29 /* StartPageViewController.swift in Sources */,
 				3FBB62A12A8118FA00B9B1A8 /* NSLayoutConstraint+Priority.swift in Sources */,
 				3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */,
 				3FF76A492A80DBE700A5CA29 /* StartPageView.swift in Sources */,
 				3FF76A2E2A80C75E00A5CA29 /* ProfileViewController.swift in Sources */,
 				3FF76A4B2A80E8CF00A5CA29 /* StartPageViewModel.swift in Sources */,
+				3F2D19512A81478400A41AEC /* UserLocationViewController.swift in Sources */,
 				3FBB62A52A811A0900B9B1A8 /* SignInViewController.swift in Sources */,
 				3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */,
 				3FACA87B2A7CE47B00F2544C /* SceneDelegate.swift in Sources */,
@@ -607,6 +631,9 @@
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dangle/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -616,7 +643,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.Dangle;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lime.Spotify-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -634,6 +661,9 @@
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dangle/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -643,7 +673,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.Dangle;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Lime.Spotify-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -147,7 +147,7 @@ class StartPageView: UIView {
 
             // button Stack View
             verticalButtonStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            verticalButtonStackView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 300).withPriority(.defaultLow),
+            verticalButtonStackView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 250).withPriority(.defaultLow),
             verticalButtonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
             verticalButtonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
             verticalButtonStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -50)
