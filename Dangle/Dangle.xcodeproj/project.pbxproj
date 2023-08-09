@@ -25,7 +25,6 @@
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
 		3FF76A472A80DA1A00A5CA29 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A462A80DA1A00A5CA29 /* StartPageViewController.swift */; };
 		3FF76A492A80DBE700A5CA29 /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A482A80DBE700A5CA29 /* StartPageView.swift */; };
-		3FF76A4B2A80E8CF00A5CA29 /* StartPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A4A2A80E8CF00A5CA29 /* StartPageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3FF76A462A80DA1A00A5CA29 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		3FF76A482A80DBE700A5CA29 /* StartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
-		3FF76A4A2A80E8CF00A5CA29 /* StartPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +247,6 @@
 		3FF76A402A80D50200A5CA29 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3FF76A4A2A80E8CF00A5CA29 /* StartPageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -455,7 +452,6 @@
 				3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */,
 				3FF76A492A80DBE700A5CA29 /* StartPageView.swift in Sources */,
 				3FF76A2E2A80C75E00A5CA29 /* ProfileViewController.swift in Sources */,
-				3FF76A4B2A80E8CF00A5CA29 /* StartPageViewModel.swift in Sources */,
 				3F2D19512A81478400A41AEC /* UserLocationViewController.swift in Sources */,
 				3FBB62A52A811A0900B9B1A8 /* SignInViewController.swift in Sources */,
 				3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */,
