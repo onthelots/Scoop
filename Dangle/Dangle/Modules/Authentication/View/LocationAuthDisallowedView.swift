@@ -52,6 +52,8 @@ class LocationAuthDisallowedView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        isHidden = true
+
         button.addTarget(
             self,
             action: #selector(didTapButton),
@@ -68,7 +70,7 @@ class LocationAuthDisallowedView: UIView {
     }
 
     // UI Update
-    private func setupUI() {
+    override func layoutSubviews() {
         verticalStackView.addArrangedSubview(label)
         verticalStackView.addArrangedSubview(button)
         addSubview(verticalStackView)
