@@ -104,7 +104,7 @@ InSight
 
 순서  | 내용  | 비고
 ----| ----- | -----
-1| 디바이스 위치서비스 활성/비활성화 확인 메서드 실행에 따른 UI 불응성(unresponsiveness)문제 | https://github.com/onthelots/dangle/pull/9
+1| 디바이스 위치서비스 활성/비활성화 확인 메서드 실행에 따른 UI 불응성(unresponsiveness)문제 | https://github.com/onthelots/dangle/issues/8
 
 
 
