@@ -45,6 +45,7 @@ class UserLocationViewController: UIViewController {
 
     // 최종적으로 저장된 사용자 주소값
     var userLocation: String?
+    var userCoordinate: String?
 
     // MARK: - Components (Views)
     // tableView
@@ -77,11 +78,8 @@ class UserLocationViewController: UIViewController {
 
         // Set AuthDisalloewdView, delegate
         setUplocationAuthDisallowedView()
-
-        // viewModel fetch
-        // ⭐️ coordinate 배열에 포함된 값 중, 첫번째 값을 reverseGeocoding을 실시함
-//        viewModel.reverseGeocoding(coordinate: coordinate.first ?? "")
     }
+
 
     // MARK: - View Layout
     override func viewDidLayoutSubviews() {
@@ -120,6 +118,10 @@ class UserLocationViewController: UIViewController {
 
 // delegate pattern
 extension UserLocationViewController: CoreLocationManagerDelegate {
+    // When LocationService enabled, present 'DisallowedView'
+    func presentLocationServicesEnabled() {
+        self.locationAuthDisallowedView.isHidden = false
+    }
 
     // LocationManager in UserAddress Delegate
     func updateLocation(coordinate: CLLocation) {
@@ -133,8 +135,13 @@ extension UserLocationViewController: CoreLocationManagerDelegate {
                                               eupMyeonDong: address.region.area3.name,
                                               ri: address.region.area4.name)
                     })
+
                     self?.tableView.isHidden = false
                     self?.tableView.reloadData()
+
+//                    LocationNews().getLocationNews(location: address.results.first?.region.area3.name ?? "") { result in
+//                        print("지역 뉴스: \(result)")
+//                    }
 
                 case .failure(let error):
                     print("사용자의 주소를 저장하지 못함 : \(error)")
@@ -142,12 +149,6 @@ extension UserLocationViewController: CoreLocationManagerDelegate {
             }
         }
     }
-
-    // When LocationService enabled, present 'DisallowedView'
-    func presentLocationServicesEnabled() {
-        self.locationAuthDisallowedView.isHidden = false
-    }
-
 
     // LocationManager in Alert Delegate
     func showLocationServiceError() {
@@ -178,37 +179,42 @@ extension UserLocationViewController: CoreLocationManagerDelegate {
     }
 }
 
+// Extension1 : LocationDisallewdViewDelegate
 extension UserLocationViewController: LocationAuthDisallowedViewDelegate {
     func locationAuthDisallowedViewDidTapButton(_ view: LocationAuthDisallowedView) {
         showLocationServiceError()
     }
 }
 
+// Extension2 : Layout, DataSource
 extension UserLocationViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.count
     }
 
+    // cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserLocationTableViewCell.identifier,
                                                        for: indexPath) as? UserLocationTableViewCell else {
             return UITableViewCell()
         }
 
+
+        // 사용자 위치정보 저장
         cell.configure(address: viewModel[indexPath.row])
         return cell
     }
 
+    // didSelectedRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         // MARK: - 유저의 주소를 최종적으로 저장하기 + Realm을 통해, 해당 유저의 주소저장
-        var selectedAddress = viewModel[indexPath.row]
+        let selectedAddress = viewModel[indexPath.row]
         self.userLocation = selectedAddress.eupMyeonDong
-    
-        print("저장된 유저의 위치 : \(self.userLocation))")
-
+        CoreLocationManager.shared.cacheUserLocation(info: UserLocation(address: self.userLocation ?? ""), key: "address")
+        print("UserDefaults에 사용자의 위치, 주소가 저장되었습니다")
 
         // MARK: - Naigation to SignUpView
         let signUpTermsViewController = SignUpTermsViewController()

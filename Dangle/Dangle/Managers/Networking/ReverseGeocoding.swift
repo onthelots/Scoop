@@ -5,12 +5,19 @@
 //  Created by Jae hyuk Yim on 2023/08/11.
 //
 
+/*
+[ ] 1차 : 지역구를 기준으로 모든 행정동을 나타낸다면, 내가 위치하고 있는 '지역코드(5자리)'를 기준으로 지역코드가 모두 동일한 행정동을 Cell에 뿌림
+[ ] 우선, 현재 위치를 기준으로
+ */
+
+
+
 import Foundation
 import CoreLocation
 
 class ReverseGeocoding {
-    let clientID = "6s9gpzi23j"
-    let clientSecret = "CfWgGZ3jxLPoitULdZW7S9E1dMSEeo4U8C8zavYC"
+    let clientID = GeocodingManager.Constants.clientID
+    let clientSecret = GeocodingManager.Constants.clientSecret
 
     public func reverseGeocode(location: CLLocation, completion: @escaping (Result<ReverseGeocodeResponse, Error>) -> Void) {
         let urlString = "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc"
@@ -41,12 +48,6 @@ class ReverseGeocoding {
             }
 
             do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-//                if let results = json?["results"] as? [[String: Any]],
-//                   let region = results.first?["region"] as? [String: Any],
-//                   let area3 = region["area3"] as? [String: Any],
-//                   let name = area3["name"] as? String {
-//                    completion(.success(name))
                 let result = try JSONDecoder().decode(ReverseGeocodeResponse.self, from: data)
                 completion(.success(result))
                 print("변환된 주소값은? : \(result)")

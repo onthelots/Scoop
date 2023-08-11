@@ -15,7 +15,7 @@ import Combine
  */
 
 // MARK: - Sample viewModel
-struct UserLocationViewModel {
+struct UserLocationViewModel: Codable {
     let sido: String
     let siGunGu: String
     let eupMyeonDong: String

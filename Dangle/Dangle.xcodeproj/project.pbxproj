@@ -35,6 +35,8 @@
 		3FF9E4CE2A852359002802E9 /* UserLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4CD2A852359002802E9 /* UserLocationViewModel.swift */; };
 		3FF9E4D02A85348B002802E9 /* ReverseGeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */; };
 		3FF9E4D42A854433002802E9 /* ReverseGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4D32A854433002802E9 /* ReverseGeocoding.swift */; };
+		3FF9E4D62A863C92002802E9 /* LocationNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4D52A863C92002802E9 /* LocationNews.swift */; };
+		3FF9E4DB2A86577A002802E9 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4DA2A86577A002802E9 /* UserLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		3FF9E4CD2A852359002802E9 /* UserLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationViewModel.swift; sourceTree = "<group>"; };
 		3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeResponse.swift; sourceTree = "<group>"; };
 		3FF9E4D32A854433002802E9 /* ReverseGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocoding.swift; sourceTree = "<group>"; };
+		3FF9E4D52A863C92002802E9 /* LocationNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNews.swift; sourceTree = "<group>"; };
+		3FF9E4DA2A86577A002802E9 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				3F45EDF22A8207790055A211 /* CoreLocationManager.swift */,
-				3FF9E4C52A850D92002802E9 /* GeocodingManager.swift */,
 			);
 			path = UserLocation;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				3FF76A382A80D46500A5CA29 /* Extensions */,
 				3FF76A372A80D45D00A5CA29 /* Managers */,
 				3FF76A3C2A80D4D800A5CA29 /* Modules */,
+				3FF9E4D72A86559A002802E9 /* Reference */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
 			);
 			path = Dangle;
@@ -198,6 +202,7 @@
 			children = (
 				3FF9E4C92A8517DE002802E9 /* NetworkManager.swift */,
 				3FF9E4CB2A8517F1002802E9 /* NetworkResource.swift */,
+				3FF9E4C52A850D92002802E9 /* GeocodingManager.swift */,
 				3FF9E4D32A854433002802E9 /* ReverseGeocoding.swift */,
 			);
 			path = Networking;
@@ -284,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */,
+				3FF9E4DA2A86577A002802E9 /* UserLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,6 +324,14 @@
 				3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		3FF9E4D72A86559A002802E9 /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				3FF9E4D52A863C92002802E9 /* LocationNews.swift */,
+			);
+			path = Reference;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +500,7 @@
 				3FF9E4C62A850D92002802E9 /* GeocodingManager.swift in Sources */,
 				3FF76A472A80DA1A00A5CA29 /* StartPageViewController.swift in Sources */,
 				3FF9E4CE2A852359002802E9 /* UserLocationViewModel.swift in Sources */,
+				3FF9E4D62A863C92002802E9 /* LocationNews.swift in Sources */,
 				3FBB62A12A8118FA00B9B1A8 /* NSLayoutConstraint+Priority.swift in Sources */,
 				3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */,
 				3FF76A492A80DBE700A5CA29 /* StartPageView.swift in Sources */,
@@ -498,6 +513,7 @@
 				3FF9E4CC2A8517F1002802E9 /* NetworkResource.swift in Sources */,
 				3FBB62A52A811A0900B9B1A8 /* SignInViewController.swift in Sources */,
 				3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */,
+				3FF9E4DB2A86577A002802E9 /* UserLocation.swift in Sources */,
 				3FF9E4D02A85348B002802E9 /* ReverseGeocodeResponse.swift in Sources */,
 				3FACA87B2A7CE47B00F2544C /* SceneDelegate.swift in Sources */,
 			);

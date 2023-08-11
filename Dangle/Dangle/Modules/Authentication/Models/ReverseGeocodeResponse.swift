@@ -47,4 +47,3 @@ struct Addition: Codable {
     let type: String
     let value: String
 }
-
