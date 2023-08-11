@@ -6,77 +6,219 @@
 //
 
 import UIKit
+import CoreLocation
+import Combine
 
 
 /*
- TODO List
- [ ] 권한을 설정하지 않았을 경우, 임시 View ("검색창에서 주소를 찾아주세요")
- [ ] 권한을 설정한 후, 현재 위치 화면에 나타내기 ("귀하의 현재 위치가 맞나요? 맞다면~ 다음으로, 틀리다면 검색창에서 주소를 찾아 선택해주세요~)
- [ ] SearchResults Cell 나타내기 (API Parsing)
+ // --> 8월 12일
+ [ ] 텍스트 좌측 정렬하기
+ [ ] Geocoding Reverse 실시하기 -> 데이터를 임의 변수에 저장만 해두기
+ [ ] 일반적인 Parsing을 통해 로직 설정하기 (현재, Combine을 비롯하여 제네릭 타입의
+ [ ] Geocoding Reverse 데이터값을 분석, 인근의 동단위 까지 TableView에 뿌려주기
+
+아니면, 그냥 위치만 디바이스에 저장한다음에, 메인뷰로 가서 -> 추후에 로그인을 진행할 수 있도록 할까?
+파라미터에, 인근 행정동까지 가져오는 방법이 있을까?
+
+ [ ] 해당 위치값을 Realm에 저장하기 -> 이전 뷰로 나갔다가 들어와도, 위치 데이터가 저장되어 있을 수 있도록 함
+ [ ] 회원가입을 완료한 후, Firestore Database에 위치값을 저장하기
+ [ ] 다른 ViewController에서도 해당 위치값을 사용할 수 있도록 하기
+
+ // 나중에 실시할 것 (위치정보 허용을 하지 않았을 때, 임의로 주소를 검색하는 방식
+
+ // --> 8월 13일
+ [ ] SearchResults Cell 나타내기 (API Parsing) + 만약, 임의 검색을 실시할 경우, 기존의 AuthdisallowedView는 타이핑 시 잠깐 없어져야 함 (Spotify_App SearchVC 참고)
  [ ] 해당 위치값을 Realm에 저장, 추후 회원가입을 완료할 시 Firestore Database에 위치값 저장하기 (uses id 활용)
  [ ] 다음 회원가입 화면으로 넘어가는 버튼 생성하기
 */
 
 class UserLocationViewController: UIViewController {
 
-    // MARK: - 위치 검색을 통해 Cell에서 선택하거나, 검색을 통해 선택하는 현재의 위치값이 저장되는 String (userAddress)
-    private var userAddress: String = ""
+    // ViewModel configure
+//    let viewModel: UserLocationViewModel = UserLocationViewModel(networkmanager: NetworkManager(configuration: .default))
 
-    private let label: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.sizeToFit()
-        label.text = "현재 위치는?"
-        label.textColor = .systemRed
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    // subscriptions
+    var subscriptions = Set<AnyCancellable>()
+
+    // 사용자 설정을 통해 결정될 좌표값 배열
+    private var viewModel = [UserLocationViewModel]()
+
+    // 최종적으로 저장된 사용자 주소값
+    var userLocation: String?
+    var userCoordinate: String?
+
+    // MARK: - Components (Views)
+    // tableView
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(
+            UserLocationTableViewCell.self,
+            forCellReuseIdentifier: UserLocationTableViewCell.identifier
+        )
+        tableView.isHidden = true
+        return tableView
     }()
 
+    // locationAuthDisallowedView
+    private let locationAuthDisallowedView = LocationAuthDisallowedView()
+
+
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Location"
+        title = "사용자 위치확인"
         view.backgroundColor = .systemBackground
-        view.addSubview(label)
+        CoreLocationManager.shared.delegate = self
 
-        LocationManager.shared.delegate = self
+        // Add TableView, delegate
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        // Set AuthDisalloewdView, delegate
+        setUplocationAuthDisallowedView()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
 
+    // MARK: - View Layout
+    override func viewDidLayoutSubviews() {
+
+        // locationAuthDisallowedView
+        locationAuthDisallowedView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            locationAuthDisallowedView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            locationAuthDisallowedView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+
+        // tableview
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+
+    }
+
+    // setUplocationAuthDisallowedView
+    private func setUplocationAuthDisallowedView() {
+
+        view.addSubview(locationAuthDisallowedView)
+        locationAuthDisallowedView.delegate = self
+
+        // Set Text, ActionTitle
+        locationAuthDisallowedView.configure(
+            with: LocationAuthDisallowedViewModel(
+                text: "현재 위치를 확인할 수 없습니다.\n주소 검색창을 통해 동네를 설정하세요.",
+                actionTitle: "위치 권한 재 설정하기")
+        )
     }
 }
 
-extension UserLocationViewController: UserLocationViewModelDelegate {
-    func updateLocation(address: String) {
-        DispatchQueue.main.async {
-            self.userAddress = address
-            self.label.text = self.userAddress
+// delegate pattern
+extension UserLocationViewController: CoreLocationManagerDelegate {
+    // When LocationService enabled, present 'DisallowedView'
+    func presentLocationServicesEnabled() {
+        self.locationAuthDisallowedView.isHidden = false
+    }
+
+    // LocationManager in UserAddress Delegate
+    func updateLocation(coordinate: CLLocation) {
+        ReverseGeocoding().reverseGeocode(location: coordinate) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let address):
+                    self?.viewModel = address.results.compactMap({ address in
+                        UserLocationViewModel(sido: address.region.area1.name,
+                                              siGunGu: address.region.area2.name,
+                                              eupMyeonDong: address.region.area3.name,
+                                              ri: address.region.area4.name)
+                    })
+
+                    self?.tableView.isHidden = false
+                    self?.tableView.reloadData()
+
+//                    LocationNews().getLocationNews(location: address.results.first?.region.area3.name ?? "") { result in
+//                        print("지역 뉴스: \(result)")
+//                    }
+
+                case .failure(let error):
+                    print("사용자의 주소를 저장하지 못함 : \(error)")
+                }
+            }
         }
     }
 
+    // LocationManager in Alert Delegate
     func showLocationServiceError() {
         let alert = UIAlertController(
             title: "위치정보 이용",
             message: "위치 서비스를 사용할 수 없습니다.\n디바이스의 '설정 > 개인정보 보호'에서 위치 서비스를 켜주세요.",
             preferredStyle: .alert
         )
+
         let goToSettingsAction = UIAlertAction(title: "설정으로 이동", style: .default) { _ in
             if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsURL)
             }
+            // 임시로 적용 (위치서비스 설정을 실시한다는 가정하에, DisallowedAuthView를 감춤)
+            self.locationAuthDisallowedView.isHidden = true
+            self.tableView.reloadData()
         }
 
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { _ in
+            DispatchQueue.main.async {
+                self.locationAuthDisallowedView.isHidden = false
+            }
+        }
 
         alert.addAction(goToSettingsAction)
         alert.addAction(cancelAction)
-
         present(alert, animated: true, completion: nil)
+    }
+}
+
+// Extension1 : LocationDisallewdViewDelegate
+extension UserLocationViewController: LocationAuthDisallowedViewDelegate {
+    func locationAuthDisallowedViewDidTapButton(_ view: LocationAuthDisallowedView) {
+        showLocationServiceError()
+    }
+}
+
+// Extension2 : Layout, DataSource
+extension UserLocationViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.count
+    }
+
+    // cellForRowAt
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserLocationTableViewCell.identifier,
+                                                       for: indexPath) as? UserLocationTableViewCell else {
+            return UITableViewCell()
+        }
+
+
+        // 사용자 위치정보 저장
+        cell.configure(address: viewModel[indexPath.row])
+        return cell
+    }
+
+    // didSelectedRowAt
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        // MARK: - 유저의 주소를 최종적으로 저장하기 + Realm을 통해, 해당 유저의 주소저장
+        let selectedAddress = viewModel[indexPath.row]
+        self.userLocation = selectedAddress.eupMyeonDong
+        CoreLocationManager.shared.cacheUserLocation(info: UserLocation(address: self.userLocation ?? ""), key: "address")
+        print("UserDefaults에 사용자의 위치, 주소가 저장되었습니다")
+
+        // MARK: - Naigation to SignUpView
+        let signUpTermsViewController = SignUpTermsViewController()
+        signUpTermsViewController.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(signUpTermsViewController, animated: true)
     }
 }
