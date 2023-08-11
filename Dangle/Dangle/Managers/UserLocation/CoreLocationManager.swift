@@ -41,7 +41,9 @@ class CoreLocationManager: NSObject, CLLocationManagerDelegate {
     func checkUserDeviceLocationServicesAuthorization() {
         DispatchQueue.global().async {
             guard CLLocationManager.locationServicesEnabled() else {
-                self.delegate?.showLocationServiceError()
+                DispatchQueue.main.async {
+                    self.delegate?.showLocationServiceError()
+                }
                 return
             }
         }
