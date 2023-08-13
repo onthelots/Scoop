@@ -11,14 +11,25 @@ class UserLocationTableViewCell: UITableViewCell {
     static let identifier = "UserLocationTableViewCell"
 
     // MARK: - Components
-    private let label: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.textColor = .label
+        label.textAlignment = .center
+        label.textColor = .darkGray
         label.sizeToFit()
         label.numberOfLines = 0
         label.font = .preferredFont(forTextStyle: .footnote)
+        return label
+    }()
+
+    private let userLocationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.textColor = .label
+        label.sizeToFit()
+        label.numberOfLines = 0
+        label.font = .preferredFont(forTextStyle: .subheadline)
         return label
     }()
 
@@ -26,7 +37,7 @@ class UserLocationTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.addSubview(label)
+        contentView.addSubview(userLocationLabel)
         contentView.clipsToBounds = true
     }
 
@@ -38,18 +49,18 @@ class UserLocationTableViewCell: UITableViewCell {
         super.layoutSubviews()
 
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            userLocationLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            userLocationLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        label.text = nil
+        userLocationLabel.text = nil
     }
 
     // Configure (Label)
     func configure(address: UserLocationViewModel) {
-        label.text = "\(address.sido) \(address.siGunGu) \(address.eupMyeonDong) \(address.ri)"
+        userLocationLabel.text = "\(address.sido) \(address.siGunGu) \(address.eupMyeonDong)"
     }
 }

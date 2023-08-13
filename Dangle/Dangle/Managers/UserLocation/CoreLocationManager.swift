@@ -118,12 +118,33 @@ class CoreLocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     // MARK: - UserDefaults
-    func cacheUserLocation(info: UserLocation, key: String) {
-        let userlocation = UserDefaults.standard
-        let encoder = JSONEncoder()
 
-        if let encodeData = try? encoder.encode(info) {
-            userlocation.set(encodeData, forKey: key)
+    // Save&Check
+    func saveCacheUserLocation(viewModel: UserLocationViewModel, key: String) {
+        let defaults = UserDefaults.standard
+
+        let encoder = JSONEncoder()
+        if let encodedUserLoction = try? encoder.encode(viewModel) {
+            defaults.set(encodedUserLoction, forKey: key)
+            print("UserDefaults에 \(key)이름으로 저장되었습니다.")
         }
+
+        if let savedUserData = defaults.object(forKey: key) as? Data {
+            let decoder = JSONDecoder()
+            if let saveUser = try? decoder.decode(UserLocationViewModel.self, from: savedUserData) {
+                print("저장된 데이터 : \(saveUser)")
+            }
+        }
+    }
+
+    // Get Data
+    func getCachedUserLocation(key: String) -> UserLocationViewModel? {
+        if let savedUserData = UserDefaults.standard.object(forKey: key) as? Data {
+            let decoder = JSONDecoder()
+            if let savedUser = try? decoder.decode(UserLocationViewModel.self, from: savedUserData) {
+                return savedUser
+            }
+        }
+        return nil
     }
 }

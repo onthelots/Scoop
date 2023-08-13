@@ -34,18 +34,11 @@ import Combine
 
 class UserLocationViewController: UIViewController {
 
-    // ViewModel configure
-//    let viewModel: UserLocationViewModel = UserLocationViewModel(networkmanager: NetworkManager(configuration: .default))
-
-    // subscriptions
-    var subscriptions = Set<AnyCancellable>()
+    // CoreLocationManager singleton
+    private let coreLocationManager = CoreLocationManager.shared
 
     // 사용자 설정을 통해 결정될 좌표값 배열
     private var viewModel = [UserLocationViewModel]()
-
-    // 최종적으로 저장된 사용자 주소값
-    var userLocation: String?
-    var userCoordinate: String?
 
     // MARK: - Components (Views)
     // tableView
@@ -67,14 +60,16 @@ class UserLocationViewController: UIViewController {
     // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "사용자 위치확인"
+        title = "사용자 위치"
         view.backgroundColor = .systemBackground
-        CoreLocationManager.shared.delegate = self
+        coreLocationManager.delegate = self
 
         // Add TableView, delegate
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+
+        coreLocationManager.checkUserDeviceLocationServicesAuthorization()
 
         // Set AuthDisalloewdView, delegate
         setUplocationAuthDisallowedView()
@@ -129,19 +124,15 @@ extension UserLocationViewController: CoreLocationManagerDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let address):
-                    self?.viewModel = address.results.compactMap({ address in
-                        UserLocationViewModel(sido: address.region.area1.name,
-                                              siGunGu: address.region.area2.name,
-                                              eupMyeonDong: address.region.area3.name,
-                                              ri: address.region.area4.name)
+                    self?.viewModel = address.reverseDocument.compactMap({ address in
+                        UserLocationViewModel(code: address.code,
+                                              sido: address.region2DepthName,
+                                              siGunGu: address.region3DepthName,
+                                              eupMyeonDong: address.region4DepthName)
                     })
 
                     self?.tableView.isHidden = false
                     self?.tableView.reloadData()
-
-//                    LocationNews().getLocationNews(location: address.results.first?.region.area3.name ?? "") { result in
-//                        print("지역 뉴스: \(result)")
-//                    }
 
                 case .failure(let error):
                     print("사용자의 주소를 저장하지 못함 : \(error)")
@@ -162,6 +153,7 @@ extension UserLocationViewController: CoreLocationManagerDelegate {
             if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsURL)
             }
+
             // 임시로 적용 (위치서비스 설정을 실시한다는 가정하에, DisallowedAuthView를 감춤)
             self.locationAuthDisallowedView.isHidden = true
             self.tableView.reloadData()
@@ -200,9 +192,13 @@ extension UserLocationViewController: UITableViewDelegate, UITableViewDataSource
             return UITableViewCell()
         }
 
-
-        // 사용자 위치정보 저장
         cell.configure(address: viewModel[indexPath.row])
+
+        // MARK: - UserDefaults (Now Location)
+        if let userLocation = viewModel.first {
+            coreLocationManager.saveCacheUserLocation(viewModel: userLocation, key: "userLocation")
+        }
+
         return cell
     }
 
@@ -210,11 +206,21 @@ extension UserLocationViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        // MARK: - 유저의 주소를 최종적으로 저장하기 + Realm을 통해, 해당 유저의 주소저장
-        let selectedAddress = viewModel[indexPath.row]
-        self.userLocation = selectedAddress.eupMyeonDong
-        CoreLocationManager.shared.cacheUserLocation(info: UserLocation(address: self.userLocation ?? ""), key: "address")
-        print("UserDefaults에 사용자의 위치, 주소가 저장되었습니다")
+        // MARK: - UserDefaults (deselectedUserLocation)
+        let deselectedUserLocation = viewModel[indexPath.row]
+
+        coreLocationManager.saveCacheUserLocation(viewModel: deselectedUserLocation, key: "deselectedUserLocation")
+
+        // 검색쿼리
+        Geocoding().geocode(query: "역삼동") { result in
+            switch result {
+            case .success(let address) :
+                print("검색결과 : \(address.documents.first?.addressName)")
+                
+            case .failure(let error) :
+                print(error)
+            }
+        }
 
         // MARK: - Naigation to SignUpView
         let signUpTermsViewController = SignUpTermsViewController()

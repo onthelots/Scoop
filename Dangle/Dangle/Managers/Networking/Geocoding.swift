@@ -1,29 +1,21 @@
 //
-//  ReverseGeocoding.swift
+//  Geocoding.swift
 //  Dangle
 //
-//  Created by Jae hyuk Yim on 2023/08/11.
+//  Created by Jae hyuk Yim on 2023/08/12.
 //
-
-/*
- [ ] 1차 : 지역구를 기준으로 모든 행정동을 나타낸다면, 내가 위치하고 있는 '지역코드(5자리)'를 기준으로 지역코드가 모두 동일한 행정동을 Cell에 뿌림
- [ ] 우선, 현재 위치를 기준으로
- */
-
-
 
 import Foundation
 import CoreLocation
 
-class ReverseGeocoding {
+class Geocoding {
     let restAPIKey = GeocodingManager.Constants.restAPIKey
 
-    public func reverseGeocode(location: CLLocation, completion: @escaping (Result<ReverseGeocodeResponse, Error>) -> Void) {
-        let urlString = "https://dapi.kakao.com/v2/local/geo/coord2regioncode"
+    public func geocode(query: String, completion: @escaping (Result<GeocodeResponse, Error>) -> Void) {
+        let urlString = "https://dapi.kakao.com/v2/local/search/address"
         var components = URLComponents(string: urlString)!
         components.queryItems = [
-            URLQueryItem(name: "x", value: "\(location.coordinate.longitude)"),
-            URLQueryItem(name: "y", value: "\(location.coordinate.latitude)")
+            URLQueryItem(name: "query", value: query)
         ]
         var request = URLRequest(url: components.url!)
 
@@ -40,7 +32,7 @@ class ReverseGeocoding {
                 return
             }
             do {
-                let result = try JSONDecoder().decode(ReverseGeocodeResponse.self, from: data)
+                let result = try JSONDecoder().decode(GeocodeResponse.self, from: data)
                 completion(.success(result))
             } catch {
                 completion(.failure(error))
@@ -48,3 +40,4 @@ class ReverseGeocoding {
         }.resume()
     }
 }
+

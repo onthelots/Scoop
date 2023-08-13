@@ -20,6 +20,10 @@
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
 		3FBB62A12A8118FA00B9B1A8 /* NSLayoutConstraint+Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBB62A02A8118FA00B9B1A8 /* NSLayoutConstraint+Priority.swift */; };
 		3FBB62A52A811A0900B9B1A8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBB62A42A811A0900B9B1A8 /* SignInViewController.swift */; };
+		3FD3B59E2A88F24F0022C487 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B59D2A88F24F0022C487 /* KakaoSDK */; };
+		3FD3B5A02A88F24F0022C487 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B59F2A88F24F0022C487 /* KakaoSDKAuth */; };
+		3FD3B5A72A89051E0022C487 /* SensitiveInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5A62A89051E0022C487 /* SensitiveInfoManager.swift */; };
+		3FD3B5AB2A890F400022C487 /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */; };
 		3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */; };
 		3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */; };
 		3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */; };
@@ -36,7 +40,7 @@
 		3FF9E4D02A85348B002802E9 /* ReverseGeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */; };
 		3FF9E4D42A854433002802E9 /* ReverseGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4D32A854433002802E9 /* ReverseGeocoding.swift */; };
 		3FF9E4D62A863C92002802E9 /* LocationNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4D52A863C92002802E9 /* LocationNews.swift */; };
-		3FF9E4DB2A86577A002802E9 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4DA2A86577A002802E9 /* UserLocation.swift */; };
+		3FF9E4DD2A873588002802E9 /* Geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9E4DC2A873588002802E9 /* Geocoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,8 @@
 		3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FBB62A02A8118FA00B9B1A8 /* NSLayoutConstraint+Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Priority.swift"; sourceTree = "<group>"; };
 		3FBB62A42A811A0900B9B1A8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		3FD3B5A62A89051E0022C487 /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
+		3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
 		3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +96,7 @@
 		3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeResponse.swift; sourceTree = "<group>"; };
 		3FF9E4D32A854433002802E9 /* ReverseGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocoding.swift; sourceTree = "<group>"; };
 		3FF9E4D52A863C92002802E9 /* LocationNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNews.swift; sourceTree = "<group>"; };
-		3FF9E4DA2A86577A002802E9 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		3FF9E4DC2A873588002802E9 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FD3B59E2A88F24F0022C487 /* KakaoSDK in Frameworks */,
+				3FD3B5A02A88F24F0022C487 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,12 +205,21 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		3FD3B5A32A88FB410022C487 /* SensitiveInfoManager */ = {
+			isa = PBXGroup;
+			children = (
+				3FD3B5A62A89051E0022C487 /* SensitiveInfoManager.swift */,
+			);
+			path = SensitiveInfoManager;
+			sourceTree = "<group>";
+		};
 		3FF76A362A80D43A00A5CA29 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				3FF9E4C92A8517DE002802E9 /* NetworkManager.swift */,
 				3FF9E4CB2A8517F1002802E9 /* NetworkResource.swift */,
 				3FF9E4C52A850D92002802E9 /* GeocodingManager.swift */,
+				3FF9E4DC2A873588002802E9 /* Geocoding.swift */,
 				3FF9E4D32A854433002802E9 /* ReverseGeocoding.swift */,
 			);
 			path = Networking;
@@ -211,6 +228,7 @@
 		3FF76A372A80D45D00A5CA29 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3FD3B5A32A88FB410022C487 /* SensitiveInfoManager */,
 				3F45EDF12A8207600055A211 /* UserLocation */,
 				3FF76A362A80D43A00A5CA29 /* Networking */,
 			);
@@ -289,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */,
-				3FF9E4DA2A86577A002802E9 /* UserLocation.swift */,
+				3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +370,8 @@
 			);
 			name = Dangle;
 			packageProductDependencies = (
+				3FD3B59D2A88F24F0022C487 /* KakaoSDK */,
+				3FD3B59F2A88F24F0022C487 /* KakaoSDKAuth */,
 			);
 			productName = Dangle;
 			productReference = 3FACA8752A7CE47B00F2544C /* Dangle.app */;
@@ -426,6 +446,7 @@
 			);
 			mainGroup = 3FACA86C2A7CE47B00F2544C;
 			packageReferences = (
+				3FD3B59C2A88F24F0022C487 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 3FACA8762A7CE47B00F2544C /* Products */;
 			projectDirPath = "";
@@ -492,7 +513,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF9E4DD2A873588002802E9 /* Geocoding.swift in Sources */,
 				3FF9E4CA2A8517DE002802E9 /* NetworkManager.swift in Sources */,
+				3FD3B5A72A89051E0022C487 /* SensitiveInfoManager.swift in Sources */,
 				3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */,
 				3FF9E4D42A854433002802E9 /* ReverseGeocoding.swift in Sources */,
 				3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */,
@@ -509,11 +532,11 @@
 				3FF76A2E2A80C75E00A5CA29 /* ProfileViewController.swift in Sources */,
 				3FF9E4C12A85048F002802E9 /* SignUpTermsViewController.swift in Sources */,
 				3F6B58732A831C1400E1F5BA /* LocationAuthDisallowedViewModel.swift in Sources */,
+				3FD3B5AB2A890F400022C487 /* GeocodeResponse.swift in Sources */,
 				3F2D19512A81478400A41AEC /* UserLocationViewController.swift in Sources */,
 				3FF9E4CC2A8517F1002802E9 /* NetworkResource.swift in Sources */,
 				3FBB62A52A811A0900B9B1A8 /* SignInViewController.swift in Sources */,
 				3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */,
-				3FF9E4DB2A86577A002802E9 /* UserLocation.swift in Sources */,
 				3FF9E4D02A85348B002802E9 /* ReverseGeocodeResponse.swift in Sources */,
 				3FACA87B2A7CE47B00F2544C /* SceneDelegate.swift in Sources */,
 			);
@@ -688,7 +711,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dangle/Info.plist;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -719,7 +742,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dangle/Info.plist;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -855,6 +878,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3FD3B59C2A88F24F0022C487 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3FD3B59D2A88F24F0022C487 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FD3B59C2A88F24F0022C487 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		3FD3B59F2A88F24F0022C487 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FD3B59C2A88F24F0022C487 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3FACA86D2A7CE47B00F2544C /* Project object */;
 }
