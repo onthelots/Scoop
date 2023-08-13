@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // splash..
+
+        KakaoSDK.initSDK(appKey: "3b61d69dccfeedfdc824b3a7e958633d")
         return true
     }
     

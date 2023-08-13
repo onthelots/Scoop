@@ -9,6 +9,8 @@ import UIKit
 
 class SignUpTermsViewController: UIViewController {
 
+    private let coreLocationManager = CoreLocationManager.shared
+
     // keywordLabel
     private let keywordLabel: UILabel = {
         let label = UILabel()
@@ -23,15 +25,10 @@ class SignUpTermsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "서비스 이용약관 확인"
         view.backgroundColor = .systemBackground
 
-    }
+        let userlocation = coreLocationManager.getCachedUserLocation(key: "userLocation")
+        title = userlocation?.eupMyeonDong
 
-//    private func fetchUserDefaults(_ key: String) -> [UserLocation] {
-//        if let data = UserDefaults.standard.object(forKey: key) as? Data {
-//            let location = try? PropertyListDecoder().decode(UserLocation.self, from: data)
-//            return location
-//        }
-//    }
+    }
 }

@@ -5,45 +5,45 @@
 //  Created by Jae hyuk Yim on 2023/08/11.
 //
 
+import Foundation
 
+// MARK: - ReverseGeocodeResponse
 struct ReverseGeocodeResponse: Codable {
-    let results: [LocationResult]
+    let reverseMeta: ReverseMeta
+    let reverseDocument: [ReverseDocument]
+
+    enum CodingKeys: String, CodingKey {
+        case reverseMeta = "meta"
+        case reverseDocument = "documents"
+    }
 }
 
-struct LocationResult: Codable {
-    let code: Code
-    let land: Land?
-    let name: String
-    let region: Region
+// MARK: - Document
+struct ReverseDocument: Codable {
+    let longitude: Double
+    let region2DepthName, region3DepthName: String
+    let latitude: Double
+    let code, regionType, addressName, region4DepthName: String
+    let region1DepthName: String
+
+    enum CodingKeys: String, CodingKey {
+        case longitude = "x"
+        case region2DepthName = "region_2depth_name"
+        case region3DepthName = "region_3depth_name"
+        case latitude = "y"
+        case code
+        case regionType = "region_type"
+        case addressName = "address_name"
+        case region4DepthName = "region_4depth_name"
+        case region1DepthName = "region_1depth_name"
+    }
 }
 
-struct Code: Codable {
-    let id: String
-    let mappingId: String
-    let type: String
-}
+// MARK: - Meta
+struct ReverseMeta: Codable {
+    let totalCount: Int
 
-struct Land: Codable {
-    let addition0: Addition
-    let addition1: Addition
-    let addition2: Addition
-    let addition3: Addition
-    let addition4: Addition
-}
-
-struct Area: Codable {
-    let name: String
-}
-
-struct Region: Codable {
-    let area0: Area
-    let area1: Area
-    let area2: Area
-    let area3: Area
-    let area4: Area
-}
-
-struct Addition: Codable {
-    let type: String
-    let value: String
+    enum CodingKeys: String, CodingKey {
+        case totalCount = "total_count"
+    }
 }
