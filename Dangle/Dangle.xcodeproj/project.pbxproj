@@ -24,6 +24,10 @@
 		3FD3B5A02A88F24F0022C487 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B59F2A88F24F0022C487 /* KakaoSDKAuth */; };
 		3FD3B5A72A89051E0022C487 /* SensitiveInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5A62A89051E0022C487 /* SensitiveInfoManager.swift */; };
 		3FD3B5AB2A890F400022C487 /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */; };
+		3FD3B5AD2A89A0D60022C487 /* RegionCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5AC2A89A0D60022C487 /* RegionCodeManager.swift */; };
+		3FD3B5AF2A89AA420022C487 /* RegionCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5AE2A89AA420022C487 /* RegionCodeResponse.swift */; };
+		3FD3B5B32A89BFCB0022C487 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5B22A89BFCB0022C487 /* SearchResultsViewModel.swift */; };
+		3FD3B5B52A89DF0E0022C487 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5B42A89DF0E0022C487 /* SearchResultsViewController.swift */; };
 		3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */; };
 		3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */; };
 		3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */; };
@@ -80,6 +84,10 @@
 		3FBB62A42A811A0900B9B1A8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3FD3B5A62A89051E0022C487 /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
 		3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
+		3FD3B5AC2A89A0D60022C487 /* RegionCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionCodeManager.swift; sourceTree = "<group>"; };
+		3FD3B5AE2A89AA420022C487 /* RegionCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionCodeResponse.swift; sourceTree = "<group>"; };
+		3FD3B5B22A89BFCB0022C487 /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
+		3FD3B5B42A89DF0E0022C487 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 			children = (
 				3F6B58722A831C1400E1F5BA /* LocationAuthDisallowedViewModel.swift */,
 				3FF9E4CD2A852359002802E9 /* UserLocationViewModel.swift */,
+				3FD3B5B22A89BFCB0022C487 /* SearchResultsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 				3FF9E4C52A850D92002802E9 /* GeocodingManager.swift */,
 				3FF9E4DC2A873588002802E9 /* Geocoding.swift */,
 				3FF9E4D32A854433002802E9 /* ReverseGeocoding.swift */,
+				3FD3B5AC2A89A0D60022C487 /* RegionCodeManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -298,6 +308,7 @@
 				3FF76A462A80DA1A00A5CA29 /* StartPageViewController.swift */,
 				3FBB62A42A811A0900B9B1A8 /* SignInViewController.swift */,
 				3F2D19502A81478400A41AEC /* UserLocationViewController.swift */,
+				3FD3B5B42A89DF0E0022C487 /* SearchResultsViewController.swift */,
 				3FF9E4C02A85048F002802E9 /* SignUpTermsViewController.swift */,
 			);
 			path = ViewController;
@@ -306,8 +317,9 @@
 		3FF76A412A80D50B00A5CA29 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */,
 				3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */,
+				3FF9E4CF2A85348B002802E9 /* ReverseGeocodeResponse.swift */,
+				3FD3B5AE2A89AA420022C487 /* RegionCodeResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -518,11 +530,13 @@
 				3FD3B5A72A89051E0022C487 /* SensitiveInfoManager.swift in Sources */,
 				3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */,
 				3FF9E4D42A854433002802E9 /* ReverseGeocoding.swift in Sources */,
+				3FD3B5AF2A89AA420022C487 /* RegionCodeResponse.swift in Sources */,
 				3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */,
 				3F45EDF32A8207790055A211 /* CoreLocationManager.swift in Sources */,
 				3FF9E4C62A850D92002802E9 /* GeocodingManager.swift in Sources */,
 				3FF76A472A80DA1A00A5CA29 /* StartPageViewController.swift in Sources */,
 				3FF9E4CE2A852359002802E9 /* UserLocationViewModel.swift in Sources */,
+				3FD3B5B32A89BFCB0022C487 /* SearchResultsViewModel.swift in Sources */,
 				3FF9E4D62A863C92002802E9 /* LocationNews.swift in Sources */,
 				3FBB62A12A8118FA00B9B1A8 /* NSLayoutConstraint+Priority.swift in Sources */,
 				3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */,
@@ -530,10 +544,12 @@
 				3FF9E4BF2A84FEEA002802E9 /* UserLocationTableViewCell.swift in Sources */,
 				3F6B586F2A831BE400E1F5BA /* LocationAuthDisallowedView.swift in Sources */,
 				3FF76A2E2A80C75E00A5CA29 /* ProfileViewController.swift in Sources */,
+				3FD3B5B52A89DF0E0022C487 /* SearchResultsViewController.swift in Sources */,
 				3FF9E4C12A85048F002802E9 /* SignUpTermsViewController.swift in Sources */,
 				3F6B58732A831C1400E1F5BA /* LocationAuthDisallowedViewModel.swift in Sources */,
 				3FD3B5AB2A890F400022C487 /* GeocodeResponse.swift in Sources */,
 				3F2D19512A81478400A41AEC /* UserLocationViewController.swift in Sources */,
+				3FD3B5AD2A89A0D60022C487 /* RegionCodeManager.swift in Sources */,
 				3FF9E4CC2A8517F1002802E9 /* NetworkResource.swift in Sources */,
 				3FBB62A52A811A0900B9B1A8 /* SignInViewController.swift in Sources */,
 				3FACA8792A7CE47B00F2544C /* AppDelegate.swift in Sources */,

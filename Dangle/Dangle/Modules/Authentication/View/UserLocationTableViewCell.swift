@@ -11,21 +11,10 @@ class UserLocationTableViewCell: UITableViewCell {
     static let identifier = "UserLocationTableViewCell"
 
     // MARK: - Components
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = .darkGray
-        label.sizeToFit()
-        label.numberOfLines = 0
-        label.font = .preferredFont(forTextStyle: .footnote)
-        return label
-    }()
-
     private let userLocationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.textColor = .label
         label.sizeToFit()
         label.numberOfLines = 0
@@ -49,7 +38,8 @@ class UserLocationTableViewCell: UITableViewCell {
         super.layoutSubviews()
 
         NSLayoutConstraint.activate([
-            userLocationLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            userLocationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            userLocationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             userLocationLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
@@ -61,6 +51,6 @@ class UserLocationTableViewCell: UITableViewCell {
 
     // Configure (Label)
     func configure(address: UserLocationViewModel) {
-        userLocationLabel.text = "\(address.sido) \(address.siGunGu) \(address.eupMyeonDong)"
+        userLocationLabel.text = address.name
     }
 }
