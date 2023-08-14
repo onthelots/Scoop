@@ -52,6 +52,7 @@ class LocationAuthDisallowedView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        // Hidden이 초기값
         isHidden = true
 
         button.addTarget(

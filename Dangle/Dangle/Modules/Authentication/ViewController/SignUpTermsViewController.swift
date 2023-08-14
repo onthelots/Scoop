@@ -28,7 +28,7 @@ class SignUpTermsViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         let userlocation = coreLocationManager.getCachedUserLocation(key: "userLocation")
-        title = userlocation?.eupMyeonDong
+//        title = userlocation?.eupMyeonDong
 
     }
 }

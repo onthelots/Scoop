@@ -32,9 +32,13 @@ struct Document: Codable {
 
 // MARK: - Address
 struct Address: Codable {
-    let addressName, subAddressNo, bCode, region1DepthName: String
-    let region3DepthName, region2DepthName, longitude, latitude: String
-    let mountainYn, region3DepthHName, mainAddressNo, hCode: String
+    let addressName, subAddressNo, region1DepthName: String
+    let region2DepthName, longitude, latitude: String
+    let bCode: String?
+    let hCode: String?
+    let region3DepthName: String?
+    let region3DepthHName: String?
+    let mountainYn, mainAddressNo: String
 
     enum CodingKeys: String, CodingKey {
         case addressName = "address_name"

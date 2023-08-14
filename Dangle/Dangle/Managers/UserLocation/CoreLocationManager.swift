@@ -11,7 +11,7 @@ import MapKit
 protocol CoreLocationManagerDelegate: AnyObject {
     func updateLocation(coordinate: CLLocation)
     func showLocationServiceError()
-    func presentLocationServicesEnabled()
+    func presentDisallowedView()
 }
 
 class CoreLocationManager: NSObject, CLLocationManagerDelegate {
@@ -42,7 +42,7 @@ class CoreLocationManager: NSObject, CLLocationManagerDelegate {
         DispatchQueue.global().async {
             guard CLLocationManager.locationServicesEnabled() else {
                 DispatchQueue.main.async {
-                    self.delegate?.showLocationServiceError()
+                    self.delegate?.presentDisallowedView()
                 }
                 return
             }
@@ -71,8 +71,8 @@ class CoreLocationManager: NSObject, CLLocationManagerDelegate {
             coreLocationManager.requestWhenInUseAuthorization() // 위치권한 요청 -> MARK 1(권한상태가 변경되므로, 다시 요청)
         case .restricted, .denied:
             print("3.앱 위치 서비스 비 허용, 설정으로")
-//            delegate?.showLocationServiceError()
-            self.delegate?.presentLocationServicesEnabled()
+            self.delegate?.presentDisallowedView() // 세팅하고
+            self.delegate?.showLocationServiceError() // 에러 띄우고,
 
         case .authorizedAlways, .authorizedWhenInUse:
             coreLocationManager.startUpdatingLocation() // 지속적으로 사용자의 정보를 가져옴
