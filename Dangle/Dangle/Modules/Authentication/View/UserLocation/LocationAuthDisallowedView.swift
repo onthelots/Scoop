@@ -18,7 +18,7 @@ class LocationAuthDisallowedView: UIView {
     // MARK: - Components
 
     // veticalStactkView
-    private let verticalStackView: UIStackView = {
+    lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -28,7 +28,7 @@ class LocationAuthDisallowedView: UIView {
     }()
 
     // label
-    private let label: UILabel = {
+    lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -40,7 +40,7 @@ class LocationAuthDisallowedView: UIView {
     }()
 
     // button
-    private let button: UIButton = {
+    lazy var button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.link, for: .normal)

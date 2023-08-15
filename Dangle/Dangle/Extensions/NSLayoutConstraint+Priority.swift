@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// 우선도 설정
 extension NSLayoutConstraint {
     func withPriority(_ priority: UILayoutPriority) -> NSLayoutConstraint {
         self.priority = priority

@@ -19,7 +19,7 @@ class StartPageView: UIView {
     // MARK: - Components (UIImage, Labels, Buttons)
 
     // appNameImageView
-    private let appNameImageView: UIImageView = {
+    lazy var appNameImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Dangle_font")
         imageView.contentMode = .scaleAspectFit
@@ -28,7 +28,7 @@ class StartPageView: UIView {
     }()
 
     // keywordLabel
-    private let keywordLabel: UILabel = {
+    lazy var keywordLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .black
@@ -41,7 +41,7 @@ class StartPageView: UIView {
     }()
 
     // descriptionLabel
-    private let descriptionLabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .darkGray
@@ -57,7 +57,7 @@ class StartPageView: UIView {
     }()
 
     // verticalStackView
-    private let verticalButtonStackView: UIStackView = {
+    lazy var verticalButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
@@ -67,7 +67,7 @@ class StartPageView: UIView {
     }()
 
     // signInButton
-    private let signUpButton: UIButton = {
+    lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("내 동네 설정하고 소식 만나보기", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -81,7 +81,7 @@ class StartPageView: UIView {
     }()
 
     // signInButton
-    private let signInButton: UIButton = {
+    lazy var signInButton: UIButton = {
         let button = UIButton()
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(UIColor.tintColor, for: .normal)

@@ -20,7 +20,7 @@ class SearchResultsViewController: UIViewController {
 
     // MARK: - Components
     // result tableView
-    private let tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(

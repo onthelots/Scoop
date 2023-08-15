@@ -21,16 +21,23 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     // MARK: - Components (Views)
 
     // searchController
-    let searchController: UISearchController = {
+    lazy var searchController: UISearchController = {
         let viewController = UISearchController(searchResultsController: SearchResultsViewController())
-        viewController.searchBar.placeholder = "주소 검색"
+        viewController.searchBar.placeholder = "동(읍,면) 이름으로 검색해주세요 (ex. 서초동)"
+
+        if let textField = viewController.searchBar.value(forKey: "searchField") as? UITextField {
+            if let placeholderLabel = textField.value(forKey: "placeholderLabel") as? UILabel {
+                placeholderLabel.font = UIFont.systemFont(ofSize: 14) // 원하는 크기로 조정
+                placeholderLabel.textColor = UIColor.gray // 원하는 색상으로 조정
+            }
+        }
         viewController.searchBar.searchBarStyle = .minimal
         viewController.definesPresentationContext = true
         return viewController
     }()
 
     // result tableView
-    private let tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(
@@ -47,7 +54,7 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "사용자 위치"
+        title = "위치찾기"
         view.backgroundColor = .systemBackground
         coreLocationManager.delegate = self
 
@@ -143,9 +150,8 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
                                                        key: "StringdeselectedUserLocation")
 
         // MARK: - Naigation to SignUpView
-        let signUpTermsViewController = SignUpTermsViewController()
-        signUpTermsViewController.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(signUpTermsViewController, animated: true)
+        let termsViewController = TermsViewController()
+        navigationController?.pushViewController(termsViewController, animated: true)
     }
 }
 
@@ -255,8 +261,7 @@ extension UserLocationViewController: UITableViewDelegate, UITableViewDataSource
         coreLocationManager.saveCacheUserLocation(viewModel: deselectedUserLocation, key: "deselectedUserLocation")
 
         // MARK: - Naigation to SignUpView
-        let signUpTermsViewController = SignUpTermsViewController()
-        signUpTermsViewController.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(signUpTermsViewController, animated: true)
+        let termsViewController = TermsViewController()
+        navigationController?.pushViewController(termsViewController, animated: true)
     }
 }

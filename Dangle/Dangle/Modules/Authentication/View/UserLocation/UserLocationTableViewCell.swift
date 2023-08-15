@@ -11,7 +11,7 @@ class UserLocationTableViewCell: UITableViewCell {
     static let identifier = "UserLocationTableViewCell"
 
     // MARK: - Components
-    private let userLocationLabel: UILabel = {
+    lazy var userLocationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
