@@ -98,7 +98,8 @@ InSight
 ### 4-2 [Feature 2] 사용자 위치정보 업데이트 (CLLocation, Reverse Geocoding)
 > 위치정보 인증부터 좌표를 활용한 행정동 단위로의 변환 실시, 위치 검색을 통한 위치 직접 설정 허용
 - 사용자 위치정보 `허용/비허용` 과정에 대한 분기처리 실시(ToggleView)
-- CLLocation을 통해 `Coordinate`를 1차로 받아오고, `Reverse Geocoding`을 2차로 수행함으로서 행정동 단위로 위치를 나타냄
+- CLLocation을 통해 `Coordinate`를 1차로 받아오고, `Reverse Geocoding`을 2차로 수행함으로서 법정동/행정동 단위로 위치를 나타냄
+- 사용자가 원하는 위치를 검색하여 선택할 수 있도록 동 코드를 재 변환, `WildCard Pattern`을 통해 3차로 인근 동을 모두 반환함
 
 🚫 Trouble Shooting
 
@@ -106,7 +107,12 @@ InSight
 ----| ----- | -----
 1| 디바이스 위치서비스 활성/비활성화 확인 메서드 실행에 따른 UI 불응성(unresponsiveness)문제 | https://github.com/onthelots/dangle/issues/8
 
+<br>
 
+### 4-3 [Feature 3] Firebase 서버를 활용한 회원가입 및 로그인 구현
+> e-mail 회원가입 및 로그인, 비밀번호 재 설정 외 기타 로직 구현
+- 사용자 위치정보 `허용/비허용` 과정에 대한 분기처리 실시(ToggleView)
+- 기존 사용자 위치정보를 회원가입을 실시하는 과정에서 동시에 필드로 저장, 이를 바탕으로 관련된 Open API(뉴스, 행사 외)를 활용 
 
 <br>
 
