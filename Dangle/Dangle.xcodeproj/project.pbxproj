@@ -38,6 +38,7 @@
 		3FD3B5DD2A8AF8400022C487 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5DC2A8AF8400022C487 /* FirebaseStorage */; };
 		3FD3B5DF2A8AFC270022C487 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5DE2A8AFC270022C487 /* TermsViewModel.swift */; };
 		3FD3B5E52A8B01F00022C487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3B5E42A8B01EF0022C487 /* GoogleService-Info.plist */; };
+		3FD3B5E72A8B19040022C487 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5E62A8B19040022C487 /* NickNameViewController.swift */; };
 		3FF76A282A80C71700A5CA29 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */; };
 		3FF76A2A2A80C73F00A5CA29 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */; };
 		3FF76A2C2A80C74F00A5CA29 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */; };
@@ -105,6 +106,7 @@
 		3FD3B5D02A8AEE980022C487 /* TermsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
 		3FD3B5DE2A8AFC270022C487 /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		3FD3B5E42A8B01EF0022C487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3FD3B5E62A8B19040022C487 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		3FF76A272A80C71700A5CA29 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3FF76A292A80C73F00A5CA29 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3FF76A2B2A80C74F00A5CA29 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD3B5BE2A8A60E20022C487 /* SignUpViewController.swift */,
+				3FD3B5E62A8B19040022C487 /* NickNameViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				3FD3B5D12A8AEE980022C487 /* TermsTableViewCell.swift in Sources */,
 				3FD3B5CC2A8AEDF30022C487 /* TermsViewController.swift in Sources */,
 				3FF9E4D02A85348B002802E9 /* ReverseGeocodeResponse.swift in Sources */,
+				3FD3B5E72A8B19040022C487 /* NickNameViewController.swift in Sources */,
 				3FACA87B2A7CE47B00F2544C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

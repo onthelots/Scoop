@@ -6,9 +6,9 @@
 //
 
 /*
- [ ] View 다시 구성하기
- [ ] 이메일, 비밀번호 유효성 검사 실시하기
- [ ]
+ [ ] 전반적인 View 다시 구성하기
+ [ ] 이메일 중복검사 버튼 생성하기 (메서드는 이미 구현되어 있음) + 이벤트로 나타내기
+ [ ] 이메일, 비밀번호 유효성 검사 부분을 이벤트로 나타내기 (유효하지 않는 비밀번호입니다 등)
  */
 
 import UIKit
@@ -185,18 +185,65 @@ class SignUpViewController: UIViewController {
         guard let email = emailTf.text else { return }
         guard let pw = pwTf.text else { return }
 
-        // UserDefaults Location
-        let userLocation: String = CoreLocationManager().getCachedUserLocation(key: "deselectedUserLocation")?.name ?? ""
-        Auth.auth().createUser(withEmail: email, password: pw) { [weak self] result, error in
+        // 별도의 이메일 중복 검사를 실시
+        checkEmailExists(email: email) { [weak self] exists in
+            guard let self = self else { return }
 
+            if exists {
+                print("Email already exists")
+                // 중복된 이메일 처리 코드를 작성
+                // 예: 중복된 이메일을 사용자에게 알려주거나 다른 처리 수행
+            } else {
+                // UserDefaults Location
+                let userLocation: String = CoreLocationManager().getCachedUserLocation(key: "deselectedUserLocation")?.name ?? ""
+                Auth.auth().createUser(withEmail: email, password: pw) { [weak self] result, error in
+                    guard let self = self else { return }
 
-            guard let result = result else {
+                    if let error = error {
+                        print("Error creating user: \(error)")
+                        return
+                    }
+
+                    guard let uid = result?.user.uid else {
+                        print("User UID not found")
+                        return
+                    }
+
+                    // Firestore에 사용자 정보 저장
+                    let database = Firestore.firestore()
+                    database.collection("users").document(uid).setData([
+                        "email": email,
+                        "name": email,
+                        "location": userLocation
+                    ]) { error in
+                        if let error = error {
+                            print("Error saving user info to Firestore: \(error)")
+                        } else {
+                            print("User info saved successfully")
+                            // 여기서 다음 화면으로 이동하거나 다른 작업 수행
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fileprivate func checkEmailExists(email: String, completion: @escaping (Bool) -> Void) {
+        let database = Firestore.firestore()
+        database.collection("users").whereField("email", isEqualTo: email).getDocuments { snapshot, error in
+            if let error = error {
+                print("Error checking email exists: \(error)")
+                completion(false)
                 return
             }
 
-            // firebase 스토어에 데이터 추가
-            let database = Firestore.firestore()
-            database.collection("users").document(email).setData(["email" : email, "name" : email, "location" : userLocation])
+            if let documents = snapshot?.documents, !documents.isEmpty {
+                // 이미 해당 이메일이 존재함
+                completion(true)
+            } else {
+                // 해당 이메일이 존재하지 않음
+                completion(false)
+            }
         }
     }
 }
