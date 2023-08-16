@@ -24,7 +24,6 @@
 		3FD3B5AB2A890F400022C487 /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */; };
 		3FD3B5AD2A89A0D60022C487 /* RegionCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5AC2A89A0D60022C487 /* RegionCodeManager.swift */; };
 		3FD3B5AF2A89AA420022C487 /* RegionCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5AE2A89AA420022C487 /* RegionCodeResponse.swift */; };
-		3FD3B5B32A89BFCB0022C487 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5B22A89BFCB0022C487 /* SearchResultsViewModel.swift */; };
 		3FD3B5B52A89DF0E0022C487 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5B42A89DF0E0022C487 /* SearchResultsViewController.swift */; };
 		3FD3B5BB2A8A50440022C487 /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5BA2A8A50440022C487 /* TermsType.swift */; };
 		3FD3B5BF2A8A60E20022C487 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3B5BE2A8A60E20022C487 /* SignUpViewController.swift */; };
@@ -96,7 +95,6 @@
 		3FD3B5AA2A890F400022C487 /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
 		3FD3B5AC2A89A0D60022C487 /* RegionCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionCodeManager.swift; sourceTree = "<group>"; };
 		3FD3B5AE2A89AA420022C487 /* RegionCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionCodeResponse.swift; sourceTree = "<group>"; };
-		3FD3B5B22A89BFCB0022C487 /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 		3FD3B5B42A89DF0E0022C487 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		3FD3B5BA2A8A50440022C487 /* TermsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
 		3FD3B5BE2A8A60E20022C487 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			children = (
 				3F6B58722A831C1400E1F5BA /* LocationAuthDisallowedViewModel.swift */,
 				3FF9E4CD2A852359002802E9 /* UserLocationViewModel.swift */,
-				3FD3B5B22A89BFCB0022C487 /* SearchResultsViewModel.swift */,
 				3FD3B5DE2A8AFC270022C487 /* TermsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -641,7 +638,6 @@
 				3FF9E4C62A850D92002802E9 /* GeocodingManager.swift in Sources */,
 				3FF76A472A80DA1A00A5CA29 /* StartPageViewController.swift in Sources */,
 				3FF9E4CE2A852359002802E9 /* UserLocationViewModel.swift in Sources */,
-				3FD3B5B32A89BFCB0022C487 /* SearchResultsViewModel.swift in Sources */,
 				3FD3B5DF2A8AFC270022C487 /* TermsViewModel.swift in Sources */,
 				3FF9E4D62A863C92002802E9 /* LocationNews.swift in Sources */,
 				3FD3B5CA2A8AED5B0022C487 /* SignUpView.swift in Sources */,
