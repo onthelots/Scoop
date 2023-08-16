@@ -15,9 +15,6 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
 
     // 사용자 위치 저장값(법정동 코드, 이름)
     private var viewModel = [UserLocationViewModel]()
-
-    private var filteredViewModel = [GeocodeResponse]()
-
     // MARK: - Components (Views)
 
     // searchController

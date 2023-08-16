@@ -93,13 +93,6 @@ class CoreLocationManager: NSObject, CLLocationManagerDelegate {
         // 현재위치, annotation 완료 후 위치 업데이트 중지
         coreLocationManager.stopUpdatingLocation()
     }
-
-
-    func getCurrentLocation() -> CLLocationCoordinate2D? {
-        let coordinate = coreLocationManager.location?.coordinate
-        return coordinate
-    }
-
     // MARK: - coodinate to String
     func coordinateToString(_ coordinate: CLLocationCoordinate2D) -> String {
         return "\(coordinate.longitude),\(coordinate.latitude)"
@@ -108,13 +101,6 @@ class CoreLocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - 위치 접근 실패(GPS를 사용할 수 없는 지역에 있는 등 문제)
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("위치 서비스에 접근할 수 없습니다 \(error)")
-    }
-
-    func coordinateToString(_ coordinate: CLLocation) -> String {
-        let longitutde = coordinate.coordinate.longitude
-        let latitude = coordinate.coordinate.latitude
-        let coordinateString: String = "\(longitutde),\(latitude)"
-        return coordinateString
     }
 
     // MARK: - UserDefaults
