@@ -165,12 +165,12 @@
 		3F1098782A8DAAA500A6DCA1 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3F10989E2A8DAAA500A6DCA1 /* TabBarViewController.swift */,
 				3F1098792A8DAAA500A6DCA1 /* Home */,
 				3F10987B2A8DAAA500A6DCA1 /* NearNews */,
 				3F10987D2A8DAAA500A6DCA1 /* AuthenticationScene */,
 				3F1098992A8DAAA500A6DCA1 /* Utils */,
 				3F10989C2A8DAAA500A6DCA1 /* Profile */,
-				3F10989E2A8DAAA500A6DCA1 /* TabBarViewController.swift */,
 			);
 			name = Presentation;
 			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Presentation";
@@ -349,10 +349,10 @@
 		3F1098A42A8DAAA500A6DCA1 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098A52A8DAAA500A6DCA1 /* UserDefaults */,
 				3F1098A72A8DAAA500A6DCA1 /* Network */,
-				3F1098AA2A8DAAA500A6DCA1 /* SensitiveInfoManager */,
 				3F1098AC2A8DAAA500A6DCA1 /* CoreLocation */,
+				3F1098A52A8DAAA500A6DCA1 /* UserDefaults */,
+				3F1098AA2A8DAAA500A6DCA1 /* SensitiveInfoManager */,
 			);
 			name = Infrastructure;
 			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Infrastructure";
@@ -404,9 +404,9 @@
 		3F1098B22A8DAAA500A6DCA1 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098B32A8DAAA500A6DCA1 /* Interface */,
-				3F1098B82A8DAAA500A6DCA1 /* UseCases */,
 				3F1098BA2A8DAAA500A6DCA1 /* Entities */,
+				3F1098B82A8DAAA500A6DCA1 /* UseCases */,
+				3F1098B32A8DAAA500A6DCA1 /* Interface */,
 			);
 			name = Domain;
 			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Domain";
@@ -450,10 +450,10 @@
 		3F1098BB2A8DAAA500A6DCA1 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098BC2A8DAAA500A6DCA1 /* LocationSearchQuery.swift */,
 				3F1098BD2A8DAAA500A6DCA1 /* ReverseGeocode.swift */,
-				3F1098BE2A8DAAA500A6DCA1 /* Geocode.swift */,
 				3F1098BF2A8DAAA500A6DCA1 /* RegionCode.swift */,
+				3F1098BE2A8DAAA500A6DCA1 /* Geocode.swift */,
+				3F1098BC2A8DAAA500A6DCA1 /* LocationSearchQuery.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
