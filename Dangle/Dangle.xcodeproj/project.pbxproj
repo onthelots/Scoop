@@ -7,49 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F1098C22A8DAAA500A6DCA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10987A2A8DAAA500A6DCA1 /* HomeViewController.swift */; };
-		3F1098C32A8DAAA500A6DCA1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10987C2A8DAAA500A6DCA1 /* MapViewController.swift */; };
-		3F1098C42A8DAAA500A6DCA1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10987F2A8DAAA500A6DCA1 /* SignUpViewController.swift */; };
-		3F1098C52A8DAAA500A6DCA1 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098802A8DAAA500A6DCA1 /* NickNameViewController.swift */; };
-		3F1098C62A8DAAA500A6DCA1 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098812A8DAAA500A6DCA1 /* SignUpView.swift */; };
-		3F1098C72A8DAAA500A6DCA1 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098842A8DAAA500A6DCA1 /* TermsViewModel.swift */; };
-		3F1098C82A8DAAA500A6DCA1 /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098872A8DAAA500A6DCA1 /* TermsTableViewCell.swift */; };
-		3F1098C92A8DAAA500A6DCA1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098882A8DAAA500A6DCA1 /* TermsViewController.swift */; };
-		3F1098CA2A8DAAA500A6DCA1 /* TermsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098892A8DAAA500A6DCA1 /* TermsDetailViewController.swift */; };
-		3F1098CB2A8DAAA500A6DCA1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10988B2A8DAAA500A6DCA1 /* SignInViewController.swift */; };
-		3F1098CC2A8DAAA500A6DCA1 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10988D2A8DAAA500A6DCA1 /* StartPageViewController.swift */; };
-		3F1098CD2A8DAAA500A6DCA1 /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10988E2A8DAAA500A6DCA1 /* StartPageView.swift */; };
-		3F1098CE2A8DAAA500A6DCA1 /* LocationAuthDisallowedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098912A8DAAA500A6DCA1 /* LocationAuthDisallowedViewModel.swift */; };
-		3F1098CF2A8DAAA500A6DCA1 /* UserLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098922A8DAAA500A6DCA1 /* UserLocationViewModel.swift */; };
-		3F1098D02A8DAAA500A6DCA1 /* UserLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098952A8DAAA500A6DCA1 /* UserLocationTableViewCell.swift */; };
-		3F1098D12A8DAAA500A6DCA1 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098962A8DAAA500A6DCA1 /* SearchResultsViewController.swift */; };
-		3F1098D22A8DAAA500A6DCA1 /* LocationAuthDisallowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098972A8DAAA500A6DCA1 /* LocationAuthDisallowedView.swift */; };
-		3F1098D32A8DAAA500A6DCA1 /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098982A8DAAA500A6DCA1 /* UserLocationViewController.swift */; };
-		3F1098D42A8DAAA500A6DCA1 /* NSLayoutConstraint+Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10989B2A8DAAA500A6DCA1 /* NSLayoutConstraint+Priority.swift */; };
-		3F1098D52A8DAAA500A6DCA1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10989D2A8DAAA500A6DCA1 /* ProfileViewController.swift */; };
-		3F1098D62A8DAAA500A6DCA1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10989E2A8DAAA500A6DCA1 /* TabBarViewController.swift */; };
-		3F1098D72A8DAAA500A6DCA1 /* DefaultGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098A12A8DAAA500A6DCA1 /* DefaultGeocodeRepository.swift */; };
-		3F1098D82A8DAAA500A6DCA1 /* DefaultRegionCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098A22A8DAAA500A6DCA1 /* DefaultRegionCodeRepository.swift */; };
-		3F1098D92A8DAAA500A6DCA1 /* DefaultReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098A32A8DAAA500A6DCA1 /* DefaultReverseGeocodeRepository.swift */; };
-		3F1098DA2A8DAAA500A6DCA1 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098A62A8DAAA500A6DCA1 /* UserDefaultsService.swift */; };
-		3F1098DB2A8DAAA500A6DCA1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098A82A8DAAA500A6DCA1 /* NetworkService.swift */; };
-		3F1098DC2A8DAAA500A6DCA1 /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098A92A8DAAA500A6DCA1 /* NetworkResource.swift */; };
-		3F1098DD2A8DAAA500A6DCA1 /* SensitiveInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098AB2A8DAAA500A6DCA1 /* SensitiveInfoManager.swift */; };
-		3F1098DE2A8DAAA500A6DCA1 /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098AD2A8DAAA500A6DCA1 /* CoreLocationService.swift */; };
-		3F1098DF2A8DAAA500A6DCA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1098AF2A8DAAA500A6DCA1 /* Assets.xcassets */; };
-		3F1098E02A8DAAA500A6DCA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F1098B02A8DAAA500A6DCA1 /* LaunchScreen.storyboard */; };
-		3F1098E12A8DAAA500A6DCA1 /* GeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098B52A8DAAA500A6DCA1 /* GeocodeRepository.swift */; };
-		3F1098E22A8DAAA500A6DCA1 /* RegionCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098B62A8DAAA500A6DCA1 /* RegionCodeRepository.swift */; };
-		3F1098E32A8DAAA500A6DCA1 /* ReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098B72A8DAAA500A6DCA1 /* ReverseGeocodeRepository.swift */; };
-		3F1098E42A8DAAA500A6DCA1 /* GeoLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098B92A8DAAA500A6DCA1 /* GeoLocationUseCase.swift */; };
-		3F1098E52A8DAAA500A6DCA1 /* LocationSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098BC2A8DAAA500A6DCA1 /* LocationSearchQuery.swift */; };
-		3F1098E62A8DAAA500A6DCA1 /* ReverseGeocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098BD2A8DAAA500A6DCA1 /* ReverseGeocode.swift */; };
-		3F1098E72A8DAAA500A6DCA1 /* Geocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098BE2A8DAAA500A6DCA1 /* Geocode.swift */; };
-		3F1098E82A8DAAA500A6DCA1 /* RegionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098BF2A8DAAA500A6DCA1 /* RegionCode.swift */; };
-		3F1098E92A8DAAA500A6DCA1 /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098C12A8DAAA500A6DCA1 /* TermsType.swift */; };
-		3F1098EE2A8DAC2800A6DCA1 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098EB2A8DAC2800A6DCA1 /* AppConfigurations.swift */; };
-		3F1098EF2A8DAC2800A6DCA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098EC2A8DAC2800A6DCA1 /* AppDelegate.swift */; };
-		3F1098F02A8DAC2800A6DCA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098ED2A8DAC2800A6DCA1 /* SceneDelegate.swift */; };
+		3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */; };
+		3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */; };
+		3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */; };
+		3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */; };
+		3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7922A8DC96E0076CEAB /* ReverseGeocode.swift */; };
+		3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7932A8DC96E0076CEAB /* Geocode.swift */; };
+		3F1AB7DA2A8DC96E0076CEAB /* RegionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7942A8DC96E0076CEAB /* RegionCode.swift */; };
+		3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7962A8DC96E0076CEAB /* TermsType.swift */; };
+		3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */; };
+		3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */; };
+		3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */; };
+		3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */; };
+		3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */; };
+		3F1AB7E12A8DC96E0076CEAB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A32A8DC96E0076CEAB /* SignUpViewController.swift */; };
+		3F1AB7E22A8DC96E0076CEAB /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */; };
+		3F1AB7E32A8DC96E0076CEAB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A52A8DC96E0076CEAB /* SignUpView.swift */; };
+		3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A82A8DC96E0076CEAB /* TermsViewModel.swift */; };
+		3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AB2A8DC96E0076CEAB /* TermsTableViewCell.swift */; };
+		3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */; };
+		3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AD2A8DC96E0076CEAB /* TermsDetailViewController.swift */; };
+		3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */; };
+		3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B12A8DC96E0076CEAB /* StartPageViewController.swift */; };
+		3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B22A8DC96E0076CEAB /* StartPageView.swift */; };
+		3F1AB7EB2A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B52A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift */; };
+		3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B62A8DC96E0076CEAB /* UserLocationViewModel.swift */; };
+		3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B92A8DC96E0076CEAB /* UserLocationTableViewCell.swift */; };
+		3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */; };
+		3F1AB7EF2A8DC96E0076CEAB /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7BB2A8DC96E0076CEAB /* UserLocationViewController.swift */; };
+		3F1AB7F02A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7BE2A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift */; };
+		3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */; };
+		3F1AB7F22A8DC96E0076CEAB /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */; };
+		3F1AB7F32A8DC96E0076CEAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C32A8DC96E0076CEAB /* Assets.xcassets */; };
+		3F1AB7F42A8DC96E0076CEAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C42A8DC96E0076CEAB /* LaunchScreen.storyboard */; };
+		3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */; };
+		3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */; };
+		3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */; };
+		3F1AB7F82A8DC96E0076CEAB /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CC2A8DC96E0076CEAB /* UserDefaultsService.swift */; };
+		3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CE2A8DC96E0076CEAB /* NetworkService.swift */; };
+		3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */; };
+		3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */; };
+		3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */; };
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
@@ -79,49 +77,47 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F10987A2A8DAAA500A6DCA1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		3F10987C2A8DAAA500A6DCA1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		3F10987F2A8DAAA500A6DCA1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		3F1098802A8DAAA500A6DCA1 /* NickNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
-		3F1098812A8DAAA500A6DCA1 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		3F1098842A8DAAA500A6DCA1 /* TermsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
-		3F1098872A8DAAA500A6DCA1 /* TermsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
-		3F1098882A8DAAA500A6DCA1 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
-		3F1098892A8DAAA500A6DCA1 /* TermsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsDetailViewController.swift; sourceTree = "<group>"; };
-		3F10988B2A8DAAA500A6DCA1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		3F10988D2A8DAAA500A6DCA1 /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
-		3F10988E2A8DAAA500A6DCA1 /* StartPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
-		3F1098912A8DAAA500A6DCA1 /* LocationAuthDisallowedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAuthDisallowedViewModel.swift; sourceTree = "<group>"; };
-		3F1098922A8DAAA500A6DCA1 /* UserLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewModel.swift; sourceTree = "<group>"; };
-		3F1098952A8DAAA500A6DCA1 /* UserLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationTableViewCell.swift; sourceTree = "<group>"; };
-		3F1098962A8DAAA500A6DCA1 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
-		3F1098972A8DAAA500A6DCA1 /* LocationAuthDisallowedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAuthDisallowedView.swift; sourceTree = "<group>"; };
-		3F1098982A8DAAA500A6DCA1 /* UserLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewController.swift; sourceTree = "<group>"; };
-		3F10989B2A8DAAA500A6DCA1 /* NSLayoutConstraint+Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Priority.swift"; sourceTree = "<group>"; };
-		3F10989D2A8DAAA500A6DCA1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		3F10989E2A8DAAA500A6DCA1 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		3F1098A12A8DAAA500A6DCA1 /* DefaultGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultGeocodeRepository.swift; sourceTree = "<group>"; };
-		3F1098A22A8DAAA500A6DCA1 /* DefaultRegionCodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultRegionCodeRepository.swift; sourceTree = "<group>"; };
-		3F1098A32A8DAAA500A6DCA1 /* DefaultReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultReverseGeocodeRepository.swift; sourceTree = "<group>"; };
-		3F1098A62A8DAAA500A6DCA1 /* UserDefaultsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
-		3F1098A82A8DAAA500A6DCA1 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		3F1098A92A8DAAA500A6DCA1 /* NetworkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
-		3F1098AB2A8DAAA500A6DCA1 /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
-		3F1098AD2A8DAAA500A6DCA1 /* CoreLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
-		3F1098AF2A8DAAA500A6DCA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3F1098B12A8DAAA500A6DCA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3F1098B52A8DAAA500A6DCA1 /* GeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeRepository.swift; sourceTree = "<group>"; };
-		3F1098B62A8DAAA500A6DCA1 /* RegionCodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCodeRepository.swift; sourceTree = "<group>"; };
-		3F1098B72A8DAAA500A6DCA1 /* ReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeRepository.swift; sourceTree = "<group>"; };
-		3F1098B92A8DAAA500A6DCA1 /* GeoLocationUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocationUseCase.swift; sourceTree = "<group>"; };
-		3F1098BC2A8DAAA500A6DCA1 /* LocationSearchQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchQuery.swift; sourceTree = "<group>"; };
-		3F1098BD2A8DAAA500A6DCA1 /* ReverseGeocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocode.swift; sourceTree = "<group>"; };
-		3F1098BE2A8DAAA500A6DCA1 /* Geocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geocode.swift; sourceTree = "<group>"; };
-		3F1098BF2A8DAAA500A6DCA1 /* RegionCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCode.swift; sourceTree = "<group>"; };
-		3F1098C12A8DAAA500A6DCA1 /* TermsType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
-		3F1098EB2A8DAC2800A6DCA1 /* AppConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
-		3F1098EC2A8DAC2800A6DCA1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F1098ED2A8DAC2800A6DCA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeRepository.swift; sourceTree = "<group>"; };
+		3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCodeRepository.swift; sourceTree = "<group>"; };
+		3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeRepository.swift; sourceTree = "<group>"; };
+		3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocationUseCase.swift; sourceTree = "<group>"; };
+		3F1AB7922A8DC96E0076CEAB /* ReverseGeocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocode.swift; sourceTree = "<group>"; };
+		3F1AB7932A8DC96E0076CEAB /* Geocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geocode.swift; sourceTree = "<group>"; };
+		3F1AB7942A8DC96E0076CEAB /* RegionCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCode.swift; sourceTree = "<group>"; };
+		3F1AB7962A8DC96E0076CEAB /* TermsType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
+		3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultGeocodeRepository.swift; sourceTree = "<group>"; };
+		3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultRegionCodeRepository.swift; sourceTree = "<group>"; };
+		3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultReverseGeocodeRepository.swift; sourceTree = "<group>"; };
+		3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3F1AB7A32A8DC96E0076CEAB /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
+		3F1AB7A52A8DC96E0076CEAB /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		3F1AB7A82A8DC96E0076CEAB /* TermsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
+		3F1AB7AB2A8DC96E0076CEAB /* TermsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
+		3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		3F1AB7AD2A8DC96E0076CEAB /* TermsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsDetailViewController.swift; sourceTree = "<group>"; };
+		3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		3F1AB7B12A8DC96E0076CEAB /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
+		3F1AB7B22A8DC96E0076CEAB /* StartPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
+		3F1AB7B52A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAuthDisallowedViewModel.swift; sourceTree = "<group>"; };
+		3F1AB7B62A8DC96E0076CEAB /* UserLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewModel.swift; sourceTree = "<group>"; };
+		3F1AB7B92A8DC96E0076CEAB /* UserLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationTableViewCell.swift; sourceTree = "<group>"; };
+		3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAuthDisallowedView.swift; sourceTree = "<group>"; };
+		3F1AB7BB2A8DC96E0076CEAB /* UserLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewController.swift; sourceTree = "<group>"; };
+		3F1AB7BE2A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Priority.swift"; sourceTree = "<group>"; };
+		3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3F1AB7C32A8DC96E0076CEAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F1AB7C52A8DC96E0076CEAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
+		3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3F1AB7CC2A8DC96E0076CEAB /* UserDefaultsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		3F1AB7CE2A8DC96E0076CEAB /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
+		3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
+		3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,319 +158,311 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F1098782A8DAAA500A6DCA1 /* Presentation */ = {
+		3F1AB7882A8DC96E0076CEAB /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				3F10989E2A8DAAA500A6DCA1 /* TabBarViewController.swift */,
-				3F1098792A8DAAA500A6DCA1 /* Home */,
-				3F10987B2A8DAAA500A6DCA1 /* NearNews */,
-				3F10987D2A8DAAA500A6DCA1 /* AuthenticationScene */,
-				3F1098992A8DAAA500A6DCA1 /* Utils */,
-				3F10989C2A8DAAA500A6DCA1 /* Profile */,
+				3F1AB7892A8DC96E0076CEAB /* Interface */,
+				3F1AB78E2A8DC96E0076CEAB /* UseCases */,
+				3F1AB7902A8DC96E0076CEAB /* Entities */,
 			);
-			name = Presentation;
-			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Presentation";
+			path = Domain;
 			sourceTree = "<group>";
 		};
-		3F1098792A8DAAA500A6DCA1 /* Home */ = {
+		3F1AB7892A8DC96E0076CEAB /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				3F10987A2A8DAAA500A6DCA1 /* HomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		3F10987B2A8DAAA500A6DCA1 /* NearNews */ = {
-			isa = PBXGroup;
-			children = (
-				3F10987C2A8DAAA500A6DCA1 /* MapViewController.swift */,
-			);
-			path = NearNews;
-			sourceTree = "<group>";
-		};
-		3F10987D2A8DAAA500A6DCA1 /* AuthenticationScene */ = {
-			isa = PBXGroup;
-			children = (
-				3F10987E2A8DAAA500A6DCA1 /* SignUp */,
-				3F1098822A8DAAA500A6DCA1 /* Terms */,
-				3F10988A2A8DAAA500A6DCA1 /* SignIn */,
-				3F10988C2A8DAAA500A6DCA1 /* StartPage */,
-				3F10988F2A8DAAA500A6DCA1 /* UserLocation */,
-			);
-			path = AuthenticationScene;
-			sourceTree = "<group>";
-		};
-		3F10987E2A8DAAA500A6DCA1 /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				3F10987F2A8DAAA500A6DCA1 /* SignUpViewController.swift */,
-				3F1098802A8DAAA500A6DCA1 /* NickNameViewController.swift */,
-				3F1098812A8DAAA500A6DCA1 /* SignUpView.swift */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		3F1098822A8DAAA500A6DCA1 /* Terms */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098832A8DAAA500A6DCA1 /* ViewModel */,
-				3F1098852A8DAAA500A6DCA1 /* View */,
-			);
-			path = Terms;
-			sourceTree = "<group>";
-		};
-		3F1098832A8DAAA500A6DCA1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098842A8DAAA500A6DCA1 /* TermsViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3F1098852A8DAAA500A6DCA1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098862A8DAAA500A6DCA1 /* Cells */,
-				3F1098882A8DAAA500A6DCA1 /* TermsViewController.swift */,
-				3F1098892A8DAAA500A6DCA1 /* TermsDetailViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3F1098862A8DAAA500A6DCA1 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098872A8DAAA500A6DCA1 /* TermsTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		3F10988A2A8DAAA500A6DCA1 /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				3F10988B2A8DAAA500A6DCA1 /* SignInViewController.swift */,
-			);
-			path = SignIn;
-			sourceTree = "<group>";
-		};
-		3F10988C2A8DAAA500A6DCA1 /* StartPage */ = {
-			isa = PBXGroup;
-			children = (
-				3F10988D2A8DAAA500A6DCA1 /* StartPageViewController.swift */,
-				3F10988E2A8DAAA500A6DCA1 /* StartPageView.swift */,
-			);
-			path = StartPage;
-			sourceTree = "<group>";
-		};
-		3F10988F2A8DAAA500A6DCA1 /* UserLocation */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098902A8DAAA500A6DCA1 /* ViewModel */,
-				3F1098932A8DAAA500A6DCA1 /* View */,
-			);
-			path = UserLocation;
-			sourceTree = "<group>";
-		};
-		3F1098902A8DAAA500A6DCA1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098912A8DAAA500A6DCA1 /* LocationAuthDisallowedViewModel.swift */,
-				3F1098922A8DAAA500A6DCA1 /* UserLocationViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3F1098932A8DAAA500A6DCA1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098942A8DAAA500A6DCA1 /* Cells */,
-				3F1098962A8DAAA500A6DCA1 /* SearchResultsViewController.swift */,
-				3F1098972A8DAAA500A6DCA1 /* LocationAuthDisallowedView.swift */,
-				3F1098982A8DAAA500A6DCA1 /* UserLocationViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3F1098942A8DAAA500A6DCA1 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098952A8DAAA500A6DCA1 /* UserLocationTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		3F1098992A8DAAA500A6DCA1 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3F10989A2A8DAAA500A6DCA1 /* Extensions */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		3F10989A2A8DAAA500A6DCA1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3F10989B2A8DAAA500A6DCA1 /* NSLayoutConstraint+Priority.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		3F10989C2A8DAAA500A6DCA1 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				3F10989D2A8DAAA500A6DCA1 /* ProfileViewController.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		3F10989F2A8DAAA500A6DCA1 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098A02A8DAAA500A6DCA1 /* Repositories */,
-			);
-			name = Data;
-			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Data";
-			sourceTree = "<group>";
-		};
-		3F1098A02A8DAAA500A6DCA1 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098A12A8DAAA500A6DCA1 /* DefaultGeocodeRepository.swift */,
-				3F1098A22A8DAAA500A6DCA1 /* DefaultRegionCodeRepository.swift */,
-				3F1098A32A8DAAA500A6DCA1 /* DefaultReverseGeocodeRepository.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		3F1098A42A8DAAA500A6DCA1 /* Infrastructure */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098A72A8DAAA500A6DCA1 /* Network */,
-				3F1098AC2A8DAAA500A6DCA1 /* CoreLocation */,
-				3F1098A52A8DAAA500A6DCA1 /* UserDefaults */,
-				3F1098AA2A8DAAA500A6DCA1 /* SensitiveInfoManager */,
-			);
-			name = Infrastructure;
-			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Infrastructure";
-			sourceTree = "<group>";
-		};
-		3F1098A52A8DAAA500A6DCA1 /* UserDefaults */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098A62A8DAAA500A6DCA1 /* UserDefaultsService.swift */,
-			);
-			path = UserDefaults;
-			sourceTree = "<group>";
-		};
-		3F1098A72A8DAAA500A6DCA1 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098A82A8DAAA500A6DCA1 /* NetworkService.swift */,
-				3F1098A92A8DAAA500A6DCA1 /* NetworkResource.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		3F1098AA2A8DAAA500A6DCA1 /* SensitiveInfoManager */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098AB2A8DAAA500A6DCA1 /* SensitiveInfoManager.swift */,
-			);
-			path = SensitiveInfoManager;
-			sourceTree = "<group>";
-		};
-		3F1098AC2A8DAAA500A6DCA1 /* CoreLocation */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098AD2A8DAAA500A6DCA1 /* CoreLocationService.swift */,
-			);
-			path = CoreLocation;
-			sourceTree = "<group>";
-		};
-		3F1098AE2A8DAAA500A6DCA1 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098AF2A8DAAA500A6DCA1 /* Assets.xcassets */,
-				3F1098B02A8DAAA500A6DCA1 /* LaunchScreen.storyboard */,
-			);
-			name = Resource;
-			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Resource";
-			sourceTree = "<group>";
-		};
-		3F1098B22A8DAAA500A6DCA1 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098BA2A8DAAA500A6DCA1 /* Entities */,
-				3F1098B82A8DAAA500A6DCA1 /* UseCases */,
-				3F1098B32A8DAAA500A6DCA1 /* Interface */,
-			);
-			name = Domain;
-			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/Domain";
-			sourceTree = "<group>";
-		};
-		3F1098B32A8DAAA500A6DCA1 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098B42A8DAAA500A6DCA1 /* Repositories */,
+				3F1AB78A2A8DC96E0076CEAB /* Repositories */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
 		};
-		3F1098B42A8DAAA500A6DCA1 /* Repositories */ = {
+		3F1AB78A2A8DC96E0076CEAB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098B52A8DAAA500A6DCA1 /* GeocodeRepository.swift */,
-				3F1098B62A8DAAA500A6DCA1 /* RegionCodeRepository.swift */,
-				3F1098B72A8DAAA500A6DCA1 /* ReverseGeocodeRepository.swift */,
+				3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */,
+				3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */,
+				3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		3F1098B82A8DAAA500A6DCA1 /* UseCases */ = {
+		3F1AB78E2A8DC96E0076CEAB /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098B92A8DAAA500A6DCA1 /* GeoLocationUseCase.swift */,
+				3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		3F1098BA2A8DAAA500A6DCA1 /* Entities */ = {
+		3F1AB7902A8DC96E0076CEAB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098BB2A8DAAA500A6DCA1 /* Location */,
-				3F1098C02A8DAAA500A6DCA1 /* Terms */,
+				3F1AB7912A8DC96E0076CEAB /* Location */,
+				3F1AB7952A8DC96E0076CEAB /* Terms */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		3F1098BB2A8DAAA500A6DCA1 /* Location */ = {
+		3F1AB7912A8DC96E0076CEAB /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098BD2A8DAAA500A6DCA1 /* ReverseGeocode.swift */,
-				3F1098BF2A8DAAA500A6DCA1 /* RegionCode.swift */,
-				3F1098BE2A8DAAA500A6DCA1 /* Geocode.swift */,
-				3F1098BC2A8DAAA500A6DCA1 /* LocationSearchQuery.swift */,
+				3F1AB7922A8DC96E0076CEAB /* ReverseGeocode.swift */,
+				3F1AB7932A8DC96E0076CEAB /* Geocode.swift */,
+				3F1AB7942A8DC96E0076CEAB /* RegionCode.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
 		};
-		3F1098C02A8DAAA500A6DCA1 /* Terms */ = {
+		3F1AB7952A8DC96E0076CEAB /* Terms */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098C12A8DAAA500A6DCA1 /* TermsType.swift */,
+				3F1AB7962A8DC96E0076CEAB /* TermsType.swift */,
 			);
 			path = Terms;
 			sourceTree = "<group>";
 		};
-		3F1098EA2A8DAC2800A6DCA1 /* App */ = {
+		3F1AB7972A8DC96E0076CEAB /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098EB2A8DAC2800A6DCA1 /* AppConfigurations.swift */,
-				3F1098EC2A8DAC2800A6DCA1 /* AppDelegate.swift */,
-				3F1098ED2A8DAC2800A6DCA1 /* SceneDelegate.swift */,
+				3F1AB7982A8DC96E0076CEAB /* Repositories */,
 			);
-			name = App;
-			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/App";
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3F1AB7982A8DC96E0076CEAB /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */,
+				3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */,
+				3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		3F1AB79C2A8DC96E0076CEAB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB79D2A8DC96E0076CEAB /* Home */,
+				3F1AB79F2A8DC96E0076CEAB /* NearNews */,
+				3F1AB7A12A8DC96E0076CEAB /* AuthenticationScene */,
+				3F1AB7BC2A8DC96E0076CEAB /* Utils */,
+				3F1AB7BF2A8DC96E0076CEAB /* Profile */,
+				3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3F1AB79D2A8DC96E0076CEAB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3F1AB79F2A8DC96E0076CEAB /* NearNews */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */,
+			);
+			path = NearNews;
+			sourceTree = "<group>";
+		};
+		3F1AB7A12A8DC96E0076CEAB /* AuthenticationScene */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7A22A8DC96E0076CEAB /* SignUp */,
+				3F1AB7A62A8DC96E0076CEAB /* Terms */,
+				3F1AB7AE2A8DC96E0076CEAB /* SignIn */,
+				3F1AB7B02A8DC96E0076CEAB /* StartPage */,
+				3F1AB7B32A8DC96E0076CEAB /* UserLocation */,
+			);
+			path = AuthenticationScene;
+			sourceTree = "<group>";
+		};
+		3F1AB7A22A8DC96E0076CEAB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7A32A8DC96E0076CEAB /* SignUpViewController.swift */,
+				3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */,
+				3F1AB7A52A8DC96E0076CEAB /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		3F1AB7A62A8DC96E0076CEAB /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7A72A8DC96E0076CEAB /* ViewModel */,
+				3F1AB7A92A8DC96E0076CEAB /* View */,
+			);
+			path = Terms;
+			sourceTree = "<group>";
+		};
+		3F1AB7A72A8DC96E0076CEAB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7A82A8DC96E0076CEAB /* TermsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F1AB7A92A8DC96E0076CEAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7AA2A8DC96E0076CEAB /* Cells */,
+				3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */,
+				3F1AB7AD2A8DC96E0076CEAB /* TermsDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F1AB7AA2A8DC96E0076CEAB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7AB2A8DC96E0076CEAB /* TermsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3F1AB7AE2A8DC96E0076CEAB /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		3F1AB7B02A8DC96E0076CEAB /* StartPage */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7B12A8DC96E0076CEAB /* StartPageViewController.swift */,
+				3F1AB7B22A8DC96E0076CEAB /* StartPageView.swift */,
+			);
+			path = StartPage;
+			sourceTree = "<group>";
+		};
+		3F1AB7B32A8DC96E0076CEAB /* UserLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7B42A8DC96E0076CEAB /* ViewModel */,
+				3F1AB7B72A8DC96E0076CEAB /* View */,
+			);
+			path = UserLocation;
+			sourceTree = "<group>";
+		};
+		3F1AB7B42A8DC96E0076CEAB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7B52A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift */,
+				3F1AB7B62A8DC96E0076CEAB /* UserLocationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F1AB7B72A8DC96E0076CEAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7B82A8DC96E0076CEAB /* Cells */,
+				3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */,
+				3F1AB7BB2A8DC96E0076CEAB /* UserLocationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F1AB7B82A8DC96E0076CEAB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7B92A8DC96E0076CEAB /* UserLocationTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3F1AB7BC2A8DC96E0076CEAB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7BD2A8DC96E0076CEAB /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3F1AB7BD2A8DC96E0076CEAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7BE2A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3F1AB7BF2A8DC96E0076CEAB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		3F1AB7C22A8DC96E0076CEAB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7C32A8DC96E0076CEAB /* Assets.xcassets */,
+				3F1AB7C42A8DC96E0076CEAB /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3F1AB7C62A8DC96E0076CEAB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */,
+				3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */,
+				3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3F1AB7CA2A8DC96E0076CEAB /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */,
+				3F1AB7CD2A8DC96E0076CEAB /* Network */,
+				3F1AB7D02A8DC96E0076CEAB /* SensitiveInfoManager */,
+				3F1AB7D22A8DC96E0076CEAB /* CoreLocation */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7CC2A8DC96E0076CEAB /* UserDefaultsService.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		3F1AB7CD2A8DC96E0076CEAB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7CE2A8DC96E0076CEAB /* NetworkService.swift */,
+				3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3F1AB7D02A8DC96E0076CEAB /* SensitiveInfoManager */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */,
+			);
+			path = SensitiveInfoManager;
+			sourceTree = "<group>";
+		};
+		3F1AB7D22A8DC96E0076CEAB /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */,
+			);
+			path = CoreLocation;
 			sourceTree = "<group>";
 		};
 		3FACA86C2A7CE47B00F2544C = {
@@ -501,12 +489,12 @@
 		3FACA8772A7CE47B00F2544C /* Dangle */ = {
 			isa = PBXGroup;
 			children = (
-				3F1098EA2A8DAC2800A6DCA1 /* App */,
-				3F10989F2A8DAAA500A6DCA1 /* Data */,
-				3F1098B22A8DAAA500A6DCA1 /* Domain */,
-				3F1098A42A8DAAA500A6DCA1 /* Infrastructure */,
-				3F1098782A8DAAA500A6DCA1 /* Presentation */,
-				3F1098AE2A8DAAA500A6DCA1 /* Resource */,
+				3F1AB7C62A8DC96E0076CEAB /* App */,
+				3F1AB7972A8DC96E0076CEAB /* Data */,
+				3F1AB7882A8DC96E0076CEAB /* Domain */,
+				3F1AB7CA2A8DC96E0076CEAB /* Infrastructure */,
+				3F1AB79C2A8DC96E0076CEAB /* Presentation */,
+				3F1AB7C22A8DC96E0076CEAB /* Resource */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
 				3FD3B5E42A8B01EF0022C487 /* GoogleService-Info.plist */,
 			);
@@ -645,8 +633,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */,
-				3F1098E02A8DAAA500A6DCA1 /* LaunchScreen.storyboard in Resources */,
-				3F1098DF2A8DAAA500A6DCA1 /* Assets.xcassets in Resources */,
+				3F1AB7F42A8DC96E0076CEAB /* LaunchScreen.storyboard in Resources */,
+				3F1AB7F32A8DC96E0076CEAB /* Assets.xcassets in Resources */,
 				3FD3B5E52A8B01F00022C487 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,47 +682,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F1098C92A8DAAA500A6DCA1 /* TermsViewController.swift in Sources */,
-				3F1098C42A8DAAA500A6DCA1 /* SignUpViewController.swift in Sources */,
-				3F1098D82A8DAAA500A6DCA1 /* DefaultRegionCodeRepository.swift in Sources */,
-				3F1098E12A8DAAA500A6DCA1 /* GeocodeRepository.swift in Sources */,
-				3F1098CF2A8DAAA500A6DCA1 /* UserLocationViewModel.swift in Sources */,
-				3F1098C52A8DAAA500A6DCA1 /* NickNameViewController.swift in Sources */,
-				3F1098DE2A8DAAA500A6DCA1 /* CoreLocationService.swift in Sources */,
-				3F1098CB2A8DAAA500A6DCA1 /* SignInViewController.swift in Sources */,
-				3F1098EF2A8DAC2800A6DCA1 /* AppDelegate.swift in Sources */,
-				3F1098E22A8DAAA500A6DCA1 /* RegionCodeRepository.swift in Sources */,
-				3F1098DA2A8DAAA500A6DCA1 /* UserDefaultsService.swift in Sources */,
-				3F1098D02A8DAAA500A6DCA1 /* UserLocationTableViewCell.swift in Sources */,
-				3F1098CC2A8DAAA500A6DCA1 /* StartPageViewController.swift in Sources */,
-				3F1098C62A8DAAA500A6DCA1 /* SignUpView.swift in Sources */,
-				3F1098D22A8DAAA500A6DCA1 /* LocationAuthDisallowedView.swift in Sources */,
-				3F1098E42A8DAAA500A6DCA1 /* GeoLocationUseCase.swift in Sources */,
-				3F1098CA2A8DAAA500A6DCA1 /* TermsDetailViewController.swift in Sources */,
-				3F1098D12A8DAAA500A6DCA1 /* SearchResultsViewController.swift in Sources */,
-				3F1098DC2A8DAAA500A6DCA1 /* NetworkResource.swift in Sources */,
-				3F1098E32A8DAAA500A6DCA1 /* ReverseGeocodeRepository.swift in Sources */,
-				3F1098C32A8DAAA500A6DCA1 /* MapViewController.swift in Sources */,
-				3F1098E62A8DAAA500A6DCA1 /* ReverseGeocode.swift in Sources */,
-				3F1098E52A8DAAA500A6DCA1 /* LocationSearchQuery.swift in Sources */,
-				3F1098D72A8DAAA500A6DCA1 /* DefaultGeocodeRepository.swift in Sources */,
-				3F1098D52A8DAAA500A6DCA1 /* ProfileViewController.swift in Sources */,
-				3F1098D62A8DAAA500A6DCA1 /* TabBarViewController.swift in Sources */,
-				3F1098EE2A8DAC2800A6DCA1 /* AppConfigurations.swift in Sources */,
-				3F1098C22A8DAAA500A6DCA1 /* HomeViewController.swift in Sources */,
-				3F1098CD2A8DAAA500A6DCA1 /* StartPageView.swift in Sources */,
-				3F1098C72A8DAAA500A6DCA1 /* TermsViewModel.swift in Sources */,
-				3F1098E72A8DAAA500A6DCA1 /* Geocode.swift in Sources */,
-				3F1098DD2A8DAAA500A6DCA1 /* SensitiveInfoManager.swift in Sources */,
-				3F1098E92A8DAAA500A6DCA1 /* TermsType.swift in Sources */,
-				3F1098C82A8DAAA500A6DCA1 /* TermsTableViewCell.swift in Sources */,
-				3F1098E82A8DAAA500A6DCA1 /* RegionCode.swift in Sources */,
-				3F1098D92A8DAAA500A6DCA1 /* DefaultReverseGeocodeRepository.swift in Sources */,
-				3F1098F02A8DAC2800A6DCA1 /* SceneDelegate.swift in Sources */,
-				3F1098D42A8DAAA500A6DCA1 /* NSLayoutConstraint+Priority.swift in Sources */,
-				3F1098DB2A8DAAA500A6DCA1 /* NetworkService.swift in Sources */,
-				3F1098CE2A8DAAA500A6DCA1 /* LocationAuthDisallowedViewModel.swift in Sources */,
-				3F1098D32A8DAAA500A6DCA1 /* UserLocationViewController.swift in Sources */,
+				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
+				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
+				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
+				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
+				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
+				3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */,
+				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
+				3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */,
+				3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */,
+				3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */,
+				3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */,
+				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
+				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
+				3F1AB7F02A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift in Sources */,
+				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
+				3F1AB7E12A8DC96E0076CEAB /* SignUpViewController.swift in Sources */,
+				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
+				3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */,
+				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
+				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
+				3F1AB7E22A8DC96E0076CEAB /* NickNameViewController.swift in Sources */,
+				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
+				3F1AB7EB2A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift in Sources */,
+				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
+				3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */,
+				3F1AB7F82A8DC96E0076CEAB /* UserDefaultsService.swift in Sources */,
+				3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */,
+				3F1AB7DA2A8DC96E0076CEAB /* RegionCode.swift in Sources */,
+				3F1AB7EF2A8DC96E0076CEAB /* UserLocationViewController.swift in Sources */,
+				3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */,
+				3F1AB7E32A8DC96E0076CEAB /* SignUpView.swift in Sources */,
+				3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */,
+				3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */,
+				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
+				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
+				3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */,
+				3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */,
+				3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */,
+				3F1AB7F22A8DC96E0076CEAB /* TabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,10 +757,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3F1098B02A8DAAA500A6DCA1 /* LaunchScreen.storyboard */ = {
+		3F1AB7C42A8DC96E0076CEAB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3F1098B12A8DAAA500A6DCA1 /* Base */,
+				3F1AB7C52A8DC96E0076CEAB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
