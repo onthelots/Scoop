@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F1098752A8DAA9400A6DCA1 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098722A8DAA9400A6DCA1 /* AppConfigurations.swift */; };
-		3F1098762A8DAA9400A6DCA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098732A8DAA9400A6DCA1 /* AppDelegate.swift */; };
-		3F1098772A8DAA9400A6DCA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098742A8DAA9400A6DCA1 /* SceneDelegate.swift */; };
 		3F1098C22A8DAAA500A6DCA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10987A2A8DAAA500A6DCA1 /* HomeViewController.swift */; };
 		3F1098C32A8DAAA500A6DCA1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10987C2A8DAAA500A6DCA1 /* MapViewController.swift */; };
 		3F1098C42A8DAAA500A6DCA1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10987F2A8DAAA500A6DCA1 /* SignUpViewController.swift */; };
@@ -50,6 +47,9 @@
 		3F1098E72A8DAAA500A6DCA1 /* Geocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098BE2A8DAAA500A6DCA1 /* Geocode.swift */; };
 		3F1098E82A8DAAA500A6DCA1 /* RegionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098BF2A8DAAA500A6DCA1 /* RegionCode.swift */; };
 		3F1098E92A8DAAA500A6DCA1 /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098C12A8DAAA500A6DCA1 /* TermsType.swift */; };
+		3F1098EE2A8DAC2800A6DCA1 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098EB2A8DAC2800A6DCA1 /* AppConfigurations.swift */; };
+		3F1098EF2A8DAC2800A6DCA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098EC2A8DAC2800A6DCA1 /* AppDelegate.swift */; };
+		3F1098F02A8DAC2800A6DCA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1098ED2A8DAC2800A6DCA1 /* SceneDelegate.swift */; };
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
@@ -79,9 +79,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F1098722A8DAA9400A6DCA1 /* AppConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConfigurations.swift; path = "../../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/App/AppConfigurations.swift"; sourceTree = "<group>"; };
-		3F1098732A8DAA9400A6DCA1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/App/AppDelegate.swift"; sourceTree = "<group>"; };
-		3F1098742A8DAA9400A6DCA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/App/SceneDelegate.swift"; sourceTree = "<group>"; };
 		3F10987A2A8DAAA500A6DCA1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3F10987C2A8DAAA500A6DCA1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3F10987F2A8DAAA500A6DCA1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +119,9 @@
 		3F1098BE2A8DAAA500A6DCA1 /* Geocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geocode.swift; sourceTree = "<group>"; };
 		3F1098BF2A8DAAA500A6DCA1 /* RegionCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCode.swift; sourceTree = "<group>"; };
 		3F1098C12A8DAAA500A6DCA1 /* TermsType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
+		3F1098EB2A8DAC2800A6DCA1 /* AppConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
+		3F1098EC2A8DAC2800A6DCA1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3F1098ED2A8DAC2800A6DCA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -466,6 +466,17 @@
 			path = Terms;
 			sourceTree = "<group>";
 		};
+		3F1098EA2A8DAC2800A6DCA1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3F1098EB2A8DAC2800A6DCA1 /* AppConfigurations.swift */,
+				3F1098EC2A8DAC2800A6DCA1 /* AppDelegate.swift */,
+				3F1098ED2A8DAC2800A6DCA1 /* SceneDelegate.swift */,
+			);
+			name = App;
+			path = "../../../../../Downloads/iOS-Clean-Architecture-example/dangle-fix-CleanArchitecture-MVVM/Dangle/Dangle/App";
+			sourceTree = "<group>";
+		};
 		3FACA86C2A7CE47B00F2544C = {
 			isa = PBXGroup;
 			children = (
@@ -490,7 +501,7 @@
 		3FACA8772A7CE47B00F2544C /* Dangle */ = {
 			isa = PBXGroup;
 			children = (
-				3FF76A3A2A80D48400A5CA29 /* App */,
+				3F1098EA2A8DAC2800A6DCA1 /* App */,
 				3F10989F2A8DAAA500A6DCA1 /* Data */,
 				3F1098B22A8DAAA500A6DCA1 /* Domain */,
 				3F1098A42A8DAAA500A6DCA1 /* Infrastructure */,
@@ -517,16 +528,6 @@
 				3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */,
 			);
 			path = DangleUITests;
-			sourceTree = "<group>";
-		};
-		3FF76A3A2A80D48400A5CA29 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				3F1098722A8DAA9400A6DCA1 /* AppConfigurations.swift */,
-				3F1098732A8DAA9400A6DCA1 /* AppDelegate.swift */,
-				3F1098742A8DAA9400A6DCA1 /* SceneDelegate.swift */,
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -696,13 +697,12 @@
 				3F1098C92A8DAAA500A6DCA1 /* TermsViewController.swift in Sources */,
 				3F1098C42A8DAAA500A6DCA1 /* SignUpViewController.swift in Sources */,
 				3F1098D82A8DAAA500A6DCA1 /* DefaultRegionCodeRepository.swift in Sources */,
-				3F1098762A8DAA9400A6DCA1 /* AppDelegate.swift in Sources */,
 				3F1098E12A8DAAA500A6DCA1 /* GeocodeRepository.swift in Sources */,
 				3F1098CF2A8DAAA500A6DCA1 /* UserLocationViewModel.swift in Sources */,
-				3F1098772A8DAA9400A6DCA1 /* SceneDelegate.swift in Sources */,
 				3F1098C52A8DAAA500A6DCA1 /* NickNameViewController.swift in Sources */,
 				3F1098DE2A8DAAA500A6DCA1 /* CoreLocationService.swift in Sources */,
 				3F1098CB2A8DAAA500A6DCA1 /* SignInViewController.swift in Sources */,
+				3F1098EF2A8DAC2800A6DCA1 /* AppDelegate.swift in Sources */,
 				3F1098E22A8DAAA500A6DCA1 /* RegionCodeRepository.swift in Sources */,
 				3F1098DA2A8DAAA500A6DCA1 /* UserDefaultsService.swift in Sources */,
 				3F1098D02A8DAAA500A6DCA1 /* UserLocationTableViewCell.swift in Sources */,
@@ -710,7 +710,6 @@
 				3F1098C62A8DAAA500A6DCA1 /* SignUpView.swift in Sources */,
 				3F1098D22A8DAAA500A6DCA1 /* LocationAuthDisallowedView.swift in Sources */,
 				3F1098E42A8DAAA500A6DCA1 /* GeoLocationUseCase.swift in Sources */,
-				3F1098752A8DAA9400A6DCA1 /* AppConfigurations.swift in Sources */,
 				3F1098CA2A8DAAA500A6DCA1 /* TermsDetailViewController.swift in Sources */,
 				3F1098D12A8DAAA500A6DCA1 /* SearchResultsViewController.swift in Sources */,
 				3F1098DC2A8DAAA500A6DCA1 /* NetworkResource.swift in Sources */,
@@ -721,6 +720,7 @@
 				3F1098D72A8DAAA500A6DCA1 /* DefaultGeocodeRepository.swift in Sources */,
 				3F1098D52A8DAAA500A6DCA1 /* ProfileViewController.swift in Sources */,
 				3F1098D62A8DAAA500A6DCA1 /* TabBarViewController.swift in Sources */,
+				3F1098EE2A8DAC2800A6DCA1 /* AppConfigurations.swift in Sources */,
 				3F1098C22A8DAAA500A6DCA1 /* HomeViewController.swift in Sources */,
 				3F1098CD2A8DAAA500A6DCA1 /* StartPageView.swift in Sources */,
 				3F1098C72A8DAAA500A6DCA1 /* TermsViewModel.swift in Sources */,
@@ -730,6 +730,7 @@
 				3F1098C82A8DAAA500A6DCA1 /* TermsTableViewCell.swift in Sources */,
 				3F1098E82A8DAAA500A6DCA1 /* RegionCode.swift in Sources */,
 				3F1098D92A8DAAA500A6DCA1 /* DefaultReverseGeocodeRepository.swift in Sources */,
+				3F1098F02A8DAC2800A6DCA1 /* SceneDelegate.swift in Sources */,
 				3F1098D42A8DAAA500A6DCA1 /* NSLayoutConstraint+Priority.swift in Sources */,
 				3F1098DB2A8DAAA500A6DCA1 /* NetworkService.swift in Sources */,
 				3F1098CE2A8DAAA500A6DCA1 /* LocationAuthDisallowedViewModel.swift in Sources */,
