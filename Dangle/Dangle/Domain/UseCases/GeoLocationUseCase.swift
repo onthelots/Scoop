@@ -48,15 +48,7 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
             case .success(let reverseGeocode):
                 if let regionCode = reverseGeocode.reverseDocument.first?.code {
                     self.regionCodeRepository.codeToRegionName(code: regionCode) { regionCodeResult in
-                        switch regionCodeResult {
-                        case .success(let regionCodeData):
-                            completion(.success(regionCodeData))
-                            self.regionCodeRepository.saveNearRegions(address: regionCodeData) { _ in
-                                completion(regionCodeResult)
-                            }
-                        case .failure(let error):
-                            completion(.failure(error))
-                        }
+                        completion(regionCodeResult)
                     }
                 } else {
                     completion(.failure(UserLocationUseCaseError.invalidResponse))
