@@ -20,9 +20,7 @@
 		3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */; };
 		3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */; };
 		3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */; };
-		3F1AB7E12A8DC96E0076CEAB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A32A8DC96E0076CEAB /* SignUpViewController.swift */; };
 		3F1AB7E22A8DC96E0076CEAB /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */; };
-		3F1AB7E32A8DC96E0076CEAB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A52A8DC96E0076CEAB /* SignUpView.swift */; };
 		3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A82A8DC96E0076CEAB /* TermsViewModel.swift */; };
 		3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AB2A8DC96E0076CEAB /* TermsTableViewCell.swift */; };
 		3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */; };
@@ -30,7 +28,6 @@
 		3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */; };
 		3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B12A8DC96E0076CEAB /* StartPageViewController.swift */; };
 		3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B22A8DC96E0076CEAB /* StartPageView.swift */; };
-		3F1AB7EB2A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B52A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift */; };
 		3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B62A8DC96E0076CEAB /* UserLocationViewModel.swift */; };
 		3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B92A8DC96E0076CEAB /* UserLocationTableViewCell.swift */; };
 		3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */; };
@@ -43,11 +40,24 @@
 		3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */; };
 		3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */; };
 		3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */; };
-		3F1AB7F82A8DC96E0076CEAB /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CC2A8DC96E0076CEAB /* UserDefaultsService.swift */; };
+		3F1AB7F82A8DC96E0076CEAB /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CC2A8DC96E0076CEAB /* UserDefaultStorage.swift */; };
 		3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CE2A8DC96E0076CEAB /* NetworkService.swift */; };
 		3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */; };
 		3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */; };
 		3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */; };
+		3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964702A8E827600078EE3 /* CustomNavigationItem.swift */; };
+		3F4964732A8F4EA300078EE3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964722A8F4EA300078EE3 /* SignUpViewController.swift */; };
+		3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */; };
+		3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49647A2A8F5D1800078EE3 /* EmailValidationService.swift */; };
+		3F49647D2A8F5D4000078EE3 /* PasswordValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49647C2A8F5D4000078EE3 /* PasswordValidationService.swift */; };
+		3F4964802A8F5DEC00078EE3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49647F2A8F5DEC00078EE3 /* SignUpViewModel.swift */; };
+		3F4964842A8F600200078EE3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964832A8F600200078EE3 /* SignUpView.swift */; };
+		3F49648C2A8F866400078EE3 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49648B2A8F866400078EE3 /* AuthRepository.swift */; };
+		3F49648F2A8F86A900078EE3 /* FireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49648E2A8F86A900078EE3 /* FireStoreRepository.swift */; };
+		3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */; };
+		3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964942A8F884300078EE3 /* SignUpUseCase.swift */; };
+		3F4964992A8FA1FD00078EE3 /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* AuthUser.swift */; };
+		3F49649B2A8FA9FB00078EE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */; };
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
@@ -55,7 +65,6 @@
 		3FD3B5D92A8AF8400022C487 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5D82A8AF8400022C487 /* FirebaseAuth */; };
 		3FD3B5DB2A8AF8400022C487 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5DA2A8AF8400022C487 /* FirebaseFirestore */; };
 		3FD3B5DD2A8AF8400022C487 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5DC2A8AF8400022C487 /* FirebaseStorage */; };
-		3FD3B5E52A8B01F00022C487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3B5E42A8B01EF0022C487 /* GoogleService-Info.plist */; };
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -90,9 +99,7 @@
 		3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultReverseGeocodeRepository.swift; sourceTree = "<group>"; };
 		3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		3F1AB7A32A8DC96E0076CEAB /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
-		3F1AB7A52A8DC96E0076CEAB /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		3F1AB7A82A8DC96E0076CEAB /* TermsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		3F1AB7AB2A8DC96E0076CEAB /* TermsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
 		3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +107,6 @@
 		3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3F1AB7B12A8DC96E0076CEAB /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		3F1AB7B22A8DC96E0076CEAB /* StartPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
-		3F1AB7B52A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAuthDisallowedViewModel.swift; sourceTree = "<group>"; };
 		3F1AB7B62A8DC96E0076CEAB /* UserLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewModel.swift; sourceTree = "<group>"; };
 		3F1AB7B92A8DC96E0076CEAB /* UserLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationTableViewCell.swift; sourceTree = "<group>"; };
 		3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAuthDisallowedView.swift; sourceTree = "<group>"; };
@@ -113,11 +119,24 @@
 		3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3F1AB7CC2A8DC96E0076CEAB /* UserDefaultsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		3F1AB7CC2A8DC96E0076CEAB /* UserDefaultStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		3F1AB7CE2A8DC96E0076CEAB /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
 		3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
 		3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
+		3F4964702A8E827600078EE3 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
+		3F4964722A8F4EA300078EE3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SignUpCheckValid.swift"; sourceTree = "<group>"; };
+		3F49647A2A8F5D1800078EE3 /* EmailValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationService.swift; sourceTree = "<group>"; };
+		3F49647C2A8F5D4000078EE3 /* PasswordValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidationService.swift; sourceTree = "<group>"; };
+		3F49647F2A8F5DEC00078EE3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		3F4964832A8F600200078EE3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		3F49648B2A8F866400078EE3 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		3F49648E2A8F86A900078EE3 /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
+		3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsAuthRepository.swift; sourceTree = "<group>"; };
+		3F4964942A8F884300078EE3 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		3F4964982A8FA1FD00078EE3 /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
+		3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,7 +144,6 @@
 		3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* DangleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3FD3B5E42A8B01EF0022C487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,9 +179,10 @@
 		3F1AB7882A8DC96E0076CEAB /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7892A8DC96E0076CEAB /* Interface */,
-				3F1AB78E2A8DC96E0076CEAB /* UseCases */,
 				3F1AB7902A8DC96E0076CEAB /* Entities */,
+				3F1AB78E2A8DC96E0076CEAB /* UseCases */,
+				3F1AB7892A8DC96E0076CEAB /* Interface */,
+				3F4964782A8F5CE300078EE3 /* Services */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -179,9 +198,8 @@
 		3F1AB78A2A8DC96E0076CEAB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */,
-				3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */,
-				3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */,
+				3F4964892A8F864B00078EE3 /* FirebaseRepository */,
+				3F4964882A8F863D00078EE3 /* UserLocationRepository */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -190,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */,
+				3F4964942A8F884300078EE3 /* SignUpUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -198,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7912A8DC96E0076CEAB /* Location */,
-				3F1AB7952A8DC96E0076CEAB /* Terms */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -209,6 +227,7 @@
 				3F1AB7922A8DC96E0076CEAB /* ReverseGeocode.swift */,
 				3F1AB7932A8DC96E0076CEAB /* Geocode.swift */,
 				3F1AB7942A8DC96E0076CEAB /* RegionCode.swift */,
+				3F4964982A8FA1FD00078EE3 /* AuthUser.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -225,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7982A8DC96E0076CEAB /* Repositories */,
+				3F49646D2A8E5FF100078EE3 /* PersistentStorages */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -232,9 +252,8 @@
 		3F1AB7982A8DC96E0076CEAB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */,
-				3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */,
-				3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */,
+				3F4964862A8F855900078EE3 /* DefaultsUserLocationRepository */,
+				3F4964872A8F856C00078EE3 /* DefaultsFirebaseRepository */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -242,12 +261,10 @@
 		3F1AB79C2A8DC96E0076CEAB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB79D2A8DC96E0076CEAB /* Home */,
-				3F1AB79F2A8DC96E0076CEAB /* NearNews */,
-				3F1AB7A12A8DC96E0076CEAB /* AuthenticationScene */,
-				3F1AB7BC2A8DC96E0076CEAB /* Utils */,
-				3F1AB7BF2A8DC96E0076CEAB /* Profile */,
 				3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */,
+				3F67AB4F2A8E58CB000216CA /* Core */,
+				3F1AB7A12A8DC96E0076CEAB /* Authentication */,
+				3F1AB7BC2A8DC96E0076CEAB /* Utils */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -268,24 +285,23 @@
 			path = NearNews;
 			sourceTree = "<group>";
 		};
-		3F1AB7A12A8DC96E0076CEAB /* AuthenticationScene */ = {
+		3F1AB7A12A8DC96E0076CEAB /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7A22A8DC96E0076CEAB /* SignUp */,
-				3F1AB7A62A8DC96E0076CEAB /* Terms */,
-				3F1AB7AE2A8DC96E0076CEAB /* SignIn */,
 				3F1AB7B02A8DC96E0076CEAB /* StartPage */,
 				3F1AB7B32A8DC96E0076CEAB /* UserLocation */,
+				3F1AB7A62A8DC96E0076CEAB /* Terms */,
+				3F1AB7A22A8DC96E0076CEAB /* SignUp */,
+				3F1AB7AE2A8DC96E0076CEAB /* SignIn */,
 			);
-			path = AuthenticationScene;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		3F1AB7A22A8DC96E0076CEAB /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7A32A8DC96E0076CEAB /* SignUpViewController.swift */,
-				3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */,
-				3F1AB7A52A8DC96E0076CEAB /* SignUpView.swift */,
+				3F49647E2A8F5DD900078EE3 /* ViewModel */,
+				3F49646A2A8E5DEC00078EE3 /* View */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -310,9 +326,9 @@
 		3F1AB7A92A8DC96E0076CEAB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7AA2A8DC96E0076CEAB /* Cells */,
 				3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */,
 				3F1AB7AD2A8DC96E0076CEAB /* TermsDetailViewController.swift */,
+				3F1AB7AA2A8DC96E0076CEAB /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,7 +370,6 @@
 		3F1AB7B42A8DC96E0076CEAB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7B52A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift */,
 				3F1AB7B62A8DC96E0076CEAB /* UserLocationViewModel.swift */,
 			);
 			path = ViewModel;
@@ -363,9 +378,9 @@
 		3F1AB7B72A8DC96E0076CEAB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7B82A8DC96E0076CEAB /* Cells */,
-				3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */,
 				3F1AB7BB2A8DC96E0076CEAB /* UserLocationViewController.swift */,
+				3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */,
+				3F1AB7B82A8DC96E0076CEAB /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +396,7 @@
 		3F1AB7BC2A8DC96E0076CEAB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3F49646F2A8E825E00078EE3 /* UI */,
 				3F1AB7BD2A8DC96E0076CEAB /* Extensions */,
 			);
 			path = Utils;
@@ -390,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7BE2A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift */,
+				3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -424,10 +441,9 @@
 		3F1AB7CA2A8DC96E0076CEAB /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */,
+				3F1AB7D22A8DC96E0076CEAB /* CoreLocation */,
 				3F1AB7CD2A8DC96E0076CEAB /* Network */,
 				3F1AB7D02A8DC96E0076CEAB /* SensitiveInfoManager */,
-				3F1AB7D22A8DC96E0076CEAB /* CoreLocation */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -435,7 +451,7 @@
 		3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7CC2A8DC96E0076CEAB /* UserDefaultsService.swift */,
+				3F1AB7CC2A8DC96E0076CEAB /* UserDefaultStorage.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -465,6 +481,105 @@
 			path = CoreLocation;
 			sourceTree = "<group>";
 		};
+		3F49646A2A8E5DEC00078EE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F4964722A8F4EA300078EE3 /* SignUpViewController.swift */,
+				3F4964832A8F600200078EE3 /* SignUpView.swift */,
+				3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F49646D2A8E5FF100078EE3 /* PersistentStorages */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */,
+				3F1AB7952A8DC96E0076CEAB /* Terms */,
+			);
+			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		3F49646F2A8E825E00078EE3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3F4964702A8E827600078EE3 /* CustomNavigationItem.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3F4964782A8F5CE300078EE3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3F4964792A8F5D0700078EE3 /* Validation */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3F4964792A8F5D0700078EE3 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				3F49647A2A8F5D1800078EE3 /* EmailValidationService.swift */,
+				3F49647C2A8F5D4000078EE3 /* PasswordValidationService.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		3F49647E2A8F5DD900078EE3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F49647F2A8F5DEC00078EE3 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F4964862A8F855900078EE3 /* DefaultsUserLocationRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */,
+				3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */,
+				3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */,
+			);
+			path = DefaultsUserLocationRepository;
+			sourceTree = "<group>";
+		};
+		3F4964872A8F856C00078EE3 /* DefaultsFirebaseRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */,
+			);
+			path = DefaultsFirebaseRepository;
+			sourceTree = "<group>";
+		};
+		3F4964882A8F863D00078EE3 /* UserLocationRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */,
+				3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */,
+				3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */,
+			);
+			path = UserLocationRepository;
+			sourceTree = "<group>";
+		};
+		3F4964892A8F864B00078EE3 /* FirebaseRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F49648B2A8F866400078EE3 /* AuthRepository.swift */,
+				3F49648E2A8F86A900078EE3 /* FireStoreRepository.swift */,
+			);
+			path = FirebaseRepository;
+			sourceTree = "<group>";
+		};
+		3F67AB4F2A8E58CB000216CA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB79D2A8DC96E0076CEAB /* Home */,
+				3F1AB79F2A8DC96E0076CEAB /* NearNews */,
+				3F1AB7BF2A8DC96E0076CEAB /* Profile */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		3FACA86C2A7CE47B00F2544C = {
 			isa = PBXGroup;
 			children = (
@@ -490,13 +605,13 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7C62A8DC96E0076CEAB /* App */,
-				3F1AB7972A8DC96E0076CEAB /* Data */,
 				3F1AB7882A8DC96E0076CEAB /* Domain */,
+				3F1AB7972A8DC96E0076CEAB /* Data */,
 				3F1AB7CA2A8DC96E0076CEAB /* Infrastructure */,
 				3F1AB79C2A8DC96E0076CEAB /* Presentation */,
 				3F1AB7C22A8DC96E0076CEAB /* Resource */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
-				3FD3B5E42A8B01EF0022C487 /* GoogleService-Info.plist */,
+				3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */,
 			);
 			path = Dangle;
 			sourceTree = "<group>";
@@ -633,9 +748,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */,
+				3F49649B2A8FA9FB00078EE3 /* GoogleService-Info.plist in Resources */,
 				3F1AB7F42A8DC96E0076CEAB /* LaunchScreen.storyboard in Resources */,
 				3F1AB7F32A8DC96E0076CEAB /* Assets.xcassets in Resources */,
-				3FD3B5E52A8B01F00022C487 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,41 +798,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
+				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
+				3F49648F2A8F86A900078EE3 /* FireStoreRepository.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
 				3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */,
+				3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */,
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
 				3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */,
+				3F4964802A8F5DEC00078EE3 /* SignUpViewModel.swift in Sources */,
+				3F49647D2A8F5D4000078EE3 /* PasswordValidationService.swift in Sources */,
 				3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */,
 				3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */,
 				3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */,
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
 				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
+				3F4964842A8F600200078EE3 /* SignUpView.swift in Sources */,
 				3F1AB7F02A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
-				3F1AB7E12A8DC96E0076CEAB /* SignUpViewController.swift in Sources */,
 				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
 				3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */,
 				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
 				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
+				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
 				3F1AB7E22A8DC96E0076CEAB /* NickNameViewController.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
-				3F1AB7EB2A8DC96E0076CEAB /* LocationAuthDisallowedViewModel.swift in Sources */,
 				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
 				3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */,
-				3F1AB7F82A8DC96E0076CEAB /* UserDefaultsService.swift in Sources */,
+				3F1AB7F82A8DC96E0076CEAB /* UserDefaultStorage.swift in Sources */,
 				3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */,
 				3F1AB7DA2A8DC96E0076CEAB /* RegionCode.swift in Sources */,
 				3F1AB7EF2A8DC96E0076CEAB /* UserLocationViewController.swift in Sources */,
+				3F49648C2A8F866400078EE3 /* AuthRepository.swift in Sources */,
 				3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */,
-				3F1AB7E32A8DC96E0076CEAB /* SignUpView.swift in Sources */,
 				3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */,
 				3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */,
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
+				3F4964992A8FA1FD00078EE3 /* AuthUser.swift in Sources */,
 				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
+				3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */,
+				3F4964732A8F4EA300078EE3 /* SignUpViewController.swift in Sources */,
 				3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */,
+				3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */,
 				3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */,
 				3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */,
 				3F1AB7F22A8DC96E0076CEAB /* TabBarViewController.swift in Sources */,
@@ -892,8 +1016,8 @@
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dangle/Info.plist;
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -924,8 +1048,8 @@
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dangle/Info.plist;
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자의 위치를 검색하거나, 동네를 인증하기 위해 현재 위치를 확인합니다.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
