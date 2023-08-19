@@ -161,9 +161,12 @@ class TermsViewController: UIViewController {
     private func bind() {
         // MARK: - ViewModel 업데이트
         viewModel.$terms
-            .sink { [weak self] _ in
+            .sink { [weak self] items in
                 self?.updateNextButtonState() // nextButtonState 상태 업데이트
                 self?.viewModel.printDebugInfo() // 디버깅
+                self?.updateAllButtonImage(isSelected: items.allSatisfy({ terms in
+                    terms.isChecked
+                })) // 이미지 변경
                 self?.tableView.reloadData()
             }
             .store(in: &subscription)
@@ -200,26 +203,23 @@ class TermsViewController: UIViewController {
         for index in viewModel.terms.indices {
             viewModel.terms[index].isChecked = false
         }
-
+        viewModel.toggleAllTerms(isSelected: false)
         updateAllButtonImage(isSelected: false) // 이미지 변경
     }
 
     // AllButton을 눌렀을 때 -> 모든 약관의 상태를 토글함 (이는, isAllselected의 업데이트 값에 따라 변경)
     @objc private func selectAllButtonTapped() {
-
         // 각각의 약관의 isChekced 상태를 업데이트 (모두 true로 변경하거나, false로 변경하거나)
         viewModel.toggleAllTerms(isSelected: !viewModel.isAllSelected)
-
         // 전체 선택버튼의 상태도 업데이트
         selectAllButton.isSelected = viewModel.isAllSelected
-
         updateAllButtonImage(isSelected: viewModel.isAllSelected)
     }
 
     // Navgiation Push
     @objc private func selectNextButtonTapped() {
-        let signUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpViewController, animated: true)
+        let regEmailViewController = RegEmailViewController()
+        navigationController?.pushViewController(regEmailViewController, animated: true)
     }
 }
 

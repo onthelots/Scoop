@@ -56,16 +56,6 @@ class StartPageView: UIView {
         return label
     }()
 
-    // verticalStackView
-    lazy var verticalButtonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
     // signInButton
     lazy var signUpButton: UIButton = {
         let button = UIButton()
@@ -79,7 +69,6 @@ class StartPageView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
     // signInButton
     lazy var signInButton: UIButton = {
         let button = UIButton()
@@ -126,9 +115,9 @@ class StartPageView: UIView {
         addSubview(descriptionLabel)
 
         // add subview (button stack)
-        self.verticalButtonStackView.addArrangedSubview(signUpButton)
-        self.verticalButtonStackView.addArrangedSubview(signInButton)
-        addSubview(verticalButtonStackView)
+        addSubview(signUpButton)
+        addSubview(signInButton)
+
 
         NSLayoutConstraint.activate([
             // imageView
@@ -145,12 +134,16 @@ class StartPageView: UIView {
             descriptionLabel.topAnchor.constraint(equalTo: self.keywordLabel.bottomAnchor, constant: 20),
             descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            // button Stack View
-            verticalButtonStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            verticalButtonStackView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 250).withPriority(.defaultLow),
-            verticalButtonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
-            verticalButtonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
-            verticalButtonStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -50)
+            // button
+            signUpButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 40).withPriority(.defaultLow),
+            signUpButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            signUpButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            signUpButton.heightAnchor.constraint(equalToConstant: 50),
+
+            signInButton.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 5),
+            signInButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            signInButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            signInButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).withPriority(.required)
         ])
     }
 

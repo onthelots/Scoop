@@ -61,6 +61,14 @@
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
+		3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B522A90EFA100A356DA /* RegEmailViewController.swift */; };
+		3FB14B592A90F08A00A356DA /* CommonTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B582A90F08A00A356DA /* CommonTextFieldView.swift */; };
+		3FB14B5B2A90F1A000A356DA /* CommonTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B5A2A90F1A000A356DA /* CommonTitleView.swift */; };
+		3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B5C2A90F8BE00A356DA /* UnderLineTextField.swift */; };
+		3FB14B622A90FA6500A356DA /* RegEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B612A90FA6500A356DA /* RegEmailViewModel.swift */; };
+		3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B662A9115F200A356DA /* RegPasswordViewController.swift */; };
+		3FB14B692A91184C00A356DA /* RegPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B682A91184C00A356DA /* RegPasswordViewModel.swift */; };
+		3FB14B6D2A912F1500A356DA /* CommonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B6C2A912F1500A356DA /* CommonButtonView.swift */; };
 		3FD3B5D72A8AF8400022C487 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5D62A8AF8400022C487 /* FirebaseAnalytics */; };
 		3FD3B5D92A8AF8400022C487 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5D82A8AF8400022C487 /* FirebaseAuth */; };
 		3FD3B5DB2A8AF8400022C487 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5DA2A8AF8400022C487 /* FirebaseFirestore */; };
@@ -144,6 +152,14 @@
 		3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* DangleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FB14B522A90EFA100A356DA /* RegEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegEmailViewController.swift; sourceTree = "<group>"; };
+		3FB14B582A90F08A00A356DA /* CommonTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextFieldView.swift; sourceTree = "<group>"; };
+		3FB14B5A2A90F1A000A356DA /* CommonTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTitleView.swift; sourceTree = "<group>"; };
+		3FB14B5C2A90F8BE00A356DA /* UnderLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineTextField.swift; sourceTree = "<group>"; };
+		3FB14B612A90FA6500A356DA /* RegEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegEmailViewModel.swift; sourceTree = "<group>"; };
+		3FB14B662A9115F200A356DA /* RegPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegPasswordViewController.swift; sourceTree = "<group>"; };
+		3FB14B682A91184C00A356DA /* RegPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegPasswordViewModel.swift; sourceTree = "<group>"; };
+		3FB14B6C2A912F1500A356DA /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,7 +316,9 @@
 		3F1AB7A22A8DC96E0076CEAB /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				3F49647E2A8F5DD900078EE3 /* ViewModel */,
+				3F49647E2A8F5DD900078EE3 /* old */,
+				3FB14B5E2A90FA0400A356DA /* RegisterEmail */,
+				3FB14B632A9115D100A356DA /* RegisterPassword */,
 				3F49646A2A8E5DEC00078EE3 /* View */,
 			);
 			path = SignUp;
@@ -407,6 +425,7 @@
 			children = (
 				3F1AB7BE2A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift */,
 				3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */,
+				3FB14B5C2A90F8BE00A356DA /* UnderLineTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -484,8 +503,9 @@
 		3F49646A2A8E5DEC00078EE3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F4964722A8F4EA300078EE3 /* SignUpViewController.swift */,
-				3F4964832A8F600200078EE3 /* SignUpView.swift */,
+				3FB14B5A2A90F1A000A356DA /* CommonTitleView.swift */,
+				3FB14B582A90F08A00A356DA /* CommonTextFieldView.swift */,
+				3FB14B6C2A912F1500A356DA /* CommonButtonView.swift */,
 				3F1AB7A42A8DC96E0076CEAB /* NickNameViewController.swift */,
 			);
 			path = View;
@@ -525,12 +545,14 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
-		3F49647E2A8F5DD900078EE3 /* ViewModel */ = {
+		3F49647E2A8F5DD900078EE3 /* old */ = {
 			isa = PBXGroup;
 			children = (
 				3F49647F2A8F5DEC00078EE3 /* SignUpViewModel.swift */,
+				3F4964722A8F4EA300078EE3 /* SignUpViewController.swift */,
+				3F4964832A8F600200078EE3 /* SignUpView.swift */,
 			);
-			path = ViewModel;
+			path = old;
 			sourceTree = "<group>";
 		};
 		3F4964862A8F855900078EE3 /* DefaultsUserLocationRepository */ = {
@@ -631,6 +653,56 @@
 				3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */,
 			);
 			path = DangleUITests;
+			sourceTree = "<group>";
+		};
+		3FB14B5E2A90FA0400A356DA /* RegisterEmail */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B602A90FA3000A356DA /* ViewModel */,
+				3FB14B5F2A90FA2800A356DA /* View */,
+			);
+			path = RegisterEmail;
+			sourceTree = "<group>";
+		};
+		3FB14B5F2A90FA2800A356DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B522A90EFA100A356DA /* RegEmailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3FB14B602A90FA3000A356DA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B612A90FA6500A356DA /* RegEmailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3FB14B632A9115D100A356DA /* RegisterPassword */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B642A9115D900A356DA /* ViewModel */,
+				3FB14B652A9115DD00A356DA /* View */,
+			);
+			path = RegisterPassword;
+			sourceTree = "<group>";
+		};
+		3FB14B642A9115D900A356DA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B682A91184C00A356DA /* RegPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3FB14B652A9115DD00A356DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B662A9115F200A356DA /* RegPasswordViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -798,12 +870,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
+				3FB14B692A91184C00A356DA /* RegPasswordViewModel.swift in Sources */,
 				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
 				3F49648F2A8F86A900078EE3 /* FireStoreRepository.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
+				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
 				3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */,
 				3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */,
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
@@ -813,6 +887,7 @@
 				3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */,
 				3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */,
 				3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */,
+				3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */,
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
 				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
 				3F4964842A8F600200078EE3 /* SignUpView.swift in Sources */,
@@ -825,7 +900,9 @@
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
 				3F1AB7E22A8DC96E0076CEAB /* NickNameViewController.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
+				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
 				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
+				3FB14B622A90FA6500A356DA /* RegEmailViewModel.swift in Sources */,
 				3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */,
 				3F1AB7F82A8DC96E0076CEAB /* UserDefaultStorage.swift in Sources */,
 				3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */,
@@ -833,16 +910,19 @@
 				3F1AB7EF2A8DC96E0076CEAB /* UserLocationViewController.swift in Sources */,
 				3F49648C2A8F866400078EE3 /* AuthRepository.swift in Sources */,
 				3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */,
+				3FB14B6D2A912F1500A356DA /* CommonButtonView.swift in Sources */,
 				3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */,
 				3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */,
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
 				3F4964992A8FA1FD00078EE3 /* AuthUser.swift in Sources */,
+				3FB14B5B2A90F1A000A356DA /* CommonTitleView.swift in Sources */,
 				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
 				3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */,
 				3F4964732A8F4EA300078EE3 /* SignUpViewController.swift in Sources */,
 				3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */,
 				3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */,
 				3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */,
+				3FB14B592A90F08A00A356DA /* CommonTextFieldView.swift in Sources */,
 				3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */,
 				3F1AB7F22A8DC96E0076CEAB /* TabBarViewController.swift in Sources */,
 			);
