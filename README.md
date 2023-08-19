@@ -98,8 +98,14 @@ InSight
 ### 4-2 [Feature 2] 사용자 위치정보 업데이트 (CLLocation, Reverse Geocoding)
 > 위치정보 인증부터 좌표를 활용한 행정동 단위로의 변환 실시, 위치 검색을 통한 위치 직접 설정 허용
 - 사용자 위치정보 `허용/비허용` 과정에 대한 분기처리 실시(ToggleView)
-- CLLocation을 통해 `Coordinate`를 1차로 받아오고, `Reverse Geocoding`을 2차로 수행함으로서 법정동/행정동 단위로 위치를 나타냄
-- 사용자가 원하는 위치를 검색하여 선택할 수 있도록 동 코드를 재 변환, `WildCard Pattern`을 통해 3차로 인근 동을 모두 반환함
+- [UseCase 1] : 좌표 👉🏻 코드 👉🏻 동 단위
+   - CLLocation을 통해 `Coordinate`를 1차로 받아오고, `Reverse Geocoding`을 2차로 수행함으로서 법정동/행정동 단위로 위치를 나타냄
+  
+- [UseCase 2] : 주소검색(코드) 👉🏻 인근 동 단위 
+   - 사용자가 원하는 위치를 검색하여 선택할 수 있도록 동 코드를 재 변환
+   - 주소코드 앞 5자리를 추출하기 위해 `WildCard Pattern`을 활용, 사용자의 인근 위치의 동 단위 주소를 모두 반환함
+
+<br>
 
 🚫 Trouble Shooting
 
