@@ -11,7 +11,11 @@ import CoreLocation
 class StartPageViewController: UIViewController {
 
     // startPageView
-    private let startPageView = StartPageView()
+    private let startPageView: StartPageView = {
+        let view = StartPageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -19,18 +23,16 @@ class StartPageViewController: UIViewController {
         startPageView.delegate = self
         view.backgroundColor = .systemBackground
         view.addSubview(startPageView)
-        setupLayout()
     }
 
-    // MARK: - setupLayouts
-    private func setupLayout() {
-        startPageView.translatesAutoresizingMaskIntoConstraints = false
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
         NSLayoutConstraint.activate([
-            startPageView.topAnchor.constraint(equalTo: view.topAnchor),
-            startPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            startPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            startPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            startPageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            startPageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            startPageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            startPageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
 }
