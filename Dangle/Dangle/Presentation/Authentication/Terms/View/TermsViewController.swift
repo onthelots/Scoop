@@ -218,8 +218,8 @@ class TermsViewController: UIViewController {
 
     // Navgiation Push
     @objc private func selectNextButtonTapped() {
-        let signUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpViewController, animated: true)
+        let regEmailViewController = RegEmailViewController()
+        navigationController?.pushViewController(regEmailViewController, animated: true)
     }
 }
 
