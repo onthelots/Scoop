@@ -12,7 +12,6 @@ class CommonButtonView: UIView {
     // 타이틀
     lazy var nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("다음", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
         button.backgroundColor = .tintColor

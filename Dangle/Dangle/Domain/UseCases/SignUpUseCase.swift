@@ -16,13 +16,19 @@ protocol SignUpUseCase {
         completion: @escaping (Result<Bool, Error>) -> Void
     )
 
+    // 닉네임 중복 검사
+    func execute(
+        nickname: String,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    )
+
     // 계정 등록하기
     func execute(
         email: String,
         password: String,
         location: String,
         nickname: String,
-        completion: @escaping (Result<AuthUser, Error>) -> Void
+        completion: @escaping (Result<Void, Error>) -> Void
     )
 }
 
@@ -45,8 +51,20 @@ class DefaultSignUpUseCase: SignUpUseCase {
         }
     }
 
+    // 닉네임 중복검사
+    func execute(nickname: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        authRepository.checkNickname(nickname: nickname) { result in
+            switch result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     // 계정 등록하기
-    func execute(email: String, password: String, location: String, nickname: String, completion: @escaping (Result<AuthUser, Error>) -> Void) {
+    func execute(email: String, password: String, location: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
         authRepository.signUp(email: email, password: password, location: location, nickname: nickname) { result in
             switch result {
             case .success(let success):

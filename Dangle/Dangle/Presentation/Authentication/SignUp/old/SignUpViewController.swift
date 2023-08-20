@@ -1,17 +1,17 @@
+////
+////  SignUpView.swift
+////  Dangle
+////
+////  Created by Jae hyuk Yim on 2023/08/18.
+////
 //
-//  SignUpView.swift
-//  Dangle
-//
-//  Created by Jae hyuk Yim on 2023/08/18.
-//
-
 //import UIKit
 //import Combine
 //import Firebase
 //import FirebaseAuth
 //
 //class SignUpViewController: UIViewController {
-//    
+//
 //    private lazy var signUpView: SignUpView = {
 //        let view = SignUpView()
 //        view.translatesAutoresizingMaskIntoConstraints = false
@@ -157,10 +157,10 @@
 //    // 다음 버튼이 눌리게 되면, 실행할 메서드
 //    @objc private func nextButtonTapped() {
 //        let location: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.name ?? ""
-//        if let email = signUpView.emailTextField.text,
-//           let password = signUpView.passwordTextField.text {
-//            print("이메일 : \(email), 패스워드 \(password), 위치 : \(location)")
-//            viewModel.checkEmailExistsAndSignUp(email: email, password: password, location: location)
-//        }
+////        if let email = signUpView.emailTextField.text,
+////           let password = signUpView.passwordTextField.text {
+////            print("이메일 : \(email), 패스워드 \(password), 위치 : \(location)")
+////            viewModel.checkEmailExistsAndSignUp(email: email, password: password, location: location)
+////        }
 //    }
 //}

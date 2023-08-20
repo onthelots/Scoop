@@ -53,7 +53,6 @@
 		3F4964802A8F5DEC00078EE3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49647F2A8F5DEC00078EE3 /* SignUpViewModel.swift */; };
 		3F4964842A8F600200078EE3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964832A8F600200078EE3 /* SignUpView.swift */; };
 		3F49648C2A8F866400078EE3 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49648B2A8F866400078EE3 /* AuthRepository.swift */; };
-		3F49648F2A8F86A900078EE3 /* FireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49648E2A8F86A900078EE3 /* FireStoreRepository.swift */; };
 		3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */; };
 		3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964942A8F884300078EE3 /* SignUpUseCase.swift */; };
 		3F4964992A8FA1FD00078EE3 /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* AuthUser.swift */; };
@@ -69,6 +68,9 @@
 		3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B662A9115F200A356DA /* RegPasswordViewController.swift */; };
 		3FB14B692A91184C00A356DA /* RegPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B682A91184C00A356DA /* RegPasswordViewModel.swift */; };
 		3FB14B6D2A912F1500A356DA /* CommonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B6C2A912F1500A356DA /* CommonButtonView.swift */; };
+		3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */; };
+		3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */; };
+		3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */; };
 		3FD3B5D72A8AF8400022C487 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5D62A8AF8400022C487 /* FirebaseAnalytics */; };
 		3FD3B5D92A8AF8400022C487 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5D82A8AF8400022C487 /* FirebaseAuth */; };
 		3FD3B5DB2A8AF8400022C487 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3FD3B5DA2A8AF8400022C487 /* FirebaseFirestore */; };
@@ -140,7 +142,6 @@
 		3F49647F2A8F5DEC00078EE3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		3F4964832A8F600200078EE3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		3F49648B2A8F866400078EE3 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
-		3F49648E2A8F86A900078EE3 /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
 		3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsAuthRepository.swift; sourceTree = "<group>"; };
 		3F4964942A8F884300078EE3 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		3F4964982A8FA1FD00078EE3 /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
@@ -160,6 +161,9 @@
 		3FB14B662A9115F200A356DA /* RegPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegPasswordViewController.swift; sourceTree = "<group>"; };
 		3FB14B682A91184C00A356DA /* RegPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegPasswordViewModel.swift; sourceTree = "<group>"; };
 		3FB14B6C2A912F1500A356DA /* CommonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButtonView.swift; sourceTree = "<group>"; };
+		3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewModel.swift; sourceTree = "<group>"; };
+		3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewController.swift; sourceTree = "<group>"; };
+		3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameValidationService.swift; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -319,6 +323,7 @@
 				3F49647E2A8F5DD900078EE3 /* old */,
 				3FB14B5E2A90FA0400A356DA /* RegisterEmail */,
 				3FB14B632A9115D100A356DA /* RegisterPassword */,
+				3FB14B712A91D86500A356DA /* RegisterNickname */,
 				3F49646A2A8E5DEC00078EE3 /* View */,
 			);
 			path = SignUp;
@@ -362,7 +367,8 @@
 		3F1AB7AE2A8DC96E0076CEAB /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */,
+				3FB14B7B2A92033400A356DA /* View */,
+				3FB14B7A2A92032D00A356DA /* ViewModel */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 			children = (
 				3F49647A2A8F5D1800078EE3 /* EmailValidationService.swift */,
 				3F49647C2A8F5D4000078EE3 /* PasswordValidationService.swift */,
+				3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -587,7 +594,6 @@
 			isa = PBXGroup;
 			children = (
 				3F49648B2A8F866400078EE3 /* AuthRepository.swift */,
-				3F49648E2A8F86A900078EE3 /* FireStoreRepository.swift */,
 			);
 			path = FirebaseRepository;
 			sourceTree = "<group>";
@@ -701,6 +707,46 @@
 			isa = PBXGroup;
 			children = (
 				3FB14B662A9115F200A356DA /* RegPasswordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3FB14B712A91D86500A356DA /* RegisterNickname */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B722A91D87700A356DA /* ViewModel */,
+				3FB14B732A91D87F00A356DA /* View */,
+			);
+			path = RegisterNickname;
+			sourceTree = "<group>";
+		};
+		3FB14B722A91D87700A356DA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3FB14B732A91D87F00A356DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3FB14B7A2A92032D00A356DA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3FB14B7B2A92033400A356DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -874,7 +920,6 @@
 				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
-				3F49648F2A8F86A900078EE3 /* FireStoreRepository.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
@@ -891,6 +936,7 @@
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
 				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
 				3F4964842A8F600200078EE3 /* SignUpView.swift in Sources */,
+				3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */,
 				3F1AB7F02A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
 				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
@@ -901,6 +947,7 @@
 				3F1AB7E22A8DC96E0076CEAB /* NickNameViewController.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
 				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
+				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
 				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
 				3FB14B622A90FA6500A356DA /* RegEmailViewModel.swift in Sources */,
 				3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */,
@@ -924,6 +971,7 @@
 				3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */,
 				3FB14B592A90F08A00A356DA /* CommonTextFieldView.swift in Sources */,
 				3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */,
+				3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */,
 				3F1AB7F22A8DC96E0076CEAB /* TabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

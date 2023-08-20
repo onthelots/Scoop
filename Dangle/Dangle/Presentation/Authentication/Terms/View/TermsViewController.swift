@@ -200,11 +200,10 @@ class TermsViewController: UIViewController {
 
     // 이전 뷰로 이동했을 때, 전체 약관값을 false로 변경
     private func resetAllTerms() {
-        for index in viewModel.terms.indices {
-            viewModel.terms[index].isChecked = false
-        }
         viewModel.toggleAllTerms(isSelected: false)
-        updateAllButtonImage(isSelected: false) // 이미지 변경
+        tableView.reloadData()
+        updateAllButtonImage(isSelected: false)
+        updateNextButtonState()
     }
 
     // AllButton을 눌렀을 때 -> 모든 약관의 상태를 토글함 (이는, isAllselected의 업데이트 값에 따라 변경)
@@ -218,6 +217,7 @@ class TermsViewController: UIViewController {
 
     // Navgiation Push
     @objc private func selectNextButtonTapped() {
+        resetAllTerms()
         let regEmailViewController = RegEmailViewController()
         navigationController?.pushViewController(regEmailViewController, animated: true)
     }
