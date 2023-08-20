@@ -14,52 +14,48 @@ class RegEmailViewModel: ObservableObject {
     private let emailValidationService: EmailValidationService
 
     // Input
-    let emailInput = PassthroughSubject<String, Never>() // 외부에서도 일련의 값을 전달할 수 있음
-    @Published var userInfo: [UserInfo] = [] // 이메일 유효혀부 확인 (EmailValidationService)
-    // Output
     @Published var isEmailValid = false // 이메일 유효혀부 확인 (EmailValidationService)
-    @Published var isEmailDuplication = false // 이메일 중복여부 확인
+    @Published var isDuplication = false // 이메일 중복여부 확인
+    // 사용자 정보
+    @Published var email: String = ""
 
-    private var cancellables = Set<AnyCancellable>()
+    // Output
+    let emailInput = PassthroughSubject<String, Never>() // 외부에서도 일련의 값을 전달할 수 있음
+    let validEmailInput = PassthroughSubject<String, Never>() // 외부에서도 일련의 값을 전달할 수 있음
+
+    private var subscription = Set<AnyCancellable>()
 
     init(signUpUseCase: DefaultSignUpUseCase, emailValidationService: EmailValidationService) {
         self.signUpUseCase = signUpUseCase
         self.emailValidationService = emailValidationService
-
-        bindInputs()
-        bindOutputs()
     }
 
-    // 이메일 유효성 여부 검사 (Input / 퍼블리셔 emailInput -> map을 통해 값을 다시 할당함 -> assign을 통해 퍼블리셔 inEmailValid에 새로운 값을 할당)
-    private func bindInputs() {
+    // -----> 값을 받아옴 ---> 2. 이메일 유효성 여부 검사를 실시하고 -> 해당 결과값을 isEmailValid에 할당함
+    func checkEmailValidAndSave() {
         emailInput
             .map { [weak self] email in
                 return self?.emailValidationService.validateEmail(email) ?? false
             }
             .assign(to: \.isEmailValid, on: self)
-            .store(in: &cancellables)
+            .store(in: &subscription)
     }
 
-    private func bindOutputs() {
-            $isEmailValid
-                .receive(on: RunLoop.main)
-                .sink { [weak self] isValid in
-                    if !isValid {
-                        self?.isEmailDuplication = false // 이메일 유효성 검사 실패 시 중복 여부도 초기화
-                    }
-                }
-                .store(in: &cancellables)
-        }
+    // 이메일 설정
+    func setUserEmail(email: String) {
+        self.email = email
+     }
 
+    // Checked Dubplication
     func executeEmailDuplicationCheck(email: String, completion: @escaping (Bool) -> Void) {
             signUpUseCase.execute(email: email) { [weak self] result in
                 switch result {
                 case .success(let isDuplicated):
-                    self?.isEmailDuplication = isDuplicated
+                    print("이메일 중복여부 : \(isDuplicated)")
                     completion(isDuplicated)
-                case .failure :
-                    self?.isEmailDuplication = false
-                    completion(false) // Assume duplication check failed
+                case .failure:
+                    self?.isEmailValid = false
+                    print("문제가 발생했습니다.")
+                    completion(true)
                 }
             }
         }

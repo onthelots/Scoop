@@ -124,7 +124,7 @@ class StartPageView: UIView {
             appNameImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             appNameImageView.widthAnchor.constraint(equalToConstant: 201),
             appNameImageView.heightAnchor.constraint(equalToConstant: 83),
-            appNameImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
+            appNameImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
 
             // keywordLabel
             keywordLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),

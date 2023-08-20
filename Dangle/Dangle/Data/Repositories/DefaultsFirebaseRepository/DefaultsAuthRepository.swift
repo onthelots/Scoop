@@ -23,13 +23,35 @@ class DefaultsAuthRepository: AuthRepository {
             // MARK: - snapshot이 중복되는 경우인가, 그렇지 않은 경우인가??
             if let documents = snapshot?.documents, !documents.isEmpty {
                 completion(.success(true))
+                print("이메일이 중복됩니다.")
             } else {
                 completion(.success(false))
+                print("이메일이 중복되지 않습니다.")
             }
         }
     }
 
-    func signUp(email: String, password: String, location: String, nickname: String, completion: @escaping (Result<AuthUser, Error>) -> Void) {
+    // 닉네임 체크
+    func checkNickname(nickname: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let database = Firestore.firestore()
+        database.collection("users").whereField("nickname", isEqualTo: nickname).getDocuments { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            // MARK: - snapshot이 중복되는 경우인가, 그렇지 않은 경우인가??
+            if let documents = snapshot?.documents, !documents.isEmpty {
+                completion(.success(true))
+                print("닉네임이 중복됩니다.")
+            } else {
+                completion(.success(false))
+                print("닉네임이 중복되지 않습니다.")
+            }
+        }
+    }
+
+    func signUp(email: String, password: String, location: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             guard self != nil else { return }
 
@@ -47,12 +69,15 @@ class DefaultsAuthRepository: AuthRepository {
             let database = Firestore.firestore()
             database.collection("users").document(uid).setData([
                 "email": email,
-                "location": location
+                "location": location,
+                "nickname": nickname
             ]) { error in
                 if let error = error {
                     print("Error saving user info to Firestore: \(error)")
+                    completion(.failure(error))
                 } else {
                     print("User info saved successfully")
+                    completion(.success(()))
                 }
             }
 
