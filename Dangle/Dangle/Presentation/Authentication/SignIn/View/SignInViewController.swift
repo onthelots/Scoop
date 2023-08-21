@@ -20,6 +20,8 @@ class SignInViewController: UIViewController {
     private var viewModel: SignInViewModel!
     private var cancellables: Set<AnyCancellable> = []
 
+    private var errorAlert: UIAlertController? // alert
+
     lazy var appNameImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Dangle_font")
@@ -114,9 +116,12 @@ class SignInViewController: UIViewController {
         viewModel.$isLoggedIn
             .sink { [weak self] isLoggedIn in
                 if isLoggedIn {
-                    print("로그인 되었습니다.")
+                    self?.saveUserCredentialsToKeychain() // 키체인에 정보를 저장함
+                    // TabbarViewController로 이동, 그런데 이미 viewController가 왜 겹쳐있는거야?
+                    self?.navigateToTabBar() // 로그인 상태일 때 TabBarViewController로 이동
+
                 } else {
-                    print("로그인이 되질 않았습니다.")
+                    self?.removeUserCredentialsFromKeychain() // isLoggedIn 값이 false일때는 키체인 삭제, 초기화해줌 
                 }
             }
             .store(in: &cancellables)
@@ -124,12 +129,18 @@ class SignInViewController: UIViewController {
         viewModel.$errorMessage
             .sink { [weak self] errorMessage in
                 if let message = errorMessage {
-                    // 에러 메시지 처리 Error
-                    // Alert 띄우거나, 맞지 않다고 eventLabel을 띄우기
-                    print("이메일 혹은 비밀번호가 틀립니다.")
+                    self?.showErrorAlert(message: message)
+                } else {
+                    self?.hideErrorAlert()
                 }
             }
             .store(in: &cancellables)
+    }
+
+    private func navigateToTabBar() {
+        let mainAppTabBarVC = TabBarViewController()
+        mainAppTabBarVC.modalPresentationStyle = .fullScreen
+        present(mainAppTabBarVC, animated: true)
     }
 
     @objc private func nextButtonTapped() {
@@ -137,7 +148,44 @@ class SignInViewController: UIViewController {
             email: self.emailTextFieldView.textField.text ?? "",
             password: self.passwordTextFieldView.textField.text ?? ""
         )
-        print("버튼이 눌렸습니다.")
-        // 로그인, 사용자 정보 불러오기 -> 다음 뷰에서 활용할 수 있도록!?
     }
+
+    // 유저정보 키체인 저장
+    private func saveUserCredentialsToKeychain() {
+        guard let email = self.emailTextFieldView.textField.text,
+              let password = self.passwordTextFieldView.textField.text else {
+            return
+        }
+        SensitiveInfoManager.create(key: "userEmail", password: email)
+        SensitiveInfoManager.create(key: "userPassword", password: password)
+    }
+
+    // MARK: - 유저정보 키체인 삭제 : 로그아웃 기능에서도 활용할 것
+    private func removeUserCredentialsFromKeychain() {
+        SensitiveInfoManager.delete(key: "userEmail")
+        SensitiveInfoManager.delete(key: "userPassword")
+    }
+
+    // 불 일치 시, Alert
+    private func showErrorAlert(message: String) {
+         errorAlert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+         errorAlert?.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
+             self?.errorAlert = nil
+         }))
+         if let errorAlert = errorAlert {
+             present(errorAlert, animated: true, completion: nil)
+         }
+     }
+
+    private func hideErrorAlert() {
+         if let errorAlert = errorAlert {
+             errorAlert.dismiss(animated: true, completion: nil)
+             self.errorAlert = nil
+         }
+     }
+
+//    private func navigateToTabBar() {
+//        let tabBarController = TabBarViewController() // TabBarViewController를 초기화
+//        navigationController?.setViewControllers([tabBarController], animated: true) // 탭바 뷰컨트롤러로 이동
+//    }
 }

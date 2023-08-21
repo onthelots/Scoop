@@ -75,6 +75,7 @@
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
 		3FE361CF2A931E77000F1B38 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CE2A931E77000F1B38 /* UserAuth.swift */; };
 		3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */; };
+		3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D32A93475A000F1B38 /* SettingViewController.swift */; };
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +165,7 @@
 		3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3FE361CE2A931E77000F1B38 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
+		3FE361D32A93475A000F1B38 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,8 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */,
-				3F67AB4F2A8E58CB000216CA /* Core */,
 				3F1AB7A12A8DC96E0076CEAB /* Authentication */,
+				3F67AB4F2A8E58CB000216CA /* Core */,
 				3F1AB7BC2A8DC96E0076CEAB /* Utils */,
 			);
 			path = Presentation;
@@ -441,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
+				3FE361D32A93475A000F1B38 /* SettingViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -939,6 +942,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */,
 				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
 				3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */,
 				3FB14B692A91184C00A356DA /* RegPasswordViewModel.swift in Sources */,

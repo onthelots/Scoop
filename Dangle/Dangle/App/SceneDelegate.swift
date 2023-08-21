@@ -13,13 +13,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: windowScene)
-        self.window = window
-        
-        // rootViewController
-        let navigationController = UINavigationController(rootViewController: StartPageViewController())
-        window.rootViewController = navigationController
+
+        // 키체인에 저장되어 있다면
+        if let userEmail = SensitiveInfoManager.read(key: "userEmail"),
+           let userPassword = SensitiveInfoManager.read(key: "userPassword") {
+
+            let authRepository = DefaultsAuthRepository()
+            let signInUseCase = DefaultSignInUseCase(authRepository: authRepository)
+            let viewModel = SignInViewModel(signInUseCase: signInUseCase)
+
+            // 로그인을 실시
+            viewModel.login(email: userEmail, password: userPassword)
+            window.rootViewController = TabBarViewController() // 루트뷰를 TabBarViewController로 변경시킴
+        } else {
+            let navVC = UINavigationController(rootViewController: StartPageViewController())
+            window.rootViewController = navVC
+        }
+
         window.makeKeyAndVisible()
-        
+        self.window = window
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -148,7 +148,6 @@ class RegisterWelcomeViewController: UIViewController {
         // 3. 버튼이 눌렀을 때 실행될 클로저를 정의함
             .sink { [weak self] _ in
                 let signInViewController = SignInViewController()
-                signInViewController.navigationItem.largeTitleDisplayMode = .never
                 signInViewController.navigationItem.setHidesBackButton(true, animated: false)
                 self?.navigationController?.setViewControllers([signInViewController], animated: true)
             }.store(in: &subscription)

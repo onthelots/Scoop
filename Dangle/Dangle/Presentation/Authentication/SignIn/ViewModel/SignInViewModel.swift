@@ -26,10 +26,9 @@ class SignInViewModel: ObservableObject {
             case .success:
                 self?.isLoggedIn = true
                 self?.errorMessage = nil // 성공 시 에러 메시지를 초기화
-                print("로그인 성공")
-            case .failure(let error):
+            case .failure:
                 self?.isLoggedIn = false
-                self?.errorMessage = error.localizedDescription
+                self?.errorMessage = "이메일/비밀번호가 일치하지 않습니다."
             }
         }
     }
