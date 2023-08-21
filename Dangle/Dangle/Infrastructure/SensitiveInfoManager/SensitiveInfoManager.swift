@@ -58,6 +58,8 @@ class SensitiveInfoManager {
             kSecAttrAccount: key
         ]
         let status = SecItemDelete(query)
-        assert(status == noErr, "failed to delete the value, status code = \(status)")
+        if status != noErr && status != errSecItemNotFound {
+            print("Failed to delete the value, status code = \(status)")
+        }
     }
 }

@@ -48,8 +48,20 @@ final class UserLocationViewModel: ObservableObject {
             case .success(let address):
                 self?.userLocation = address.documents.compactMap({ items in
 
+                    guard let region3DepthName = items.address.region3DepthName, !region3DepthName.isEmpty else {
+                        return nil
+                    }
+
+                    guard let bCode = items.address.bCode,
+                          !bCode.isEmpty else {
+                        return nil
+                    }
+
+//                    guard items.addressType == "REGION_ADDR" else {
+//                        return nil
+//                    }
                     // 주소 나타내는 로직 보여주기 (bCode 혹은 Hcode)
-                    Regcode(code: items.address.bCode ?? "", name: items.addressName)
+                    return Regcode(code: bCode, name: items.addressName)
                 })
                 print("ViewModel에서 UseCase 호출")
             case .failure(let error):

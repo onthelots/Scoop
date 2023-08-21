@@ -77,7 +77,7 @@ class RegNicknameViewController: UIViewController {
     // 다음 버튼 라벨
     private lazy var nextButtonView: CommonButtonView = {
         let buttonView = CommonButtonView()
-        buttonView.nextButton.setTitle("가입완료 및 로그인하기", for: .normal)
+        buttonView.nextButton.setTitle("다음", for: .normal)
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         return buttonView
     }()
@@ -153,41 +153,16 @@ class RegNicknameViewController: UIViewController {
     // NextButton
     @objc private func nextButtonTapped() {
         if let nickname = textFieldView.textField.text {
-            viewModel.executeNicknameDuplicationCheck(nickname: nickname) { [weak self] isDuplicated in
-                if isDuplicated {
-                    self?.viewModel.isNicknameValid = false
-                    DispatchQueue.main.async {
-                        self?.textFieldView.textField.text = ""
-                        self?.textFieldView.textField.setError()
-                        self?.eventLabel.isHidden = false
-                    }
-                } else {
-                    self?.viewModel.setUserNickname(nickname: nickname) // 사용자 닉네임 설정
-
-                    // Firebase 계정 등록
-                    if let email = self?.email, let password = self?.password {
-                        let location: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.name ?? ""
-                        self?.viewModel.signUpUseCase.execute(
-                            email: email,
-                            password: password,
-                            location: location, // 사용자의 위치 정보
-                            nickname: nickname
-                        ) { [weak self] result in
-                            switch result {
-                            case .success:
-                                // Firebase 계정 등록 성공
-                                DispatchQueue.main.async {
-                                    self?.textFieldView.textField.text = ""
-                                    let signInViewController = SignInViewController()
-                                    signInViewController.navigationItem.largeTitleDisplayMode = .never
-                                    self?.navigationController?.setViewControllers([signInViewController], animated: true)
-                                }
-                            case .failure(let error):
-                                print("Firebase signUp failed: \(error)")
-                            }
-                        }
-                    }
-                }
+            print("저장될 닉네임 : \(nickname)")
+            DispatchQueue.main.async {
+                self.textFieldView.textField.text = ""
+                let viewController = RegisterWelcomeViewController(
+                    email: self.email,
+                    password: self.password,
+                    nickname: nickname
+                )
+                viewController.navigationItem.largeTitleDisplayMode = .never
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }

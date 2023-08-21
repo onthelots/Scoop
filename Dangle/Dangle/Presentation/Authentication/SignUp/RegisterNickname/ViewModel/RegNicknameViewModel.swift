@@ -14,8 +14,6 @@ final class RegNicknameViewModel: ObservableObject {
 
     let nicknameInput = PassthroughSubject<String, Never>()
 
-    private var cancellables = Set<AnyCancellable>()
-
     @Published var isNicknameValid = false
     @Published var isDuplication = false
     @Published var nickname: String = ""
