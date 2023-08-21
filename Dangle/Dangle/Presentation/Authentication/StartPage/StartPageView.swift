@@ -69,10 +69,11 @@ class StartPageView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
     // signInButton
     lazy var signInButton: UIButton = {
         let button = UIButton()
-        button.setTitle("로그인하기", for: .normal)
+        button.setTitle("이미 댕글 계정이 있으신가요? >", for: .normal)
         button.setTitleColor(UIColor.tintColor, for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .callout)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +125,7 @@ class StartPageView: UIView {
             appNameImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             appNameImageView.widthAnchor.constraint(equalToConstant: 201),
             appNameImageView.heightAnchor.constraint(equalToConstant: 83),
-            appNameImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            appNameImageView.topAnchor.constraint(equalTo: self.topAnchor),
 
             // keywordLabel
             keywordLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),

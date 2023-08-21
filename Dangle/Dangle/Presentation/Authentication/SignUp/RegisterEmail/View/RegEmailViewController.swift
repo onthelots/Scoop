@@ -89,6 +89,12 @@ class RegEmailViewController: UIViewController {
         nextButtonView.nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        eventLabel.isHidden = true
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 

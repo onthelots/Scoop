@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct AuthUser: Codable {
-    let user: [UserInfo]
-}
-
 struct UserInfo: Codable {
     let email: String
     let password: String

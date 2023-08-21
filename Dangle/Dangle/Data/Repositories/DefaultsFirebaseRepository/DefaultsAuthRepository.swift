@@ -5,6 +5,7 @@
 //  Created by Jae hyuk Yim on 2023/08/18.
 //
 
+import Combine
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
@@ -51,6 +52,7 @@ class DefaultsAuthRepository: AuthRepository {
         }
     }
 
+    // 회원가입
     func signUp(email: String, password: String, location: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             guard self != nil else { return }
@@ -80,7 +82,21 @@ class DefaultsAuthRepository: AuthRepository {
                     completion(.success(()))
                 }
             }
-
         }
     }
+
+    // 로그인
+    func signIn(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+          Auth.auth().signIn(withEmail: email, password: password) { result, error in
+              if let error = error {
+                  completion(.failure(error))
+              } else if let user = result?.user {
+                  let userModel = User(uid: user.uid, email: user.email ?? "")
+                  completion(.success(userModel))
+              } else {
+                  let unknownError = NSError(domain: "Unknown Error", code: 0, userInfo: nil)
+                  completion(.failure(unknownError))
+              }
+          }
+      }
 }
