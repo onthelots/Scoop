@@ -95,7 +95,7 @@ InSight
 
 <br>
 
-### 4-2 [Feature 2] 사용자 위치정보 업데이트 (CLLocation, Reverse Geocoding)
+### 4-2 [Feature 2] 사용자 위치정보 업데이트 (CLLocation, Reverse Geocoding) 및 계정 관리
 > 위치정보 인증부터 좌표를 활용한 행정동 단위로의 변환 실시, 위치 검색을 통한 위치 직접 설정 허용
 - 사용자 위치정보 `허용/비허용` 과정에 대한 분기처리 실시(ToggleView)
 - [UseCase 1] : 좌표 👉🏻 코드 👉🏻 동 단위
@@ -105,6 +105,11 @@ InSight
    - 사용자가 원하는 위치를 검색하여 선택할 수 있도록 동 코드를 재 변환
    - 주소코드 앞 5자리를 추출하기 위해 `WildCard Pattern`을 활용, 사용자의 인근 위치의 동 단위 주소를 모두 반환함
 
+> Keychain, UserDefaults, Fiebase를 통한 계정관리 시스템 구축
+- `Firebase`를 통하여 계정관리(회원가입, 로그인, 로그아웃) 외 추가 유저정보(위치 등)를 저장하고 활용할 수 있도록 구성함
+- 자동 로그인 기능을 구현하기 위해 `Keychain`을 통해 email과 password를 안전하게 저장, 활용함 (Scene 분기처리 담당)
+  
+
 <br>
 
 🚫 Trouble Shooting
@@ -112,6 +117,7 @@ InSight
 순서  | 내용  | 비고
 ----| ----- | -----
 1| 디바이스 위치서비스 활성/비활성화 확인 메서드 실행에 따른 UI 불응성(unresponsiveness)문제 | https://github.com/onthelots/dangle/issues/8
+2| UITabBarViewController 중첩 문제 | https://github.com/onthelots/dangle/issues/22
 
 <br>
 
