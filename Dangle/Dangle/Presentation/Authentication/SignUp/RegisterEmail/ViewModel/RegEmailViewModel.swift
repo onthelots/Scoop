@@ -14,8 +14,8 @@ class RegEmailViewModel: ObservableObject {
     private let emailValidationService: EmailValidationService
 
     // Input
-    @Published var isEmailValid = false // 이메일 유효혀부 확인 (EmailValidationService)
-    @Published var isDuplication = false // 이메일 중복여부 확인
+    @Published var isEmailValid: Bool = false // 이메일 유효혀부 확인 (EmailValidationService)
+    @Published var isDuplication: Bool = false // 이메일 중복여부 확인
     // 사용자 정보
     @Published var email: String = ""
 

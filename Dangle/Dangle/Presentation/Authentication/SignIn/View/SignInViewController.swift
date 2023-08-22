@@ -8,18 +8,10 @@
 import UIKit
 import Combine
 
-/*
-[ ] 유효한 이메일, 비밀번호를 눌렀을 시, 다음 화면으로 넘어가는 동시에 해당 유저의 데이터가 유지될 수 있도록 함
-[ ] 앱을 종료할 경우 -> 유저 데이터가 유지되어 있다면 자동 로그인될 수 있도록
-[ ] 앱을 삭제한 경우 -> 기존 디바이스에 저장되어 있던 유저 데이터를 날리자
-[ ] 로그아웃을 할 경우 -> 정상적으로 로그인이 비 활성화 되고, 로그인 뷰로 이동할 수 있도록 함
- */
-
 class SignInViewController: UIViewController {
 
     private var viewModel: SignInViewModel!
-    private var cancellables: Set<AnyCancellable> = []
-
+    private var subscription: Set<AnyCancellable> = []
     private var errorAlert: UIAlertController? // alert
 
     lazy var appNameImageView: UIImageView = {
@@ -65,22 +57,20 @@ class SignInViewController: UIViewController {
     private lazy var nextButtonView: CommonButtonView = {
         let buttonView = CommonButtonView()
         buttonView.nextButton.setTitle("가입완료 및 로그인하기", for: .normal)
-        buttonView.nextButton.isEnabled = true
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         return buttonView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let signInUseCase = DefaultSignInUseCase(authRepository: DefaultsAuthRepository())
+        let emailValidationService = DefaultEmailValidationService()
+        viewModel = SignInViewModel(signInUseCase: signInUseCase, emailValidationService: emailValidationService)
 
-        let authRepository = DefaultsAuthRepository()
-        let signInUseCase = DefaultSignInUseCase(authRepository: authRepository)
-        viewModel = SignInViewModel(signInUseCase: signInUseCase)
-
+        viewModel.checkEmailValidAndSave()
         setupUI()
-
         bind()
-
+        emailTextFieldView.textField.addTarget(self, action: #selector(emailTextFieldEditingChanged), for: .editingChanged)
         nextButtonView.nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
 
@@ -113,34 +103,47 @@ class SignInViewController: UIViewController {
     }
 
     private func bind() {
+        // ---> 전달해야 할 사항 (isEmailValid?)
+        viewModel.$isEmailValid
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isValid in
+                // 비밀번호가 비어있지 않을 경우
+                self?.nextButtonView.nextButton.isEnabled = isValid
+                self?.nextButtonView.nextButton.tintColor = isValid ? .tintColor : .gray
+
+            }.store(in: &subscription)
+
         viewModel.$isLoggedIn
             .sink { [weak self] isLoggedIn in
                 if isLoggedIn {
                     self?.saveUserCredentialsToKeychain() // 키체인에 정보를 저장함
-                    // TabbarViewController로 이동, 그런데 이미 viewController가 왜 겹쳐있는거야?
-                    self?.navigateToTabBar() // 로그인 상태일 때 TabBarViewController로 이동
-
+                    //                    let tabBarViewController = TabBarViewController()
+                    if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                        if !(sceneDelegate.window?.rootViewController is UITabBarController) {
+                            sceneDelegate.window?.rootViewController = TabBarViewController()
+                            sceneDelegate.window?.makeKeyAndVisible()
+                        }
+                    }
+//                    tabBarViewController.modalPresentationStyle = .pageSheet
+//                    self?.present(tabBarViewController, animated: true) {
+//                        self?.navigationController?.popToRootViewController(animated: true)
+//                    }
                 } else {
-                    self?.removeUserCredentialsFromKeychain() // isLoggedIn 값이 false일때는 키체인 삭제, 초기화해줌 
+                    self?.removeUserCredentialsFromKeychain() // isLoggedIn 값이 false일때는 키체인 삭제, 초기화해줌
                 }
             }
-            .store(in: &cancellables)
+            .store(in: &subscription)
 
         viewModel.$errorMessage
             .sink { [weak self] errorMessage in
                 if let message = errorMessage {
                     self?.showErrorAlert(message: message)
+                    self?.passwordTextFieldView.textField.text = ""
                 } else {
                     self?.hideErrorAlert()
                 }
             }
-            .store(in: &cancellables)
-    }
-
-    private func navigateToTabBar() {
-        let mainAppTabBarVC = TabBarViewController()
-        mainAppTabBarVC.modalPresentationStyle = .fullScreen
-        present(mainAppTabBarVC, animated: true)
+            .store(in: &subscription)
     }
 
     @objc private func nextButtonTapped() {
@@ -148,6 +151,15 @@ class SignInViewController: UIViewController {
             email: self.emailTextFieldView.textField.text ?? "",
             password: self.passwordTextFieldView.textField.text ?? ""
         )
+    }
+
+    @objc private func emailTextFieldEditingChanged(_ textField: UITextField) {
+        if let email = textField.text {
+            DispatchQueue.main.async {
+                self.emailTextFieldView.textField.setPlaceholder()
+            }
+            viewModel.emailInput.send(email)
+        }
     }
 
     // 유저정보 키체인 저장
@@ -183,9 +195,4 @@ class SignInViewController: UIViewController {
              self.errorAlert = nil
          }
      }
-
-//    private func navigateToTabBar() {
-//        let tabBarController = TabBarViewController() // TabBarViewController를 초기화
-//        navigationController?.setViewControllers([tabBarController], animated: true) // 탭바 뷰컨트롤러로 이동
-//    }
 }

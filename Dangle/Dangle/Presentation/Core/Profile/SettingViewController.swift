@@ -63,10 +63,10 @@ class SettingViewController: UIViewController {
 
     // viewProfile
     private func viewProfile() {
-        let vc = ProfileViewController()
-        vc.title = "Profile"
-        vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
+        let viewController = ProfileViewController()
+        viewController.title = "Profile"
+        viewController.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     // signOut
@@ -83,14 +83,15 @@ class SettingViewController: UIViewController {
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut() // 파베에서 로그아웃
-                self.removeUserCredentialsFromKeychain() // 키체인에서도 삭제하기 -> keychain이 비어있으니까, rootView가 startPage로 바뀌지 않나?
-                DispatchQueue.main.async {
-                    let navVC = UINavigationController(rootViewController: StartPageViewController())
-                    navVC.modalPresentationStyle = .fullScreen
-
-                    self.present(navVC, animated: true) {
-                        self.navigationController?.popViewController(animated: false)
-                    }
+                self.removeUserCredentialsFromKeychain() // 키체인 정보 지우기
+                //                let navVC = UINavigationController(rootViewController: StartPageViewController())
+                //                navVC.modalPresentationStyle = .pageSheet
+                //                self.present(navVC, animated: true, completion: {
+                //                    // rootView가 근데 ProfileView 잖아..?
+                //                    self.navigationController?.popToRootViewController(animated: false)
+                //                })
+                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                    sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: StartPageViewController())
                 }
             } catch let signOutError as NSError {
                 print("로그아웃이 잘 되질 않았네요 : \(signOutError)")

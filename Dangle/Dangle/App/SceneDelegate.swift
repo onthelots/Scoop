@@ -16,19 +16,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // 키체인에 저장되어 있다면
         if let userEmail = SensitiveInfoManager.read(key: "userEmail"),
-           let userPassword = SensitiveInfoManager.read(key: "userPassword") {
+               let userPassword = SensitiveInfoManager.read(key: "userPassword") {
 
-            let authRepository = DefaultsAuthRepository()
-            let signInUseCase = DefaultSignInUseCase(authRepository: authRepository)
-            let viewModel = SignInViewModel(signInUseCase: signInUseCase)
+                let signInUseCase = DefaultSignInUseCase(authRepository: DefaultsAuthRepository())
+                let emailValidationService = DefaultEmailValidationService()
+                let viewModel = SignInViewModel(signInUseCase: signInUseCase, emailValidationService: emailValidationService)
 
-            // 로그인을 실시
-            viewModel.login(email: userEmail, password: userPassword)
-            window.rootViewController = TabBarViewController() // 루트뷰를 TabBarViewController로 변경시킴
-        } else {
-            let navVC = UINavigationController(rootViewController: StartPageViewController())
-            window.rootViewController = navVC
-        }
+                viewModel.login(email: userEmail, password: userPassword)
+
+                let tabBarController = TabBarViewController()
+                tabBarController.selectedIndex = 0
+                window.rootViewController = tabBarController
+            } else {
+                let navVC = UINavigationController(rootViewController: StartPageViewController())
+                window.rootViewController = navVC
+            }
 
         window.makeKeyAndVisible()
         self.window = window
