@@ -9,15 +9,28 @@ import Combine
 import Foundation
 
 class SignInViewModel: ObservableObject {
+    private let signInUseCase: SignInUseCase
+    private let emailValidationService: EmailValidationService
 
+    @Published var isEmailValid: Bool = false
     @Published var isLoggedIn: Bool = false
     @Published var errorMessage: String?
+    let emailInput = PassthroughSubject<String, Never>()
 
-    private var cancellables: Set<AnyCancellable> = []
-    private let signInUseCase: SignInUseCase
+    private var subscription: Set<AnyCancellable> = []
 
-    init(signInUseCase: SignInUseCase) {
+    init(signInUseCase: SignInUseCase, emailValidationService: EmailValidationService) {
         self.signInUseCase = signInUseCase
+        self.emailValidationService = emailValidationService
+    }
+
+    func checkEmailValidAndSave() {
+        emailInput
+            .map { [weak self] email in
+                return self?.emailValidationService.validateEmail(email) ?? false
+            }
+            .assign(to: \.isEmailValid, on: self)
+            .store(in: &subscription)
     }
 
     func login(email: String, password: String) {

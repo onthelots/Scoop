@@ -133,8 +133,7 @@ class RegEmailViewController: UIViewController {
                 self.eventLabel.isHidden = true
                 self.textFieldView.textField.setPlaceholder()
             }
-
-            viewModel.emailInput.send(email) // 텍스트 필드 값을, emailInput으로 전달
+            viewModel.emailInput.send(email)
         }
     }
 

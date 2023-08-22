@@ -146,10 +146,13 @@ class RegisterWelcomeViewController: UIViewController {
     private func bind() {
         viewModel.signUpButtonTapped
         // 3. 버튼이 눌렀을 때 실행될 클로저를 정의함
-            .sink { [weak self] _ in
-                let signInViewController = SignInViewController()
-                signInViewController.navigationItem.setHidesBackButton(true, animated: false)
-                self?.navigationController?.setViewControllers([signInViewController], animated: true)
+            .sink { _ in 
+                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                    if !(sceneDelegate.window?.rootViewController is UITabBarController) {
+                        sceneDelegate.window?.rootViewController = TabBarViewController()
+                        sceneDelegate.window?.makeKeyAndVisible()
+                    }
+                }
             }.store(in: &subscription)
     }
 
