@@ -93,6 +93,8 @@ InSight
 - 본격적인 앱을 구현하기에 앞서, `사용자 친화적인 UX`를 제공하기 위해 Figma를 통한 프로토타입 생성
 - 디자인-개발-수정 단계를 반복적으로 수행함으로서 `애자일 개발방식` 실천
 
+👉🏻 [프로토타입 Figma](https://www.figma.com/file/kZjgckc8czM4CzLhEZpibK/Dangle-Design?type=design&node-id=1%3A115&mode=design&t=jfIsB0Y4aNJl82xV-1)
+
 <br>
 
 ### 4-2 [Feature 2] 사용자 위치정보 업데이트 (CLLocation, Reverse Geocoding) 및 계정 관리
