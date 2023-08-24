@@ -40,11 +40,9 @@ final class DefaultRegionCodeRepository: RegionCodeRepository {
                 case .failure(let error):
                     print("--> 행정동 데이터를 가져오는데 실패했습니다: \(error)")
                 case .finished:
-                    print("--> 행정동 지오코딩 데이터를 가져왔습니다.")
+                    break
                 }
             } receiveValue: { items in
-                print("----> 행정동 수는? : \(String(describing: items.regcodes.count))")
-                print("----> 행정동 값은? : \(String(describing: items.regcodes))")
                 completion(.success(items))
             }.store(in: &subscriptions)
     }

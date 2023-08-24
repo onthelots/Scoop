@@ -25,9 +25,9 @@ final class RegisterWelcomeViewModel: ObservableObject {
         signUpButtonTapped
             .sink { info in
                 SensitiveInfoManager.create(key: "userEmail", password: info.email)
-                SensitiveInfoManager.create(key: "userPassword", password: info.password)
+                SensitiveInfoManager.create(key: "userPassword", password: info.password ?? "")
 
-                self.signUpUseCase.execute(email: info.email, password: info.password, location: info.location ?? "", nickname: info.nickname ?? "") { results in
+                self.signUpUseCase.execute(email: info.email, password: info.password ?? "", location: info.location ?? "", nickname: info.nickname ?? "") { results in
                     switch results {
                     case .success:
                         break

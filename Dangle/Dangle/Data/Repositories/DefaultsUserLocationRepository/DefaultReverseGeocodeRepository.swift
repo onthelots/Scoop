@@ -44,7 +44,6 @@ final class DefaultReverseGeocodeRepository: ReverseGeocodeRepository {
                     print("--> 리버스된 지오코딩 데이터를 가져왔습니다.")
                 }
             } receiveValue: { items in
-                print("----> 리버스 지오코딩 값은? : \(String(describing: items.reverseDocument.first?.code))")
                 completion(.success(items))
             }.store(in: &subscriptions)
     }

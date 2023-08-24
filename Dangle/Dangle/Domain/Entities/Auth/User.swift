@@ -1,5 +1,5 @@
 //
-//  UserAuth.swift
+//  User.swift
 //  Dangle
 //
 //  Created by Jae hyuk Yim on 2023/08/21.

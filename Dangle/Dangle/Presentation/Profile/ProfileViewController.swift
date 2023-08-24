@@ -11,7 +11,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .label
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "gear"),
             style: .done,
@@ -21,7 +22,7 @@ class ProfileViewController: UIViewController {
     }
 
     @objc func didTapSetting() {
-        let vc = SettingViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let viewController = SettingViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

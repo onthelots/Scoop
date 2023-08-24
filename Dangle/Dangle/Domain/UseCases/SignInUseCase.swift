@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SignInUseCase {
-    func execute(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func execute(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void)
 }
 
 class DefaultSignInUseCase: SignInUseCase {
@@ -19,11 +19,11 @@ class DefaultSignInUseCase: SignInUseCase {
         self.authRepository = authRepository
     }
 
-    func execute(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func execute(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
         authRepository.signIn(email: email, password: password) { result in
             switch result {
-            case .success:
-                completion(.success(()))
+            case .success(let user):
+                completion(.success(user))
             case .failure(let error):
                 completion(.failure(error))
             }

@@ -31,7 +31,7 @@ class StartPageView: UIView {
     lazy var keywordLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .label
         label.sizeToFit()
         label.text = "daily, discover, deliver"
         label.numberOfLines = 0
@@ -44,7 +44,7 @@ class StartPageView: UIView {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .darkGray
+        label.textColor = .label
         label.sizeToFit()
         label.text = """
 우리 동네 이웃의 다양한 일상소식
