@@ -22,7 +22,6 @@ class SignInViewController: UIViewController {
         return imageView
     }()
 
-    // 이메일 입력 -> 이메일 중복여부 확인 불필요 X 유효한 이메일 형태인지만 확인하기 (버튼 비 활성화)
     private lazy var emailTextFieldView: CommonTextFieldView = {
         let textFieldView = CommonTextFieldView()
 
@@ -37,7 +36,6 @@ class SignInViewController: UIViewController {
         return textFieldView
     }()
 
-    // 비밀번호 입력 -> 비밀번호 양식 체크 X 단순히 입력만 (버튼 비 활성화)
     private lazy var passwordTextFieldView: CommonTextFieldView = {
         let textFieldView = CommonTextFieldView()
 
@@ -53,7 +51,6 @@ class SignInViewController: UIViewController {
         return textFieldView
     }()
 
-    // 다음 버튼 라벨 -> 이메일, 그리고 비밀번호가 1자리 이상 입력되었을 때 활성화 하기
     private lazy var nextButtonView: CommonButtonView = {
         let buttonView = CommonButtonView()
         buttonView.nextButton.setTitle("가입완료 및 로그인하기", for: .normal)
@@ -82,6 +79,7 @@ class SignInViewController: UIViewController {
         view.addSubview(nextButtonView)
 
         NSLayoutConstraint.activate([
+
             appNameImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             appNameImageView.widthAnchor.constraint(equalToConstant: 150),
             appNameImageView.heightAnchor.constraint(equalToConstant: 83),
@@ -103,33 +101,35 @@ class SignInViewController: UIViewController {
     }
 
     private func bind() {
-        // ---> 전달해야 할 사항 (isEmailValid?)
         viewModel.$isEmailValid
             .receive(on: RunLoop.main)
             .sink { [weak self] isValid in
-                // 비밀번호가 비어있지 않을 경우
                 self?.nextButtonView.nextButton.isEnabled = isValid
                 self?.nextButtonView.nextButton.tintColor = isValid ? .tintColor : .gray
-
             }.store(in: &subscription)
 
         viewModel.$isLoggedIn
             .sink { [weak self] isLoggedIn in
                 if isLoggedIn {
+                    let loadingIndicator = UIActivityIndicatorView(style: .large)
+                    loadingIndicator.center = self?.view.center ?? CGPoint.zero
+                    loadingIndicator.startAnimating()
+                    self?.view.addSubview(loadingIndicator)
+
+
                     self?.saveUserCredentialsToKeychain() // 키체인에 정보를 저장함
-                    //                    let tabBarViewController = TabBarViewController()
+                    let tabBarViewController = TabBarViewController()
+
                     if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                         if !(sceneDelegate.window?.rootViewController is UITabBarController) {
-                            sceneDelegate.window?.rootViewController = TabBarViewController()
+                            let tabBarController = tabBarViewController
+                            tabBarController.modalTransitionStyle = .crossDissolve // FadeOut, FadeIn 효과를 적용
+                            sceneDelegate.window?.rootViewController = tabBarController
                             sceneDelegate.window?.makeKeyAndVisible()
                         }
                     }
-//                    tabBarViewController.modalPresentationStyle = .pageSheet
-//                    self?.present(tabBarViewController, animated: true) {
-//                        self?.navigationController?.popToRootViewController(animated: true)
-//                    }
                 } else {
-                    self?.removeUserCredentialsFromKeychain() // isLoggedIn 값이 false일때는 키체인 삭제, 초기화해줌
+                    self?.removeUserCredentialsFromKeychain()
                 }
             }
             .store(in: &subscription)
@@ -162,7 +162,6 @@ class SignInViewController: UIViewController {
         }
     }
 
-    // 유저정보 키체인 저장
     private func saveUserCredentialsToKeychain() {
         guard let email = self.emailTextFieldView.textField.text,
               let password = self.passwordTextFieldView.textField.text else {
@@ -172,13 +171,11 @@ class SignInViewController: UIViewController {
         SensitiveInfoManager.create(key: "userPassword", password: password)
     }
 
-    // MARK: - 유저정보 키체인 삭제 : 로그아웃 기능에서도 활용할 것
     private func removeUserCredentialsFromKeychain() {
         SensitiveInfoManager.delete(key: "userEmail")
         SensitiveInfoManager.delete(key: "userPassword")
     }
 
-    // 불 일치 시, Alert
     private func showErrorAlert(message: String) {
          errorAlert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
          errorAlert?.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in

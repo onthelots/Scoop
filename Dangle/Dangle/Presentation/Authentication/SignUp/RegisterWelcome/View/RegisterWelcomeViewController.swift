@@ -145,11 +145,12 @@ class RegisterWelcomeViewController: UIViewController {
 
     private func bind() {
         viewModel.signUpButtonTapped
-        // 3. 버튼이 눌렀을 때 실행될 클로저를 정의함
-            .sink { _ in 
+            .sink { _ in
                 if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                     if !(sceneDelegate.window?.rootViewController is UITabBarController) {
-                        sceneDelegate.window?.rootViewController = TabBarViewController()
+                        let tabBarController = TabBarViewController()
+                        tabBarController.modalTransitionStyle = .crossDissolve // FadeOut, FadeIn 효과를 적용
+                        sceneDelegate.window?.rootViewController = tabBarController
                         sceneDelegate.window?.makeKeyAndVisible()
                     }
                 }

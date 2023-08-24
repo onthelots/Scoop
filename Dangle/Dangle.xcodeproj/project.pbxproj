@@ -56,6 +56,20 @@
 		3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964942A8F884300078EE3 /* SignUpUseCase.swift */; };
 		3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* UserInfo.swift */; };
 		3F49649B2A8FA9FB00078EE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */; };
+		3F8CD6DB2A96D68600307372 /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DA2A96D68600307372 /* HomeSection.swift */; };
+		3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */; };
+		3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */; };
+		3F8CD6E42A96D90900307372 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E32A96D90900307372 /* TodayCollectionViewCell.swift */; };
+		3F8CD6E72A96D92300307372 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8CD6E62A96D92300307372 /* Kingfisher */; };
+		3F8CD6EF2A96E91A00307372 /* LocalEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6EE2A96E91A00307372 /* LocalEventUseCase.swift */; };
+		3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6F12A96EA8100307372 /* LocalEventRepository.swift */; };
+		3F8CD6F52A96EAFD00307372 /* DefaultsLocalEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6F42A96EAFD00307372 /* DefaultsLocalEventRepository.swift */; };
+		3F8CD6F72A97101300307372 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6F62A97101300307372 /* HomeViewModel.swift */; };
+		3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6F82A972CCB00307372 /* UserUseCase.swift */; };
+		3F8CD6FC2A972D1E00307372 /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6FB2A972D1E00307372 /* UserInfoRepository.swift */; };
+		3F8CD6FF2A972D5D00307372 /* DefaultsUserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6FE2A972D5D00307372 /* DefaultsUserInfoRepository.swift */; };
+		3F8CD7012A97474200307372 /* CulturalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD7002A97474200307372 /* CulturalEvent.swift */; };
+		3F8CD7032A97479400307372 /* EducationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD7022A97479400307372 /* EducationEvent.swift */; };
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
@@ -72,7 +86,7 @@
 		3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */; };
 		3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */; };
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
-		3FE361CF2A931E77000F1B38 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CE2A931E77000F1B38 /* UserAuth.swift */; };
+		3FE361CF2A931E77000F1B38 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CE2A931E77000F1B38 /* User.swift */; };
 		3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */; };
 		3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D32A93475A000F1B38 /* SettingViewController.swift */; };
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
@@ -142,6 +156,19 @@
 		3F4964942A8F884300078EE3 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		3F4964982A8FA1FD00078EE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F8CD6DA2A96D68600307372 /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
+		3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCollectionViewCell.swift; sourceTree = "<group>"; };
+		3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
+		3F8CD6E32A96D90900307372 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
+		3F8CD6EE2A96E91A00307372 /* LocalEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEventUseCase.swift; sourceTree = "<group>"; };
+		3F8CD6F12A96EA8100307372 /* LocalEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEventRepository.swift; sourceTree = "<group>"; };
+		3F8CD6F42A96EAFD00307372 /* DefaultsLocalEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsLocalEventRepository.swift; sourceTree = "<group>"; };
+		3F8CD6F62A97101300307372 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3F8CD6F82A972CCB00307372 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		3F8CD6FB2A972D1E00307372 /* UserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepository.swift; sourceTree = "<group>"; };
+		3F8CD6FE2A972D5D00307372 /* DefaultsUserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsUserInfoRepository.swift; sourceTree = "<group>"; };
+		3F8CD7002A97474200307372 /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
+		3F8CD7022A97479400307372 /* EducationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationEvent.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,7 +189,7 @@
 		3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewController.swift; sourceTree = "<group>"; };
 		3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewModel.swift; sourceTree = "<group>"; };
 		3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		3FE361CE2A931E77000F1B38 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
+		3FE361CE2A931E77000F1B38 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		3FE361D32A93475A000F1B38 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -173,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8CD6E72A96D92300307372 /* Kingfisher in Frameworks */,
 				3F3822872A9466E60019D994 /* FirebaseAuth in Frameworks */,
 				3F3822892A9466E60019D994 /* FirebaseFirestore in Frameworks */,
 				3F38228B2A9466E60019D994 /* FirebaseStorage in Frameworks */,
@@ -218,8 +246,10 @@
 		3F1AB78A2A8DC96E0076CEAB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				3F4964892A8F864B00078EE3 /* FirebaseRepository */,
+				3F4964892A8F864B00078EE3 /* AuthRepository */,
 				3F4964882A8F863D00078EE3 /* UserLocationRepository */,
+				3F8CD6F02A96EA4600307372 /* LocalEventRepository */,
+				3F8CD6FA2A972CDF00307372 /* UserInfoRepository */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -230,6 +260,8 @@
 				3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */,
 				3F4964942A8F884300078EE3 /* SignUpUseCase.swift */,
 				3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */,
+				3F8CD6EE2A96E91A00307372 /* LocalEventUseCase.swift */,
+				3F8CD6F82A972CCB00307372 /* UserUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -239,6 +271,7 @@
 			children = (
 				3F1AB7912A8DC96E0076CEAB /* Location */,
 				3FE361CD2A931E08000F1B38 /* Auth */,
+				3F8CD6E82A96E64E00307372 /* LocalEvent */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -274,7 +307,9 @@
 			isa = PBXGroup;
 			children = (
 				3F4964862A8F855900078EE3 /* DefaultsUserLocationRepository */,
-				3F4964872A8F856C00078EE3 /* DefaultsFirebaseRepository */,
+				3F4964872A8F856C00078EE3 /* DefaultsAuthRepository */,
+				3F8CD6F32A96EACA00307372 /* DefaultsLocalEventRepository */,
+				3F8CD6FD2A972D4A00307372 /* DefaultsUserInfoRepository */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -282,9 +317,11 @@
 		3F1AB79C2A8DC96E0076CEAB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */,
 				3F1AB7A12A8DC96E0076CEAB /* Authentication */,
-				3F67AB4F2A8E58CB000216CA /* Core */,
+				3F8CD6D92A96D5C300307372 /* TabBar */,
+				3F1AB79D2A8DC96E0076CEAB /* Home */,
+				3F1AB79F2A8DC96E0076CEAB /* Map */,
+				3F1AB7BF2A8DC96E0076CEAB /* Profile */,
 				3F1AB7BC2A8DC96E0076CEAB /* Utils */,
 			);
 			path = Presentation;
@@ -293,17 +330,19 @@
 		3F1AB79D2A8DC96E0076CEAB /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */,
+				3F8CD6CB2A96D41500307372 /* ViewModel */,
+				3F8CD6CA2A96D40F00307372 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		3F1AB79F2A8DC96E0076CEAB /* NearNews */ = {
+		3F1AB79F2A8DC96E0076CEAB /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				3F8CD6D32A96D58800307372 /* MapTab */,
 				3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */,
 			);
-			path = NearNews;
+			path = Map;
 			sourceTree = "<group>";
 		};
 		3F1AB7A12A8DC96E0076CEAB /* Authentication */ = {
@@ -440,6 +479,7 @@
 		3F1AB7BF2A8DC96E0076CEAB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				3F8CD6D62A96D5A900307372 /* ProfileTab */,
 				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
 				3FE361D32A93475A000F1B38 /* SettingViewController.swift */,
 			);
@@ -562,12 +602,12 @@
 			path = DefaultsUserLocationRepository;
 			sourceTree = "<group>";
 		};
-		3F4964872A8F856C00078EE3 /* DefaultsFirebaseRepository */ = {
+		3F4964872A8F856C00078EE3 /* DefaultsAuthRepository */ = {
 			isa = PBXGroup;
 			children = (
 				3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */,
 			);
-			path = DefaultsFirebaseRepository;
+			path = DefaultsAuthRepository;
 			sourceTree = "<group>";
 		};
 		3F4964882A8F863D00078EE3 /* UserLocationRepository */ = {
@@ -580,22 +620,135 @@
 			path = UserLocationRepository;
 			sourceTree = "<group>";
 		};
-		3F4964892A8F864B00078EE3 /* FirebaseRepository */ = {
+		3F4964892A8F864B00078EE3 /* AuthRepository */ = {
 			isa = PBXGroup;
 			children = (
 				3F49648B2A8F866400078EE3 /* AuthRepository.swift */,
 			);
-			path = FirebaseRepository;
+			path = AuthRepository;
 			sourceTree = "<group>";
 		};
-		3F67AB4F2A8E58CB000216CA /* Core */ = {
+		3F8CD6CA2A96D40F00307372 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB79D2A8DC96E0076CEAB /* Home */,
-				3F1AB79F2A8DC96E0076CEAB /* NearNews */,
-				3F1AB7BF2A8DC96E0076CEAB /* Profile */,
+				3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */,
+				3F8CD6DC2A96D8BF00307372 /* Cell */,
 			);
-			path = Core;
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F8CD6CB2A96D41500307372 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6DA2A96D68600307372 /* HomeSection.swift */,
+				3F8CD6F62A97101300307372 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F8CD6D32A96D58800307372 /* MapTab */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6D52A96D59E00307372 /* View */,
+				3F8CD6D42A96D59300307372 /* ViewModel */,
+			);
+			path = MapTab;
+			sourceTree = "<group>";
+		};
+		3F8CD6D42A96D59300307372 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F8CD6D52A96D59E00307372 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F8CD6D62A96D5A900307372 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6D82A96D5B300307372 /* ViewModel */,
+				3F8CD6D72A96D5AE00307372 /* View */,
+			);
+			path = ProfileTab;
+			sourceTree = "<group>";
+		};
+		3F8CD6D72A96D5AE00307372 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F8CD6D82A96D5B300307372 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F8CD6D92A96D5C300307372 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		3F8CD6DC2A96D8BF00307372 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6E32A96D90900307372 /* TodayCollectionViewCell.swift */,
+				3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */,
+				3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3F8CD6E82A96E64E00307372 /* LocalEvent */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD7002A97474200307372 /* CulturalEvent.swift */,
+				3F8CD7022A97479400307372 /* EducationEvent.swift */,
+			);
+			path = LocalEvent;
+			sourceTree = "<group>";
+		};
+		3F8CD6F02A96EA4600307372 /* LocalEventRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6F12A96EA8100307372 /* LocalEventRepository.swift */,
+			);
+			path = LocalEventRepository;
+			sourceTree = "<group>";
+		};
+		3F8CD6F32A96EACA00307372 /* DefaultsLocalEventRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6F42A96EAFD00307372 /* DefaultsLocalEventRepository.swift */,
+			);
+			path = DefaultsLocalEventRepository;
+			sourceTree = "<group>";
+		};
+		3F8CD6FA2A972CDF00307372 /* UserInfoRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6FB2A972D1E00307372 /* UserInfoRepository.swift */,
+			);
+			path = UserInfoRepository;
+			sourceTree = "<group>";
+		};
+		3F8CD6FD2A972D4A00307372 /* DefaultsUserInfoRepository */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6FE2A972D5D00307372 /* DefaultsUserInfoRepository.swift */,
+			);
+			path = DefaultsUserInfoRepository;
 			sourceTree = "<group>";
 		};
 		3FACA86C2A7CE47B00F2544C = {
@@ -770,7 +923,7 @@
 		3FE361CD2A931E08000F1B38 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				3FE361CE2A931E77000F1B38 /* UserAuth.swift */,
+				3FE361CE2A931E77000F1B38 /* User.swift */,
 				3F4964982A8FA1FD00078EE3 /* UserInfo.swift */,
 			);
 			path = Auth;
@@ -797,6 +950,7 @@
 				3F3822862A9466E60019D994 /* FirebaseAuth */,
 				3F3822882A9466E60019D994 /* FirebaseFirestore */,
 				3F38228A2A9466E60019D994 /* FirebaseStorage */,
+				3F8CD6E62A96D92300307372 /* Kingfisher */,
 			);
 			productName = Dangle;
 			productReference = 3FACA8752A7CE47B00F2544C /* Dangle.app */;
@@ -872,6 +1026,7 @@
 			mainGroup = 3FACA86C2A7CE47B00F2544C;
 			packageReferences = (
 				3F3822852A9466E60019D994 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 3FACA8762A7CE47B00F2544C /* Products */;
 			projectDirPath = "";
@@ -942,7 +1097,9 @@
 				3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */,
 				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
 				3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */,
+				3F8CD6FC2A972D1E00307372 /* UserInfoRepository.swift in Sources */,
 				3FB14B692A91184C00A356DA /* RegPasswordViewModel.swift in Sources */,
+				3F8CD7032A97479400307372 /* EducationEvent.swift in Sources */,
 				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
@@ -950,7 +1107,9 @@
 				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
 				3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */,
+				3F8CD7012A97474200307372 /* CulturalEvent.swift in Sources */,
 				3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */,
+				3F8CD6E42A96D90900307372 /* TodayCollectionViewCell.swift in Sources */,
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
 				3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */,
 				3F49647D2A8F5D4000078EE3 /* PasswordValidationService.swift in Sources */,
@@ -965,13 +1124,18 @@
 				3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
 				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
+				3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */,
+				3F8CD6F72A97101300307372 /* HomeViewModel.swift in Sources */,
+				3F8CD6DB2A96D68600307372 /* HomeSection.swift in Sources */,
 				3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */,
 				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
 				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
+				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
-				3FE361CF2A931E77000F1B38 /* UserAuth.swift in Sources */,
+				3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */,
+				3FE361CF2A931E77000F1B38 /* User.swift in Sources */,
 				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
 				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
 				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
@@ -981,17 +1145,21 @@
 				3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */,
 				3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */,
 				3F1AB7DA2A8DC96E0076CEAB /* RegionCode.swift in Sources */,
+				3F8CD6FF2A972D5D00307372 /* DefaultsUserInfoRepository.swift in Sources */,
 				3F1AB7EF2A8DC96E0076CEAB /* UserLocationViewController.swift in Sources */,
 				3F49648C2A8F866400078EE3 /* AuthRepository.swift in Sources */,
 				3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */,
 				3FB14B6D2A912F1500A356DA /* CommonButtonView.swift in Sources */,
 				3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */,
 				3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */,
+				3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */,
+				3F8CD6F52A96EAFD00307372 /* DefaultsLocalEventRepository.swift in Sources */,
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
 				3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */,
 				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
 				3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */,
 				3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */,
+				3F8CD6EF2A96E91A00307372 /* LocalEventUseCase.swift in Sources */,
 				3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */,
 				3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */,
 				3FB14B592A90F08A00A356DA /* CommonTextFieldView.swift in Sources */,
@@ -1349,6 +1517,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1366,6 +1542,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F3822852A9466E60019D994 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		3F8CD6E62A96D92300307372 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

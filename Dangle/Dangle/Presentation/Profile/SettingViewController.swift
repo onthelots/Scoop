@@ -74,24 +74,21 @@ class SettingViewController: UIViewController {
         let alert = UIAlertController(title: "로그아웃",
                                       message: "정말 로그아웃 하시겠습니까?",
                                       preferredStyle: .alert)
-
         alert.addAction(UIAlertAction(title: "아니오",
                                       style: .cancel))
-
         alert.addAction(UIAlertAction(title: "네",
                                       style: .destructive, handler: { _ in
             let firebaseAuth = Auth.auth()
             do {
-                try firebaseAuth.signOut() // 파베에서 로그아웃
-                self.removeUserCredentialsFromKeychain() // 키체인 정보 지우기
-                //                let navVC = UINavigationController(rootViewController: StartPageViewController())
-                //                navVC.modalPresentationStyle = .pageSheet
-                //                self.present(navVC, animated: true, completion: {
-                //                    // rootView가 근데 ProfileView 잖아..?
-                //                    self.navigationController?.popToRootViewController(animated: false)
-                //                })
+                try firebaseAuth.signOut()
+                self.removeUserCredentialsFromKeychain()
                 if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-                    sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: StartPageViewController())
+                    let startPageViewController = UINavigationController(rootViewController: StartPageViewController())
+                    let transitionOptions: UIView.AnimationOptions = [.transitionCrossDissolve, .curveEaseInOut]
+                    UIView.transition(with: sceneDelegate.window!, duration: 0.5, options: transitionOptions, animations: {
+                        sceneDelegate.window?.rootViewController = startPageViewController
+                        sceneDelegate.window?.makeKeyAndVisible()
+                    }, completion: nil)
                 }
             } catch let signOutError as NSError {
                 print("로그아웃이 잘 되질 않았네요 : \(signOutError)")

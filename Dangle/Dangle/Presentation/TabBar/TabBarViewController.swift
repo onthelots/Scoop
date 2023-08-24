@@ -10,17 +10,10 @@ import UIKit
 class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Each Tab Main ViewControllers
+
         let vc1 = HomeViewController()
         let vc2 = MapViewController()
         let vc3 = ProfileViewController()
-
-        // set title
-        vc1.title = "Home"
-        vc2.title = "Search"
-        vc3.title = "Library"
-
         vc1.navigationItem.largeTitleDisplayMode = .never
         vc2.navigationItem.largeTitleDisplayMode = .never
         vc3.navigationItem.largeTitleDisplayMode = .never
@@ -35,14 +28,9 @@ class TabBarViewController: UITabBarController {
         nav2.tabBarItem = UITabBarItem(title: "우리 동네", image: UIImage(systemName: "map"), tag: 2)
         nav3.tabBarItem = UITabBarItem(title: "내 정보", image: UIImage(systemName: "person"), tag: 3)
 
-
-        nav1.navigationBar.prefersLargeTitles = false
-        nav2.navigationBar.prefersLargeTitles = false
-        nav3.navigationBar.prefersLargeTitles = false
-
-        nav1.navigationBar.tintColor = .label
-        nav2.navigationBar.tintColor = .label
-        nav3.navigationBar.tintColor = .label
+//        nav1.navigationBar.tintColor = .tintColor
+//        nav2.navigationBar.tintColor = .tintColor
+//        nav3.navigationBar.tintColor = .tintColor
 
         // Arrange Each NavigationController
         setViewControllers([nav1, nav2, nav3], animated: false)

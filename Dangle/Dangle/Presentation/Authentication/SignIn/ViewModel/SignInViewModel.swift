@@ -15,9 +15,10 @@ class SignInViewModel: ObservableObject {
     @Published var isEmailValid: Bool = false
     @Published var isLoggedIn: Bool = false
     @Published var errorMessage: String?
-    let emailInput = PassthroughSubject<String, Never>()
 
+    let emailInput = PassthroughSubject<String, Never>()
     private var subscription: Set<AnyCancellable> = []
+
 
     init(signInUseCase: SignInUseCase, emailValidationService: EmailValidationService) {
         self.signInUseCase = signInUseCase

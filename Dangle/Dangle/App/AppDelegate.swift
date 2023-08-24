@@ -39,6 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
         self.window = window
 
+        let appearance = UITabBarAppearance()
+        let tabBar = UITabBar()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .label
+
+        tabBar.standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+
         return true
     }
     

@@ -9,7 +9,7 @@ import Foundation
 
 struct UserInfo: Codable {
     let email: String
-    let password: String
+    let password: String?
     let location: String?
     let nickname: String?
 }
