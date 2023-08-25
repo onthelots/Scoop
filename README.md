@@ -93,12 +93,16 @@ InSight
 - 본격적인 앱을 구현하기에 앞서, `사용자 친화적인 UX`를 제공하기 위해 Figma를 통한 프로토타입 생성
 - 디자인-개발-수정 단계를 반복적으로 수행함으로서 `애자일 개발방식` 실천
 
-![image](https://github.com/onthelots/dangle/assets/107039500/4ee94c25-1083-4b3d-b17b-f987a93caa9f)
+![image](https://github.com/onthelots/dangle/assets/107039500/06ee2adb-f992-47dd-903a-57a0c622fc2c)
+
+<br>
+
+--- 
 
 <br>
 
 ### 4-2 [Feature 2] 사용자 위치정보 업데이트 (CLLocation, Reverse Geocoding) 및 계정 관리
-> 위치정보 인증부터 좌표를 활용한 행정동 단위로의 변환 실시, 위치 검색을 통한 위치 직접 설정 허용
+#### 4-2-1 위치정보 인증부터 좌표를 활용한 행정동 단위로의 변환 실시, 위치 검색을 통한 위치 직접 설정 허용
 - 사용자 위치정보 `허용/비허용` 과정에 대한 분기처리 실시(ToggleView)
 - [UseCase 1] : 좌표 » 코드 » 동 단위
    - CLLocation을 통해 `Coordinate`를 1차로 받아오고, `Reverse Geocoding`을 2차로 수행함으로서 법정동/행정동 단위로 위치를 나타냄
@@ -107,7 +111,7 @@ InSight
    - 사용자가 원하는 위치를 검색하여 선택할 수 있도록 동 코드를 재 변환
    - 주소코드 앞 5자리를 추출하기 위해 `WildCard Pattern`을 활용, 사용자의 인근 위치의 동 단위 주소를 모두 반환함
 
-> Keychain, UserDefaults, Fiebase를 통한 계정관리 시스템 구축
+#### 4-2-2 Keychain, UserDefaults, Fiebase를 통한 계정관리 시스템 구축
 - `Firebase`를 통하여 계정관리(회원가입, 로그인, 로그아웃) 외 추가 유저정보(위치 등)를 저장하고 활용할 수 있도록 구성함
 - 자동 로그인 기능을 구현하기 위해 `Keychain`을 통해 email과 password를 안전하게 저장, 활용함 (Scene 분기처리 담당)
   
@@ -123,11 +127,49 @@ InSight
 
 <br>
 
-### 4-3 [Feature 3] OpenAPI를 활용한 위치기반 데이터 나타내기(+ 일상에 유용한 정보)
-
-
+--- 
 
 <br>
+
+### 4-3 [Feature 3] Home, Map, Profile 탭 별 UI 구현 및 데이터 나타내기
+
+#### 4-3-1 Home Tab
+> 위치정보 기반(자치구 & 법정동) 날씨 데이터와 자치구 내 문화행사, 강좌(서울시 공공데이터) 등 유용한 정보 제공
+- 로그인 한 사용자의 `UID`를 기반으로 서버(FireStore)에서 위치값을 활용, 서울시 공공 API 데이터를 필터링하여 화면에 나타냄
+- Paging 기능을 비롯하여 Section 별 상이한 레이아웃을 구성하기 위해, `Compositional Layout`을 활용함
+- 각각의 이벤트를 선택 » 세부 정보 뷰를 확인 » 예약 혹은 더욱 자세한 정보를 앱웹으로 확인하기 위해 `SFSafariViewController`를 활용
+
+<br>
+
+#### 4-3-2 Dangle Map Tab
+> 작성중
+- 작성중
+
+🚫 Trouble Shooting
+
+순서  | 내용  | 비고
+----| ----- | -----
+1| 작성중 | 작성중
+2| 작성중 | 작성중
+
+<br>
+
+
+#### 4-3-3 Profile Tab 
+> 작성중
+- 작성중
+
+<br>
+
+🚫 Trouble Shooting
+
+순서  | 내용  | 비고
+----| ----- | -----
+1| 작성중 | 작성중
+2| 작성중 | 작성중
+
+<br>
+
 
 ## 5-업데이트 및 리팩토링 사항
 ### 5-1 우선 순위별 개선항목
