@@ -55,7 +55,6 @@
 		3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */; };
 		3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964942A8F884300078EE3 /* SignUpUseCase.swift */; };
 		3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* UserInfo.swift */; };
-		3F49649B2A8FA9FB00078EE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */; };
 		3F8CD6DB2A96D68600307372 /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DA2A96D68600307372 /* HomeSection.swift */; };
 		3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */; };
 		3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */; };
@@ -83,6 +82,10 @@
 		3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */; };
 		3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */; };
 		3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */; };
+		3FD6181D2A9866B000CE6690 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */; };
+		3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */; };
+		3FD618262A98907B00CE6690 /* CulturalEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618252A98907B00CE6690 /* CulturalEventViewController.swift */; };
+		3FD618282A98909300CE6690 /* EducationEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618272A98909300CE6690 /* EducationEventViewController.swift */; };
 		3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */; };
 		3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */; };
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
@@ -155,7 +158,6 @@
 		3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsAuthRepository.swift; sourceTree = "<group>"; };
 		3F4964942A8F884300078EE3 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		3F4964982A8FA1FD00078EE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F8CD6DA2A96D68600307372 /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
 		3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -186,6 +188,10 @@
 		3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewModel.swift; sourceTree = "<group>"; };
 		3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewController.swift; sourceTree = "<group>"; };
 		3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameValidationService.swift; sourceTree = "<group>"; };
+		3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionHeaderReusableView.swift; sourceTree = "<group>"; };
+		3FD618252A98907B00CE6690 /* CulturalEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventViewController.swift; sourceTree = "<group>"; };
+		3FD618272A98909300CE6690 /* EducationEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationEventViewController.swift; sourceTree = "<group>"; };
 		3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewController.swift; sourceTree = "<group>"; };
 		3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewModel.swift; sourceTree = "<group>"; };
 		3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -317,8 +323,8 @@
 		3F1AB79C2A8DC96E0076CEAB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7A12A8DC96E0076CEAB /* Authentication */,
 				3F8CD6D92A96D5C300307372 /* TabBar */,
+				3F1AB7A12A8DC96E0076CEAB /* Authentication */,
 				3F1AB79D2A8DC96E0076CEAB /* Home */,
 				3F1AB79F2A8DC96E0076CEAB /* Map */,
 				3F1AB7BF2A8DC96E0076CEAB /* Profile */,
@@ -480,8 +486,6 @@
 			isa = PBXGroup;
 			children = (
 				3F8CD6D62A96D5A900307372 /* ProfileTab */,
-				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
-				3FE361D32A93475A000F1B38 /* SettingViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -632,6 +636,8 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */,
+				3FD618252A98907B00CE6690 /* CulturalEventViewController.swift */,
+				3FD618272A98909300CE6690 /* EducationEventViewController.swift */,
 				3F8CD6DC2A96D8BF00307372 /* Cell */,
 			);
 			path = View;
@@ -681,6 +687,8 @@
 		3F8CD6D72A96D5AE00307372 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
+				3FE361D32A93475A000F1B38 /* SettingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -706,6 +714,7 @@
 				3F8CD6E32A96D90900307372 /* TodayCollectionViewCell.swift */,
 				3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */,
 				3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */,
+				3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -782,7 +791,7 @@
 				3F1AB79C2A8DC96E0076CEAB /* Presentation */,
 				3F1AB7C22A8DC96E0076CEAB /* Resource */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
-				3F49649A2A8FA9FB00078EE3 /* GoogleService-Info.plist */,
+				3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */,
 			);
 			path = Dangle;
 			sourceTree = "<group>";
@@ -1045,7 +1054,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */,
-				3F49649B2A8FA9FB00078EE3 /* GoogleService-Info.plist in Resources */,
+				3FD6181D2A9866B000CE6690 /* GoogleService-Info.plist in Resources */,
 				3F1AB7F42A8DC96E0076CEAB /* LaunchScreen.storyboard in Resources */,
 				3F1AB7F32A8DC96E0076CEAB /* Assets.xcassets in Resources */,
 			);
@@ -1103,6 +1112,7 @@
 				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
+				3FD618262A98907B00CE6690 /* CulturalEventViewController.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
@@ -1133,6 +1143,8 @@
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
+				3FD618282A98909300CE6690 /* EducationEventViewController.swift in Sources */,
+				3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
 				3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */,
 				3FE361CF2A931E77000F1B38 /* User.swift in Sources */,
@@ -1351,7 +1363,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.dangle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lime.dangle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1383,7 +1395,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.dangle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lime.dangle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

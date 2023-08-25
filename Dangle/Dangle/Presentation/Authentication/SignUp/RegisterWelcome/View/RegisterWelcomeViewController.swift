@@ -97,7 +97,8 @@ class RegisterWelcomeViewController: UIViewController {
 
         // 2. Viewmodel 초기화 (DefaultsAuthRepository를 사용함)
         let signUpUseCase = DefaultSignUpUseCase(authRepository: DefaultsAuthRepository())
-        viewModel = RegisterWelcomeViewModel(signUpUseCase: signUpUseCase)
+        let signInUseCase = DefaultSignInUseCase(authRepository: DefaultsAuthRepository())
+        viewModel = RegisterWelcomeViewModel(signUpUseCase: signUpUseCase, signInUseCase: signInUseCase)
         setTitle(nickname: nickname)
         setupUI()
         bind()
@@ -144,15 +145,23 @@ class RegisterWelcomeViewController: UIViewController {
     }
 
     private func bind() {
-        viewModel.signUpButtonTapped
-            .sink { _ in
-                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-                    if !(sceneDelegate.window?.rootViewController is UITabBarController) {
-                        let tabBarController = TabBarViewController()
-                        tabBarController.modalTransitionStyle = .crossDissolve // FadeOut, FadeIn 효과를 적용
-                        sceneDelegate.window?.rootViewController = tabBarController
-                        sceneDelegate.window?.makeKeyAndVisible()
+        viewModel.$isLoggedIn
+            .sink { [weak self] isLoggIn in
+                if isLoggIn {
+                    let loadingIndicator = UIActivityIndicatorView(style: .large)
+                    loadingIndicator.center = self?.view.center ?? CGPoint.zero
+                    loadingIndicator.startAnimating()
+                    self?.view.addSubview(loadingIndicator)
+                    if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                        if !(sceneDelegate.window?.rootViewController is UITabBarController) {
+                            let tabBarController = TabBarViewController()
+                            tabBarController.modalTransitionStyle = .crossDissolve // FadeOut, FadeIn 효과를 적용
+                            sceneDelegate.window?.rootViewController = tabBarController
+                            sceneDelegate.window?.makeKeyAndVisible()
+                        }
                     }
+                } else {
+                    self?.removeUserCredentialsFromKeychain()
                 }
             }.store(in: &subscription)
     }
@@ -164,5 +173,10 @@ class RegisterWelcomeViewController: UIViewController {
         // 4. viewModel의 signUpButtonTapped 퍼블리셔에게 정보를 전달함
         viewModel.signUpButtonTapped.send(userInfo)
         print("signUpButtonTapped 퍼블리셔에게 userInfo를 전달합니다")
+    }
+
+    private func removeUserCredentialsFromKeychain() {
+        SensitiveInfoManager.delete(key: "userEmail")
+        SensitiveInfoManager.delete(key: "userPassword")
     }
 }

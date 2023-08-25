@@ -10,13 +10,19 @@ import FirebaseAuth
 
 final class RegisterWelcomeViewModel: ObservableObject {
     internal let signUpUseCase: DefaultSignUpUseCase
+    internal let signInUseCase: DefaultSignInUseCase
+
+
+    @Published var isLoggedIn: Bool = false
 
     let signUpButtonTapped = PassthroughSubject<UserInfo, Never>()
     private var subscription = Set<AnyCancellable>()
 
     // 1. signUpCases 초기화
-    init(signUpUseCase: DefaultSignUpUseCase) {
+    init(signUpUseCase: DefaultSignUpUseCase, signInUseCase: DefaultSignInUseCase) {
         self.signUpUseCase = signUpUseCase
+        self.signInUseCase = signInUseCase
+
         setupBindings()
     }
 
@@ -30,7 +36,15 @@ final class RegisterWelcomeViewModel: ObservableObject {
                 self.signUpUseCase.execute(email: info.email, password: info.password ?? "", location: info.location ?? "", nickname: info.nickname ?? "") { results in
                     switch results {
                     case .success:
-                        break
+                        self.signInUseCase.execute(email: info.email, password: info.password ?? "") { result in
+                            switch result {
+                            case .success:
+                                self.isLoggedIn = true
+                            case .failure(let error):
+                                print("로그인에 실패했습니다 \(error)")
+                                self.isLoggedIn = false
+                            }
+                        }
                     case .failure:
                         break
                     }

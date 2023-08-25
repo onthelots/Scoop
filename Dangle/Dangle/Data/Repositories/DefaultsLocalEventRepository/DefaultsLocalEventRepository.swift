@@ -77,7 +77,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
 
         let resource: Resource<EducationEvent> = Resource(
             base: seoulOpenDataManager.openDataEducationBaseURL,
-            path: ""
+            path: " "
         )
         networkManager.load(resource)
             .receive(on: RunLoop.main)

@@ -17,7 +17,6 @@ class TodayCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.sizeToFit()
-
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

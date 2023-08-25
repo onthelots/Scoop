@@ -11,7 +11,7 @@ struct EducationEvent: Codable {
     let educationEventInfo: EducationEventInfo
 
     enum CodingKeys: String, CodingKey {
-        case educationEventInfo = "ListPublicReservationEducation"
+        case educationEventInfo = "tvYeyakCOllect"
     }
 }
 
@@ -28,17 +28,20 @@ struct EducationEventInfo: Codable {
 
 // MARK: - Row
 struct EducationEventDetail: Codable {
-    let gubun, svcid, maxclassnm, minclassnm: String
-    let svcstatnm, svcnm, payatnm, placenm: String
-    let usetgtinfo: String
+    let div, service, gubun, svcid: String
+    let maxclassnm, minclassnm, svcstatnm, svcnm: String
+    let payatnm, placenm, usetgtinfo: String
     let svcurl: String
     let lot, lat, svcopnbgndt, svcopnenddt: String
     let rcptbgndt, rcptenddt, areanm: String
     let imgurl: String
     let dtlcont, telno, vMax, vMin: String
-    let revstddaynm, revstdday: String
+    let revstdday: Int
+    let revstddaynm: String
 
     enum CodingKeys: String, CodingKey {
+        case div = "DIV"
+        case service = "SERVICE"
         case gubun = "GUBUN"
         case svcid = "SVCID"
         case maxclassnm = "MAXCLASSNM"
@@ -61,7 +64,7 @@ struct EducationEventDetail: Codable {
         case telno = "TELNO"
         case vMax = "V_MAX"
         case vMin = "V_MIN"
-        case revstddaynm = "REVSTDDAYNM"
         case revstdday = "REVSTDDAY"
+        case revstddaynm = "REVSTDDAYNM"
     }
 }
