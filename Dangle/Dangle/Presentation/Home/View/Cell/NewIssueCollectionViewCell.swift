@@ -12,7 +12,7 @@ class NewIssueCollectionViewCell: UICollectionViewCell {
     static let identifier = "NewIssueCollectionViewCell"
 
     // MARK: - Components
-    private let thumbnailImageView: UIImageView = {
+    private lazy var thumbnailImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
         imageView.contentMode = .scaleAspectFill
@@ -22,7 +22,7 @@ class NewIssueCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private let categoryButtonLabel: UIButton = {
+    private lazy var categoryButtonLabel: UIButton = {
         let button = UIButton()
         button.setTitle("맛집/카페", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -34,7 +34,7 @@ class NewIssueCollectionViewCell: UICollectionViewCell {
         return button
     }()
 
-    private let labelStackView: UIStackView = {
+    private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -44,7 +44,7 @@ class NewIssueCollectionViewCell: UICollectionViewCell {
     }()
 
 
-    private let descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 9, weight: .regular)
         label.textAlignment = .left
@@ -54,7 +54,7 @@ class NewIssueCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let locationLabel: UILabel = {
+    private lazy var locationLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10, weight: .light)
         label.textAlignment = .left

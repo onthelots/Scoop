@@ -82,10 +82,12 @@
 		3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */; };
 		3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */; };
 		3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */; };
+		3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */; };
 		3FD6181D2A9866B000CE6690 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */; };
 		3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */; };
-		3FD618262A98907B00CE6690 /* CulturalEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618252A98907B00CE6690 /* CulturalEventViewController.swift */; };
-		3FD618282A98909300CE6690 /* EducationEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618272A98909300CE6690 /* EducationEventViewController.swift */; };
+		3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618272A98909300CE6690 /* EventDetailViewController.swift */; };
+		3FD618302A98A2BE00CE6690 /* EventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6182F2A98A2BE00CE6690 /* EventDTO.swift */; };
+		3FD618342A98A6B500CE6690 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618332A98A6B500CE6690 /* EventDetailView.swift */; };
 		3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */; };
 		3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */; };
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
@@ -188,10 +190,12 @@
 		3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewModel.swift; sourceTree = "<group>"; };
 		3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewController.swift; sourceTree = "<group>"; };
 		3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameValidationService.swift; sourceTree = "<group>"; };
+		3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
 		3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionHeaderReusableView.swift; sourceTree = "<group>"; };
-		3FD618252A98907B00CE6690 /* CulturalEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEventViewController.swift; sourceTree = "<group>"; };
-		3FD618272A98909300CE6690 /* EducationEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationEventViewController.swift; sourceTree = "<group>"; };
+		3FD618272A98909300CE6690 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		3FD6182F2A98A2BE00CE6690 /* EventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDTO.swift; sourceTree = "<group>"; };
+		3FD618332A98A6B500CE6690 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewController.swift; sourceTree = "<group>"; };
 		3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewModel.swift; sourceTree = "<group>"; };
 		3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -566,6 +570,7 @@
 			children = (
 				3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */,
 				3F1AB7952A8DC96E0076CEAB /* Terms */,
+				3FD6182E2A98A27000CE6690 /* LocalEvent */,
 			);
 			path = PersistentStorages;
 			sourceTree = "<group>";
@@ -636,8 +641,8 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */,
-				3FD618252A98907B00CE6690 /* CulturalEventViewController.swift */,
-				3FD618272A98909300CE6690 /* EducationEventViewController.swift */,
+				3FD618272A98909300CE6690 /* EventDetailViewController.swift */,
+				3FD618332A98A6B500CE6690 /* EventDetailView.swift */,
 				3F8CD6DC2A96D8BF00307372 /* Cell */,
 			);
 			path = View;
@@ -646,8 +651,8 @@
 		3F8CD6CB2A96D41500307372 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3F8CD6DA2A96D68600307372 /* HomeSection.swift */,
 				3F8CD6F62A97101300307372 /* HomeViewModel.swift */,
+				3F8CD6DA2A96D68600307372 /* HomeSection.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 			children = (
 				3F8CD7002A97474200307372 /* CulturalEvent.swift */,
 				3F8CD7022A97479400307372 /* EducationEvent.swift */,
+				3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */,
 			);
 			path = LocalEvent;
 			sourceTree = "<group>";
@@ -902,6 +908,14 @@
 				3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3FD6182E2A98A27000CE6690 /* LocalEvent */ = {
+			isa = PBXGroup;
+			children = (
+				3FD6182F2A98A2BE00CE6690 /* EventDTO.swift */,
+			);
+			path = LocalEvent;
 			sourceTree = "<group>";
 		};
 		3FE361C12A92D3D7000F1B38 /* RegisterWelcome */ = {
@@ -1112,7 +1126,6 @@
 				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
-				3FD618262A98907B00CE6690 /* CulturalEventViewController.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
@@ -1123,10 +1136,12 @@
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
 				3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */,
 				3F49647D2A8F5D4000078EE3 /* PasswordValidationService.swift in Sources */,
+				3FD618342A98A6B500CE6690 /* EventDetailView.swift in Sources */,
 				3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */,
 				3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */,
 				3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */,
 				3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */,
+				3FD618302A98A2BE00CE6690 /* EventDTO.swift in Sources */,
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
 				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
 				3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */,
@@ -1141,9 +1156,10 @@
 				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
 				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
+				3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
-				3FD618282A98909300CE6690 /* EducationEventViewController.swift in Sources */,
+				3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */,
 				3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
 				3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */,
