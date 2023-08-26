@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     func setupBackButton() {
-        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(navigateBack))
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .plain, target: self, action: #selector(navigateBack))
         backButton.tintColor = .black
         navigationItem.leftBarButtonItem = backButton
     }

@@ -15,4 +15,8 @@ protocol LocalEventRepository {
     func educationEventParsing(
         location: String,
         completion: @escaping (Result<EducationEvent, Error>) -> Void)
+
+    func newIssueParsing(
+        category: String,
+        completion: @escaping (Result<NewIssue, Error>) -> Void)
 }

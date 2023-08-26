@@ -12,7 +12,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
     static let identifier = "InformationCollectionViewCell"
 
     // MARK: - Components
-    private let labelStackView: UIStackView = {
+    private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -21,7 +21,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
 
-    private let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         label.textAlignment = .left
@@ -31,7 +31,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let timeLabel: UILabel = {
+    private lazy var timeLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 9, weight: .regular)
         label.textAlignment = .left
@@ -41,7 +41,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let locationLabel: UILabel = {
+    private lazy var locationLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         label.textAlignment = .left
@@ -51,7 +51,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let thumbnailImageView: UIImageView = {
+    private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
         imageView.contentMode = .scaleAspectFill

@@ -11,7 +11,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
     static let identifier = "TodayCollectionViewCell"
 
     // MARK: - Components
-    private let locationLabel: UILabel = {
+    private lazy var locationLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
         label.textAlignment = .left
@@ -21,7 +21,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let statusLabel: UILabel = {
+    private lazy var statusLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 9, weight: .light)
         label.textAlignment = .left
@@ -31,7 +31,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let temperatureLabel: UILabel = {
+    private lazy var temperatureLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         label.textAlignment = .left
@@ -41,7 +41,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let weatherImageView: UIImageView = {
+    private lazy var weatherImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
         imageView.contentMode = .scaleAspectFit
@@ -99,13 +99,13 @@ class TodayCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - 목업
-    func configure(item: CultureEventDTO) {
-        self.locationLabel.text = item.time
-        self.weatherImageView.kf.setImage(
-            with: URL(string: item.thumbNail ?? "")!,
-            placeholder: UIImage(systemName: "hands.sparkles.fill")
-        )
-        self.statusLabel.text = item.title
-        self.temperatureLabel.text = item.location
-    }
+//    func configure(item: CultureEventDTO) {
+//        self.locationLabel.text = item.time
+//        self.weatherImageView.kf.setImage(
+//            with: URL(string: item.thumbNail ?? "")!,
+//            placeholder: UIImage(systemName: "hands.sparkles.fill")
+//        )
+//        self.statusLabel.text = item.title
+//        self.temperatureLabel.text = item.location
+//    }
 }

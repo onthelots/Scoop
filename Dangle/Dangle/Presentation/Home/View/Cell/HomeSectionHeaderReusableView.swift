@@ -10,7 +10,7 @@ import UIKit
 class HomeSectionHeaderReusableView: UICollectionReusableView {
     static let identifier = "HomeSectionHeaderReusableView"
 
-    private let sectionTitleLabel: UILabel = {
+    private lazy var sectionTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label

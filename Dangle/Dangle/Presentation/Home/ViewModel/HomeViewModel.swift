@@ -23,11 +23,6 @@ class HomeViewModel: ObservableObject {
 
     @Published var userInfo: UserInfo!
 
-    @Published var dangleIssueEventTapped: [DangleIssueDTO] = []
-    @Published var culturalEventTapped: [CultureEventDTO] = []
-    @Published var educationEventTapped: [EducationEventDTO] = []
-
-
     // 구독자 --> 추후, 관련된 Cell을 클릭했을 때 활용
     private var subscription: Set<AnyCancellable> = []
 
@@ -39,10 +34,8 @@ class HomeViewModel: ObservableObject {
     // 2. 사용자 정보를 Firebase에서 가져옴
     func userInfoFetch() {
         guard let userId = Auth.auth().currentUser?.uid else {
-            print("User is not authenticated.")
             return
         }
-        print("현재 유저의 Id : \(userId)")
 
         // MARK: - dangle Issue에 데이터 전달하기
         /*
@@ -72,7 +65,6 @@ class HomeViewModel: ObservableObject {
         localEventUseCase.execute(location: location) { result in
             switch result {
             case .success(let culturalEvent):
-                print("파싱성공 : 문화행사 데이터", culturalEvent.culturalEventInfo.detail.count)
                 self.culturalEventSubject.send(culturalEvent.culturalEventInfo.detail)
             case .failure(let error):
                 print("Error fetching cultural events: \(error)")
@@ -85,7 +77,6 @@ class HomeViewModel: ObservableObject {
         localEventUseCase.execute(location: location) { result in
             switch result {
             case .success(let educationEvent):
-                print("파싱성공 : 교육 데이터", educationEvent.educationEventInfo.detail.count)
                 self.educationEventSubject.send(educationEvent.educationEventInfo.detail)
             case .failure(let error):
                 print("Error fetching education events: \(error)")

@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     // 뷰 모델 가져오기
     private var viewModel: HomeViewModel!
 
+    // MOCK-UP
     private var newIssueItems: [DangleIssueDTO] = DangleIssueDTO.mock
 
     // section 구분을 위한 선언, 각 섹션별로는 내부에 DTO 타입이 존재함
@@ -60,23 +61,22 @@ class HomeViewController: UIViewController {
 
     // 3. bind
     private func bind() {
-        
-        // 3-2. 문화 퍼블리셔를 구독, viewcontroller에서 사용할 데이터에 전달
+        // 3-2. 문화 퍼블리셔와 교육 퍼블리셔를 함께 구독, viewcontroller에서 사용할 데이터에 전달
         viewModel.culturalEventSubject
             .combineLatest(viewModel.educationEventSubject)
             .receive(on: RunLoop.main)
             .sink { [weak self] culturalEvent, educationEvent in
-
-                // 빈 배열에 데이터 할당하기
-                self?.configureModels(newIssue: self!.newIssueItems)
-
                 let culturalEventItems = culturalEvent.map { items in
-                    CultureEventDTO(title: items.title,
-                                    time: items.date,
-                                    location: items.place,
-                                    thumbNail: items.mainImg
-                    )
+                    EventDetailDTO(title: items.title,
+                                   category: items.codename,
+                                   useTarget: items.useTrgt,
+                                   date: items.date,
+                                   location: items.place,
+                                   description: items.program,
+                                   thumbNail: items.mainImg,
+                                   url: items.hmpgAddr)
                 }
+
                 self?.sections.append(.culturalEvent(viewModels: culturalEventItems)) // section에도 데이터 전달하기
 
                 // 빈 배열에 데이터 할당하기
@@ -87,12 +87,15 @@ class HomeViewController: UIViewController {
                     if let startDate = dateFormatter.date(from: items.svcopnbgndt),
                        let endDate = dateFormatter.date(from: items.svcopnenddt) {
                         dateFormatter.dateFormat = "yyyy-MM-dd"
-                        return EducationEventDTO(
+                        return EventDetailDTO(
                             title: items.svcnm,
-                            time: "\(dateFormatter.string(from: startDate))~\(dateFormatter.string(from: endDate))",
+                            category: items.maxclassnm,
+                            useTarget: items.usetgtinfo,
+                            date: "\(dateFormatter.string(from: startDate))~\(dateFormatter.string(from: endDate))",
                             location: items.placenm,
-                            thumbNail: items.imgurl
-                        )
+                            description: items.dtlcont,
+                            thumbNail: items.imgurl,
+                            url: items.svcurl)
                     }
                     return nil
                 }
@@ -101,6 +104,10 @@ class HomeViewController: UIViewController {
                 self?.collectionView.reloadData() // 데이터를 받아온 후에 리로드
             }
             .store(in: &subscription)
+
+        // 빈 배열에 데이터 할당하기
+        self.configureModels(newIssue: self.newIssueItems)
+
     }
 
     // MARK: - Layout Settings
@@ -195,7 +202,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
 
             let event = event[indexPath.item]
-            cell.configure(title: event.title, period: event.time, location: event.location, thumbnail: event.thumbNail ?? "")
+            cell.configure(title: event.title, period: event.date, location: event.location, thumbnail: event.thumbNail ?? "")
             cell.layer.cornerRadius = 10
             cell.layer.masksToBounds = true
             cell.backgroundColor = .systemGray5
@@ -207,7 +214,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
 
             let event = event[indexPath.item]
-            cell.configure(title: event.title, period: event.time, location: event.location, thumbnail: event.thumbNail ?? "")
+            cell.configure(title: event.title, period: event.date, location: event.location, thumbnail: event.thumbNail ?? "")
             cell.layer.cornerRadius = 10
             cell.layer.masksToBounds = true
             cell.backgroundColor = .systemGray5
@@ -220,23 +227,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch section {
         case .newIssue(let items):
             let item = items[indexPath.item]
-            print("댕글 이슈가 선택되었습니다 : \(item)")
             
         case .culturalEvent(let items):
             let item = items[indexPath.item]
-            let viewController = CulturalEventViewController(cultuarlEvent: item)
-            viewController.title = "문화행사"
+            let viewController = EventDetailViewController(eventDetailItem: item)
+            viewController.title = item.title
+            viewController.hidesBottomBarWhenPushed = true
             viewController.navigationItem.largeTitleDisplayMode = .never
             navigationController?.pushViewController(viewController, animated: true)
-            print("---> 선택된 아이템 : \(item)")
 
         case .educationEvent(let items):
             let item = items[indexPath.item]
-            let viewController = EducationEventViewController(educationEvent: item)
-            viewController.title = "교육강좌"
+            let viewController = EventDetailViewController(eventDetailItem: item)
+            viewController.title = item.title
+            viewController.hidesBottomBarWhenPushed = true
             viewController.navigationItem.largeTitleDisplayMode = .never
             navigationController?.pushViewController(viewController, animated: true)
-            print("---> 선택된 아이템 : \(item)")
         }
     }
 

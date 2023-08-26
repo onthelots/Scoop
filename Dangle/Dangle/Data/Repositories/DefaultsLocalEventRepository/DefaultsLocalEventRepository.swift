@@ -103,6 +103,30 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
                 completion(.success(filteredEducationEvent))
             }.store(in: &subscriptions)
     }
+
+    // MARK: - NewIssue 파싱 --> Figma Paging(UIScrollView) 참고하기
+    func newIssueParsing(
+        category: String,
+        completion: @escaping (Result<NewIssue, Error>) -> Void
+    ) {
+        // --> 전체 데이터를 가져오지 말고, 각각의 Item별로 데이터를 전달?
+        let resource: Resource<NewIssue> = Resource(
+            base: seoulOpenDataManager.openDataNewIssueBaseURL,
+            path: ""
+        )
+        networkManager.load(resource)
+            .receive(on: RunLoop.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("---> 서울 새소식 파싱에 실패했습니다 : \(error)")
+                case .finished:
+                    print("---> 서울 새소식 파싱에 성공했습니다!")
+                }
+            } receiveValue: { items in
+                completion(.success(items))
+            }.store(in: &subscriptions)
+    }
 }
 
 // MARK: - 받아오는 location의 '구' 명칭만 필터링
