@@ -83,6 +83,7 @@
 		3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */; };
 		3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */; };
 		3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */; };
+		3FC8D9BD2A99EF2A007BDEB5 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9BC2A99EF2A007BDEB5 /* Evaluation.swift */; };
 		3FD6181D2A9866B000CE6690 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */; };
 		3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */; };
 		3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618272A98909300CE6690 /* EventDetailViewController.swift */; };
@@ -191,6 +192,7 @@
 		3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewController.swift; sourceTree = "<group>"; };
 		3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameValidationService.swift; sourceTree = "<group>"; };
 		3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
+		3FC8D9BC2A99EF2A007BDEB5 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		3FD618272A98909300CE6690 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				3F1AB7912A8DC96E0076CEAB /* Location */,
 				3FE361CD2A931E08000F1B38 /* Auth */,
 				3F8CD6E82A96E64E00307372 /* LocalEvent */,
+				3FC8D9BB2A99EF01007BDEB5 /* Post */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -910,6 +913,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3FC8D9BB2A99EF01007BDEB5 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				3FC8D9BC2A99EF2A007BDEB5 /* Evaluation.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		3FD6182E2A98A27000CE6690 /* LocalEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1156,6 +1167,7 @@
 				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
 				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
+				3FC8D9BD2A99EF2A007BDEB5 /* Evaluation.swift in Sources */,
 				3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
