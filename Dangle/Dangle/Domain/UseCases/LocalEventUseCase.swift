@@ -9,6 +9,12 @@ import Foundation
 
 protocol LocalEventUseCase {
 
+    // NewIssue
+    func execute(
+        category: String,
+        completion: @escaping (Result<NewIssue, Error>) -> Void
+    )
+
     // Culture
     func execute(
         location: String,
@@ -20,12 +26,6 @@ protocol LocalEventUseCase {
         location: String,
         completion: @escaping (Result<EducationEvent, Error>) -> Void
     )
-
-    // NewIssue
-    func execute(
-        category: String,
-        completion: @escaping (Result<NewIssue, Error>) -> Void
-    )
 }
 
 final class DefaultLocalEventUseCase: LocalEventUseCase {
@@ -34,6 +34,22 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
 
     init(localEventRepository: LocalEventRepository) {
         self.localEventRepository = localEventRepository
+    }
+
+    // New Issue
+    func execute(
+        category: String,
+        completion: @escaping (Result<NewIssue, Error>) -> Void
+    ) {
+        localEventRepository.newIssueParsing(category: category
+        ) { result in
+            switch result {
+            case .success(let issues):
+                completion(.success(issues))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     // Cultural Event
@@ -68,21 +84,4 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
             }
         }
     }
-
-    // New Issue
-    func execute(
-        category: String,
-        completion: @escaping (Result<NewIssue, Error>) -> Void
-    ) {
-        localEventRepository.newIssueParsing(category: category
-        ) { result in
-            switch result {
-            case .success(let issues):
-                completion(.success(issues))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
 }

@@ -27,19 +27,20 @@ struct SeoulNewsList: Codable {
     }
 }
 
-
 // MARK: - Row
 struct NewIssueDetail: Codable {
     let blogID: Int
-    let blogName: BlogName // BlogName에 따라, 
-    let postID, postTitle, thumbURI, postExcerpt: String
-    let publishDate, modifyDate: String
+    let blogName: BlogName // 카테고리
+    let postTitle: String // 타이틀
+    let thumbURI: String // 썸네일 URL (없는 경우가 많음)
+    let postExcerpt: String // 요약글
+    let publishDate: String // 날짜
+    let modifyDate: String // 수정날짜
     let postContent, managerName, managerPhone, managerDept: String
 
     enum CodingKeys: String, CodingKey {
         case blogID = "BLOG_ID"
         case blogName = "BLOG_NAME"
-        case postID = "POST_ID"
         case postTitle = "POST_TITLE"
         case thumbURI = "THUMB_URI"
         case postExcerpt = "POST_EXCERPT"

@@ -36,13 +36,6 @@ class HomeViewModel: ObservableObject {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
-
-        // MARK: - dangle Issue에 데이터 전달하기
-        /*
-         1. firestore에 있는 특정 location 루트를 받아온 후, 데이터를 전달하기
-         2. dangleIssueFetch() 메서드를 실행하기
-         */
-
         userInfoUseCase.execute(userId: userId) { result in
             switch result {
             case .success(let userInfo):
@@ -53,11 +46,6 @@ class HomeViewModel: ObservableObject {
                 print("error: \(error)")
             }
         }
-    }
-
-    // MARK: - dangleIssue 파싱
-    func dangleIssueFetch() {
-        // 
     }
 
     // 문화정보 파싱

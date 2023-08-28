@@ -13,39 +13,62 @@
 import Combine
 import UIKit
 import Firebase
-import FirebaseFirestore
 
 class HomeViewController: UIViewController {
 
     // 뷰 모델 가져오기
     private var viewModel: HomeViewModel!
 
-    // MOCK-UP
-    private var newIssueItems: [DangleIssueDTO] = DangleIssueDTO.mock
-
     // section 구분을 위한 선언, 각 섹션별로는 내부에 DTO 타입이 존재함
-    private var sections = [HomeSectionType]()
+    //    private var sections = [HomeSectionType]()
+
+    // MARK: - Section
+    enum Section: CaseIterable, Hashable {
+        case newIssue
+        case culturalEvent
+        case educationEvent
+
+        var title: String {
+            switch self {
+            case .newIssue:
+                return "분야별 서울 새 소식"
+            case .culturalEvent:
+                return "문화행사, 우리동네 즐길거리"
+            case .educationEvent:
+                return "교육강좌, 배우고 성장하기"
+            }
+        }
+    }
+
+    // MARK: - Item
+    typealias Item = EventDetailDTO
+    var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
 
     // 구독자
     private var subscription: Set<AnyCancellable> = []
 
     // 컬렉션뷰 -> CompositonalLayout -> sectionIndex별로 선언해두기 (createSectionLayout)
-    private var collectionView: UICollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
-            return createSectionLayout(section: sectionIndex)
-        }
-    )
+    private var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
         view.backgroundColor = .systemBackground
         initalizerViewModel()
-        configureCollectionView()
         viewModel.userInfoFetch()
         bind()
+
+        configureCollectionView()
     }
+
+//    private func configureCollectionView() {
+//        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout(for: .newIssue))
+//        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        collectionView.backgroundColor = .systemBackground
+//        collectionView.register(InformationCollectionViewCell.self, forCellWithReuseIdentifier: InformationCollectionViewCell.identifier)
+//        collectionView.register(HomeSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeSectionHeaderReusableView.identifier)
+//        view.addSubview(collectionView)
+//    }
 
     // 1. viewModel 초기화
     private func initalizerViewModel() {
@@ -59,14 +82,61 @@ class HomeViewController: UIViewController {
         viewModel = HomeViewModel(localEventUseCase: localEventUseCase, userInfoUseCase: userInfoUseCase)
     }
 
-    // 3. bind
+    private func configureCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout())
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(InformationCollectionViewCell.self, forCellWithReuseIdentifier: InformationCollectionViewCell.identifier)
+        collectionView.register(HomeSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeSectionHeaderReusableView.identifier)
+        view.addSubview(collectionView)
+
+        configuration()
+        // Snapshot 초기화
+        applyInitialSnapshot()
+    }
+
+    private func applyInitialSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections([.newIssue, .culturalEvent, .educationEvent])
+        snapshot.appendItems([], toSection: .newIssue)
+        snapshot.appendItems([], toSection: .culturalEvent)
+        snapshot.appendItems([], toSection: .educationEvent)
+        dataSource.apply(snapshot)
+    }
+
+    private func configuration() {
+
+        // Presentation 2 (Cultural, Education)
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InformationCollectionViewCell.identifier, for: indexPath) as? InformationCollectionViewCell else {
+                return nil
+            }
+
+            cell.configure(items: item)
+            return cell
+        })
+
+        // HeaderView Presentaion
+        dataSource.supplementaryViewProvider = { (collectionView, _, indexPath) in
+
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                               withReuseIdentifier: HomeSectionHeaderReusableView.identifier,
+                                                                               for: indexPath) as? HomeSectionHeaderReusableView else {
+                return nil
+            }
+            let allSectios = Section.allCases
+            let section = allSectios[indexPath.section]
+            header.configure(with: section.title)
+            return header
+        }
+    }
+
     private func bind() {
-        // 3-2. 문화 퍼블리셔와 교육 퍼블리셔를 함께 구독, viewcontroller에서 사용할 데이터에 전달
         viewModel.culturalEventSubject
             .combineLatest(viewModel.educationEventSubject)
             .receive(on: RunLoop.main)
             .sink { [weak self] culturalEvent, educationEvent in
-                let culturalEventItems = culturalEvent.map { items in
+                let culturalEvents = culturalEvent.compactMap { items in
                     EventDetailDTO(title: items.title,
                                    category: items.codename,
                                    useTarget: items.useTrgt,
@@ -76,11 +146,8 @@ class HomeViewController: UIViewController {
                                    thumbNail: items.mainImg,
                                    url: items.hmpgAddr)
                 }
-
-                self?.sections.append(.culturalEvent(viewModels: culturalEventItems)) // section에도 데이터 전달하기
-
-                // 빈 배열에 데이터 할당하기
-                let educationEventItems = educationEvent.compactMap { items in
+                var educationEvents: [EventDetailDTO] = []
+                educationEvents = educationEvent.compactMap { items in
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
 
@@ -99,169 +166,28 @@ class HomeViewController: UIViewController {
                     }
                     return nil
                 }
-                self?.sections.append(.educationEvent(viewModels: educationEventItems)) // section에도 데이터 전달하기
-
-                self?.collectionView.reloadData() // 데이터를 받아온 후에 리로드
+                self?.applyItem(culturalEvents: culturalEvents, educationEvents: educationEvents)
             }
             .store(in: &subscription)
-
-        // 빈 배열에 데이터 할당하기
-        self.configureModels(newIssue: self.newIssueItems)
-
     }
 
-    // MARK: - Layout Settings
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
+    private func applyItem(culturalEvents: [EventDetailDTO], educationEvents: [EventDetailDTO]) {
+        var snapshot = dataSource.snapshot()
+
+        snapshot.appendItems(culturalEvents, toSection: .culturalEvent)
+        snapshot.appendItems(educationEvents, toSection: .educationEvent)
+
+        self.dataSource.apply(snapshot)
     }
 
-    // 컬렉션뷰 선언
-    private func configureCollectionView() {
-        view.addSubview(collectionView)
-
-        collectionView.register(
-            NewIssueCollectionViewCell.self,
-            forCellWithReuseIdentifier: NewIssueCollectionViewCell.identifier
-        )
-
-        collectionView.register(
-            InformationCollectionViewCell.self,
-            forCellWithReuseIdentifier: InformationCollectionViewCell.identifier
-        )
-
-        // headerview(ReusableView)
-        collectionView.register(HomeSectionHeaderReusableView.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: HomeSectionHeaderReusableView.identifier)
-
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .systemBackground
-    }
-
-    // MARK: - newIssue 임시 파싱
-    private func configureModels(newIssue: [DangleIssueDTO]) {
-        // Section 1
-        sections.append(.newIssue(viewModels: newIssue.compactMap({ item in
-            return DangleIssueDTO(
-                category: item.category,
-                description: item.description,
-                location: item.location,
-                thumbNail: item.thumbNail)
-        })))
-
-        collectionView.reloadData()
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let type = sections[section]
-
-        switch type {
-        case .newIssue(viewModels: let event):
-            return event.count
-        case .culturalEvent(viewModels: let event):
-            return event.count
-        case .educationEvent(viewModels: let event):
-            return event.count
+    private func layout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { sectionIndex, environment in
+            let section = Section.allCases[sectionIndex]
+            return self.createSectionLayout(for: section)
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let type = sections[indexPath.section]
-
-        switch type {
-        case .newIssue(viewModels: let event):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewIssueCollectionViewCell.identifier, for: indexPath) as? NewIssueCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-
-            let event = event[indexPath.item]
-            cell.configure(item: DangleIssueDTO(
-                category: event.category,
-                description: event.description,
-                location: event.location,
-                thumbNail: event.thumbNail
-            ))
-            
-            cell.layer.cornerRadius = 10
-            cell.layer.masksToBounds = true
-            cell.backgroundColor = .systemGray5
-            return cell
-
-        case .culturalEvent(viewModels: let event):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InformationCollectionViewCell.identifier, for: indexPath) as? InformationCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-
-            let event = event[indexPath.item]
-            cell.configure(title: event.title, period: event.date, location: event.location, thumbnail: event.thumbNail ?? "")
-            cell.layer.cornerRadius = 10
-            cell.layer.masksToBounds = true
-            cell.backgroundColor = .systemGray5
-            return cell
-
-        case .educationEvent(viewModels: let event):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InformationCollectionViewCell.identifier, for: indexPath) as? InformationCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-
-            let event = event[indexPath.item]
-            cell.configure(title: event.title, period: event.date, location: event.location, thumbnail: event.thumbNail ?? "")
-            cell.layer.cornerRadius = 10
-            cell.layer.masksToBounds = true
-            cell.backgroundColor = .systemGray5
-            return cell
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let section = sections[indexPath.section]
-        switch section {
-        case .newIssue(let items):
-            let item = items[indexPath.item]
-            
-        case .culturalEvent(let items):
-            let item = items[indexPath.item]
-            let viewController = EventDetailViewController(eventDetailItem: item)
-            viewController.title = item.title
-            viewController.hidesBottomBarWhenPushed = true
-            viewController.navigationItem.largeTitleDisplayMode = .never
-            navigationController?.pushViewController(viewController, animated: true)
-
-        case .educationEvent(let items):
-            let item = items[indexPath.item]
-            let viewController = EventDetailViewController(eventDetailItem: item)
-            viewController.title = item.title
-            viewController.hidesBottomBarWhenPushed = true
-            viewController.navigationItem.largeTitleDisplayMode = .never
-            navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
-
-
-    // setting headerView
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                     withReuseIdentifier: HomeSectionHeaderReusableView.identifier,
-                                                                           for: indexPath) as? HomeSectionHeaderReusableView, kind == UICollectionView.elementKindSectionHeader else {
-            return UICollectionReusableView()
-        }
-        let section = indexPath.section
-        let model = sections[section].title
-        header.configure(with: model)
-        return header
-    }
-
-    // MARK: - createSectionLayout
-    static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+    private func createSectionLayout(for section: Section) -> NSCollectionLayoutSection {
 
         // header Layout
         let supplementaryViews = [
@@ -275,29 +201,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             )
         ]
 
-        // Secton Layout
         switch section {
-
-        case 0:
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-
-            let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3),
-                                                             heightDimension: .estimated(140))
-            let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
-                                                                     repeatingSubitem: item,
-                                                                     count: 1)
-
-            let section = NSCollectionLayoutSection(group: horizontalGroup)
-            section.orthogonalScrollingBehavior = .groupPaging
-            section.boundarySupplementaryItems = supplementaryViews
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
-            return section
-
-        case 1:
+        case .newIssue:
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -316,7 +221,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
             return section
 
-        case 2:
+        case .culturalEvent, .educationEvent:
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -328,26 +233,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
                                                                      repeatingSubitem: item,
                                                                      count: 1)
-
-            let section = NSCollectionLayoutSection(group: horizontalGroup)
-            section.orthogonalScrollingBehavior = .groupPaging
-            section.boundarySupplementaryItems = supplementaryViews
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
-            return section
-
-        // Mock-up
-        default:
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-
-            let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
-                                                             heightDimension: .estimated(100))
-            let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
-                                                                     repeatingSubitem: item,
-                                                                     count: 2)
 
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .groupPaging

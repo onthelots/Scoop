@@ -8,6 +8,10 @@
 import Foundation
 
 protocol LocalEventRepository {
+    func newIssueParsing(
+        category: String,
+        completion: @escaping (Result<NewIssue, Error>) -> Void)
+
     func culturalEventParsing(
         location: String,
         completion: @escaping (Result<CulturalEvent, Error>) -> Void)
@@ -15,8 +19,4 @@ protocol LocalEventRepository {
     func educationEventParsing(
         location: String,
         completion: @escaping (Result<EducationEvent, Error>) -> Void)
-
-    func newIssueParsing(
-        category: String,
-        completion: @escaping (Result<NewIssue, Error>) -> Void)
 }

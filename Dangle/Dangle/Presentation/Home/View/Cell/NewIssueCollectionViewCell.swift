@@ -111,15 +111,4 @@ class NewIssueCollectionViewCell: UICollectionViewCell {
         descriptionLabel.text = nil
         locationLabel.text = nil
     }
-
-    // MARK: - 목업
-    func configure(item: DangleIssueDTO) {
-        self.categoryButtonLabel.titleLabel?.text = item.category
-        self.thumbnailImageView.kf.setImage(
-            with: URL(string: item.thumbNail ?? "")!,
-            placeholder: UIImage(systemName: "hands.sparkles.fill")
-        )
-        self.descriptionLabel.text = item.description
-        self.locationLabel.text = item.location
-    }
 }
