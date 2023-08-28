@@ -106,12 +106,12 @@ class InformationCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - 목업
-    func configure(title: String, period: String, location: String, thumbnail: String) {
-        self.titleLabel.text = title
-        self.timeLabel.text = period
-        self.locationLabel.text = location
+    func configure(items: EventDetailDTO) {
+        self.titleLabel.text = items.title
+        self.timeLabel.text = items.date
+        self.locationLabel.text = items.location
         self.thumbnailImageView.kf.setImage(
-            with: URL(string: thumbnail),
+            with: URL(string: items.thumbNail ?? ""),
             placeholder: UIImage(systemName: "hands.sparkles.fill")
         )
     }
