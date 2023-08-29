@@ -5,22 +5,13 @@
 //  Created by Jae hyuk Yim on 2023/08/07.
 //
 
-/*
- [ ] CollectionView 형식에 따라,
-
- */
-
 import Combine
 import UIKit
 import Firebase
 
 class HomeViewController: UIViewController {
 
-    // 뷰 모델 가져오기
     private var viewModel: HomeViewModel!
-
-    // section 구분을 위한 선언, 각 섹션별로는 내부에 DTO 타입이 존재함
-    //    private var sections = [HomeSectionType]()
 
     // MARK: - Section
     enum Section: CaseIterable, Hashable {
@@ -41,7 +32,11 @@ class HomeViewController: UIViewController {
     }
 
     // MARK: - Item
-    typealias Item = EventDetailDTO
+    enum Item: Hashable {
+        case newIssue(NewIssueDTO)
+        case event(EventDetailDTO)
+    }
+
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
 
     // 구독자
@@ -57,18 +52,8 @@ class HomeViewController: UIViewController {
         initalizerViewModel()
         viewModel.userInfoFetch()
         bind()
-
         configureCollectionView()
     }
-
-//    private func configureCollectionView() {
-//        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout(for: .newIssue))
-//        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        collectionView.backgroundColor = .systemBackground
-//        collectionView.register(InformationCollectionViewCell.self, forCellWithReuseIdentifier: InformationCollectionViewCell.identifier)
-//        collectionView.register(HomeSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeSectionHeaderReusableView.identifier)
-//        view.addSubview(collectionView)
-//    }
 
     // 1. viewModel 초기화
     private func initalizerViewModel() {
@@ -87,11 +72,12 @@ class HomeViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
         collectionView.register(InformationCollectionViewCell.self, forCellWithReuseIdentifier: InformationCollectionViewCell.identifier)
-        collectionView.register(HomeSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeSectionHeaderReusableView.identifier)
+        collectionView.register(NewIssueCollectionViewCell.self, forCellWithReuseIdentifier: NewIssueCollectionViewCell.identifier)
+        collectionView.register(HomeSectionHeaderReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: HomeSectionHeaderReusableView.identifier)
         view.addSubview(collectionView)
-
         configuration()
-        // Snapshot 초기화
         applyInitialSnapshot()
     }
 
@@ -104,39 +90,149 @@ class HomeViewController: UIViewController {
         dataSource.apply(snapshot)
     }
 
-    private func configuration() {
+    private func createCategoryBar() -> UIView {
+        let categoryBar = UIView()
+        categoryBar.backgroundColor = .white
 
-        // Presentation 2 (Cultural, Education)
-        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InformationCollectionViewCell.identifier, for: indexPath) as? InformationCollectionViewCell else {
-                return nil
-            }
+        // Create a stack view to hold labels/buttons for categories
+        let stackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.axis = .horizontal
+            stackView.alignment = .center
+            stackView.distribution = .fillProportionally
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            return stackView
+        }()
 
-            cell.configure(items: item)
-            return cell
-        })
+        let categories: [BlogName] = [.economy, .traffic, .safe, .house, .environment]
 
-        // HeaderView Presentaion
-        dataSource.supplementaryViewProvider = { (collectionView, _, indexPath) in
+        for category in categories {
+            let label = UILabel()
+            label.text = category.rawValue
+            label.textColor = .darkGray
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryLabelTapped(_:)))
+            label.addGestureRecognizer(tapGesture)
+            stackView.addArrangedSubview(label)
+        }
 
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                               withReuseIdentifier: HomeSectionHeaderReusableView.identifier,
-                                                                               for: indexPath) as? HomeSectionHeaderReusableView else {
-                return nil
-            }
-            let allSectios = Section.allCases
-            let section = allSectios[indexPath.section]
-            header.configure(with: section.title)
-            return header
+        categoryBar.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: categoryBar.leadingAnchor),
+            stackView.topAnchor.constraint(equalTo: categoryBar.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: categoryBar.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: categoryBar.bottomAnchor)
+        ])
+        
+        return categoryBar
+    }
+
+    @objc private func categoryLabelTapped(_ gesture: UITapGestureRecognizer) {
+        if let label = gesture.view as? UILabel,
+           let categoryCode = getCategoryCode(for: label.text ?? "") {
+            viewModel.selectedCategory = categoryCode
+            print("선택된 카테고리 : \(label.text ?? "")")
         }
     }
 
+    private func getCategoryCode(for categoryName: String) -> String? {
+        // categoryName을 기반으로 코드 번호를 찾아 반환
+        switch categoryName {
+        case "경제":
+            return "24"
+        case "교통":
+            return "21"
+        case "안전":
+            return "22"
+        case "주택":
+            return "23"
+        case "환경":
+            return "25"
+        default:
+            return nil
+        }
+    }
+
+    private func configuration() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { collectionView, indexPath, item in
+            switch item {
+            case .event(let eventItem):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InformationCollectionViewCell.identifier, for: indexPath) as? InformationCollectionViewCell else {
+                    return nil
+                }
+                cell.configure(items: eventItem)
+                cell.backgroundColor = .systemGray6
+                cell.layer.cornerRadius = 5
+                cell.layer.masksToBounds = true
+                return cell
+            case .newIssue(let newIssueItem):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewIssueCollectionViewCell.identifier, for: indexPath) as? NewIssueCollectionViewCell else {
+                    return nil
+                }
+                cell.configure(items: newIssueItem)
+                cell.backgroundColor = .systemGray6
+                return cell
+            }
+        }
+
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            if kind == UICollectionView.elementKindSectionHeader {
+                if indexPath.section == 0 {
+                    // 새로운 섹션 헤더를 생성하고 categoryBar를 할당합니다.
+                    guard let header = collectionView.dequeueReusableSupplementaryView(
+                        ofKind: kind,
+                        withReuseIdentifier: HomeSectionHeaderReusableView.identifier,
+                        for: indexPath) as? HomeSectionHeaderReusableView else {
+                        return UICollectionViewCell()
+                    }
+                    header.categoryBar = self.createCategoryBar()
+                    let allSections = Section.allCases
+                    let section = allSections[indexPath.section]
+                    header.configure(with: section.title)
+                    return header
+                } else {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(
+                        ofKind: kind,
+                        withReuseIdentifier: HomeSectionHeaderReusableView.identifier,
+                        for: indexPath) as? HomeSectionHeaderReusableView else {
+                        return nil
+                    }
+                    let allSections = Section.allCases
+                    let section = allSections[indexPath.section]
+                    header.configure(with: section.title)
+                    return header
+                }
+            } else {
+                return nil
+            }
+        }
+        collectionView.delegate = self
+    }
+
+    // Data binding
     private func bind() {
-        viewModel.culturalEventSubject
-            .combineLatest(viewModel.educationEventSubject)
+        viewModel.newIssueSubject
+            .combineLatest(viewModel.culturalEventSubject, viewModel.educationEventSubject)
             .receive(on: RunLoop.main)
-            .sink { [weak self] culturalEvent, educationEvent in
-                let culturalEvents = culturalEvent.compactMap { items in
+            .sink { [weak self] newIssue, culturalEvent, educationEvent in
+                var newIssues: [NewIssueDTO] = []
+                newIssues = newIssue.compactMap { items in
+                    NewIssueDTO(
+                        title: items.postTitle,
+                        category: items.blogName.rawValue,
+                        thumbURL: items.thumbURI,
+                        excerpt: items.postExcerpt,
+                        publishDate: items.publishDate,
+                        modifyDate: items.modifyDate,
+                        postContent: items.postContent,
+                        managerDept: items.managerDept
+                    )
+                }
+                var culturalEvents: [EventDetailDTO] = []
+                culturalEvents = culturalEvent.compactMap { items in
                     EventDetailDTO(title: items.title,
                                    category: items.codename,
                                    useTarget: items.useTrgt,
@@ -146,6 +242,7 @@ class HomeViewController: UIViewController {
                                    thumbNail: items.mainImg,
                                    url: items.hmpgAddr)
                 }
+
                 var educationEvents: [EventDetailDTO] = []
                 educationEvents = educationEvent.compactMap { items in
                     let dateFormatter = DateFormatter()
@@ -166,79 +263,147 @@ class HomeViewController: UIViewController {
                     }
                     return nil
                 }
-                self?.applyItem(culturalEvents: culturalEvents, educationEvents: educationEvents)
+                self?.applyItem(newIssues: newIssues, culturalEvents: culturalEvents, educationEvents: educationEvents)
             }
             .store(in: &subscription)
+
+        viewModel.itemTapped
+            .sink { item in
+                switch item {
+                case .newIssue(let newIssue): break
+//                    let viewController = EventDetailViewController(eventDetailItem: item)
+//                    viewController.navigationItem.largeTitleDisplayMode = .never
+//                    self.navigationController?.pushViewController(viewController, animated: true)
+                case .event(let event):
+                    let viewController = EventDetailViewController(eventDetailItem: event)
+                    viewController.navigationItem.largeTitleDisplayMode = .never
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
+            }.store(in: &subscription)
     }
 
-    private func applyItem(culturalEvents: [EventDetailDTO], educationEvents: [EventDetailDTO]) {
+    private func applyItem(newIssues: [NewIssueDTO], culturalEvents: [EventDetailDTO], educationEvents: [EventDetailDTO]) {
         var snapshot = dataSource.snapshot()
 
-        snapshot.appendItems(culturalEvents, toSection: .culturalEvent)
-        snapshot.appendItems(educationEvents, toSection: .educationEvent)
+        // 중복된 아이템 식별자를 필터링하여 추가할 아이템만 선택
+        let newIssuesToAdd = newIssues.filter { newItem in
+            !snapshot.itemIdentifiers.contains { item in
+                if case .newIssue(let existingItem) = item, existingItem == newItem {
+                    return true
+                }
+                return false
+            }
+        }
 
+        let culturalEventsToAdd = culturalEvents.filter { newEvent in
+            !snapshot.itemIdentifiers.contains { item in
+                if case .event(let existingEvent) = item, existingEvent == newEvent {
+                    return true
+                }
+                return false
+            }
+        }
+
+        let educationEventsToAdd = educationEvents.filter { newEvent in
+            !snapshot.itemIdentifiers.contains { item in
+                if case .event(let existingEvent) = item, existingEvent == newEvent {
+                    return true
+                }
+                return false
+            }
+        }
+
+        // 필터링한 아이템들을 스냅샷에 추가
+        snapshot.appendItems(newIssuesToAdd.map { Item.newIssue($0) }, toSection: .newIssue)
+        snapshot.appendItems(culturalEventsToAdd.map { Item.event($0) }, toSection: .culturalEvent)
+        snapshot.appendItems(educationEventsToAdd.map { Item.event($0) }, toSection: .educationEvent)
+//        snapshot.reloadSections([.newIssue])
         self.dataSource.apply(snapshot)
     }
 
+
+    // CollectionView Layout (2가지 Case)
     private func layout() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { sectionIndex, environment in
+        return UICollectionViewCompositionalLayout { sectionIndex, _ in
             let section = Section.allCases[sectionIndex]
-            return self.createSectionLayout(for: section)
+            if section == .newIssue {
+                return self.createNewIssueSectionLayout()
+            } else {
+                return self.createSectionLayout()
+            }
         }
     }
 
-    private func createSectionLayout(for section: Section) -> NSCollectionLayoutSection {
+    // Layout1 ->0번째 Section
+    private func createNewIssueSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
 
-        // header Layout
-        let supplementaryViews = [
-            NSCollectionLayoutBoundarySupplementaryItem(
-                layoutSize: NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(1),
-                    heightDimension: .absolute(50)
-                ),
-                elementKind: UICollectionView.elementKindSectionHeader,
-                alignment: .top
-            )
-        ]
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .estimated(30)) // Adjust the height as needed
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 5)
 
-        switch section {
-        case .newIssue:
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let sectionLayout = NSCollectionLayoutSection(group: group)
 
-            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        sectionLayout.boundarySupplementaryItems = [createNewIssueSectionHeader()]
+        sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
+        sectionLayout.orthogonalScrollingBehavior = .groupPaging
+        return sectionLayout
+    }
 
-            let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75),
-                                                             heightDimension: .estimated(140))
-            let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
-                                                                     repeatingSubitem: item,
-                                                                     count: 1)
+    // Layout2 -> 1, 2번째 Section
+    private func createSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
 
-            let section = NSCollectionLayoutSection(group: horizontalGroup)
-            section.orthogonalScrollingBehavior = .groupPaging
-            section.boundarySupplementaryItems = supplementaryViews
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
-            return section
+        let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75),
+                                                         heightDimension: .estimated(140))
+        let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
+                                                                 repeatingSubitem: item,
+                                                                 count: 1)
 
-        case .culturalEvent, .educationEvent:
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let sectionLayout = NSCollectionLayoutSection(group: horizontalGroup)
+        sectionLayout.orthogonalScrollingBehavior = .groupPaging
+        sectionLayout.boundarySupplementaryItems = [createSectionHeader()]
+        sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
+        return sectionLayout
+    }
 
-            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+    // header Section
+    private func createNewIssueSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        return NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .estimated(30)),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+    }
 
-            let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75),
-                                                             heightDimension: .estimated(140))
-            let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
-                                                                     repeatingSubitem: item,
-                                                                     count: 1)
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        return NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .estimated(40)),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+    }
+}
 
-            let section = NSCollectionLayoutSection(group: horizontalGroup)
-            section.orthogonalScrollingBehavior = .groupPaging
-            section.boundarySupplementaryItems = supplementaryViews
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
-            return section
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let selectedItem = dataSource.itemIdentifier(for: indexPath) else {
+            return
+        }
+        switch selectedItem {
+        case .event(let eventItem):
+            viewModel.itemTapped.send(.event(eventItem))
+        case .newIssue(let newIssueItem):
+            viewModel.itemTapped.send(.newIssue(newIssueItem))
+            print("선택된 Item --> : \(newIssueItem.title)")
         }
     }
 }

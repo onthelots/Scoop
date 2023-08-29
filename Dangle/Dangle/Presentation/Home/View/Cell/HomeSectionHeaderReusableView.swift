@@ -21,6 +21,8 @@ class HomeSectionHeaderReusableView: UICollectionReusableView {
         return label
     }()
 
+    var categoryBar: UIView? // 카테고리 바를 담을 변수입니다.
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
@@ -38,6 +40,18 @@ class HomeSectionHeaderReusableView: UICollectionReusableView {
             sectionTitleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
         ])
+
+        // 만약 카테고리 바가 존재한다면, 해당 바를 섹션 헤더에 추가합니다.
+        if let categoryBar = categoryBar {
+            addSubview(categoryBar)
+            categoryBar.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                categoryBar.topAnchor.constraint(equalTo: sectionTitleLabel.bottomAnchor, constant: 10),
+                categoryBar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+                categoryBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+                categoryBar.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            ])
+        }
     }
 
     override func prepareForReuse() {
@@ -45,6 +59,8 @@ class HomeSectionHeaderReusableView: UICollectionReusableView {
 
         // 재사용 되기전에 초기화
         sectionTitleLabel.text = nil
+
+        categoryBar?.removeFromSuperview()
     }
 
     func configure(with title: String) {

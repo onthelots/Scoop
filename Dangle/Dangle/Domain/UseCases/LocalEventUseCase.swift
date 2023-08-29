@@ -11,7 +11,7 @@ protocol LocalEventUseCase {
 
     // NewIssue
     func execute(
-        category: String,
+        categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
     )
 
@@ -38,10 +38,11 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
 
     // New Issue
     func execute(
-        category: String,
+        categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
     ) {
-        localEventRepository.newIssueParsing(category: category
+        localEventRepository.newIssueParsing(
+            categoryCode: categoryCode
         ) { result in
             switch result {
             case .success(let issues):

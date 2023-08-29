@@ -18,6 +18,34 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
         self.seoulOpenDataManager = seoulOpenDataManager
     }
 
+    func newIssueParsing(
+        categoryCode: String, // 코드 번호를 String으로 받아옴
+        completion: @escaping (Result<NewIssue, Error>) -> Void
+    ) {
+        // 서버 요청 시 필요한 파라미터를 설정하여 필터링된 데이터 가져오기
+        let queryParameters: [String: String] = [
+            "categoryCode": categoryCode // 코드 번호를 요청 파라미터로 설정
+        ]
+
+        let resource: Resource<NewIssue> = Resource(
+            base: seoulOpenDataManager.openDataNewIssueBaseURL,
+            path: "",
+            params: queryParameters
+        )
+        networkManager.load(resource)
+            .receive(on: RunLoop.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("---> 서울 새소식 파싱에 실패했습니다 : \(error)")
+                case .finished:
+                    print("---> 서울 새소식 파싱에 성공했습니다!")
+                }
+            } receiveValue: { items in
+                completion(.success(items))
+            }.store(in: &subscriptions)
+    }
+
     func culturalEventParsing(
         location: String,
         completion: @escaping (Result<CulturalEvent, Error>) -> Void
@@ -101,30 +129,6 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
                     educationEventInfo: filteredEducationEventInfo
                 )
                 completion(.success(filteredEducationEvent))
-            }.store(in: &subscriptions)
-    }
-
-    // MARK: - NewIssue 파싱 --> Figma Paging(UIScrollView) 참고하기
-    func newIssueParsing(
-        category: String,
-        completion: @escaping (Result<NewIssue, Error>) -> Void
-    ) {
-        // --> 전체 데이터를 가져오지 말고, 각각의 Item별로 데이터를 전달?
-        let resource: Resource<NewIssue> = Resource(
-            base: seoulOpenDataManager.openDataNewIssueBaseURL,
-            path: ""
-        )
-        networkManager.load(resource)
-            .receive(on: RunLoop.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    print("---> 서울 새소식 파싱에 실패했습니다 : \(error)")
-                case .finished:
-                    print("---> 서울 새소식 파싱에 성공했습니다!")
-                }
-            } receiveValue: { items in
-                completion(.success(items))
             }.store(in: &subscriptions)
     }
 }
