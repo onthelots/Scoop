@@ -11,17 +11,31 @@ import Firebase
 
 class HomeViewModel: ObservableObject {
 
-    // 로컬 데이터를 불러오는 UseCase
     private var localEventUseCase: LocalEventUseCase
-
-    // 사용자 데이터를 가져오는 UseCase
     private var userInfoUseCase: UserInfoUseCase
 
+    enum Item: Hashable {
+        case newIssue(NewIssueDTO)
+        case event(EventDetailDTO)
+    }
+
     // 디테일 형식으로 퍼블리셔(PassthroughSubject)
+    var newIssueSubject = PassthroughSubject<[NewIssueDetail], Never>()
     var culturalEventSubject = PassthroughSubject<[CulturalEventDetail], Never>()
     var educationEventSubject = PassthroughSubject<[EducationEventDetail], Never>()
 
+    // Output (User Interaction)
+    let itemTapped = PassthroughSubject<Item, Never>()
+
     @Published var userInfo: UserInfo!
+
+    @Published var selectedCategory: String? {
+         didSet {
+             if let category = selectedCategory {
+                 newIssueFetch(category: category)
+             }
+         }
+     }
 
     // 구독자 --> 추후, 관련된 Cell을 클릭했을 때 활용
     private var subscription: Set<AnyCancellable> = []
@@ -29,6 +43,7 @@ class HomeViewModel: ObservableObject {
     init(localEventUseCase: LocalEventUseCase, userInfoUseCase: UserInfoUseCase) {
         self.localEventUseCase = localEventUseCase
         self.userInfoUseCase = userInfoUseCase
+        self.selectedCategory = "21"
     }
 
     // 2. 사용자 정보를 Firebase에서 가져옴
@@ -44,6 +59,17 @@ class HomeViewModel: ObservableObject {
                 self.educationEventFetch(location: userInfo.location ?? "")
             case .failure(let error):
                 print("error: \(error)")
+            }
+        }
+    }
+
+    func newIssueFetch(category: String) {
+        localEventUseCase.execute(categoryCode: category) { result in
+            switch result {
+            case .success(let newIssue):
+                self.newIssueSubject.send(newIssue.seoulNewsList.detail)
+            case .failure(let error):
+                print("Error fetching newIssue events: \(error)")
             }
         }
     }

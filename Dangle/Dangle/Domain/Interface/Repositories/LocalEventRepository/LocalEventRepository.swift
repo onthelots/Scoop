@@ -9,7 +9,7 @@ import Foundation
 
 protocol LocalEventRepository {
     func newIssueParsing(
-        category: String,
+        categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void)
 
     func culturalEventParsing(
