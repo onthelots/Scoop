@@ -46,21 +46,17 @@ class HomeSectionHeaderReusableView: UICollectionReusableView {
             addSubview(categoryBar)
             categoryBar.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                categoryBar.topAnchor.constraint(equalTo: sectionTitleLabel.bottomAnchor, constant: 10),
-                categoryBar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-                categoryBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-                categoryBar.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+                categoryBar.topAnchor.constraint(equalTo: sectionTitleLabel.bottomAnchor, constant: 20),
+                categoryBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                categoryBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                categoryBar.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
             ])
         }
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
-        // 재사용 되기전에 초기화
         sectionTitleLabel.text = nil
-
-        categoryBar?.removeFromSuperview()
     }
 
     func configure(with title: String) {

@@ -21,5 +21,5 @@ let restAPIKey: String = "6d6d676c586f6e74313130434f696361"
 struct SeoulOpenDataMaanger {
     let openDataCulturalBaseURL: String = "http://openapi.seoul.go.kr:8088/\(restAPIKey)/json/culturalEventInfo/1/300/"
     let openDataEducationBaseURL: String = "http://openapi.seoul.go.kr:8088/\(restAPIKey)/json/tvYeyakCOllect/1/300/"
-    let openDataNewIssueBaseURL: String = "http://openapi.seoul.go.kr:8088/\(restAPIKey)/json/SeoulNewsList/1/50/"
+    let openDataNewIssueBaseURL: String = "http://openapi.seoul.go.kr:8088/\(restAPIKey)/json/SeoulNewsList/1/30/"
 }

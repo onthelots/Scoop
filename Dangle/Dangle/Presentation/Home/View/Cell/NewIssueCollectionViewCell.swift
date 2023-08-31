@@ -10,17 +10,6 @@ import UIKit
 class NewIssueCollectionViewCell: UICollectionViewCell {
     static let identifier = "NewIssueCollectionViewCell"
 
-    private lazy var numberLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        label.textAlignment = .left
-        label.numberOfLines = 1
-        label.text = "1"
-        label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
     private lazy var descriptionLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)

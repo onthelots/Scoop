@@ -22,15 +22,10 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
         categoryCode: String, // 코드 번호를 String으로 받아옴
         completion: @escaping (Result<NewIssue, Error>) -> Void
     ) {
-        // 서버 요청 시 필요한 파라미터를 설정하여 필터링된 데이터 가져오기
-        let queryParameters: [String: String] = [
-            "categoryCode": categoryCode // 코드 번호를 요청 파라미터로 설정
-        ]
 
         let resource: Resource<NewIssue> = Resource(
-            base: seoulOpenDataManager.openDataNewIssueBaseURL,
-            path: "",
-            params: queryParameters
+            base: seoulOpenDataManager.openDataNewIssueBaseURL+"\(categoryCode)",
+            path: ""
         )
         networkManager.load(resource)
             .receive(on: RunLoop.main)

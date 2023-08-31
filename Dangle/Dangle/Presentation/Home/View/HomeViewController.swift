@@ -13,12 +13,17 @@ class HomeViewController: UIViewController {
 
     private var viewModel: HomeViewModel!
 
+    private lazy var newIssueCategoryView: NewIssueCategoryView = {
+        let categoryView = NewIssueCategoryView()
+        categoryView.delegate = self
+        return categoryView
+    }()
+
     // MARK: - Section
     enum Section: CaseIterable, Hashable {
         case newIssue
         case culturalEvent
         case educationEvent
-
         var title: String {
             switch self {
             case .newIssue:
@@ -37,12 +42,13 @@ class HomeViewController: UIViewController {
         case event(EventDetailDTO)
     }
 
+    // MARK: - DataSource (3개의 섹션, 2개의 아이템)
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
 
     // 구독자
     private var subscription: Set<AnyCancellable> = []
 
-    // 컬렉션뷰 -> CompositonalLayout -> sectionIndex별로 선언해두기 (createSectionLayout)
+    // 컬렉션뷰 -> CompositonalLayout
     private var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -55,7 +61,7 @@ class HomeViewController: UIViewController {
         configureCollectionView()
     }
 
-    // 1. viewModel 초기화
+    // ViewModel 초기화
     private func initalizerViewModel() {
         let localEventUseCase = DefaultLocalEventUseCase(
             localEventRepository: DefaultsLocalEventRepository(
@@ -71,6 +77,8 @@ class HomeViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
+
+        // Cell 및 ReusableView 등록
         collectionView.register(InformationCollectionViewCell.self, forCellWithReuseIdentifier: InformationCollectionViewCell.identifier)
         collectionView.register(NewIssueCollectionViewCell.self, forCellWithReuseIdentifier: NewIssueCollectionViewCell.identifier)
         collectionView.register(HomeSectionHeaderReusableView.self,
@@ -81,65 +89,14 @@ class HomeViewController: UIViewController {
         applyInitialSnapshot()
     }
 
+    // Snapshot 초기화
     private func applyInitialSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.newIssue, .culturalEvent, .educationEvent])
-        snapshot.appendItems([], toSection: .newIssue)
-        snapshot.appendItems([], toSection: .culturalEvent)
-        snapshot.appendItems([], toSection: .educationEvent)
-        dataSource.apply(snapshot)
-    }
-
-    private func createCategoryBar() -> UIView {
-        let categoryBar = UIView()
-        categoryBar.backgroundColor = .white
-
-        // Create a stack view to hold labels/buttons for categories
-        let stackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .horizontal
-            stackView.alignment = .center
-            stackView.distribution = .fillProportionally
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            return stackView
-        }()
-
-        let categories: [BlogName] = [.economy, .traffic, .safe, .house, .environment]
-
-        for category in categories {
-            let label = UILabel()
-            label.text = category.rawValue
-            label.textColor = .darkGray
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.isUserInteractionEnabled = true
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryLabelTapped(_:)))
-            label.addGestureRecognizer(tapGesture)
-            stackView.addArrangedSubview(label)
-        }
-
-        categoryBar.addSubview(stackView)
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: categoryBar.leadingAnchor),
-            stackView.topAnchor.constraint(equalTo: categoryBar.topAnchor),
-            stackView.trailingAnchor.constraint(equalTo: categoryBar.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: categoryBar.bottomAnchor)
-        ])
-        
-        return categoryBar
-    }
-
-    @objc private func categoryLabelTapped(_ gesture: UITapGestureRecognizer) {
-        if let label = gesture.view as? UILabel,
-           let categoryCode = getCategoryCode(for: label.text ?? "") {
-            viewModel.selectedCategory = categoryCode
-            print("선택된 카테고리 : \(label.text ?? "")")
-        }
+        dataSource.apply(snapshot) // 섹션만 추가하고 아이템은 추가하지 않음
     }
 
     private func getCategoryCode(for categoryName: String) -> String? {
-        // categoryName을 기반으로 코드 번호를 찾아 반환
         switch categoryName {
         case "경제":
             return "24"
@@ -181,14 +138,15 @@ class HomeViewController: UIViewController {
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionHeader {
                 if indexPath.section == 0 {
-                    // 새로운 섹션 헤더를 생성하고 categoryBar를 할당합니다.
                     guard let header = collectionView.dequeueReusableSupplementaryView(
                         ofKind: kind,
                         withReuseIdentifier: HomeSectionHeaderReusableView.identifier,
                         for: indexPath) as? HomeSectionHeaderReusableView else {
                         return UICollectionViewCell()
                     }
-                    header.categoryBar = self.createCategoryBar()
+
+                    // 카테고리 Bar 할당
+                    header.categoryBar = self.newIssueCategoryView
                     let allSections = Section.allCases
                     let section = allSections[indexPath.section]
                     header.configure(with: section.title)
@@ -221,6 +179,7 @@ class HomeViewController: UIViewController {
                 var newIssues: [NewIssueDTO] = []
                 newIssues = newIssue.compactMap { items in
                     NewIssueDTO(
+                        blogId: items.blogID,
                         title: items.postTitle,
                         category: items.blogName.rawValue,
                         thumbURL: items.thumbURI,
@@ -282,10 +241,11 @@ class HomeViewController: UIViewController {
             }.store(in: &subscription)
     }
 
+    // Item 할당 (to dataSource)
     private func applyItem(newIssues: [NewIssueDTO], culturalEvents: [EventDetailDTO], educationEvents: [EventDetailDTO]) {
         var snapshot = dataSource.snapshot()
 
-        // 중복된 아이템 식별자를 필터링하여 추가할 아이템만 선택
+        // 중복 아이템 필터링
         let newIssuesToAdd = newIssues.filter { newItem in
             !snapshot.itemIdentifiers.contains { item in
                 if case .newIssue(let existingItem) = item, existingItem == newItem {
@@ -294,7 +254,6 @@ class HomeViewController: UIViewController {
                 return false
             }
         }
-
         let culturalEventsToAdd = culturalEvents.filter { newEvent in
             !snapshot.itemIdentifiers.contains { item in
                 if case .event(let existingEvent) = item, existingEvent == newEvent {
@@ -303,7 +262,6 @@ class HomeViewController: UIViewController {
                 return false
             }
         }
-
         let educationEventsToAdd = educationEvents.filter { newEvent in
             !snapshot.itemIdentifiers.contains { item in
                 if case .event(let existingEvent) = item, existingEvent == newEvent {
@@ -317,12 +275,13 @@ class HomeViewController: UIViewController {
         snapshot.appendItems(newIssuesToAdd.map { Item.newIssue($0) }, toSection: .newIssue)
         snapshot.appendItems(culturalEventsToAdd.map { Item.event($0) }, toSection: .culturalEvent)
         snapshot.appendItems(educationEventsToAdd.map { Item.event($0) }, toSection: .educationEvent)
-//        snapshot.reloadSections([.newIssue])
+
+        // 새로운 스냅샷을 적용
         self.dataSource.apply(snapshot)
     }
 
 
-    // CollectionView Layout (2가지 Case)
+    // MARK: - CollectionView Layout (2가지 Case)
     private func layout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, _ in
             let section = Section.allCases[sectionIndex]
@@ -347,7 +306,7 @@ class HomeViewController: UIViewController {
 
         let sectionLayout = NSCollectionLayoutSection(group: group)
 
-        sectionLayout.boundarySupplementaryItems = [createNewIssueSectionHeader()]
+        sectionLayout.boundarySupplementaryItems = [createIssueSectionHeader()]
         sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
         sectionLayout.orthogonalScrollingBehavior = .groupPaging
         return sectionLayout
@@ -373,15 +332,15 @@ class HomeViewController: UIViewController {
         return sectionLayout
     }
 
-    // header Section
-    private func createNewIssueSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+    private func createIssueSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         return NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .estimated(30)),
+                                               heightDimension: .estimated(120)),
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
     }
+
 
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         return NSCollectionLayoutBoundarySupplementaryItem(
@@ -404,6 +363,19 @@ extension HomeViewController: UICollectionViewDelegate {
         case .newIssue(let newIssueItem):
             viewModel.itemTapped.send(.newIssue(newIssueItem))
             print("선택된 Item --> : \(newIssueItem.title)")
+        }
+    }
+}
+
+extension HomeViewController: NewIssueCategoryViewDelegate {
+    func categoryLabelTapped(_ gesture: UITapGestureRecognizer) {
+        if let label = gesture.view as? UILabel,
+           let categoryCode = getCategoryCode(for: label.text ?? "") {
+            self.viewModel.selectedCategory = categoryCode
+
+            var snapshot = dataSource.snapshot()
+            snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .newIssue))
+            dataSource.apply(snapshot)
         }
     }
 }

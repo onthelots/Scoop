@@ -2,54 +2,68 @@
 //  NewIssueCategoryView.swift
 //  Dangle
 //
-//  Created by Jae hyuk Yim on 2023/08/29.
+//  Created by Jae hyuk Yim on 2023/08/31.
 //
 
-//import UIKit
-//
-//class NewIssueCategoryView: UIView {
-//
-//    // Create and add labels/buttons for categories
-//    let categories: [BlogName] = [.economy, .traffic, .safe, .house, .environment]
-//    var lastLabel: UILabel?
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//
-//        self.backgroundColor = .white
-//        for category in categories {
-//            let label = UILabel()
-//            label.text = category.rawValue
-//            label.textColor = .black
-//            label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-//            label.translatesAutoresizingMaskIntoConstraints = false
-//            self.addSubview(label)
-//
-//            if let lastLabel = lastLabel {
-//                label.leadingAnchor.constraint(equalTo: lastLabel.trailingAnchor, constant: 16).isActive = true
-//            } else {
-//                label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-//            }
-//
-//            label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//            lastLabel = label
-//
-//            // 카테고리 레이블 탭 핸들링
-//            label.isUserInteractionEnabled = true
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryLabelTapped(_:)))
-//            label.addGestureRecognizer(tapGesture)
-//        }
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        NSLayoutConstraint.activate([
-//
-//        ])
-//    }
-//}
+import UIKit
+
+protocol NewIssueCategoryViewDelegate: AnyObject {
+    func categoryLabelTapped(_ gesture: UITapGestureRecognizer)
+}
+
+class NewIssueCategoryView: UIView {
+
+    weak var delegate: NewIssueCategoryViewDelegate?
+    let categories: [BlogName] = [.economy, .traffic, .safe, .house, .environment]
+
+    // Components
+    let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .systemBackground
+        addSubview(stackView)
+        categoryConfigure()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func categoryConfigure() {
+        for category in categories {
+            let categoryLabel = UILabel() // 라벨을 각각 생성
+            categoryLabel.text = category.rawValue
+            categoryLabel.textColor = .lightGray
+            categoryLabel.textAlignment = .center
+            categoryLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+            categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+            categoryLabel.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryLabelTapped(_:)))
+            categoryLabel.addGestureRecognizer(tapGesture)
+            stackView.addArrangedSubview(categoryLabel)
+        }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: self.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
+
+    @objc private func categoryLabelTapped(_ gesture: UITapGestureRecognizer) {
+            delegate?.categoryLabelTapped(gesture)
+    }
+}
