@@ -73,6 +73,10 @@
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
+		3FB1120B2AA06E3E00C73A3A /* BackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1120A2AA06E3E00C73A3A /* BackgroundDecorationView.swift */; };
+		3FB112112AA0830600C73A3A /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB112102AA0830600C73A3A /* EventDetailViewModel.swift */; };
+		3FB112132AA088F600C73A3A /* NewIssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB112122AA088F600C73A3A /* NewIssueDetailViewModel.swift */; };
+		3FB112152AA0890D00C73A3A /* NewIssueDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB112142AA0890D00C73A3A /* NewIssueDetailView.swift */; };
 		3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B522A90EFA100A356DA /* RegEmailViewController.swift */; };
 		3FB14B592A90F08A00A356DA /* CommonTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B582A90F08A00A356DA /* CommonTextFieldView.swift */; };
 		3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B5C2A90F8BE00A356DA /* UnderLineTextField.swift */; };
@@ -96,6 +100,8 @@
 		3FE361CF2A931E77000F1B38 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CE2A931E77000F1B38 /* User.swift */; };
 		3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */; };
 		3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D32A93475A000F1B38 /* SettingViewController.swift */; };
+		3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */; };
+		3FE68BC52AA0B00100595733 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3FE68BC42AA0B00100595733 /* SwiftSoup */; };
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +189,10 @@
 		3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* DangleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FB1120A2AA06E3E00C73A3A /* BackgroundDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDecorationView.swift; sourceTree = "<group>"; };
+		3FB112102AA0830600C73A3A /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
+		3FB112122AA088F600C73A3A /* NewIssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDetailViewModel.swift; sourceTree = "<group>"; };
+		3FB112142AA0890D00C73A3A /* NewIssueDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDetailView.swift; sourceTree = "<group>"; };
 		3FB14B522A90EFA100A356DA /* RegEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegEmailViewController.swift; sourceTree = "<group>"; };
 		3FB14B582A90F08A00A356DA /* CommonTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextFieldView.swift; sourceTree = "<group>"; };
 		3FB14B5C2A90F8BE00A356DA /* UnderLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineTextField.swift; sourceTree = "<group>"; };
@@ -206,6 +216,7 @@
 		3FE361CE2A931E77000F1B38 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		3FE361D32A93475A000F1B38 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDetailViewController.swift; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +229,7 @@
 				3F3822872A9466E60019D994 /* FirebaseAuth in Frameworks */,
 				3F3822892A9466E60019D994 /* FirebaseFirestore in Frameworks */,
 				3F38228B2A9466E60019D994 /* FirebaseStorage in Frameworks */,
+				3FE68BC52AA0B00100595733 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +658,8 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */,
+				3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */,
+				3FB112142AA0890D00C73A3A /* NewIssueDetailView.swift */,
 				3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */,
 				3FD618272A98909300CE6690 /* EventDetailViewController.swift */,
 				3FD618332A98A6B500CE6690 /* EventDetailView.swift */,
@@ -658,6 +672,8 @@
 			isa = PBXGroup;
 			children = (
 				3F8CD6F62A97101300307372 /* HomeViewModel.swift */,
+				3FB112122AA088F600C73A3A /* NewIssueDetailViewModel.swift */,
+				3FB112102AA0830600C73A3A /* EventDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -725,6 +741,7 @@
 				3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */,
 				3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */,
 				3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */,
+				3FB1120A2AA06E3E00C73A3A /* BackgroundDecorationView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -988,6 +1005,7 @@
 				3F3822882A9466E60019D994 /* FirebaseFirestore */,
 				3F38228A2A9466E60019D994 /* FirebaseStorage */,
 				3F8CD6E62A96D92300307372 /* Kingfisher */,
+				3FE68BC42AA0B00100595733 /* SwiftSoup */,
 			);
 			productName = Dangle;
 			productReference = 3FACA8752A7CE47B00F2544C /* Dangle.app */;
@@ -1064,6 +1082,7 @@
 			packageReferences = (
 				3F3822852A9466E60019D994 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3FE68BC32AA0B00100595733 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 3FACA8762A7CE47B00F2544C /* Products */;
 			projectDirPath = "";
@@ -1161,6 +1180,7 @@
 				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
 				3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */,
 				3F1AB7F02A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift in Sources */,
+				3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */,
 				3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
 				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
@@ -1170,7 +1190,9 @@
 				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
 				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
+				3FB1120B2AA06E3E00C73A3A /* BackgroundDecorationView.swift in Sources */,
 				3FC8D9BD2A99EF2A007BDEB5 /* Evaluation.swift in Sources */,
+				3FB112132AA088F600C73A3A /* NewIssueDetailViewModel.swift in Sources */,
 				3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
@@ -1185,6 +1207,7 @@
 				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
 				3FB14B622A90FA6500A356DA /* RegEmailViewModel.swift in Sources */,
 				3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */,
+				3FB112152AA0890D00C73A3A /* NewIssueDetailView.swift in Sources */,
 				3F1AB7F82A8DC96E0076CEAB /* UserDefaultStorage.swift in Sources */,
 				3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */,
 				3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */,
@@ -1192,6 +1215,7 @@
 				3F8CD6FF2A972D5D00307372 /* DefaultsUserInfoRepository.swift in Sources */,
 				3F1AB7EF2A8DC96E0076CEAB /* UserLocationViewController.swift in Sources */,
 				3F49648C2A8F866400078EE3 /* AuthRepository.swift in Sources */,
+				3FB112112AA0830600C73A3A /* EventDetailViewModel.swift in Sources */,
 				3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */,
 				3FB14B6D2A912F1500A356DA /* CommonButtonView.swift in Sources */,
 				3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */,
@@ -1569,6 +1593,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		3FE68BC32AA0B00100595733 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1591,6 +1623,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		3FE68BC42AA0B00100595733 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FE68BC32AA0B00100595733 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

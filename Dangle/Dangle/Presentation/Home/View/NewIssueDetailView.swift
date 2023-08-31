@@ -1,13 +1,13 @@
 //
-//  EventDetailView.swift
+//  NewIssueDetailView.swift
 //  Dangle
 //
-//  Created by Jae hyuk Yim on 2023/08/25.
+//  Created by Jae hyuk Yim on 2023/08/31.
 //
 
 import UIKit
 
-class EventDetailView: UIView {
+class NewIssueDetailView: UIView {
 
     // MARK: - Components
     private lazy var thumbnailImageView: UIImageView = {

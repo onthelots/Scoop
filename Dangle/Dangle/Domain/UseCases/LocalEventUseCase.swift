@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftSoup
 
 protocol LocalEventUseCase {
 
@@ -45,7 +46,16 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
             categoryCode: categoryCode
         ) { result in
             switch result {
-            case .success(let issues):
+            case .success(var issues):
+                for (index, detail) in issues.seoulNewsList.detail.enumerated() {
+                    do {
+                        let doc: Document = try SwiftSoup.parse(detail.postContent)
+                        let plainText = try doc.text()
+                        issues.seoulNewsList.detail[index].postContent = plainText
+                    } catch {
+                        print("HTML parsing error : \(error)")
+                    }
+                }
                 completion(.success(issues))
             case .failure(let error):
                 completion(.failure(error))

@@ -19,7 +19,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
     }
 
     func newIssueParsing(
-        categoryCode: String, // 코드 번호를 String으로 받아옴
+        categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
     ) {
 
@@ -32,9 +32,9 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    print("---> 서울 새소식 파싱에 실패했습니다 : \(error)")
+                    print("error : \(error)")
                 case .finished:
-                    print("---> 서울 새소식 파싱에 성공했습니다!")
+                    break
                 }
             } receiveValue: { items in
                 completion(.success(items))
@@ -61,9 +61,9 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    print("---> 문화행사 데이터 파싱에 실패했습니다 : \(error)")
+                    print("error : \(error)")
                 case .finished:
-                    print("---> 문화행사 데이터 파싱에 성공했습니다!")
+                    break
                 }
             } receiveValue: { items in
                 // 종료시간이 현재 시점보다 이후인 경우만 걸러서 필터링
@@ -107,9 +107,9 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    print("---> 교육 데이터 파싱에 실패했습니다 : \(error)")
+                    print("error : \(error)")
                 case .finished:
-                    print("---> 교육 데이터 파싱에 성공했습니다!")
+                    break
                 }
             } receiveValue: { items in
                 let filteredDetails = items.educationEventInfo.detail.filter { eventDetail in

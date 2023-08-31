@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - NewIssue
 struct NewIssue: Codable {
-    let seoulNewsList: SeoulNewsList
+    var seoulNewsList: SeoulNewsList
 
     enum CodingKeys: String, CodingKey {
         case seoulNewsList = "SeoulNewsList"
@@ -19,7 +19,7 @@ struct NewIssue: Codable {
 // MARK: - SeoulNewsList
 struct SeoulNewsList: Codable {
     let listTotalCount: Int
-    let detail: [NewIssueDetail]
+    var detail: [NewIssueDetail]
 
     enum CodingKeys: String, CodingKey {
         case listTotalCount = "list_total_count"
@@ -36,7 +36,8 @@ struct NewIssueDetail: Codable {
     let postExcerpt: String // 요약글
     let publishDate: String // 날짜
     let modifyDate: String // 수정날짜
-    let postContent, managerName, managerPhone, managerDept: String
+    var postContent: String
+    let managerName, managerPhone, managerDept: String
 
     enum CodingKeys: String, CodingKey {
         case blogID = "BLOG_ID"
