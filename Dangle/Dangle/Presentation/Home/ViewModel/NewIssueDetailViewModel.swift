@@ -12,7 +12,7 @@ class NewIssueDetailViewModel {
 
     let newIssueItem: NewIssueDTO
 
-    @Published var newIssueDTO: NewIssueDTO? = nil
+    @Published var newIssueDTO: NewIssueDTO?
 
     init(newIssueItem: NewIssueDTO) {
         self.newIssueItem = newIssueItem
@@ -22,8 +22,6 @@ class NewIssueDetailViewModel {
     // 데이터를 불러오는 과정이므로, global() GCD로 처리함
     // 그냥 패치하는것과 무슨 차이가 있을까?
     func fetch() {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [unowned self] in
-            self.newIssueDTO = newIssueItem
-        }
+        self.newIssueDTO = newIssueItem
     }
 }

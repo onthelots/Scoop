@@ -13,6 +13,15 @@ class NewIssueDetailViewController: UIViewController {
     let viewModel: NewIssueDetailViewModel!
     var subscripiton = Set<AnyCancellable>()
 
+    private lazy var newIssueDetailView = NewIssueDetailView()
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
     init(viewModel: NewIssueDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -24,12 +33,29 @@ class NewIssueDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        setupBackButton()
+        viewModel.fetch()
+        bind()
+        setupUI()
     }
 
-    // Configure
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
+        view.addSubview(scrollView)
+        scrollView.addSubview(newIssueDetailView)
+        newIssueDetailView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
 
-    // Fetch
+            newIssueDetailView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+            newIssueDetailView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
+            newIssueDetailView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            newIssueDetailView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        ])
+    }
 
     // Bind
     private func bind() {
@@ -37,7 +63,7 @@ class NewIssueDetailViewController: UIViewController {
             .compactMap { $0 }
             .receive(on: RunLoop.main)
             .sink { items in
-                // view configure에 할당
+                self.newIssueDetailView.configure(newIssueDTO: items)
             }.store(in: &subscripiton)
     }
 }

@@ -178,7 +178,8 @@ class HomeViewController: UIViewController {
                         publishDate: items.publishDate,
                         modifyDate: items.modifyDate,
                         postContent: items.postContent,
-                        managerDept: items.managerDept
+                        managerDept: items.managerDept,
+                        managerName: items.managerName
                     )
                 }
                 var culturalEvents: [EventDetailDTO] = []

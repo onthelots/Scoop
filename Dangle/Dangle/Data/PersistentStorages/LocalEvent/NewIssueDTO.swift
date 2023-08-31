@@ -16,4 +16,5 @@ struct NewIssueDTO: Hashable {
     let modifyDate: String // 수정날짜
     let postContent: String // 전체내용
     let managerDept: String // 담당부서
+    let managerName: String // 담당자
 }
