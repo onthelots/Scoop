@@ -10,16 +10,6 @@ import UIKit
 class NewIssueDetailView: UIView {
 
     // MARK: - Components
-    private lazy var thumbnailImageView: UIImageView = {
-       let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 5
-        imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -30,7 +20,7 @@ class NewIssueDetailView: UIView {
         return label
     }()
 
-    private lazy var useTargetCategoryStackView: UIStackView = {
+    private lazy var manageStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .leading
@@ -39,11 +29,11 @@ class NewIssueDetailView: UIView {
         return stackView
     }()
 
-    private lazy var useTargetLabel: UILabel = {
+    private lazy var manageDept: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .left
-        label.textColor = .lightGray
+        label.textColor = .darkGray
         label.numberOfLines = 1
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -52,9 +42,9 @@ class NewIssueDetailView: UIView {
 
     private lazy var dotLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .left
-        label.textColor = .lightGray
+        label.textColor = .darkGray
         label.numberOfLines = 1
         label.text = "•"
         label.sizeToFit()
@@ -62,7 +52,27 @@ class NewIssueDetailView: UIView {
         return label
     }()
 
-    private lazy var categoryLabel: UILabel = {
+    private lazy var manageName: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textAlignment = .left
+        label.textColor = .darkGray
+        label.numberOfLines = 1
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var dateStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    private lazy var publishDate: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
         label.textAlignment = .left
@@ -73,75 +83,48 @@ class NewIssueDetailView: UIView {
         return label
     }()
 
-    private lazy var locationLabel: UILabel = {
-        let label = UILabel()
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "location.fill")
-        imageAttachment.bounds = CGRect(x: 12, y: 0, width: 12, height: 12)
-
-        let attributedString = NSMutableAttributedString(string: " ")
-        attributedString.append(NSAttributedString(attachment: imageAttachment))
-
-        let labelText = NSMutableAttributedString(string: " " + (label.text ?? ""))
-        attributedString.append(labelText)
-
-        label.textColor = .black
-        label.attributedText = attributedString
-        label.font = .systemFont(ofSize: 13)
+    private lazy var modifyDate: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.textAlignment = .left
+        label.textColor = .lightGray
+        label.numberOfLines = 1
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var dateLabel: UILabel = {
-        let label = UILabel()
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "calendar")
-        imageAttachment.image = imageAttachment.image?.withTintColor(UIColor.systemRed)
-        imageAttachment.bounds = CGRect(x: -1, y: -2, width: 8, height: 8)
+    private let seperatedLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
-        let attributedString = NSMutableAttributedString(string: " ")
-        attributedString.append(NSAttributedString(attachment: imageAttachment))
 
-        let labelText = NSMutableAttributedString(string: " " + (label.text ?? ""))
-        attributedString.append(labelText)
-
+    private lazy var postContentLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.textAlignment = .left
         label.textColor = .black
-        label.attributedText = attributedString
-        label.font = .systemFont(ofSize: 13)
+        label.numberOfLines = 0
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    private lazy var detailStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fill
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    lazy var webButtonView: CommonButtonView = {
-        let buttonView = CommonButtonView()
-        buttonView.nextButton.setTitle("자세히 보러가기", for: .normal)
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.nextButton.isEnabled = true
-        return buttonView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        useTargetCategoryStackView.addArrangedSubview(useTargetLabel)
-        useTargetCategoryStackView.addArrangedSubview(dotLabel)
-        useTargetCategoryStackView.addArrangedSubview(categoryLabel)
-        detailStackView.addArrangedSubview(titleLabel)
-        detailStackView.addArrangedSubview(useTargetCategoryStackView)
-        detailStackView.addArrangedSubview(locationLabel)
-        detailStackView.addArrangedSubview(dateLabel)
-        addSubview(thumbnailImageView)
-        addSubview(detailStackView)
-        addSubview(webButtonView)
+        manageStackView.addArrangedSubview(manageDept)
+        manageStackView.addArrangedSubview(dotLabel)
+        manageStackView.addArrangedSubview(manageName)
+        dateStackView.addArrangedSubview(publishDate)
+        dateStackView.addArrangedSubview(modifyDate)
+        addSubview(titleLabel)
+        addSubview(manageStackView)
+        addSubview(dateStackView)
+        addSubview(seperatedLineView)
+        addSubview(postContentLabel)
     }
 
     required init?(coder: NSCoder) {
@@ -152,27 +135,35 @@ class NewIssueDetailView: UIView {
         super.layoutSubviews()
 
         NSLayoutConstraint.activate([
-            thumbnailImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            thumbnailImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
-            thumbnailImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
-            thumbnailImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            detailStackView.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 20),
-            detailStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            detailStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            detailStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            webButtonView.topAnchor.constraint(greaterThanOrEqualTo: detailStackView.bottomAnchor, constant: 10).withPriority(.defaultLow),
-            webButtonView.leadingAnchor.constraint(equalTo: detailStackView.leadingAnchor),
-            webButtonView.trailingAnchor.constraint(equalTo: detailStackView.trailingAnchor),
-            webButtonView.bottomAnchor.constraint(equalTo: self.bottomAnchor).withPriority(.required)
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+
+            manageStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            manageStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+
+            dateStackView.topAnchor.constraint(equalTo: manageStackView.bottomAnchor, constant: 10),
+            dateStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+
+            seperatedLineView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor, constant: 15),
+            seperatedLineView.heightAnchor.constraint(equalToConstant: 3),
+            seperatedLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            seperatedLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+
+            postContentLabel.topAnchor.constraint(equalTo: seperatedLineView.bottomAnchor, constant: 15).withPriority(.required),
+            postContentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            postContentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            postContentLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -10).withPriority(.defaultLow)
         ])
     }
 
-    func configure(eventDetail: EventDetailDTO) {
-        self.thumbnailImageView.kf.setImage(with: URL(string: eventDetail.thumbNail ?? ""), placeholder: UIImage(systemName: "hands.sparkles.fill"))
-        self.titleLabel.text = eventDetail.title
-        self.useTargetLabel.text = eventDetail.useTarget
-        self.categoryLabel.text = eventDetail.category
-        self.locationLabel.text = eventDetail.location
-        self.dateLabel.text = eventDetail.date
+    func configure(newIssueDTO: NewIssueDTO) {
+        self.titleLabel.text = newIssueDTO.title
+        self.manageDept.text = newIssueDTO.managerDept
+        self.manageName.text = newIssueDTO.managerName
+        self.publishDate.text = "입력 \(newIssueDTO.publishDate)"
+        self.modifyDate.text = "수정 \(newIssueDTO.modifyDate)"
+        self.postContentLabel.text = newIssueDTO.postContent
     }
 }
