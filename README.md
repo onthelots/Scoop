@@ -149,7 +149,7 @@ InSight
 
 순서  | 내용  | 비고
 ----| ----- | -----
-1| 작성중 | 작성중
+1| 특정 API를 JSON으로 파싱 시, HTML 형식으로 내려오는 문제 | https://github.com/onthelots/dangle/issues/31
 2| 작성중 | 작성중
 
 <br>
