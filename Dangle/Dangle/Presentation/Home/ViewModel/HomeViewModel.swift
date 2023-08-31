@@ -19,16 +19,13 @@ class HomeViewModel: ObservableObject {
         case event(EventDetailDTO)
     }
 
-    // 디테일 형식으로 퍼블리셔(PassthroughSubject)
     var newIssueSubject = PassthroughSubject<[NewIssueDetail], Never>()
     var culturalEventSubject = PassthroughSubject<[CulturalEventDetail], Never>()
     var educationEventSubject = PassthroughSubject<[EducationEventDetail], Never>()
 
-    // Output (User Interaction)
     let itemTapped = PassthroughSubject<Item, Never>()
 
     @Published var userInfo: UserInfo!
-
     @Published var selectedCategory: String? {
          didSet {
              if let category = selectedCategory {
@@ -37,16 +34,14 @@ class HomeViewModel: ObservableObject {
          }
      }
 
-    // 구독자 --> 추후, 관련된 Cell을 클릭했을 때 활용
     private var subscription: Set<AnyCancellable> = []
 
     init(localEventUseCase: LocalEventUseCase, userInfoUseCase: UserInfoUseCase) {
         self.localEventUseCase = localEventUseCase
         self.userInfoUseCase = userInfoUseCase
-        self.selectedCategory = "21"
+        self.selectedCategory = "24"
     }
 
-    // 2. 사용자 정보를 Firebase에서 가져옴
     func userInfoFetch() {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
@@ -74,7 +69,7 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    // 문화정보 파싱
+
     func culturalEventFetch(location: String) {
         localEventUseCase.execute(location: location) { result in
             switch result {
@@ -86,7 +81,6 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    // 교육정보 파싱
     func educationEventFetch(location: String) {
         localEventUseCase.execute(location: location) { result in
             switch result {

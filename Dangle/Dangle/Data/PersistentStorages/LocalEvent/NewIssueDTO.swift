@@ -8,7 +8,6 @@
 import Foundation
 
 struct NewIssueDTO: Hashable {
-    let blogId: Int
     let title: String
     let category: String
     let thumbURL: String?

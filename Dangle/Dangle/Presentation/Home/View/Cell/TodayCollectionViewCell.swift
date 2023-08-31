@@ -97,15 +97,4 @@ class TodayCollectionViewCell: UICollectionViewCell {
         temperatureLabel.text = ""
         weatherImageView.image = nil
     }
-
-    // MARK: - 목업
-//    func configure(item: CultureEventDTO) {
-//        self.locationLabel.text = item.time
-//        self.weatherImageView.kf.setImage(
-//            with: URL(string: item.thumbNail ?? "")!,
-//            placeholder: UIImage(systemName: "hands.sparkles.fill")
-//        )
-//        self.statusLabel.text = item.title
-//        self.temperatureLabel.text = item.location
-//    }
 }

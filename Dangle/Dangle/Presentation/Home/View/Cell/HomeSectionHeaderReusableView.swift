@@ -10,6 +10,8 @@ import UIKit
 class HomeSectionHeaderReusableView: UICollectionReusableView {
     static let identifier = "HomeSectionHeaderReusableView"
 
+    var categoryBar: UIView?
+
     private lazy var sectionTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,8 +22,6 @@ class HomeSectionHeaderReusableView: UICollectionReusableView {
         label.font = .preferredFont(forTextStyle: .headline)
         return label
     }()
-
-    var categoryBar: UIView? // 카테고리 바를 담을 변수입니다.
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,11 +37,12 @@ class HomeSectionHeaderReusableView: UICollectionReusableView {
         super.layoutSubviews()
 
         NSLayoutConstraint.activate([
-            sectionTitleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
+            sectionTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
+            sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            sectionTitleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0)
         ])
 
-        // 만약 카테고리 바가 존재한다면, 해당 바를 섹션 헤더에 추가합니다.
+        // Add CategoryBar
         if let categoryBar = categoryBar {
             addSubview(categoryBar)
             categoryBar.translatesAutoresizingMaskIntoConstraints = false
