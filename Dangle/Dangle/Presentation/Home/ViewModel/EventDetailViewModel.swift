@@ -12,8 +12,14 @@ class EventDetailViewModel {
 
     let eventDetailItem: EventDetailDTO
 
+    @Published var eventDetailDTO: EventDetailDTO?
+
     init(eventDetailItem: EventDetailDTO) {
         self.eventDetailItem = eventDetailItem
+    }
+
+    func fetch() {
+        self.eventDetailDTO = eventDetailItem
     }
 
     func openWebPage(from viewController: UIViewController) {

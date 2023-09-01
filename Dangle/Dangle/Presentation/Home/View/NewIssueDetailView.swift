@@ -101,10 +101,9 @@ class NewIssueDetailView: UIView {
         return view
     }()
 
-
     private lazy var postContentLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.textAlignment = .left
         label.textColor = .black
         label.numberOfLines = 0
@@ -136,25 +135,24 @@ class NewIssueDetailView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-
-            manageStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            
+            manageStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             manageStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
 
             dateStackView.topAnchor.constraint(equalTo: manageStackView.bottomAnchor, constant: 10),
             dateStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-
+            
             seperatedLineView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor, constant: 15),
             seperatedLineView.heightAnchor.constraint(equalToConstant: 3),
             seperatedLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             seperatedLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-
-            postContentLabel.topAnchor.constraint(equalTo: seperatedLineView.bottomAnchor, constant: 15).withPriority(.required),
+            
+            postContentLabel.topAnchor.constraint(equalTo: seperatedLineView.bottomAnchor, constant: 15),
             postContentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             postContentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            postContentLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -10).withPriority(.defaultLow)
+            postContentLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -10)
         ])
     }
 
