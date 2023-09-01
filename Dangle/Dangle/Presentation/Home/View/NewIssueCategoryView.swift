@@ -14,9 +14,9 @@ protocol NewIssueCategoryViewDelegate: AnyObject {
 class NewIssueCategoryView: UIView {
 
     weak var delegate: NewIssueCategoryViewDelegate?
-    let categories: [BlogName] = [.economy, .traffic, .safe, .house, .environment]
+    let categories: [BlogName] = [.traffic, .safe, .house, .economy, .environment]
 
-    var state: BlogName = .economy
+    var state: BlogName = .traffic
 
     // MARK: - Components
     let stackView: UIStackView = {

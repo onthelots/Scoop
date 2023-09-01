@@ -6,22 +6,27 @@
 //
 
 import UIKit
+import Combine
 import SafariServices
 
 class EventDetailViewController: UIViewController {
 
-    private let viewModel: EventDetailViewModel
+    private let viewModel: EventDetailViewModel!
     private lazy var eventDetailView = EventDetailView()
+    var subscripiton = Set<AnyCancellable>()
 
     init(viewModel: EventDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        viewModel.fetch()
         bind()
+        itemTapped()
         setupBackButton()
     }
 
@@ -41,10 +46,17 @@ class EventDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // Bind
     private func bind() {
-        self.eventDetailView.configure(
-            eventDetail: viewModel.eventDetailItem
-        )
+        viewModel.$eventDetailDTO
+            .compactMap { $0 }
+            .receive(on: RunLoop.main)
+            .sink { items in
+                self.eventDetailView.configure(eventDetail: items)
+            }.store(in: &subscripiton)
+    }
+
+    private func itemTapped() {
         self.eventDetailView.webButtonView.nextButton.addTarget(self, action: #selector(openWebPage), for: .touchUpInside)
     }
 

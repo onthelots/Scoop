@@ -55,9 +55,9 @@ struct NewIssueDetail: Codable {
 }
 
 enum BlogName: String, Codable {
-    case economy = "경제"
     case traffic = "교통"
     case safe = "안전"
     case house = "주택"
+    case economy = "경제"
     case environment = "환경"
 }

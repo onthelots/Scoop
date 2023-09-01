@@ -22,14 +22,14 @@ class HomeViewController: UIViewController {
 
     private func getCategoryCode(for categoryName: String) -> String? {
         switch categoryName {
-        case "경제":
-            return "24"
         case "교통":
             return "21"
         case "안전":
             return "22"
         case "주택":
             return "23"
+        case "경제":
+            return "24"
         case "환경":
             return "25"
         default:
@@ -225,12 +225,13 @@ class HomeViewController: UIViewController {
                     let viewModel = NewIssueDetailViewModel(newIssueItem: newIssue)
                     let viewController = NewIssueDetailViewController(viewModel: viewModel)
                     viewController.navigationItem.largeTitleDisplayMode = .never
+                    viewController.title = newIssue.category
                     self.navigationController?.pushViewController(viewController, animated: true)
                 case .event(let event):
                     let viewModel = EventDetailViewModel(eventDetailItem: event)
                     let viewController = EventDetailViewController(viewModel: viewModel)
                     viewController.navigationItem.largeTitleDisplayMode = .never
-                    viewController.title = event.title
+                    viewController.title = event.category
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }.store(in: &subscription)

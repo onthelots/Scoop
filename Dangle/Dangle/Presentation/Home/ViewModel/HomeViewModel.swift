@@ -39,7 +39,7 @@ class HomeViewModel: ObservableObject {
     init(localEventUseCase: LocalEventUseCase, userInfoUseCase: UserInfoUseCase) {
         self.localEventUseCase = localEventUseCase
         self.userInfoUseCase = userInfoUseCase
-        self.selectedCategory = "24"
+        self.selectedCategory = "21"
     }
 
     func userInfoFetch() {
