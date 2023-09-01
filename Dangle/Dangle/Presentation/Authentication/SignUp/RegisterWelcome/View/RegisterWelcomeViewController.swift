@@ -169,7 +169,10 @@ class RegisterWelcomeViewController: UIViewController {
     // ----> 4. 버튼이 눌렀을 때 동작
     @objc private func nextButtonTapped() {
         let location: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.name ?? ""
-        let userInfo = UserInfo(email: email, password: password, location: location, nickname: nickname)
+        let longitude: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.longitude ?? ""
+        let latitude: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.latitude ?? ""
+
+        let userInfo = UserInfo(email: email, password: password, location: location, nickname: nickname, longitude: longitude, latitude: latitude)
         // 4. viewModel의 signUpButtonTapped 퍼블리셔에게 정보를 전달함
         viewModel.signUpButtonTapped.send(userInfo)
         print("signUpButtonTapped 퍼블리셔에게 userInfo를 전달합니다")

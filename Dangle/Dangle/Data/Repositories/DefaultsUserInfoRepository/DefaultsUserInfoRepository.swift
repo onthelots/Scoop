@@ -20,14 +20,16 @@ class DefaultsUserInfoRepository: UserInfoRepository {
             guard let data = snapshot?.data(),
                   let email = data["email"] as? String,
                   let location = data["location"] as? String,
-                  let nickname = data["nickname"] as? String
+                  let nickname = data["nickname"] as? String,
+                  let longitude = data["longitude"] as? String,
+                  let latitude = data["latitude"] as? String
             else {
                 let error = NSError(domain: "FirestoreError", code: 0, userInfo: nil)
                 completion(.failure(error))
                 return
             }
 
-            let userInfo = UserInfo(email: email, password: "", location: location, nickname: nickname)
+            let userInfo = UserInfo(email: email, password: "", location: location, nickname: nickname, longitude: longitude, latitude: latitude)
             completion(.success(userInfo))
         }
     }

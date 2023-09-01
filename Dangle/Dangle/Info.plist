@@ -14,6 +14,8 @@
 		</dict>
 	</array>
 	<key>KAKAO_APP_KEY</key>
+	<string>3b61d69dccfeedfdc824b3a7e958633d</string>
+	<key>KAKAO_RESTAPI_KEY</key>
 	<string>d2e7271e2f362be0582f1b7897a516d3</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array/>
