@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class WriteFloatingButtonView: UIView {
+class ReviewFloatingView: UIView {
 
     var textLabelTappedSubject = PassthroughSubject<String, Never>()
 

@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     }()
 
     private lazy var mapView = MapView()
-    private lazy var floatingButton = WriteFloatingButtonView()
+    private lazy var floatingButton = ReviewFloatingView()
 
     private var subscription = Set<AnyCancellable>()
 
@@ -33,6 +33,14 @@ class MapViewController: UIViewController {
     typealias Item = Post
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // 뷰가 다시 나타날 때 스택뷰를 숨김
+        floatingButton.categoryMenuStackView.arrangedSubviews.forEach { (button) in
+            button.isHidden = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +53,6 @@ class MapViewController: UIViewController {
 
         view.addSubview(collectionView)
         view.addSubview(floatingButton)
-//        view.bringSubviewToFront(floatingButton)
         bind()
         setupUI()
     }
@@ -134,11 +141,12 @@ class MapViewController: UIViewController {
 
             }.store(in: &subscription)
 
+        // floatingButton의 Category데이터 전달
         floatingButton.textLabelTappedSubject
             .sink { [weak self] text in
                 guard let self = self else { return }
-                let viewController = WriteReviewViewController(category: text)
-                viewController.navigationItem.title = text
+                let viewController = ReviewViewController(category: text)
+                viewController.navigationItem.title = "\(text) 글쓰기"
                 viewController.navigationItem.largeTitleDisplayMode = .never
                 self.navigationController?.pushViewController(viewController, animated: true)
             }.store(in: &subscription)

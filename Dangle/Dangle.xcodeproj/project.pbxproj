@@ -46,20 +46,15 @@
 		3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */; };
 		3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */; };
 		3F41C19D2AA1866100E9A48C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41C19C2AA1866100E9A48C /* MapView.swift */; };
-		3F44C7512AA1B7E30037CCC5 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7502AA1B7E30037CCC5 /* MapViewModel.swift */; };
-		3F44C7532AA1D1B50037CCC5 /* PostCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7522AA1D1B50037CCC5 /* PostCategoryView.swift */; };
 		3F44C7562AA1D8760037CCC5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7552AA1D8760037CCC5 /* FirebaseAuth */; };
 		3F44C7582AA1D8760037CCC5 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7572AA1D8760037CCC5 /* FirebaseDatabase */; };
 		3F44C75A2AA1D8760037CCC5 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7592AA1D8760037CCC5 /* FirebaseDatabaseSwift */; };
 		3F44C75C2AA1D8760037CCC5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C75B2AA1D8760037CCC5 /* FirebaseFirestore */; };
 		3F44C75E2AA1D8760037CCC5 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C75D2AA1D8760037CCC5 /* FirebaseFirestoreSwift */; };
 		3F44C7602AA1D8760037CCC5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C75F2AA1D8760037CCC5 /* FirebaseStorage */; };
-		3F44C7632AA1DF470037CCC5 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7622AA1DF470037CCC5 /* PostCollectionViewCell.swift */; };
-		3F44C7672AA1EFB60037CCC5 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7662AA1EFB60037CCC5 /* WriteReviewViewModel.swift */; };
 		3F44C76C2AA1F2C30037CCC5 /* PostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C76B2AA1F2C30037CCC5 /* PostUseCase.swift */; };
 		3F44C76F2AA1F30A0037CCC5 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C76E2AA1F30A0037CCC5 /* PostRepository.swift */; };
 		3F44C7722AA1F3320037CCC5 /* DefaultsPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7712AA1F3320037CCC5 /* DefaultsPostRepository.swift */; };
-		3F44C7742AA1F6E00037CCC5 /* WriteFloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7732AA1F6E00037CCC5 /* WriteFloatingButtonView.swift */; };
 		3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964702A8E827600078EE3 /* CustomNavigationItem.swift */; };
 		3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */; };
 		3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49647A2A8F5D1800078EE3 /* EmailValidationService.swift */; };
@@ -68,7 +63,13 @@
 		3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */; };
 		3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964942A8F884300078EE3 /* SignUpUseCase.swift */; };
 		3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* UserInfo.swift */; };
-		3F7ADE992AA3281100AE2DD1 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE982AA3281100AE2DD1 /* WriteReviewViewController.swift */; };
+		3F5D40412AA3628F00D6692D /* WriteFloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40402AA3628F00D6692D /* WriteFloatingButtonView.swift */; };
+		3F5D40462AA362EC00D6692D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40452AA362EC00D6692D /* ReviewView.swift */; };
+		3F7ADE992AA3281100AE2DD1 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */; };
+		3F7ADE9E2AA32A6900AE2DD1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */; };
+		3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */; };
+		3F7ADEA22AA32A7C00AE2DD1 /* PostCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */; };
+		3F7ADEA52AA32A9400AE2DD1 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADEA42AA32A9400AE2DD1 /* PostCollectionViewCell.swift */; };
 		3F80C0062A9DBCAD00F2128D /* NewIssueDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */; };
 		3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */; };
 		3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */; };
@@ -174,14 +175,9 @@
 		3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
 		3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
 		3F41C19C2AA1866100E9A48C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		3F44C7502AA1B7E30037CCC5 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewModel.swift; path = ../../../../../../../../Documents/MapViewModel.swift; sourceTree = "<group>"; };
-		3F44C7522AA1D1B50037CCC5 /* PostCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCategoryView.swift; path = ../../../../../../../../Documents/PostCategoryView.swift; sourceTree = "<group>"; };
-		3F44C7622AA1DF470037CCC5 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCollectionViewCell.swift; path = ../../../../../../../../../Documents/PostCollectionViewCell.swift; sourceTree = "<group>"; };
-		3F44C7662AA1EFB60037CCC5 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteReviewViewModel.swift; path = ../../../../../../../../Documents/WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		3F44C76B2AA1F2C30037CCC5 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
 		3F44C76E2AA1F30A0037CCC5 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		3F44C7712AA1F3320037CCC5 /* DefaultsPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsPostRepository.swift; sourceTree = "<group>"; };
-		3F44C7732AA1F6E00037CCC5 /* WriteFloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteFloatingButtonView.swift; path = Dangle/Presentation/Map/View/WriteReview/WriteFloatingButtonView.swift; sourceTree = SOURCE_ROOT; };
 		3F4964702A8E827600078EE3 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
 		3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SignUpCheckValid.swift"; sourceTree = "<group>"; };
 		3F49647A2A8F5D1800078EE3 /* EmailValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationService.swift; sourceTree = "<group>"; };
@@ -190,7 +186,13 @@
 		3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsAuthRepository.swift; sourceTree = "<group>"; };
 		3F4964942A8F884300078EE3 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		3F4964982A8FA1FD00078EE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		3F7ADE982AA3281100AE2DD1 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
+		3F5D40402AA3628F00D6692D /* WriteFloatingButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WriteFloatingButtonView.swift; path = "../../../../../../../../무제 폴더/WriteFloatingButtonView.swift"; sourceTree = "<group>"; };
+		3F5D40452AA362EC00D6692D /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCategoryView.swift; sourceTree = "<group>"; };
+		3F7ADEA42AA32A9400AE2DD1 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDTO.swift; sourceTree = "<group>"; };
 		3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -603,18 +605,10 @@
 		3F44C74D2AA1B7CD0037CCC5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3F44C7502AA1B7E30037CCC5 /* MapViewModel.swift */,
-				3F44C7662AA1EFB60037CCC5 /* WriteReviewViewModel.swift */,
+				3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */,
+				3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3F44C7612AA1DD9F0037CCC5 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3F44C7622AA1DF470037CCC5 /* PostCollectionViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		3F44C76D2AA1F2F50037CCC5 /* PostRepository */ = {
@@ -714,13 +708,21 @@
 			path = AuthRepository;
 			sourceTree = "<group>";
 		};
+		3F5D40422AA362B400D6692D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3F41C19C2AA1866100E9A48C /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		3F7ADE922AA3275E00AE2DD1 /* NewIssue */ = {
 			isa = PBXGroup;
 			children = (
-				3F7ADE942AA3279700AE2DD1 /* Cell */,
 				3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */,
 				3FB112142AA0890D00C73A3A /* NewIssueDetailView.swift */,
 				3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */,
+				3F7ADE942AA3279700AE2DD1 /* Cell */,
 			);
 			path = NewIssue;
 			sourceTree = "<group>";
@@ -728,9 +730,9 @@
 		3F7ADE932AA3276900AE2DD1 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				3F7ADE952AA3279B00AE2DD1 /* Cell */,
 				3FD618272A98909300CE6690 /* EventDetailViewController.swift */,
 				3FD618332A98A6B500CE6690 /* EventDetailView.swift */,
+				3F7ADE952AA3279B00AE2DD1 /* Cell */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -751,20 +753,31 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		3F7ADE962AA327EE00AE2DD1 /* WriteReview */ = {
+		3F7ADE962AA327EE00AE2DD1 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				3F7ADE982AA3281100AE2DD1 /* WriteReviewViewController.swift */,
-				3F44C7732AA1F6E00037CCC5 /* WriteFloatingButtonView.swift */,
+				3F5D40402AA3628F00D6692D /* WriteFloatingButtonView.swift */,
+				3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */,
+				3F5D40452AA362EC00D6692D /* ReviewView.swift */,
 			);
-			path = WriteReview;
+			path = Review;
 			sourceTree = "<group>";
 		};
 		3F7ADE9A2AA328CE00AE2DD1 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */,
+				3F7ADEA32AA32A8E00AE2DD1 /* Cell */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		3F7ADEA32AA32A8E00AE2DD1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ADEA42AA32A9400AE2DD1 /* PostCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3F8CD6CA2A96D40F00307372 /* View */ = {
@@ -792,12 +805,10 @@
 		3F8CD6D52A96D59E00307372 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F44C7612AA1DD9F0037CCC5 /* Cell */,
-				3F7ADE9A2AA328CE00AE2DD1 /* Post */,
 				3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */,
-				3F41C19C2AA1866100E9A48C /* MapView.swift */,
-				3F44C7522AA1D1B50037CCC5 /* PostCategoryView.swift */,
-				3F7ADE962AA327EE00AE2DD1 /* WriteReview */,
+				3F5D40422AA362B400D6692D /* Map */,
+				3F7ADE9A2AA328CE00AE2DD1 /* Post */,
+				3F7ADE962AA327EE00AE2DD1 /* Review */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1253,6 +1264,7 @@
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
+				3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */,
 				3F44C76C2AA1F2C30037CCC5 /* PostUseCase.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
 				3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */,
@@ -1260,8 +1272,8 @@
 				3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */,
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
 				3F44C76F2AA1F30A0037CCC5 /* PostRepository.swift in Sources */,
-				3F44C7672AA1EFB60037CCC5 /* WriteReviewViewModel.swift in Sources */,
 				3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */,
+				3F7ADEA22AA32A7C00AE2DD1 /* PostCategoryView.swift in Sources */,
 				3F49647D2A8F5D4000078EE3 /* PasswordValidationService.swift in Sources */,
 				3FD618342A98A6B500CE6690 /* EventDetailView.swift in Sources */,
 				3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */,
@@ -1287,19 +1299,18 @@
 				3FB1120B2AA06E3E00C73A3A /* BackgroundDecorationView.swift in Sources */,
 				3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */,
 				3FB112132AA088F600C73A3A /* NewIssueDetailViewModel.swift in Sources */,
-				3F44C7512AA1B7E30037CCC5 /* MapViewModel.swift in Sources */,
 				3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
+				3F5D40412AA3628F00D6692D /* WriteFloatingButtonView.swift in Sources */,
 				3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */,
 				3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
 				3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */,
-				3F44C7532AA1D1B50037CCC5 /* PostCategoryView.swift in Sources */,
-				3F44C7632AA1DF470037CCC5 /* PostCollectionViewCell.swift in Sources */,
 				3FE361CF2A931E77000F1B38 /* User.swift in Sources */,
 				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
 				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
+				3F7ADEA52AA32A9400AE2DD1 /* PostCollectionViewCell.swift in Sources */,
 				3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */,
 				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
 				3FB14B622A90FA6500A356DA /* RegEmailViewModel.swift in Sources */,
@@ -1317,14 +1328,15 @@
 				3FB14B6D2A912F1500A356DA /* CommonButtonView.swift in Sources */,
 				3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */,
 				3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */,
+				3F7ADE9E2AA32A6900AE2DD1 /* MapViewModel.swift in Sources */,
 				3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */,
 				3F44C7722AA1F3320037CCC5 /* DefaultsPostRepository.swift in Sources */,
 				3F8CD6F52A96EAFD00307372 /* DefaultsLocalEventRepository.swift in Sources */,
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
+				3F5D40462AA362EC00D6692D /* ReviewView.swift in Sources */,
 				3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */,
 				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
-				3F7ADE992AA3281100AE2DD1 /* WriteReviewViewController.swift in Sources */,
-				3F44C7742AA1F6E00037CCC5 /* WriteFloatingButtonView.swift in Sources */,
+				3F7ADE992AA3281100AE2DD1 /* ReviewViewController.swift in Sources */,
 				3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */,
 				3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */,
 				3F41C19D2AA1866100E9A48C /* MapView.swift in Sources */,
