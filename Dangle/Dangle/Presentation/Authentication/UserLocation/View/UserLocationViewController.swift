@@ -143,7 +143,7 @@ extension UserLocationViewController: CoreLocationServiceDelegate {
     }
 
     func updateLocation(coordinate: CLLocation) {
-        // viewModel에 업데이트된 위치값 전달
+        // coordinate를 활용하여 현재 위치를 regcodes로 변환
         viewModel.fetchUserLocation(coordinate: coordinate)
         userlocation = viewModel.userLocation
         tableView.isHidden = false

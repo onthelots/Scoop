@@ -14,5 +14,8 @@ struct RegionCode: Codable {
 
 // MARK: - Regcode
 struct Regcode: Codable {
-    let code, name: String
+    let code: String
+    let name: String
+    let longitude: String?
+    let latitude: String?
 }

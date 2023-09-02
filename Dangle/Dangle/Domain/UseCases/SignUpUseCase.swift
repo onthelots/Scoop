@@ -28,6 +28,8 @@ protocol SignUpUseCase {
         password: String,
         location: String,
         nickname: String,
+        longitude: String,
+        latitude: String,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }
@@ -64,8 +66,8 @@ class DefaultSignUpUseCase: SignUpUseCase {
     }
 
     // 계정 등록하기
-    func execute(email: String, password: String, location: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        authRepository.signUp(email: email, password: password, location: location, nickname: nickname) { result in
+    func execute(email: String, password: String, location: String, nickname: String, longitude: String, latitude: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        authRepository.signUp(email: email, password: password, location: location, nickname: nickname, longitude: longitude, latitude: latitude) { result in
             switch result {
             case .success(let success):
                 completion(.success(success))

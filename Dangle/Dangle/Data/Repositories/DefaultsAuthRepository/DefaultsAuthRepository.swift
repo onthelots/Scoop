@@ -53,7 +53,7 @@ class DefaultsAuthRepository: AuthRepository {
     }
 
     // 회원가입
-    func signUp(email: String, password: String, location: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func signUp(email: String, password: String, location: String, nickname: String, longitude: String, latitude: String, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             guard self != nil else { return }
 
@@ -72,7 +72,9 @@ class DefaultsAuthRepository: AuthRepository {
             database.collection("users").document(uid).setData([
                 "email": email,
                 "location": location,
-                "nickname": nickname
+                "nickname": nickname,
+                "longitude": longitude,
+                "latitude": latitude
             ]) { error in
                 if let error = error {
                     print("Error saving user info to Firestore: \(error)")

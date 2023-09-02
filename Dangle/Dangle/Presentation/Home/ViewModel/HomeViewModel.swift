@@ -11,8 +11,8 @@ import Firebase
 
 class HomeViewModel: ObservableObject {
 
-    private var localEventUseCase: LocalEventUseCase
-    private var userInfoUseCase: UserInfoUseCase
+    private let localEventUseCase: LocalEventUseCase
+    private let userInfoUseCase: UserInfoUseCase
 
     enum Item: Hashable {
         case newIssue(NewIssueDTO)
@@ -34,8 +34,7 @@ class HomeViewModel: ObservableObject {
          }
      }
 
-    private var subscription: Set<AnyCancellable> = []
-
+    private var subscription = Set<AnyCancellable>()
     init(localEventUseCase: LocalEventUseCase, userInfoUseCase: UserInfoUseCase) {
         self.localEventUseCase = localEventUseCase
         self.userInfoUseCase = userInfoUseCase

@@ -13,7 +13,6 @@ final class UserLocationViewModel: ObservableObject {
 
     private let geoLocationUseCase: DefaultUserLocationUseCase
 
-    // Data Input : Published 프로퍼티를 통해 데이터 변경을 자동으로 감지하고 업데이트됨을 구독자에게 알립니다.
     @Published var userLocation: [Regcode] = []
     private var previousUserLocation: [Regcode] = []
 
@@ -27,7 +26,6 @@ final class UserLocationViewModel: ObservableObject {
 
     // 데이터를 가져오는 메서드
     func fetchUserLocation(coordinate: CLLocation) {
-        // UseCase의 execute 메서드를 호출하여 데이터를 가져옵니다.
         geoLocationUseCase.execute(coordinate: coordinate) { [weak self] result in
             switch result {
             case .success(let address):
@@ -48,7 +46,8 @@ final class UserLocationViewModel: ObservableObject {
             case .success(let address):
                 self?.userLocation = address.documents.compactMap({ items in
 
-                    guard let region3DepthName = items.address.region3DepthName, !region3DepthName.isEmpty else {
+                    guard let region3DepthName = items.address.region3DepthName,
+                            !region3DepthName.isEmpty else {
                         return nil
                     }
 
@@ -57,15 +56,10 @@ final class UserLocationViewModel: ObservableObject {
                         return nil
                     }
 
-//                    guard items.addressType == "REGION_ADDR" else {
-//                        return nil
-//                    }
-                    // 주소 나타내는 로직 보여주기 (bCode 혹은 Hcode)
-                    return Regcode(code: bCode, name: items.addressName)
+                    return Regcode(code: bCode, name: items.addressName, longitude: items.longitude, latitude: items.latitude)
                 })
-                print("ViewModel에서 UseCase 호출")
             case .failure(let error):
-                print("--> UseCase 메서드가 실패하였습니다: \(error)")
+                print("error: \(error)")
             }
         }
     }
