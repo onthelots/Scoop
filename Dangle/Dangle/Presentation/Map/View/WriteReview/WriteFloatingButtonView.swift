@@ -24,7 +24,7 @@ class WriteFloatingButtonView: UIView {
     }()
 
     // 버튼
-    private var categoryMenuStackView: UIStackView = {
+    lazy var categoryMenuStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false

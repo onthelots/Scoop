@@ -55,7 +55,6 @@
 		3F44C75E2AA1D8760037CCC5 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C75D2AA1D8760037CCC5 /* FirebaseFirestoreSwift */; };
 		3F44C7602AA1D8760037CCC5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C75F2AA1D8760037CCC5 /* FirebaseStorage */; };
 		3F44C7632AA1DF470037CCC5 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7622AA1DF470037CCC5 /* PostCollectionViewCell.swift */; };
-		3F44C7652AA1EF9C0037CCC5 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7642AA1EF9C0037CCC5 /* WriteReviewViewController.swift */; };
 		3F44C7672AA1EFB60037CCC5 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C7662AA1EFB60037CCC5 /* WriteReviewViewModel.swift */; };
 		3F44C76C2AA1F2C30037CCC5 /* PostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C76B2AA1F2C30037CCC5 /* PostUseCase.swift */; };
 		3F44C76F2AA1F30A0037CCC5 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C76E2AA1F30A0037CCC5 /* PostRepository.swift */; };
@@ -69,10 +68,10 @@
 		3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */; };
 		3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964942A8F884300078EE3 /* SignUpUseCase.swift */; };
 		3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* UserInfo.swift */; };
+		3F7ADE992AA3281100AE2DD1 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE982AA3281100AE2DD1 /* WriteReviewViewController.swift */; };
 		3F80C0062A9DBCAD00F2128D /* NewIssueDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */; };
 		3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */; };
 		3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */; };
-		3F8CD6E42A96D90900307372 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E32A96D90900307372 /* TodayCollectionViewCell.swift */; };
 		3F8CD6E72A96D92300307372 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8CD6E62A96D92300307372 /* Kingfisher */; };
 		3F8CD6EF2A96E91A00307372 /* LocalEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6EE2A96E91A00307372 /* LocalEventUseCase.swift */; };
 		3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6F12A96EA8100307372 /* LocalEventRepository.swift */; };
@@ -178,12 +177,11 @@
 		3F44C7502AA1B7E30037CCC5 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewModel.swift; path = ../../../../../../../../Documents/MapViewModel.swift; sourceTree = "<group>"; };
 		3F44C7522AA1D1B50037CCC5 /* PostCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCategoryView.swift; path = ../../../../../../../../Documents/PostCategoryView.swift; sourceTree = "<group>"; };
 		3F44C7622AA1DF470037CCC5 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCollectionViewCell.swift; path = ../../../../../../../../../Documents/PostCollectionViewCell.swift; sourceTree = "<group>"; };
-		3F44C7642AA1EF9C0037CCC5 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteReviewViewController.swift; path = ../../../../../../../../Documents/WriteReviewViewController.swift; sourceTree = "<group>"; };
 		3F44C7662AA1EFB60037CCC5 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteReviewViewModel.swift; path = ../../../../../../../../Documents/WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		3F44C76B2AA1F2C30037CCC5 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
 		3F44C76E2AA1F30A0037CCC5 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		3F44C7712AA1F3320037CCC5 /* DefaultsPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsPostRepository.swift; sourceTree = "<group>"; };
-		3F44C7732AA1F6E00037CCC5 /* WriteFloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteFloatingButtonView.swift; path = Dangle/Data/Repositories/DefaultsPostRepository/WriteFloatingButtonView.swift; sourceTree = SOURCE_ROOT; };
+		3F44C7732AA1F6E00037CCC5 /* WriteFloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteFloatingButtonView.swift; path = Dangle/Presentation/Map/View/WriteReview/WriteFloatingButtonView.swift; sourceTree = SOURCE_ROOT; };
 		3F4964702A8E827600078EE3 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
 		3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SignUpCheckValid.swift"; sourceTree = "<group>"; };
 		3F49647A2A8F5D1800078EE3 /* EmailValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationService.swift; sourceTree = "<group>"; };
@@ -192,10 +190,10 @@
 		3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsAuthRepository.swift; sourceTree = "<group>"; };
 		3F4964942A8F884300078EE3 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		3F4964982A8FA1FD00078EE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		3F7ADE982AA3281100AE2DD1 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDTO.swift; sourceTree = "<group>"; };
 		3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
-		3F8CD6E32A96D90900307372 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F8CD6EE2A96E91A00307372 /* LocalEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEventUseCase.swift; sourceTree = "<group>"; };
 		3F8CD6F12A96EA8100307372 /* LocalEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEventRepository.swift; sourceTree = "<group>"; };
 		3F8CD6F42A96EAFD00307372 /* DefaultsLocalEventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsLocalEventRepository.swift; sourceTree = "<group>"; };
@@ -716,16 +714,67 @@
 			path = AuthRepository;
 			sourceTree = "<group>";
 		};
+		3F7ADE922AA3275E00AE2DD1 /* NewIssue */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ADE942AA3279700AE2DD1 /* Cell */,
+				3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */,
+				3FB112142AA0890D00C73A3A /* NewIssueDetailView.swift */,
+				3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */,
+			);
+			path = NewIssue;
+			sourceTree = "<group>";
+		};
+		3F7ADE932AA3276900AE2DD1 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ADE952AA3279B00AE2DD1 /* Cell */,
+				3FD618272A98909300CE6690 /* EventDetailViewController.swift */,
+				3FD618332A98A6B500CE6690 /* EventDetailView.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		3F7ADE942AA3279700AE2DD1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3F7ADE952AA3279B00AE2DD1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3F7ADE962AA327EE00AE2DD1 /* WriteReview */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ADE982AA3281100AE2DD1 /* WriteReviewViewController.swift */,
+				3F44C7732AA1F6E00037CCC5 /* WriteFloatingButtonView.swift */,
+			);
+			path = WriteReview;
+			sourceTree = "<group>";
+		};
+		3F7ADE9A2AA328CE00AE2DD1 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		3F8CD6CA2A96D40F00307372 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */,
-				3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */,
-				3FB112142AA0890D00C73A3A /* NewIssueDetailView.swift */,
-				3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */,
-				3FD618272A98909300CE6690 /* EventDetailViewController.swift */,
-				3FD618332A98A6B500CE6690 /* EventDetailView.swift */,
-				3F8CD6DC2A96D8BF00307372 /* Cell */,
+				3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */,
+				3FB1120A2AA06E3E00C73A3A /* BackgroundDecorationView.swift */,
+				3F7ADE922AA3275E00AE2DD1 /* NewIssue */,
+				3F7ADE932AA3276900AE2DD1 /* Event */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -743,12 +792,12 @@
 		3F8CD6D52A96D59E00307372 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3F44C7612AA1DD9F0037CCC5 /* Cell */,
+				3F7ADE9A2AA328CE00AE2DD1 /* Post */,
 				3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */,
 				3F41C19C2AA1866100E9A48C /* MapView.swift */,
 				3F44C7522AA1D1B50037CCC5 /* PostCategoryView.swift */,
-				3F44C7642AA1EF9C0037CCC5 /* WriteReviewViewController.swift */,
-				3F44C7732AA1F6E00037CCC5 /* WriteFloatingButtonView.swift */,
-				3F44C7612AA1DD9F0037CCC5 /* Cell */,
+				3F7ADE962AA327EE00AE2DD1 /* WriteReview */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -784,18 +833,6 @@
 				3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		3F8CD6DC2A96D8BF00307372 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3F8CD6E32A96D90900307372 /* TodayCollectionViewCell.swift */,
-				3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */,
-				3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */,
-				3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */,
-				3FB1120A2AA06E3E00C73A3A /* BackgroundDecorationView.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		3F8CD6E82A96E64E00307372 /* LocalEvent */ = {
@@ -1221,8 +1258,6 @@
 				3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */,
 				3F8CD7012A97474200307372 /* CulturalEvent.swift in Sources */,
 				3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */,
-				3F8CD6E42A96D90900307372 /* TodayCollectionViewCell.swift in Sources */,
-				3F44C7652AA1EF9C0037CCC5 /* WriteReviewViewController.swift in Sources */,
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
 				3F44C76F2AA1F30A0037CCC5 /* PostRepository.swift in Sources */,
 				3F44C7672AA1EFB60037CCC5 /* WriteReviewViewModel.swift in Sources */,
@@ -1288,6 +1323,7 @@
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
 				3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */,
 				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
+				3F7ADE992AA3281100AE2DD1 /* WriteReviewViewController.swift in Sources */,
 				3F44C7742AA1F6E00037CCC5 /* WriteFloatingButtonView.swift in Sources */,
 				3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */,
 				3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */,
