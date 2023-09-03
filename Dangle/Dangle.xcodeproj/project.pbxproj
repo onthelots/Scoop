@@ -63,7 +63,7 @@
 		3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */; };
 		3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964942A8F884300078EE3 /* SignUpUseCase.swift */; };
 		3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* UserInfo.swift */; };
-		3F5D40412AA3628F00D6692D /* WriteFloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40402AA3628F00D6692D /* WriteFloatingButtonView.swift */; };
+		3F5D40412AA3628F00D6692D /* ReviewFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */; };
 		3F5D40462AA362EC00D6692D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40452AA362EC00D6692D /* ReviewView.swift */; };
 		3F7ADE992AA3281100AE2DD1 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */; };
 		3F7ADE9E2AA32A6900AE2DD1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */; };
@@ -186,7 +186,7 @@
 		3F4964902A8F873000078EE3 /* DefaultsAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsAuthRepository.swift; sourceTree = "<group>"; };
 		3F4964942A8F884300078EE3 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		3F4964982A8FA1FD00078EE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		3F5D40402AA3628F00D6692D /* WriteFloatingButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WriteFloatingButtonView.swift; path = "../../../../../../../../무제 폴더/WriteFloatingButtonView.swift"; sourceTree = "<group>"; };
+		3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewFloatingView.swift; path = "../../../../../../../../무제 폴더/ReviewFloatingView.swift"; sourceTree = "<group>"; };
 		3F5D40452AA362EC00D6692D /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -756,9 +756,9 @@
 		3F7ADE962AA327EE00AE2DD1 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				3F5D40402AA3628F00D6692D /* WriteFloatingButtonView.swift */,
 				3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */,
 				3F5D40452AA362EC00D6692D /* ReviewView.swift */,
+				3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -1302,7 +1302,7 @@
 				3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
-				3F5D40412AA3628F00D6692D /* WriteFloatingButtonView.swift in Sources */,
+				3F5D40412AA3628F00D6692D /* ReviewFloatingView.swift in Sources */,
 				3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */,
 				3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,

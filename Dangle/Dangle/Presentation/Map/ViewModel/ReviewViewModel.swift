@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class ReviewViewModel: ObservableObject {
 
@@ -20,6 +21,4 @@ class ReviewViewModel: ObservableObject {
     init(postUseCase: PostUseCase) {
         self.postUseCase = postUseCase
     }
-
-    // MARK: - 1. 평가글 저장하기
 }

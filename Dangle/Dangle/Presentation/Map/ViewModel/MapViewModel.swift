@@ -17,16 +17,6 @@ class MapViewModel: ObservableObject {
     @Published var userInfo: UserInfo!
     private var subscription = Set<AnyCancellable>()
 
-    // 탭 할때, viewModel.selecetdPostCategory값을 변경한 후,
-    // FirebaseStore에서 새롭게 fetch, 데이터를 새롭게 뿌려주면 됨
-//    @Published var selectedPostCategory: String? {
-//         didSet {
-//             if let category = selectedCategory {
-//                 newIssueFetch(category: category)
-//             }
-//         }
-//     }
-
     init(userInfoUseCase: UserInfoUseCase) {
         self.userInfoUseCase = userInfoUseCase
     }
