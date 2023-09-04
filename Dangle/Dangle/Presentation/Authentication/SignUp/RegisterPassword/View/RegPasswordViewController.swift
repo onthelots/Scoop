@@ -193,7 +193,6 @@ class RegPasswordViewController: UIViewController {
             .store(in: &subscription)
 
         viewModel.$isPasswordContainsNumber
-        //            .combineLatest(viewModel.$isPasswordContainsLetter) { $0 && $1 }
             .receive(on: RunLoop.main)
             .sink { [weak self] isValid in
                 self?.passwordContainsNumberLabel.textColor = isValid ? .tintColor : .lightGray
@@ -242,7 +241,6 @@ class RegPasswordViewController: UIViewController {
         }
     }
 
-    // MARK: - 여기서 부터 다시 진행
     @objc private func nextButtonTapped() {
         if let password = secondTextFieldView.textField.text {
             print("저장될 비밀번호 : \(password)")

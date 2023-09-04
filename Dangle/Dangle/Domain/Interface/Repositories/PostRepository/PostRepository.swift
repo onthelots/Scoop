@@ -8,6 +8,13 @@
 import Foundation
 
 protocol PostRepository {
+    func searchLocation(
+        query: String,
+        longitude: String,
+        latitude: String,
+        radius: Int,
+        completion: @escaping (Result<KeywordSearchResult, Error>) -> Void)
+
     func addPost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void)
     func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void)
     func updatePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void)

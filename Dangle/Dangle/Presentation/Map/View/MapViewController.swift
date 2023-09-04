@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
 
     private var viewModel: MapViewModel!
     private var collectionView: UICollectionView!
+    private var userLocation = [String]()
 
     private lazy var postCategoryView: PostCategoryView = {
         let postCategoryView = PostCategoryView()
@@ -132,9 +133,9 @@ class MapViewController: UIViewController {
                 if let latitudeStr = userInfo?.latitude, let longitudeStr = userInfo?.longitude,
                    let latitude = Double(latitudeStr), let longitude = Double(longitudeStr) {
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    print(coordinate)
                     let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
                     self.mapView.map.setRegion(region, animated: true)
+                    self.userLocation = [longitudeStr, latitudeStr]
                 }
 
                 // POST 내용 받아오기 -> applyItem에 할당하기
@@ -145,7 +146,7 @@ class MapViewController: UIViewController {
         floatingButton.textLabelTappedSubject
             .sink { [weak self] text in
                 guard let self = self else { return }
-                let viewController = ReviewViewController(category: text)
+                let viewController = ReviewViewController(category: text, userLocation: self.userLocation)
                 viewController.navigationItem.title = "\(text) 글쓰기"
                 viewController.navigationItem.largeTitleDisplayMode = .never
                 self.navigationController?.pushViewController(viewController, animated: true)

@@ -67,13 +67,12 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
         ) { result in
             switch result {
             case .success(let geocode):
-                completion(.success(geocode)) // viewModel에 해당 값을 전달함
+                completion(.success(geocode))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
-
 }
 
 enum UserLocationUseCaseError: Error {
