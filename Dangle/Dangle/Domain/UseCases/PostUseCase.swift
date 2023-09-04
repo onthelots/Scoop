@@ -9,6 +9,16 @@ import Foundation
 
 // UseCase
 protocol PostUseCase {
+
+    // 검색 UseCase
+    func execute(
+        query: String,
+        longitude: String,
+        latitude: String,
+        radius: Int,
+        completion: @escaping (Result<KeywordSearchResult, Error>) -> Void
+    )
+
     func addPost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void)
     func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void)
     func updatePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void)
@@ -16,10 +26,27 @@ protocol PostUseCase {
 }
 
 class DefaultPostUseCase: PostUseCase {
+
     private let postRepository: PostRepository
 
     init(postRepository: PostRepository) {
         self.postRepository = postRepository
+    }
+
+    func execute(query: String, longitude: String, latitude: String, radius: Int, completion: @escaping (Result<KeywordSearchResult, Error>) -> Void) {
+        postRepository.searchLocation(
+            query: query,
+            longitude: longitude,
+            latitude: latitude,
+            radius: radius
+        ) { result in
+            switch result {
+            case .success(let success):
+                completion(.success(success))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     func addPost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {

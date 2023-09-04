@@ -14,7 +14,14 @@ class MapViewModel: ObservableObject {
 
     private let userInfoUseCase: UserInfoUseCase
 
+    // Input
     @Published var userInfo: UserInfo!
+    @Published var userLocation: [Regcode] = []
+
+    // Output
+    let itemTapped = PassthroughSubject<Regcode, Never>()
+
+    //
     private var subscription = Set<AnyCancellable>()
 
     init(userInfoUseCase: UserInfoUseCase) {

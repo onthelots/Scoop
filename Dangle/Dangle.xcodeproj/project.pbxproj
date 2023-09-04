@@ -86,6 +86,9 @@
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
+		3FAF2E4A2AA5A739003A9964 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */; };
+		3FAF2E4D2AA5B17B003A9964 /* ReviewLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF2E4C2AA5B17B003A9964 /* ReviewLocationTableViewCell.swift */; };
+		3FAF2E4F2AA5C1C2003A9964 /* KeywordSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF2E4E2AA5C1C2003A9964 /* KeywordSearchResult.swift */; };
 		3FB1120B2AA06E3E00C73A3A /* BackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1120A2AA06E3E00C73A3A /* BackgroundDecorationView.swift */; };
 		3FB112112AA0830600C73A3A /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB112102AA0830600C73A3A /* EventDetailViewModel.swift */; };
 		3FB112132AA088F600C73A3A /* NewIssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB112122AA088F600C73A3A /* NewIssueDetailViewModel.swift */; };
@@ -212,6 +215,9 @@
 		3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* DangleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		3FAF2E4C2AA5B17B003A9964 /* ReviewLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLocationTableViewCell.swift; sourceTree = "<group>"; };
+		3FAF2E4E2AA5C1C2003A9964 /* KeywordSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSearchResult.swift; sourceTree = "<group>"; };
 		3FB1120A2AA06E3E00C73A3A /* BackgroundDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDecorationView.swift; sourceTree = "<group>"; };
 		3FB112102AA0830600C73A3A /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		3FB112122AA088F600C73A3A /* NewIssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDetailViewModel.swift; sourceTree = "<group>"; };
@@ -759,6 +765,8 @@
 				3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */,
 				3F5D40452AA362EC00D6692D /* ReviewView.swift */,
 				3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */,
+				3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */,
+				3FAF2E4B2AA5B161003A9964 /* Cell */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -941,6 +949,14 @@
 			path = DangleUITests;
 			sourceTree = "<group>";
 		};
+		3FAF2E4B2AA5B161003A9964 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3FAF2E4C2AA5B17B003A9964 /* ReviewLocationTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3FB14B5E2A90FA0400A356DA /* RegisterEmail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,6 +1052,7 @@
 			isa = PBXGroup;
 			children = (
 				3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */,
+				3FAF2E4E2AA5C1C2003A9964 /* KeywordSearchResult.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -1253,6 +1270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FAF2E4F2AA5C1C2003A9964 /* KeywordSearchResult.swift in Sources */,
 				3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */,
 				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
 				3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */,
@@ -1271,6 +1289,7 @@
 				3F8CD7012A97474200307372 /* CulturalEvent.swift in Sources */,
 				3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */,
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
+				3FAF2E4D2AA5B17B003A9964 /* ReviewLocationTableViewCell.swift in Sources */,
 				3F44C76F2AA1F30A0037CCC5 /* PostRepository.swift in Sources */,
 				3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */,
 				3F7ADEA22AA32A7C00AE2DD1 /* PostCategoryView.swift in Sources */,
@@ -1280,6 +1299,7 @@
 				3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */,
 				3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */,
 				3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */,
+				3FAF2E4A2AA5A739003A9964 /* LocationSearchViewController.swift in Sources */,
 				3FD618302A98A2BE00CE6690 /* EventDTO.swift in Sources */,
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
 				3F80C0062A9DBCAD00F2128D /* NewIssueDTO.swift in Sources */,

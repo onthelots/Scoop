@@ -46,8 +46,8 @@ final class DefaultGeocodeRepository: GeocodeRepository {
                     print("--> 쿼리릍 통해 지오코딩 데이터를 가져왔습니다.")
                 }
             } receiveValue: { items in
-                print("----> 지오코딩 주소값은? : \(String(describing: items.documents.first?.addressName)))")
-                completion(.success(items)) // 클로저를 통해, items 값을 보냄(어디로? UseCase)
+                print("----> 지오코딩 주소값은? : \(String(describing: items.documents.first?.address.addressName)))")
+                completion(.success(items))
             }.store(in: &subscriptions)
     }
 }

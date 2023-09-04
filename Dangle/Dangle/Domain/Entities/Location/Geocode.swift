@@ -7,13 +7,11 @@
 
 import Foundation
 
-// MARK: - Geocoding
 struct Geocode: Codable {
     let meta: Meta
     let documents: [Location]
 }
 
-// MARK: - Document
 struct Location: Codable {
     let latitude: String
     let addressName: String
@@ -30,7 +28,6 @@ struct Location: Codable {
     }
 }
 
-// MARK: - Address
 struct Address: Codable {
     let addressName, subAddressNo, region1DepthName: String
     let region2DepthName, longitude, latitude: String

@@ -13,6 +13,7 @@ struct GeocodingManager {
     let regionCodeBaseURL = "https://grpc-proxy-server-mkvo6j4wsq-du.a.run.app/v1/regcodes"
     let reverseGeocodeBaseURL = "https://dapi.kakao.com/v2/local/geo/coord2regioncode"
     let geocodeBaseURL = "https://dapi.kakao.com/v2/local/search/address"
+    let keywordSearchBaseURL = "https://dapi.kakao.com/v2/local/search/keyword"
 }
 
 // MARK: - 나중에 info 파일로 넣기

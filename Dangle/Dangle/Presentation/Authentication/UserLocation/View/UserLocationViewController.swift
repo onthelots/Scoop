@@ -15,7 +15,7 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     private let coreLocationService = CoreLocationService()
     private let userdefaultStorage = UserDefaultStorage<Regcode>()
     private var userlocation: [Regcode] = []
-    private var subscription =  Set<AnyCancellable>()
+    private var subscription = Set<AnyCancellable>()
 
     // MARK: - Components (Views)
 

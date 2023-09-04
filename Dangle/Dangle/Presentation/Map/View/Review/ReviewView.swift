@@ -20,14 +20,17 @@ class ReviewView: UIView {
     private let subscription = Set<AnyCancellable>()
 
     // 선택한 이미지 뷰 배열
-    var imageViews: [UIImageView] = []
+    // 이미지 뷰 배열
+    var imageViews: [UIImageView] = [] // 추가된 속성
 
-    // 이미지 뷰 배열에서 UIImage(알아서 저장될 것임)
-    var selectedImages: [UIImage] {
-        return imageViews.compactMap { $0.image }
-    }
+    // 선택한 이미지 뷰
+    var selectedImageView: UIImageView? // 추가된 속성
+
+    // 주소 라벨
+    var locationLabel: UILabel? // 추가된 속성
 
     let textViewPlaceHolder = "해당 장소에 대한 이야기를 공유해주세요\n구체적으로 작성해주신 글은 이웃에게 큰 도움이 될거에요"
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +42,9 @@ class ReviewView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: - Components
+
     // Warning View
     private lazy var warningView: UIView = {
         let view = UIView()
@@ -76,17 +81,24 @@ class ReviewView: UIView {
         return textView
     }()
 
+    // location View
+    lazy var locationView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     // Picture Stack View
-    lazy var pictureStackView: UIView = {
+    lazy var imageStackView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.isHidden = true
         return view
     }()
 
     // seperated Line
-    private let seperatedLineView: UIView = {
+    private lazy var seperatedLineView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray6
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -142,38 +154,36 @@ class ReviewView: UIView {
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
-
-        // 이미지 삭제 버튼 (ImageView의 오른쪽 상단모서리에 위치)
-        let deleteButton = UIButton(type: .system)
-        deleteButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        deleteButton.tintColor = .tintColor
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        imageView.addSubview(deleteButton)
-        deleteButton.addTarget(self, action: #selector(deleteImageButtonTapped(_:)), for: .touchUpInside)
-
-        NSLayoutConstraint.activate([
-            deleteButton.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 5), // 삭제 버튼 상단 정렬 (오른쪽 상단 모서리에 위치)
-            deleteButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -5), // 삭제 버튼 오른쪽 정렬 (오른쪽 상단 모서리에 위치)
-            deleteButton.widthAnchor.constraint(equalToConstant: 30), // 삭제 버튼의 너비 설정
-            deleteButton.heightAnchor.constraint(equalToConstant: 30) // 삭제 버튼의 높이 설정
-        ])
-
         return imageView
+    }
+
+    // MARK: - 주소 라벨 뷰 생성
+    private func createLabelView(location: String) -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textAlignment = .left
+        label.textColor = .white
+        label.numberOfLines = 1
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }
 
     private func setupUI() {
         self.addSubview(warningView)
         self.addSubview(reviewTextView)
-        self.addSubview(pictureStackView)
+        self.addSubview(locationView)
+        self.addSubview(imageStackView)
         self.addSubview(seperatedLineView)
-        self.containerView.addSubview(locationButtonView)
-        self.containerView.addSubview(pictureButtonView)
         self.addSubview(containerView)
 
+        self.containerView.addSubview(locationButtonView)
+        self.containerView.addSubview(pictureButtonView)
+
         NSLayoutConstraint.activate([
-            warningView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            warningView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            warningView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            warningView.topAnchor.constraint(equalTo: self.topAnchor),
+            warningView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            warningView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             warningView.heightAnchor.constraint(equalTo: warningView.widthAnchor, multiplier: 0.15),
 
             warningLabel.centerXAnchor.constraint(equalTo: warningView.centerXAnchor),
@@ -182,13 +192,17 @@ class ReviewView: UIView {
             reviewTextView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: 10),
             reviewTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             reviewTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-//            reviewTextView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: -13),
             reviewTextView.heightAnchor.constraint(equalToConstant: 200),
 
-            pictureStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            pictureStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            pictureStackView.bottomAnchor.constraint(equalTo: seperatedLineView.topAnchor, constant: -5),
-            pictureStackView.heightAnchor.constraint(equalToConstant: 100),
+            locationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            locationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            locationView.bottomAnchor.constraint(equalTo: imageStackView.topAnchor, constant: -5),
+            locationView.heightAnchor.constraint(equalToConstant: 30),
+
+            imageStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            imageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            imageStackView.bottomAnchor.constraint(equalTo: seperatedLineView.topAnchor, constant: -5),
+            imageStackView.heightAnchor.constraint(equalToConstant: 100),
 
             seperatedLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             seperatedLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
@@ -207,7 +221,6 @@ class ReviewView: UIView {
             pictureButtonView.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -10).withPriority(.defaultLow)
         ])
 
-        // Button Add Target
         locationButtonView.addTarget(self, action: #selector(didTapLocationButton), for: .touchUpInside)
         pictureButtonView.addTarget(self, action: #selector(didTapPictureButton), for: .touchUpInside)
 
@@ -216,50 +229,64 @@ class ReviewView: UIView {
         self.addGestureRecognizer(tapGesture)
     }
 
-    // MARK: -> 이미지뷰 배열에 넣기 -> ViewController에서 사용자가 선택한 UIImage를 받아옴
+    // 이미지 저장
     func addImageView(image: UIImage) {
         let imageView = createImageView(image: image)
-        imageViews.append(imageView) // 이미지 뷰 생성하고 할당
-        updateImageViewLayout() // 업데이트 실시
+        imageViews.append(imageView)
+        updateImageViewLayout()
     }
 
-    // 이미지+Stack View 업데이트
+    // 이미지 저장 시, 레이아웃 업데이트
     private func updateImageViewLayout() {
-        // pictureStackView의 모든 subView를 삭제 (초기화)
-        pictureStackView.subviews.forEach { $0.removeFromSuperview() }
-        
+
+        // TODO: - 방금 추가함
+        self.imageStackView.subviews.forEach { $0.removeFromSuperview() }
+
         // 첫번째 선택되는 ImageView
         var previousImageView: UIImageView?
-        
-        // pictureStackView에 Imageview 할당
+
         for imageView in imageViews {
-            pictureStackView.addSubview(imageView) // Stack View에 imageView 할당
-            pictureStackView.isHidden = false // View Hidden Toggle(false)로
+            imageStackView.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            
-            // 1. 첫번째 이미지 뷰가 존재할 경우
             if let previousImageView = previousImageView {
-                // 1. 첫번째 이미지 뷰 옆으로 정렬되도록 함
                 NSLayoutConstraint.activate([
                     imageView.leadingAnchor.constraint(equalTo: previousImageView.trailingAnchor, constant: 10),
-                    imageView.centerYAnchor.constraint(equalTo: pictureStackView.centerYAnchor),
-                    imageView.heightAnchor.constraint(equalToConstant: 100),
-                    imageView.widthAnchor.constraint(equalToConstant: 100)
+                    imageView.centerYAnchor.constraint(equalTo: imageStackView.centerYAnchor),
+                    imageView.heightAnchor.constraint(equalToConstant: 70),
+                    imageView.widthAnchor.constraint(equalToConstant: 70)
                 ])
             } else {
-                // 2. 이미지 뷰가 아무것도 없을 때 -> imageView를 Stack View 하단에 위치하도록
                 NSLayoutConstraint.activate([
-                    imageView.heightAnchor.constraint(equalToConstant: 100),
-                    imageView.widthAnchor.constraint(equalToConstant: 100),
-                    imageView.leadingAnchor.constraint(equalTo: pictureStackView.leadingAnchor, constant: 10),
-                    imageView.centerYAnchor.constraint(equalTo: pictureStackView.centerYAnchor)
+                    imageView.heightAnchor.constraint(equalToConstant: 70),
+                    imageView.widthAnchor.constraint(equalToConstant: 70),
+                    imageView.leadingAnchor.constraint(equalTo: imageStackView.leadingAnchor, constant: 10),
+                    imageView.centerYAnchor.constraint(equalTo: imageStackView.centerYAnchor)
                 ])
             }
-            
-            // 첫번째 PreviousImageView를 imageView로 할당
             previousImageView = imageView
-            print("이미지가 할당되었습니다.")
         }
+    }
+
+    // 주소라벨 추가
+    func addLocationLabel(location: String) {
+        // 기존 라벨이 있으면 제거
+        locationLabel?.removeFromSuperview()
+
+        let label = createLabelView(location: location)
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.sizeToFit()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = true
+        self.locationView.addSubview(label)
+
+        // locationLabel 속성에 새로 추가된 라벨 할당
+        locationLabel = label
+
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: self.locationView.leadingAnchor, constant: 10),
+            label.centerYAnchor.constraint(equalTo: self.locationView.centerYAnchor)
+        ])
     }
 
     // MARK: - Objc addTarget Action
@@ -269,35 +296,22 @@ class ReviewView: UIView {
         self.endEditing(true)
     }
 
-    // deleteImageButton Tapped
-    @objc private func deleteImageButtonTapped(_ sender: UIButton) {
-        if let imageView = sender.superview as? UIImageView, let index = imageViews.firstIndex(of: imageView) {
-               imageViews.remove(at: index)
-               imageView.removeFromSuperview()
-               updateImageViewLayout()
-           }
-    }
-
     @objc private func didTapLocationButton() {
-        // delegate
         reviewViewDelegate?.didTappedLocationButton()
     }
 
     @objc private func didTapPictureButton() {
-        // delegate
         reviewViewDelegate?.didTappedPictureButton()
     }
 }
 
 extension ReviewView: UITextViewDelegate {
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
             textView.textColor = .black
         }
     }
-
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = textViewPlaceHolder
