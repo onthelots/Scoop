@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
 
-        if let savedUserEmail = SensitiveInfoManager.read(key: "userEmail"),
-            let savedUserPassword = SensitiveInfoManager.read(key: "userPassword") {
+        if let savedUserEmail = UserDefaultStorage<String>().getCached(key: "email"),
+            let savedUserPassword = UserDefaultStorage<String>().getCached(key: "password") {
              // 키체인에 useremail, userPassword 가 존재할 경우
              let signInUseCase = DefaultSignInUseCase(authRepository: DefaultsAuthRepository())
              let emailValidationService = DefaultEmailValidationService()

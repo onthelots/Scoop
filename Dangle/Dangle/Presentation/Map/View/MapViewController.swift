@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
 
     private var viewModel: MapViewModel!
     private var collectionView: UICollectionView!
-    private var userLocation = [String]()
+    private var userInfo: UserInfo! // 유저의 정보
 
     private lazy var postCategoryView: PostCategoryView = {
         let postCategoryView = PostCategoryView()
@@ -51,11 +51,13 @@ class MapViewController: UIViewController {
         initalizerViewModel()
         viewModel.userAllInfoFetch()
         configureCollectionView()
-
-        view.addSubview(collectionView)
-        view.addSubview(floatingButton)
-        bind()
+        setupMapView()
         setupUI()
+        bind()
+    }
+
+    func setupMapView() {
+        mapView.map.delegate = self
     }
 
     private func initalizerViewModel() {
@@ -132,10 +134,11 @@ class MapViewController: UIViewController {
                 // 지도 중심값 할당
                 if let latitudeStr = userInfo?.latitude, let longitudeStr = userInfo?.longitude,
                    let latitude = Double(latitudeStr), let longitude = Double(longitudeStr) {
+
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
                     self.mapView.map.setRegion(region, animated: true)
-                    self.userLocation = [longitudeStr, latitudeStr]
+                    self.userInfo = userInfo
                 }
 
                 // POST 내용 받아오기 -> applyItem에 할당하기
@@ -146,18 +149,23 @@ class MapViewController: UIViewController {
         floatingButton.textLabelTappedSubject
             .sink { [weak self] text in
                 guard let self = self else { return }
-                let viewController = ReviewViewController(category: text, userLocation: self.userLocation)
+                let viewController = ReviewViewController(category: PostCategory(rawValue: text) ?? .beauty, userInfo: userInfo)
                 viewController.navigationItem.title = "\(text) 글쓰기"
                 viewController.navigationItem.largeTitleDisplayMode = .never
+                viewController.delegate = self
                 self.navigationController?.pushViewController(viewController, animated: true)
             }.store(in: &subscription)
     }
 
     private func setupUI() {
+        view.addSubview(collectionView)
+        view.addSubview(floatingButton)
+
         postCategoryView.translatesAutoresizingMaskIntoConstraints = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         floatingButton.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
 
             floatingButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -208,5 +216,60 @@ extension MapViewController: PostCategoryViewDelegate {
             //            snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .newIssue))
             //            dataSource.apply(snapshot)
         }
+    }
+}
+
+extension MapViewController: ReviewViewControllerDelegate {
+    func createAnnotation(title: String, location: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+
+        annotation.coordinate = location
+        annotation.title = title
+        mapView.map.addAnnotation(annotation)
+    }
+}
+
+extension MapViewController: MKMapViewDelegate {
+    // Annotation 커스터마이징
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+
+        let identifier = "Custom"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+               // 재사용 가능한 식별자를 갖고 어노테이션 뷰를 생성
+               annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+
+               // 콜아웃 버튼을 보이게 함
+               annotationView?.canShowCallout = true
+               // 이미지 변경
+               annotationView?.image = UIImage(systemName: "star.fill")
+
+               // 상세 버튼 생성 후 액세서리에 추가 (i 모양 버튼)
+               // 버튼을 만들어주면 callout 부분 전체가 버튼 역활을 합니다
+               let button = UIButton(type: .detailDisclosure)
+               annotationView?.rightCalloutAccessoryView = button
+           }
+
+        return annotationView
+    }
+
+    // Annotation 탭할 시 호출
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        self.present(UIViewController(), animated: true)
+        // 모달뷰를 띄운다던지..
+    }
+
+}
+
+
+// Annotation Custom Class
+class CustomAnnotation: NSObject, MKAnnotation {
+    var title: String?
+    @objc dynamic var coordinate: CLLocationCoordinate2D
+
+    init(title: String, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.coordinate = coordinate
     }
 }

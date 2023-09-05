@@ -30,8 +30,8 @@ final class RegisterWelcomeViewModel: ObservableObject {
     func setupBindings() {
         signUpButtonTapped
             .sink { info in
-                SensitiveInfoManager.create(key: "userEmail", password: info.email)
-                SensitiveInfoManager.create(key: "userPassword", password: info.password ?? "")
+                UserDefaultStorage<String>().saveCache(entity: info.email, key: "email")
+                UserDefaultStorage<String>().saveCache(entity: info.password ?? "", key: "password")
 
                 self.signUpUseCase.execute(
                     email: info.email,

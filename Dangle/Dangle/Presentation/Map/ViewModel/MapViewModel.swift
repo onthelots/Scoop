@@ -16,10 +16,10 @@ class MapViewModel: ObservableObject {
 
     // Input
     @Published var userInfo: UserInfo!
-    @Published var userLocation: [Regcode] = []
+    @Published var userLocation: [LocationInfo] = []
 
     // Output
-    let itemTapped = PassthroughSubject<Regcode, Never>()
+    let itemTapped = PassthroughSubject<LocationInfo, Never>()
 
     //
     private var subscription = Set<AnyCancellable>()

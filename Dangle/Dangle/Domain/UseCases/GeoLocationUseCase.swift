@@ -13,7 +13,7 @@ protocol UserLocationUseCase {
     // 리버스 지오코딩, 행정동 변환
     func execute(
         coordinate: CLLocation,
-        completion: @escaping (Result<RegionCode, Error>) -> Void
+        completion: @escaping (Result<ReverseGeocode, Error>) -> Void
     )
 
     // 검색 UseCase
@@ -27,39 +27,34 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
 
     // Interface Repository의 로직(Protocol)을 가져옴 (구체적인 로직은 Data Repository에서 구현함)
     private let reverseGeocodeRepository: ReverseGeocodeRepository
-    private let regionCodeRepository: RegionCodeRepository
     private let geocodeRepositoy: GeocodeRepository
 
-    init(reverseGeocodeRepository: ReverseGeocodeRepository, regionCodeRepository: RegionCodeRepository, geocodeRepositoy: GeocodeRepository) {
+    init(reverseGeocodeRepository: ReverseGeocodeRepository, geocodeRepositoy: GeocodeRepository) {
         self.reverseGeocodeRepository = reverseGeocodeRepository
-        self.regionCodeRepository = regionCodeRepository
         self.geocodeRepositoy = geocodeRepositoy
     }
 
-    // 리버스 지오코딩, 행정동 변환
+    // 리버스 지오코딩 (좌표 to 법점동)
     func execute(
         coordinate: CLLocation,
-        completion: @escaping (Result<RegionCode, Error>) -> Void
+        completion: @escaping (Result<ReverseGeocode, Error>) -> Void
     ) {
         reverseGeocodeRepository.reverseGeocode(
             coordinate: coordinate
         ) { result in
             switch result {
             case .success(let reverseGeocode):
-                if let regionCode = reverseGeocode.reverseDocument.first?.code {
-                    self.regionCodeRepository.codeToRegionName(code: regionCode) { regionCodeResult in
-                        completion(regionCodeResult)
-                    }
-                } else {
-                    completion(.failure(UserLocationUseCaseError.invalidResponse))
-                }
+                let filteredDocuments = reverseGeocode.reverseDocument.filter { $0.regionType == "B" }
+                let filteredReverseGeocode = ReverseGeocode(reverseMeta: reverseGeocode.reverseMeta, reverseDocument: filteredDocuments)
+                completion(.success(filteredReverseGeocode))
+                print("\(reverseGeocode)")
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
 
-    // 검색 UseCase
+    // 지오코딩 (검색 쿼리)
     func execute(query: String, completion: @escaping (Result<Geocode, Error>) -> Void) {
         // Repository
         geocodeRepositoy.geocode(
@@ -67,7 +62,10 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
         ) { result in
             switch result {
             case .success(let geocode):
-                completion(.success(geocode))
+                let filteredDocuments = geocode.documents.filter { $0.address.region1DepthName == "서울" }
+                let filteredGeocode = Geocode(meta: geocode.meta, documents: filteredDocuments)
+                completion(.success(filteredGeocode))
+                print("\(geocode)")
             case .failure(let error):
                 completion(.failure(error))
             }

@@ -117,7 +117,7 @@ class SignInViewController: UIViewController {
                     self?.view.addSubview(loadingIndicator)
 
 
-                    self?.saveUserCredentialsToKeychain() // 키체인에 정보를 저장함
+                    self?.saveUserInfoToUserDefaults() // 유저 디폴트에 이메일, 비밀번호를 저장함
                     let tabBarViewController = TabBarViewController()
 
                     if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
@@ -129,7 +129,7 @@ class SignInViewController: UIViewController {
                         }
                     }
                 } else {
-                    self?.removeUserCredentialsFromKeychain()
+                    return
                 }
             }
             .store(in: &subscription)
@@ -162,20 +162,14 @@ class SignInViewController: UIViewController {
         }
     }
 
-    private func saveUserCredentialsToKeychain() {
+    private func saveUserInfoToUserDefaults() {
         guard let email = self.emailTextFieldView.textField.text,
               let password = self.passwordTextFieldView.textField.text else {
             return
         }
-        SensitiveInfoManager.create(key: "userEmail", password: email)
-        SensitiveInfoManager.create(key: "userPassword", password: password)
+        UserDefaultStorage<String>().saveCache(entity: email, key: "email")
+        UserDefaultStorage<String>().saveCache(entity: password, key: "password")
     }
-
-    private func removeUserCredentialsFromKeychain() {
-        SensitiveInfoManager.delete(key: "userEmail")
-        SensitiveInfoManager.delete(key: "userPassword")
-    }
-
     private func showErrorAlert(message: String) {
          errorAlert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
          errorAlert?.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in

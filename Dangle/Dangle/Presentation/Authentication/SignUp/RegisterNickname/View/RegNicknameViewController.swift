@@ -45,7 +45,7 @@ class RegNicknameViewController: UIViewController {
         let textFieldView = CommonTextFieldView()
 
         textFieldView.textField.tintColor = .tintColor
-        textFieldView.textField.textColor = .black
+        textFieldView.textField.textColor = .label
 
         textFieldView.textField.setPlaceholder(
             placeholder: "닉네임 (2-8자의 한글, 영문, 숫자만 사용 가능)",

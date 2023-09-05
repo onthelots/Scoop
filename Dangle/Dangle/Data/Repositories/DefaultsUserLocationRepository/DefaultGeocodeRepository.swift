@@ -19,8 +19,7 @@ final class DefaultGeocodeRepository: GeocodeRepository {
         self.networkManager = networkManager
         self.geocodeManager = geocodeManager
     }
-
-
+    
     func geocode(
         query: String,
         completion: @escaping (Result<Geocode, Error>) -> Void

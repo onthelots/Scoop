@@ -10,6 +10,8 @@ import FirebaseAuth
 
 class SettingViewController: UIViewController {
 
+    private let userdefaultStorage = UserDefaultStorage<UserInfo>()
+
     // MARK: - Components
 
     // tableView
@@ -81,7 +83,9 @@ class SettingViewController: UIViewController {
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
-                self.removeUserCredentialsFromKeychain()
+                UserDefaultStorage<String>().deleteCache(key: "email")
+                UserDefaultStorage<String>().deleteCache(key: "password")
+
                 if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                     let startPageViewController = UINavigationController(rootViewController: StartPageViewController())
                     let transitionOptions: UIView.AnimationOptions = [.transitionCrossDissolve, .curveEaseInOut]
@@ -95,11 +99,6 @@ class SettingViewController: UIViewController {
             }
         }))
         present(alert, animated: true)
-    }
-
-    private func removeUserCredentialsFromKeychain() {
-        SensitiveInfoManager.delete(key: "userEmail")
-        SensitiveInfoManager.delete(key: "userPassword")
     }
 }
 

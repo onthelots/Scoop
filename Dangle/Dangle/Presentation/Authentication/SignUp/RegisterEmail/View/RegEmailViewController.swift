@@ -31,7 +31,7 @@ class RegEmailViewController: UIViewController {
         let textFieldView = CommonTextFieldView()
 
         textFieldView.textField.tintColor = .tintColor
-        textFieldView.textField.textColor = .black
+        textFieldView.textField.textColor = .label
 
         textFieldView.textField.setPlaceholder(
             placeholder: "이메일 주소 입력 (필수)",

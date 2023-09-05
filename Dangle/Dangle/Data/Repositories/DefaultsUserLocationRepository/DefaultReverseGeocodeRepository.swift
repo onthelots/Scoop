@@ -39,9 +39,9 @@ final class DefaultReverseGeocodeRepository: ReverseGeocodeRepository {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    print("--> 리버스 지오코딩 데이터를 가져오는데 실패했습니다: \(error)")
+                    print("error: \(error)")
                 case .finished:
-                    print("--> 리버스된 지오코딩 데이터를 가져왔습니다.")
+                    break
                 }
             } receiveValue: { items in
                 completion(.success(items))

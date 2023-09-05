@@ -45,10 +45,6 @@ extension StartPageViewController: StartPageViewDelegate {
                 reverseGeocodeRepository: DefaultReverseGeocodeRepository(
                     networkManager: NetworkService(configuration: URLSessionConfiguration.default), // NetworkService 초기화
                     geocodeManager: GeocodingManager() // GeocodingManager 초기화
-                ),
-                regionCodeRepository: DefaultRegionCodeRepository(
-                    networkManager: NetworkService(configuration: URLSessionConfiguration.default), // NetworkService 초기화
-                    geocodeManager: GeocodingManager() // GeocodingManager 초기화
                 ), geocodeRepositoy: DefaultGeocodeRepository(
                     networkManager: NetworkService(configuration: URLSessionConfiguration.default),
                     geocodeManager: GeocodingManager()

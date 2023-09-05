@@ -9,15 +9,12 @@
 /* Begin PBXBuildFile section */
 		3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */; };
 		3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */; };
-		3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */; };
 		3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */; };
 		3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */; };
 		3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7922A8DC96E0076CEAB /* ReverseGeocode.swift */; };
 		3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7932A8DC96E0076CEAB /* Geocode.swift */; };
-		3F1AB7DA2A8DC96E0076CEAB /* RegionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7942A8DC96E0076CEAB /* RegionCode.swift */; };
 		3F1AB7DB2A8DC96E0076CEAB /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7962A8DC96E0076CEAB /* TermsType.swift */; };
 		3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */; };
-		3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */; };
 		3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */; };
 		3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */; };
 		3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */; };
@@ -70,6 +67,8 @@
 		3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */; };
 		3F7ADEA22AA32A7C00AE2DD1 /* PostCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */; };
 		3F7ADEA52AA32A9400AE2DD1 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADEA42AA32A9400AE2DD1 /* PostCollectionViewCell.swift */; };
+		3F7B8EE32AA70FB300B8D66B /* LocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B8EE22AA70FB300B8D66B /* LocationDTO.swift */; };
+		3F7B8EE52AA7167B00B8D66B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B8EE42AA7167B00B8D66B /* User.swift */; };
 		3F80C0062A9DBCAD00F2128D /* NewIssueDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */; };
 		3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */; };
 		3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */; };
@@ -113,7 +112,6 @@
 		3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */; };
 		3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */; };
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
-		3FE361CF2A931E77000F1B38 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CE2A931E77000F1B38 /* User.swift */; };
 		3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */; };
 		3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D32A93475A000F1B38 /* SettingViewController.swift */; };
 		3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */; };
@@ -141,15 +139,12 @@
 /* Begin PBXFileReference section */
 		3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCategoryView.swift; sourceTree = "<group>"; };
 		3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeRepository.swift; sourceTree = "<group>"; };
-		3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCodeRepository.swift; sourceTree = "<group>"; };
 		3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeRepository.swift; sourceTree = "<group>"; };
 		3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocationUseCase.swift; sourceTree = "<group>"; };
 		3F1AB7922A8DC96E0076CEAB /* ReverseGeocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocode.swift; sourceTree = "<group>"; };
 		3F1AB7932A8DC96E0076CEAB /* Geocode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geocode.swift; sourceTree = "<group>"; };
-		3F1AB7942A8DC96E0076CEAB /* RegionCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCode.swift; sourceTree = "<group>"; };
 		3F1AB7962A8DC96E0076CEAB /* TermsType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
 		3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultGeocodeRepository.swift; sourceTree = "<group>"; };
-		3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultRegionCodeRepository.swift; sourceTree = "<group>"; };
 		3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultReverseGeocodeRepository.swift; sourceTree = "<group>"; };
 		3F1AB79E2A8DC96E0076CEAB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +191,8 @@
 		3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCategoryView.swift; sourceTree = "<group>"; };
 		3F7ADEA42AA32A9400AE2DD1 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		3F7B8EE22AA70FB300B8D66B /* LocationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDTO.swift; sourceTree = "<group>"; };
+		3F7B8EE42AA7167B00B8D66B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDTO.swift; sourceTree = "<group>"; };
 		3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -242,7 +239,6 @@
 		3FE361C62A92D437000F1B38 /* RegisterWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewController.swift; sourceTree = "<group>"; };
 		3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewModel.swift; sourceTree = "<group>"; };
 		3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		3FE361CE2A931E77000F1B38 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		3FE361D32A93475A000F1B38 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDetailViewController.swift; sourceTree = "<group>"; };
@@ -342,7 +338,6 @@
 			children = (
 				3F1AB7922A8DC96E0076CEAB /* ReverseGeocode.swift */,
 				3F1AB7932A8DC96E0076CEAB /* Geocode.swift */,
-				3F1AB7942A8DC96E0076CEAB /* RegionCode.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -570,7 +565,6 @@
 			children = (
 				3F1AB7D22A8DC96E0076CEAB /* CoreLocation */,
 				3F1AB7CD2A8DC96E0076CEAB /* Network */,
-				3F1AB7D02A8DC96E0076CEAB /* SensitiveInfoManager */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -645,7 +639,9 @@
 		3F49646D2A8E5FF100078EE3 /* PersistentStorages */ = {
 			isa = PBXGroup;
 			children = (
+				3F7B8EDF2AA70F4B00B8D66B /* Location */,
 				3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */,
+				3F1AB7D02A8DC96E0076CEAB /* SensitiveInfoManager */,
 				3F1AB7952A8DC96E0076CEAB /* Terms */,
 				3FD6182E2A98A27000CE6690 /* LocalEvent */,
 			);
@@ -682,7 +678,6 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7992A8DC96E0076CEAB /* DefaultGeocodeRepository.swift */,
-				3F1AB79A2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift */,
 				3F1AB79B2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift */,
 			);
 			path = DefaultsUserLocationRepository;
@@ -700,7 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */,
-				3F1AB78C2A8DC96E0076CEAB /* RegionCodeRepository.swift */,
 				3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */,
 			);
 			path = UserLocationRepository;
@@ -788,6 +782,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3F7B8EDF2AA70F4B00B8D66B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3F7B8EE22AA70FB300B8D66B /* LocationDTO.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		3F8CD6CA2A96D40F00307372 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,7 +826,6 @@
 		3F8CD6D62A96D5A900307372 /* ProfileTab */ = {
 			isa = PBXGroup;
 			children = (
-				3F8CD6D82A96D5B300307372 /* ViewModel */,
 				3F8CD6D72A96D5AE00307372 /* View */,
 			);
 			path = ProfileTab;
@@ -837,13 +838,6 @@
 				3FE361D32A93475A000F1B38 /* SettingViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3F8CD6D82A96D5B300307372 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3F8CD6D92A96D5C300307372 /* TabBar */ = {
@@ -1094,7 +1088,7 @@
 		3FE361CD2A931E08000F1B38 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				3FE361CE2A931E77000F1B38 /* User.swift */,
+				3F7B8EE42AA7167B00B8D66B /* User.swift */,
 				3F4964982A8FA1FD00078EE3 /* UserInfo.swift */,
 			);
 			path = Auth;
@@ -1281,7 +1275,6 @@
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
-				3F1AB7D52A8DC96E0076CEAB /* RegionCodeRepository.swift in Sources */,
 				3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */,
 				3F44C76C2AA1F2C30037CCC5 /* PostUseCase.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
@@ -1289,13 +1282,13 @@
 				3F8CD7012A97474200307372 /* CulturalEvent.swift in Sources */,
 				3F4964762A8F592D00078EE3 /* String+SignUpCheckValid.swift in Sources */,
 				3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */,
+				3F7B8EE52AA7167B00B8D66B /* User.swift in Sources */,
 				3FAF2E4D2AA5B17B003A9964 /* ReviewLocationTableViewCell.swift in Sources */,
 				3F44C76F2AA1F30A0037CCC5 /* PostRepository.swift in Sources */,
 				3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */,
 				3F7ADEA22AA32A7C00AE2DD1 /* PostCategoryView.swift in Sources */,
 				3F49647D2A8F5D4000078EE3 /* PasswordValidationService.swift in Sources */,
 				3FD618342A98A6B500CE6690 /* EventDetailView.swift in Sources */,
-				3F1AB7DD2A8DC96E0076CEAB /* DefaultRegionCodeRepository.swift in Sources */,
 				3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */,
 				3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */,
 				3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */,
@@ -1327,8 +1320,8 @@
 				3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
 				3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */,
-				3FE361CF2A931E77000F1B38 /* User.swift in Sources */,
 				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
+				3F7B8EE32AA70FB300B8D66B /* LocationDTO.swift in Sources */,
 				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
 				3F7ADEA52AA32A9400AE2DD1 /* PostCollectionViewCell.swift in Sources */,
 				3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */,
@@ -1339,7 +1332,6 @@
 				3F1AB7F82A8DC96E0076CEAB /* UserDefaultStorage.swift in Sources */,
 				3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */,
 				3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */,
-				3F1AB7DA2A8DC96E0076CEAB /* RegionCode.swift in Sources */,
 				3F8CD6FF2A972D5D00307372 /* DefaultsUserInfoRepository.swift in Sources */,
 				3F1AB7EF2A8DC96E0076CEAB /* UserLocationViewController.swift in Sources */,
 				3F49648C2A8F866400078EE3 /* AuthRepository.swift in Sources */,

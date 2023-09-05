@@ -13,11 +13,11 @@ final class UserLocationViewModel: ObservableObject {
 
     private let geoLocationUseCase: DefaultUserLocationUseCase
 
-    @Published var userLocation: [Regcode] = []
-    private var previousUserLocation: [Regcode] = []
+    @Published var userLocation: [LocationInfo] = []
+    private var previousUserLocation: [LocationInfo] = []
 
     // Output
-    let itemTapped = PassthroughSubject<Regcode, Never>()
+    let itemTapped = PassthroughSubject<LocationInfo, Never>()
 
     // 초기화
     init(geoLocationUseCase: DefaultUserLocationUseCase) {
@@ -29,11 +29,14 @@ final class UserLocationViewModel: ObservableObject {
         geoLocationUseCase.execute(coordinate: coordinate) { [weak self] result in
             switch result {
             case .success(let address):
-                self?.userLocation = address.regcodes
-                self?.previousUserLocation = address.regcodes
-                print("ViewModel에서 UseCase 호출")
+                self?.userLocation = address.reverseDocument.compactMap({ info in
+                    return LocationInfo(code: info.code, name: info.addressName, longitude: String(info.longitude), latitude: String(info.latitude))
+                })
+                self?.previousUserLocation = address.reverseDocument.compactMap({ info in
+                    return LocationInfo(code: info.code, name: info.addressName, longitude: String(info.longitude), latitude: String(info.latitude))
+                })
             case .failure(let error):
-                print("--> UseCase 메서드가 실패하였습니다: \(error)")
+                print("error: \(error)")
             }
         }
     }
@@ -44,19 +47,19 @@ final class UserLocationViewModel: ObservableObject {
         geoLocationUseCase.execute(query: query) { [weak self] result in
             switch result {
             case .success(let address):
-                self?.userLocation = address.documents.compactMap({ items in
+                self?.userLocation = address.documents.compactMap({ info in
 
-                    guard let region3DepthName = items.address.region3DepthName,
+                    guard let region3DepthName = info.address.region3DepthName,
                             !region3DepthName.isEmpty else {
                         return nil
                     }
 
-                    guard let bCode = items.address.bCode,
+                    guard let bCode = info.address.bCode,
                           !bCode.isEmpty else {
                         return nil
                     }
 
-                    return Regcode(code: bCode, name: items.addressName, longitude: items.longitude, latitude: items.latitude)
+                    return LocationInfo(code: info.address.bCode ?? "", name: info.addressName, longitude: info.longitude, latitude: info.latitude)
                 })
             case .failure(let error):
                 print("error: \(error)")
@@ -65,7 +68,7 @@ final class UserLocationViewModel: ObservableObject {
     }
 
     // 이전 사용자 위치 데이터를 반환하는 메서드
-    func getPreviousUserLocation() -> [Regcode] {
+    func getPreviousUserLocation() -> [LocationInfo] {
         return previousUserLocation
     }
 }
