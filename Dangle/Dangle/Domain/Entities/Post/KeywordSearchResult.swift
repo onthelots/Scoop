@@ -83,4 +83,3 @@ enum CategoryGroupName: String {
     case HP8 = "병원"
     case PM9 = "약국"
 }
-

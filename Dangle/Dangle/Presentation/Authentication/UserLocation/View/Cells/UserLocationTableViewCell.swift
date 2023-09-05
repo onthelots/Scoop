@@ -53,7 +53,7 @@ class UserLocationTableViewCell: UITableViewCell {
     }
 
     // 셀에 주소 정보 표시
-    func configure(address: Regcode) {
+    func configure(address: LocationInfo) {
         userLocationLabel.text = address.name
     }
 }

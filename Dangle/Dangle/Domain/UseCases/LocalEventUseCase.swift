@@ -50,7 +50,6 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
                      if !detail.postContent.isEmpty && (detail.postContent.contains("□") || detail.postContent.contains("○")) {
                          do {
                              let doc: Document = try SwiftSoup.parse(detail.postContent)
-
                              var plainText = try doc.text()
                              plainText = plainText.replacingOccurrences(of: "□", with: "\n")
                              plainText = plainText.replacingOccurrences(of: "○", with: "\n")

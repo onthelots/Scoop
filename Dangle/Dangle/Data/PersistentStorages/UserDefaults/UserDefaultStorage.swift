@@ -27,4 +27,9 @@ class UserDefaultStorage<T: Codable> {
         }
         return nil
     }
+
+    func deleteCache(key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+        print("UserDefaults에서 \(key) 데이터가 삭제되었습니다.")
+    }
 }

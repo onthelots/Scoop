@@ -13,8 +13,8 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
 
     let viewModel: UserLocationViewModel!
     private let coreLocationService = CoreLocationService()
-    private let userdefaultStorage = UserDefaultStorage<Regcode>()
-    private var userlocation: [Regcode] = []
+    private let userdefaultStorage = UserDefaultStorage<LocationInfo>()
+    private var userlocation: [LocationInfo] = []
     private var subscription = Set<AnyCancellable>()
 
     // MARK: - Components (Views)
@@ -91,8 +91,6 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         viewModel.itemTapped
             .sink { item in
                 self.userdefaultStorage.saveCache(entity: item, key: "location")
-                print("---> 선택된 주소 : \(item.name)")
-
                 let viewController = TermsViewController()
                 viewController.navigationItem.largeTitleDisplayMode = .never
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -145,6 +143,7 @@ extension UserLocationViewController: CoreLocationServiceDelegate {
     func updateLocation(coordinate: CLLocation) {
         // coordinate를 활용하여 현재 위치를 regcodes로 변환
         viewModel.fetchUserLocation(coordinate: coordinate)
+        print("UserLocationViewController에서 델리게이트를 통해 받아오는 현재위치 : \(coordinate)")
         userlocation = viewModel.userLocation
         tableView.isHidden = false
         tableView.reloadData()

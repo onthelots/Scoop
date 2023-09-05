@@ -15,7 +15,7 @@ protocol ReviewViewDelegate: AnyObject {
 
 class ReviewView: UIView {
 
-    weak var reviewViewDelegate: ReviewViewDelegate?
+    weak var delegate: ReviewViewDelegate?
 
     private let subscription = Set<AnyCancellable>()
 
@@ -25,9 +25,6 @@ class ReviewView: UIView {
 
     // 선택한 이미지 뷰
     var selectedImageView: UIImageView? // 추가된 속성
-
-    // 주소 라벨
-    var locationLabel: UILabel? // 추가된 속성
 
     let textViewPlaceHolder = "해당 장소에 대한 이야기를 공유해주세요\n구체적으로 작성해주신 글은 이웃에게 큰 도움이 될거에요"
 
@@ -84,7 +81,7 @@ class ReviewView: UIView {
     // location View
     lazy var locationView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -142,32 +139,6 @@ class ReviewView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    // MARK: - 이미지 뷰 생성
-    private func createImageView(image: UIImage) -> UIImageView {
-
-        // imageView 반환
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5
-        imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
-        return imageView
-    }
-
-    // MARK: - 주소 라벨 뷰 생성
-    private func createLabelView(location: String) -> UILabel {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        label.textAlignment = .left
-        label.textColor = .white
-        label.numberOfLines = 1
-        label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }
 
     private func setupUI() {
         self.addSubview(warningView)
@@ -229,6 +200,19 @@ class ReviewView: UIView {
         self.addGestureRecognizer(tapGesture)
     }
 
+    private func createImageView(image: UIImage) -> UIImageView {
+
+        // imageView 반환
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 5
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(imageView)
+        return imageView
+    }
+
     // 이미지 저장
     func addImageView(image: UIImage) {
         let imageView = createImageView(image: image)
@@ -238,13 +222,9 @@ class ReviewView: UIView {
 
     // 이미지 저장 시, 레이아웃 업데이트
     private func updateImageViewLayout() {
-
-        // TODO: - 방금 추가함
         self.imageStackView.subviews.forEach { $0.removeFromSuperview() }
-
         // 첫번째 선택되는 ImageView
         var previousImageView: UIImageView?
-
         for imageView in imageViews {
             imageStackView.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -267,21 +247,26 @@ class ReviewView: UIView {
         }
     }
 
-    // 주소라벨 추가
-    func addLocationLabel(location: String) {
-        // 기존 라벨이 있으면 제거
-        locationLabel?.removeFromSuperview()
-
-        let label = createLabelView(location: location)
+    // MARK: - 주소 라벨 뷰 생성
+    private func createLabelView(location: SearchResult) -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textAlignment = .left
+        label.textColor = .label
+        label.text = "\(location.placeName) \(location.addressName)"
         label.numberOfLines = 1
         label.sizeToFit()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = true
-        self.locationView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
 
+    // 주소라벨 추가
+    func addLocationLabel(location: SearchResult) {
+        self.locationView.subviews.forEach { $0.removeFromSuperview() }
+        let label = createLabelView(location: location)
         // locationLabel 속성에 새로 추가된 라벨 할당
-        locationLabel = label
+        self.locationView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: self.locationView.leadingAnchor, constant: 10),
@@ -297,11 +282,11 @@ class ReviewView: UIView {
     }
 
     @objc private func didTapLocationButton() {
-        reviewViewDelegate?.didTappedLocationButton()
+        delegate?.didTappedLocationButton()
     }
 
     @objc private func didTapPictureButton() {
-        reviewViewDelegate?.didTappedPictureButton()
+        delegate?.didTappedPictureButton()
     }
 }
 

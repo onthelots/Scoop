@@ -23,6 +23,7 @@ class CoreLocationService: NSObject, CLLocationManagerDelegate {
 
     // Create a subject to publish location updates
     private var locationSubject = PassthroughSubject<CLLocation, Never>()
+    
     var locationPublisher: AnyPublisher<CLLocation, Never> {
         return locationSubject.eraseToAnyPublisher()
     }
@@ -94,6 +95,7 @@ class CoreLocationService: NSObject, CLLocationManagerDelegate {
             locationSubject.send(coordinate) // Publish the updated location
             self.delegate?.updateLocation(coordinate: coordinate)
             print("4. updateLocation 델리게이트에 사용자의 좌표가 저장됩니다")
+            print("locationManager에서 불러오는 좌표값 : \(coordinate)")
         }
         coreLocationManager.stopUpdatingLocation()
         print("5. 사용자 위치가 파악되었습니다. 업데이트를 중지합니다.")

@@ -10,13 +10,21 @@ import Firebase
 import UIKit
 import PhotosUI
 
+protocol ReviewViewControllerDelegate: AnyObject {
+    func createAnnotation(title: String, location: CLLocationCoordinate2D)
+}
+
 class ReviewViewController: UIViewController {
 
-    // 저장된 카테고리
-    let category: String
+    weak var delegate: ReviewViewControllerDelegate?
 
-    // 유저의 현재 위치 좌표
-    let userLocation: [String]
+    // 저장된 카테고리
+    let category: PostCategory
+
+    // 유저정보
+    let userInfo: UserInfo!
+
+    private var selectedLocation: SearchResult? // 선택한 위치 정보를 저장할 변수
     
     private var viewModel: ReviewViewModel!
     private var reviewView = ReviewView()
@@ -28,9 +36,9 @@ class ReviewViewController: UIViewController {
     // id와 Phpicker로 만든 딕셔너리 (이미지 데이터 저장)
     private var selections = [String: PHPickerResult]()
 
-    init(category: String, userLocation: [String]) {
+    init(category: PostCategory, userInfo: UserInfo) {
         self.category = category
-        self.userLocation = userLocation
+        self.userInfo = userInfo
         super.init(nibName: nil, bundle: nil)
         self.hidesBottomBarWhenPushed = true
     }
@@ -43,10 +51,77 @@ class ReviewViewController: UIViewController {
         super.viewDidLoad()
         setupBackButton()
         view.backgroundColor = .systemBackground
-        reviewView.reviewViewDelegate = self
+        updateBarButton()
+        reviewView.delegate = self
         setupUI()
     }
 
+    private func updateBarButton() {
+        // barButton update -> 분기처리
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "완료",
+            style: .done,
+            target: self,
+            action: #selector(didTapAddReview)
+        )
+    }
+
+    // didTapAdd(playlistview)
+    @objc func didTapAddReview() {
+        showReviewAddAlert()
+    }
+    // MARK: - FireStore에 저장하기
+    public func showReviewAddAlert() {
+        let alert = UIAlertController(
+            title: "저장하기",
+            message: "작성하신 리뷰를 등록하시겠습니까?",
+            preferredStyle: .alert
+        )
+        // alert action
+        alert.addAction(UIAlertAction(title: "취소",
+                                      style: .cancel,
+                                      handler: nil))
+        alert.addAction(UIAlertAction(title: "저장",
+                                      style: .default,
+                                      handler: { [weak self] _ in
+            // MARK: - API createdPlaylists (POST)
+            // 여기서, 전체 데이터를 FireStore에 저장하자
+            guard let userId = Auth.auth().currentUser?.uid else {
+                return
+            }
+
+            let postInfo = Post(
+                authorUID: userId,
+                category: PostCategory(rawValue: (self?.category)!.rawValue) ?? .beauty,
+                address: self?.selectedLocation?.addressName ?? "",
+                review: self?.reviewView.reviewTextView.text ?? "",
+                nickname: self?.userInfo.nickname ?? "",
+                latitude: Double(self?.selectedLocation?.latitude ?? "") ?? 0.0,
+                longitude: Double(self?.selectedLocation?.longitude ?? "") ?? 0.0,
+                timestamp: Date()
+            )
+
+            print("사용자의 리뷰글을 퍼블리셔에게 전달합니다")
+            print("postInfo : \(postInfo)")
+
+            self?.delegate?.createAnnotation(title: self?.selectedLocation?.placeName ?? "",
+                                             location: self?.fetchMyLocationCoordinate(latitude: self?.selectedLocation?.latitude ?? "",
+                                                                                       longitude: self?.selectedLocation?.longitude ?? "") ?? CLLocationCoordinate2D()) // 어노테이션 생성
+            self?.navigationController?.popViewController(animated: true)
+        }))
+        present(alert, animated: true)
+    }
+
+    // Coordinate 변환
+    private func fetchMyLocationCoordinate(latitude: String, longitude: String) -> CLLocationCoordinate2D? {
+        guard let latitudeDouble = Double(latitude),
+              let longitudeDouble = Double(longitude) else {
+            return nil
+        }
+            let coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longitudeDouble)
+            return coordinate
+    }
+    
     private func setupUI() {
         view.addSubview(reviewView)
         reviewView.translatesAutoresizingMaskIntoConstraints = false
@@ -118,9 +193,10 @@ extension ReviewViewController: ReviewViewDelegate {
 
     func didTappedLocationButton() {
         // MARK: - 수정하려고 누를때, SelectedLocation을 초기화해야 하는데?
-        let viewController = LocationSearchViewController(userLocation: userLocation)
+        let viewController = LocationSearchViewController(userLocation: [userInfo.longitude ?? "", userInfo.latitude ?? ""])
         viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.navigationItem.title = "위치검색"
+        viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -152,5 +228,12 @@ extension ReviewViewController: PHPickerViewControllerDelegate {
             self.reviewView.imageViews = []
             displayAndSaveImage()
         }
+    }
+}
+
+extension ReviewViewController: LocationSearchViewControllerDelegate {
+    func locationSelected(_ location: SearchResult) {
+        self.selectedLocation = location
+        self.reviewView.addLocationLabel(location: location)
     }
 }

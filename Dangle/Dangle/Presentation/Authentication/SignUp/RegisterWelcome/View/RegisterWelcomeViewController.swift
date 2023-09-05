@@ -55,7 +55,7 @@ class RegisterWelcomeViewController: UIViewController {
     lazy var keywordLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .label
         label.sizeToFit()
         label.text = "회원가입이 완료되었습니다"
         label.numberOfLines = 0
@@ -68,7 +68,7 @@ class RegisterWelcomeViewController: UIViewController {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.sizeToFit()
         label.text = "로그인 후, 다양한 이슈와 소식을 확인해보세요!"
         label.numberOfLines = 0
@@ -161,25 +161,21 @@ class RegisterWelcomeViewController: UIViewController {
                         }
                     }
                 } else {
-                    self?.removeUserCredentialsFromKeychain()
+                    return
                 }
             }.store(in: &subscription)
     }
 
     // ----> 4. 버튼이 눌렀을 때 동작
     @objc private func nextButtonTapped() {
-        let location: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.name ?? ""
-        let longitude: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.longitude ?? ""
-        let latitude: String = UserDefaultStorage<Regcode>().getCached(key: "location")?.latitude ?? ""
+        let location: String = UserDefaultStorage<LocationInfo>().getCached(key: "location")?.name ?? ""
+        let longitude: String = UserDefaultStorage<LocationInfo>().getCached(key: "location")?.longitude ?? ""
+        let latitude: String = UserDefaultStorage<LocationInfo>().getCached(key: "location")?.latitude ?? ""
 
         let userInfo = UserInfo(email: email, password: password, location: location, nickname: nickname, longitude: longitude, latitude: latitude)
         // 4. viewModel의 signUpButtonTapped 퍼블리셔에게 정보를 전달함
         viewModel.signUpButtonTapped.send(userInfo)
         print("signUpButtonTapped 퍼블리셔에게 userInfo를 전달합니다")
-    }
-
-    private func removeUserCredentialsFromKeychain() {
-        SensitiveInfoManager.delete(key: "userEmail")
-        SensitiveInfoManager.delete(key: "userPassword")
+        print("userInfo : \(userInfo)")
     }
 }

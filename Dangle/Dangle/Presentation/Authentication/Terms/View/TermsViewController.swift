@@ -45,7 +45,7 @@ class TermsViewController: UIViewController {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .regular)
         let image = UIImage(systemName: "checkmark.circle", withConfiguration: imageConfig)
         button.setImage(image, for: .normal)
-        button.tintColor = .black
+        button.tintColor = .tintColor
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

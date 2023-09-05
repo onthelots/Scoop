@@ -15,6 +15,7 @@ class NewIssueDetailView: UIView {
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textAlignment = .left
         label.numberOfLines = 0
+        label.textColor = .label
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -33,7 +34,7 @@ class NewIssueDetailView: UIView {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .left
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.numberOfLines = 1
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +45,7 @@ class NewIssueDetailView: UIView {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .left
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.numberOfLines = 1
         label.text = "•"
         label.sizeToFit()
@@ -56,7 +57,7 @@ class NewIssueDetailView: UIView {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .left
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.numberOfLines = 1
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +77,7 @@ class NewIssueDetailView: UIView {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
         label.textAlignment = .left
-        label.textColor = .lightGray
+        label.textColor = .secondaryLabel
         label.numberOfLines = 1
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +88,7 @@ class NewIssueDetailView: UIView {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
         label.textAlignment = .left
-        label.textColor = .lightGray
+        label.textColor = .secondaryLabel
         label.numberOfLines = 1
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +106,7 @@ class NewIssueDetailView: UIView {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.textAlignment = .left
-        label.textColor = .black
+        label.textColor = .label
         label.numberOfLines = 0
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false

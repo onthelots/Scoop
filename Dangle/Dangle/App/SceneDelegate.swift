@@ -15,14 +15,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
 
         // 키체인에 저장되어 있다면
-        if let userEmail = SensitiveInfoManager.read(key: "userEmail"),
-               let userPassword = SensitiveInfoManager.read(key: "userPassword") {
+        if let savedUserEmail = UserDefaultStorage<String>().getCached(key: "email"),
+            let savedUserPassword = UserDefaultStorage<String>().getCached(key: "password") {
 
                 let signInUseCase = DefaultSignInUseCase(authRepository: DefaultsAuthRepository())
                 let emailValidationService = DefaultEmailValidationService()
                 let viewModel = SignInViewModel(signInUseCase: signInUseCase, emailValidationService: emailValidationService)
 
-                viewModel.login(email: userEmail, password: userPassword)
+                viewModel.login(email: savedUserEmail, password: savedUserPassword)
 
                 let tabBarController = TabBarViewController()
                 tabBarController.selectedIndex = 0

@@ -9,11 +9,17 @@ import UIKit
 import Combine
 import Firebase
 
+protocol LocationSearchViewControllerDelegate: AnyObject {
+    func locationSelected(_ location: SearchResult)
+}
+
 class LocationSearchViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     private var viewModel: ReviewViewModel!
     private var userLocation: [String] // 유저의 현재 좌표값
-    private var selectedLocation: [SearchResult] = []
+    private var searchLocations: [SearchResult] = []
     private var subscription = Set<AnyCancellable>()
+
+    weak var delegate: LocationSearchViewControllerDelegate?
 
     // searchController
     private let searchController: UISearchController = {
@@ -64,24 +70,27 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
 
     private func initializeViewModel() {
         let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
+        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
         viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
     }
 
     private func bind() {
-        // UserLocation (실시간 검색결과)를 selectedLocation으로 전달하고, tableView를 새로고침
-        viewModel.$userLocation
+        // UserLocation (실시간 검색결과)를 selectedLocation으로 전달하고, tableView를 새로고침 (여기는 리스트임)
+        viewModel.$searchResults
             .receive(on: RunLoop.main)
             .sink { [weak self] items in
-                self?.selectedLocation = items
+                // 패치한 위치 아이템들을 searchLocations에 할당함
+                self?.searchLocations = items
                 self?.tableView.reloadData()
             }
             .store(in: &subscription)
 
-        viewModel.locationItemTapped
-            .sink { location in
-                self.navigationController?.popViewController(animated: true)
-                print("결정된 위치 : \(location.first?.addressName)")
-            }.store(in: &subscription)
+        // MARK: - 여기서, reviewView도 설정해주면 될듯?
+//        viewModel.locationItemTapped
+//            .sink { location in
+//                self.navigationController?.popViewController(animated: true)
+//                print("결정된 위치 : \(String(describing: location.first?.addressName))")
+//            }.store(in: &subscription)
     }
 
     // 검색 결과를 실시간으로 업데이트
@@ -113,7 +122,7 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
 
 extension LocationSearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedLocation.count
+        return searchLocations.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -122,7 +131,7 @@ extension LocationSearchViewController: UITableViewDelegate, UITableViewDataSour
         }
 
         // ViewModel에서 가져온 데이터를 셀에 표시
-        let address = selectedLocation[indexPath.row]
+        let address = searchLocations[indexPath.row]
         cell.configure(address: address)
         return cell
     }
@@ -134,7 +143,11 @@ extension LocationSearchViewController: UITableViewDelegate, UITableViewDataSour
     // 특정 Cell을 선택했을 경우, 결과값을 selectedLocationSubject로 전달
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let address = selectedLocation[indexPath.row]
-        viewModel.locationItemTapped.send([address]) // 아예 배열값으로 전달, 분기처리를 실시할 수 있도록 함
+        let address = searchLocations[indexPath.row]
+        self.delegate?.locationSelected(address) // delegate 패턴도 활용하고
+        print("전달되는 address : \(address.addressName)")
+        print("전달되는 x좌표 : \(address.longitude)")
+        print("전달되는 y좌표 : \(address.latitude)")
+        navigationController?.popViewController(animated: true)
     }
 }
