@@ -8,8 +8,12 @@
 import Combine
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class DefaultPostRepository: PostRepository {
+
+    let database = Firestore.firestore()
+    let storage = Storage.storage()
 
     private let networkManager: NetworkService
     private let geocodeManager: GeocodingManager
@@ -23,6 +27,7 @@ class DefaultPostRepository: PostRepository {
         self.firestore = firestore
     }
 
+    // MARK: - 카카오 키워드 검색
     func searchLocation(
         query: String,
         longitude: String,
@@ -60,20 +65,51 @@ class DefaultPostRepository: PostRepository {
 
     }
 
-    func addPost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
-        do {
-            let _ = try firestore.collection("Posts").addDocument(from: post) { error in
+    // MARK: - Post 정보 등록하기
+    func addPost(_ post: Post, image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
+        // 1. 이미지를 Firebase Storage에 업로드
+        // 아래는 이미지 참조체 imageReference
+        let imageReference = storage.reference().child("postImages/\(UUID().uuidString).jpg")
+        // 실제 이미지 데이터를 jpegData로 변환한 후,
+        if let imageData = image.jpegData(compressionQuality: 0.8) {
+            // 참조체에 변환 데이털르 할당
+            imageReference.putData(imageData, metadata: nil) { metadata, error in
                 if let error = error {
                     completion(.failure(error))
-                } else {
-                    completion(.success(()))
+                    return
+                }
+
+                // 2. 이미지 업로드가 성공하면 해당 이미지의 다운로드 URL을 가져옴
+                imageReference.downloadURL { url, error in
+                    if let error = error {
+                        completion(.failure(error))
+                        return
+                    }
+
+                    // 3. 이미지 다운로드 URL을 Post 객체에 URL로 저장함
+                    var updatedPost = post
+                    updatedPost.postImage = url?.absoluteString
+
+                    // 4. Post 객체를 Firestore에 저장
+                    do {
+                        let _ = try self.firestore.collection("Posts").addDocument(from: updatedPost) { error in
+                            if let error = error {
+                                completion(.failure(error))
+                            } else {
+                                completion(.success(()))
+                            }
+                        }
+                    } catch {
+                        completion(.failure(error))
+                    }
                 }
             }
-        } catch {
-            completion(.failure(error))
+        } else {
+            completion(.failure(NSError(domain: "Image Data Error", code: 0, userInfo: nil)))
         }
     }
 
+    // MARK: - Post 전체 정보 불러오기
     func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
         firestore.collection("Posts").getDocuments { querySnapshot, error in
             if let error = error {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // UseCase
 protocol PostUseCase {
@@ -19,7 +20,7 @@ protocol PostUseCase {
         completion: @escaping (Result<KeywordSearchResult, Error>) -> Void
     )
 
-    func addPost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void)
+    func addPost(_ post: Post, image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
     func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void)
     func updatePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void)
     func deletePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void)
@@ -49,8 +50,15 @@ class DefaultPostUseCase: PostUseCase {
         }
     }
 
-    func addPost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
-        postRepository.addPost(post, completion: completion)
+    func addPost(_ post: Post, image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
+        postRepository.addPost(post, image: image) { result in
+            switch result {
+            case .success(let success):
+                completion(.success(success))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void) {

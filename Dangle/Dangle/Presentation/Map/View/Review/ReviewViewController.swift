@@ -25,6 +25,8 @@ class ReviewViewController: UIViewController {
     let userInfo: UserInfo!
 
     private var selectedLocation: SearchResult? // 선택한 위치 정보를 저장할 변수
+    private var selectedImage: [UIImage] = []
+
     
     private var viewModel: ReviewViewModel!
     private var reviewView = ReviewView()
@@ -51,6 +53,7 @@ class ReviewViewController: UIViewController {
         super.viewDidLoad()
         setupBackButton()
         view.backgroundColor = .systemBackground
+        initializeViewModel()
         updateBarButton()
         reviewView.delegate = self
         setupUI()
@@ -64,6 +67,12 @@ class ReviewViewController: UIViewController {
             target: self,
             action: #selector(didTapAddReview)
         )
+    }
+
+    private func initializeViewModel() {
+        let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
+        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
+        viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
     }
 
     // didTapAdd(playlistview)
@@ -85,24 +94,38 @@ class ReviewViewController: UIViewController {
                                       style: .default,
                                       handler: { [weak self] _ in
             // MARK: - API createdPlaylists (POST)
-            // 여기서, 전체 데이터를 FireStore에 저장하자
             guard let userId = Auth.auth().currentUser?.uid else {
                 return
             }
 
-            let postInfo = Post(
-                authorUID: userId,
-                category: PostCategory(rawValue: (self?.category)!.rawValue) ?? .beauty,
-                address: self?.selectedLocation?.addressName ?? "",
-                review: self?.reviewView.reviewTextView.text ?? "",
-                nickname: self?.userInfo.nickname ?? "",
-                latitude: Double(self?.selectedLocation?.latitude ?? "") ?? 0.0,
-                longitude: Double(self?.selectedLocation?.longitude ?? "") ?? 0.0,
-                timestamp: Date()
-            )
+            guard let selectedImage = self?.selectedImage else {
+                return
+            }
+            for image in selectedImage {
+                if let category = self?.category,
+                   let placeName = self?.selectedLocation?.placeName,
+                   let reviewText = self?.reviewView.reviewTextView.text,
+                   let nickname = self?.userInfo.nickname,
+                   let latitude = self?.selectedLocation?.latitude,
+                   let longitude = self?.selectedLocation?.longitude {
 
-            print("사용자의 리뷰글을 퍼블리셔에게 전달합니다")
-            print("postInfo : \(postInfo)")
+                    let postInfo = Post(
+                        authorUID: userId,
+                        category: PostCategory(rawValue: category.rawValue) ?? .beauty,
+                        address: placeName,
+                        review: reviewText,
+                        nickname: nickname,
+                        postImage: "",
+                        latitude: latitude,
+                        longitude: longitude,
+                        timestamp: Date()
+                    )
+                    self?.viewModel.postButtonTapped.send((postInfo, image))
+                } else {
+                    print("정보가 없습니다.")
+                }
+            }
+
 
             self?.delegate?.createAnnotation(title: self?.selectedLocation?.placeName ?? "",
                                              location: self?.fetchMyLocationCoordinate(latitude: self?.selectedLocation?.latitude ?? "",
@@ -121,7 +144,8 @@ class ReviewViewController: UIViewController {
             let coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longitudeDouble)
             return coordinate
     }
-    
+
+    // setup revieewView
     private func setupUI() {
         view.addSubview(reviewView)
         reviewView.translatesAutoresizingMaskIntoConstraints = false
@@ -179,7 +203,10 @@ class ReviewViewController: UIViewController {
             self.reviewView.imageStackView.subviews.forEach { $0.removeFromSuperview() }
             for identifier in selectedAssetIdentifiers {
                 guard let image = imageDictionary[identifier] else { return }
-                self.reviewView.addImageView(image: image)
+                self.reviewView.addImageView(image: image) // View 업데이트
+
+                let selectedImage = imageDictionary.values.map { $0 }
+                self.selectedImage = selectedImage
             }
         }
     }
@@ -231,6 +258,7 @@ extension ReviewViewController: PHPickerViewControllerDelegate {
     }
 }
 
+// LocationSearchViewController Delegate (선택된 주소 + reviewView 내 LocationView에 할당할 주소 라벨)
 extension ReviewViewController: LocationSearchViewControllerDelegate {
     func locationSelected(_ location: SearchResult) {
         self.selectedLocation = location

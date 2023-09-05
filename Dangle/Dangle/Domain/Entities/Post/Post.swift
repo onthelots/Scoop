@@ -14,10 +14,10 @@ struct Post: Identifiable, Codable, Hashable {
     var category: PostCategory // 작성 카테고리
     var address: String // 점포 위치
     var review: String // 리뷰내용
-    var nickname: String? // 섬네일
+    var nickname: String // 닉네임
     var postImage: String? // 이미지
-    var latitude: Double // 좌표
-    var longitude: Double // 좌표
+    var latitude: String // 좌표
+    var longitude: String // 좌표
     var timestamp: Date // 시간
 }
 

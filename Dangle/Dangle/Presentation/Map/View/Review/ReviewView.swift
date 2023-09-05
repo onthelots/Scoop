@@ -19,12 +19,8 @@ class ReviewView: UIView {
 
     private let subscription = Set<AnyCancellable>()
 
-    // 선택한 이미지 뷰 배열
     // 이미지 뷰 배열
-    var imageViews: [UIImageView] = [] // 추가된 속성
-
-    // 선택한 이미지 뷰
-    var selectedImageView: UIImageView? // 추가된 속성
+    var imageViews: [UIImageView] = []
 
     let textViewPlaceHolder = "해당 장소에 대한 이야기를 공유해주세요\n구체적으로 작성해주신 글은 이웃에게 큰 도움이 될거에요"
 
@@ -250,10 +246,10 @@ class ReviewView: UIView {
     // MARK: - 주소 라벨 뷰 생성
     private func createLabelView(location: SearchResult) -> UILabel {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         label.textAlignment = .left
-        label.textColor = .label
-        label.text = "\(location.placeName) \(location.addressName)"
+        label.textColor = .secondaryLabel
+        label.text = "\(location.placeName) • \(location.addressName)"
         label.numberOfLines = 1
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
