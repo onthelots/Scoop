@@ -35,7 +35,7 @@ class SignInViewModel: ObservableObject {
     }
 
     func login(email: String, password: String) {
-        signInUseCase.execute(email: email, password: password) { [weak self] result in
+        signInUseCase.signIn(email: email, password: password) { [weak self] result in
             switch result {
             case .success:
                 self?.isLoggedIn = true

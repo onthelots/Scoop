@@ -381,7 +381,6 @@ extension HomeViewController: NewIssueCategoryViewDelegate {
            let selectedCategory = BlogName(rawValue: label.text ?? "") {
             self.viewModel.selectedCategory = categoryCode
             self.newIssueCategoryView.update(for: selectedCategory)
-            print("선택된 카테고리 : \(selectedCategory)")
             var snapshot = dataSource.snapshot()
             snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .newIssue))
             dataSource.apply(snapshot)

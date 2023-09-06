@@ -59,6 +59,12 @@ class ReviewViewController: UIViewController {
         setupUI()
     }
 
+    private func initializeViewModel() {
+        let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
+        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
+        viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
+    }
+
     private func updateBarButton() {
         // barButton update -> 분기처리
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -69,16 +75,11 @@ class ReviewViewController: UIViewController {
         )
     }
 
-    private func initializeViewModel() {
-        let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
-        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
-        viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
-    }
-
     // didTapAdd(playlistview)
     @objc func didTapAddReview() {
         showReviewAddAlert()
     }
+
     // MARK: - FireStore에 저장하기
     public func showReviewAddAlert() {
         let alert = UIAlertController(
@@ -101,9 +102,10 @@ class ReviewViewController: UIViewController {
             guard let selectedImage = self?.selectedImage else {
                 return
             }
+            // 다중 이미지이기 때문에, selectedImage 내 image를 받아서, Post로 저장하고, postUseCase에서 처리하도록 넘김
             for image in selectedImage {
                 if let category = self?.category,
-                   let placeName = self?.selectedLocation?.placeName,
+                   let storeName = self?.selectedLocation?.placeName,
                    let reviewText = self?.reviewView.reviewTextView.text,
                    let nickname = self?.userInfo.nickname,
                    let latitude = self?.selectedLocation?.latitude,
@@ -112,7 +114,7 @@ class ReviewViewController: UIViewController {
                     let postInfo = Post(
                         authorUID: userId,
                         category: PostCategory(rawValue: category.rawValue) ?? .beauty,
-                        address: placeName,
+                        storeName: storeName,
                         review: reviewText,
                         nickname: nickname,
                         postImage: "",
@@ -171,7 +173,7 @@ class ReviewViewController: UIViewController {
         self.present(picker, animated: true)
     }
 
-    // ImageProvider 처리 -> 로드 후, ImageView에 뿌려주거나 혹은 전역변수에 저장
+    // ImageProvider 처리 -> 로드 후, ImageView에 뿌려주거나 혹은 전역변수에 저장 (itemProvider가 비동기적 처리임. 따라서 순서대로가 아닌 용량이 작은 순서대로 나타나기 때문에, 이에 따라 dispatchGroup으로 작업함)
     private func displayAndSaveImage() {
         // 1. 스택뷰의 모든 서브뷰를 제거함
         self.reviewView.imageStackView.subviews.forEach { $0.removeFromSuperview() }
@@ -204,7 +206,7 @@ class ReviewViewController: UIViewController {
             for identifier in selectedAssetIdentifiers {
                 guard let image = imageDictionary[identifier] else { return }
                 self.reviewView.addImageView(image: image) // View 업데이트
-
+                // 최종 선택된 image
                 let selectedImage = imageDictionary.values.map { $0 }
                 self.selectedImage = selectedImage
             }

@@ -30,7 +30,7 @@ class ReviewViewModel: ObservableObject {
     
     // 쿼리(검색)을 통해 주소값 가져오기
     func fetchSearchLoction(query: String, longitude: String, latitude: String, radius: Int) {
-        postUseCase.execute(
+        postUseCase.searchLocation(
             query: query,
             longitude: longitude,
             latitude: latitude,
@@ -38,7 +38,6 @@ class ReviewViewModel: ObservableObject {
         ) { result in
             switch result {
             case .success(let address):
-                print("받아온 데이터 : \(address)")
                 self.searchResults = address.documents
             case .failure(let error):
                 print("error : \(error)")
@@ -46,7 +45,7 @@ class ReviewViewModel: ObservableObject {
         }
     }
 
-    // 저장하기
+    // 리뷰 저장하기
     func addUserPost() {
         postButtonTapped
             .sink { post, image in

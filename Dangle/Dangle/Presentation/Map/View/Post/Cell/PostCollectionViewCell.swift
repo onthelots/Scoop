@@ -108,7 +108,7 @@ class PostCollectionViewCell: UICollectionViewCell {
     func configure(items: Post) {
         self.nickNameLabel.text = items.nickname
         self.reviewLabel.text = items.review
-        self.locationLabel.text = items.address
+        self.locationLabel.text = items.storeName
         self.thumbnailImageView.kf.setImage(
             with: URL(string: items.postImage ?? ""),
             placeholder: UIImage(systemName: "hands.sparkles.fill")

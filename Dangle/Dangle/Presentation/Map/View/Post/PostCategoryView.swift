@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol PostCategoryViewDelegate: AnyObject {
     func postCategoryLabelTapped(_ gesture: UITapGestureRecognizer)
@@ -15,8 +16,10 @@ class PostCategoryView: UIView {
 
     weak var delegate: PostCategoryViewDelegate?
 
+    var viewModel: MapViewModel!
+    
     // enum 타입을 활용할 것
-    let categories: [PostCategory] = [.restaurant, .hobby, .beauty, .healthcare, .education]
+    let categories: [PostCategory] = [.restaurant, .cafe, .beauty, .hobby, .education, .hospital]
     var state: PostCategory = .restaurant
 
     // MARK: - Components
@@ -47,10 +50,18 @@ class PostCategoryView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemBackground
+        initalizerViewModel()
         addSubview(stackView)
         addSubview(seperatedLineView)
         categoryConfigure()
         update(for: state)
+    }
+
+    // 1. viewModel 초기화
+    private func initalizerViewModel() {
+        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
+        let postUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
+        viewModel = MapViewModel(userInfoUseCase: userInfoUseCase, postUseCase: postUseCase)
     }
 
     required init?(coder: NSCoder) {
@@ -127,6 +138,8 @@ class PostCategoryView: UIView {
      }
 
     @objc private func categoryLabelTapped(_ gesture: UITapGestureRecognizer) {
+        if let label = gesture.view as? UILabel {
             delegate?.postCategoryLabelTapped(gesture)
+        }
     }
 }

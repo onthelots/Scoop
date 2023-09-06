@@ -11,19 +11,19 @@ import SwiftSoup
 protocol LocalEventUseCase {
 
     // NewIssue
-    func execute(
+    func newIssueParsing(
         categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
     )
 
     // Culture
-    func execute(
+    func culturalEventParsing(
         location: String,
         completion: @escaping (Result<CulturalEvent, Error>) -> Void
     )
 
     // Education
-    func execute(
+    func educationEventParsing(
         location: String,
         completion: @escaping (Result<EducationEvent, Error>) -> Void
     )
@@ -36,7 +36,7 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
     }
 
     // New Issue
-    func execute(
+    func newIssueParsing(
          categoryCode: String,
          completion: @escaping (Result<NewIssue, Error>) -> Void
      ) {
@@ -71,7 +71,7 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
      }
 
     // Cultural Event
-    func execute(
+    func culturalEventParsing(
         location: String,
         completion: @escaping (Result<CulturalEvent, Error>) -> Void
     ) {
@@ -88,7 +88,7 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
     }
 
     // Education Event
-    func execute(
+    func educationEventParsing(
         location: String,
         completion: @escaping (Result<EducationEvent, Error>) -> Void
     ) {
