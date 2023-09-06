@@ -47,7 +47,7 @@ class RegEmailViewModel: ObservableObject {
 
     // Checked Dubplication
     func executeEmailDuplicationCheck(email: String, completion: @escaping (Bool) -> Void) {
-            signUpUseCase.execute(email: email) { [weak self] result in
+            signUpUseCase.checkEmail(email: email) { [weak self] result in
                 switch result {
                 case .success(let isDuplicated):
                     print("이메일 중복여부 : \(isDuplicated)")

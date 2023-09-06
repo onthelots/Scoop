@@ -33,7 +33,7 @@ final class RegisterWelcomeViewModel: ObservableObject {
                 UserDefaultStorage<String>().saveCache(entity: info.email, key: "email")
                 UserDefaultStorage<String>().saveCache(entity: info.password ?? "", key: "password")
 
-                self.signUpUseCase.execute(
+                self.signUpUseCase.signUp(
                     email: info.email,
                     password: info.password ?? "",
                     location: info.location ?? "",
@@ -43,7 +43,7 @@ final class RegisterWelcomeViewModel: ObservableObject {
                 ) { results in
                     switch results {
                     case .success:
-                        self.signInUseCase.execute(email: info.email, password: info.password ?? "") { result in
+                        self.signInUseCase.signIn(email: info.email, password: info.password ?? "") { result in
                             switch result {
                             case .success:
                                 self.isLoggedIn = true

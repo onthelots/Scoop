@@ -104,6 +104,7 @@
 		3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */; };
 		3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */; };
 		3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */; };
+		3FCFE6122AA8C0BE00D0AA10 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */; };
 		3FD6181D2A9866B000CE6690 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */; };
 		3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */; };
 		3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD618272A98909300CE6690 /* EventDetailViewController.swift */; };
@@ -231,6 +232,7 @@
 		3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameValidationService.swift; sourceTree = "<group>"; };
 		3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
 		3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FD618232A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		3FD618272A98909300CE6690 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -711,6 +713,7 @@
 		3F5D40422AA362B400D6692D /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */,
 				3F41C19C2AA1866100E9A48C /* MapView.swift */,
 			);
 			path = Map;
@@ -815,8 +818,8 @@
 		3F8CD6D52A96D59E00307372 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7A02A8DC96E0076CEAB /* MapViewController.swift */,
 				3F5D40422AA362B400D6692D /* Map */,
+				3FCFE6132AA8C0C800D0AA10 /* MapDetail */,
 				3F7ADE9A2AA328CE00AE2DD1 /* Post */,
 				3F7ADE962AA327EE00AE2DD1 /* Review */,
 			);
@@ -1051,6 +1054,14 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		3FCFE6132AA8C0C800D0AA10 /* MapDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */,
+			);
+			path = MapDetail;
+			sourceTree = "<group>";
+		};
 		3FD6182E2A98A27000CE6690 /* LocalEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1272,6 +1283,7 @@
 				3FB14B692A91184C00A356DA /* RegPasswordViewModel.swift in Sources */,
 				3F8CD7032A97479400307372 /* EducationEvent.swift in Sources */,
 				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
+				3FCFE6122AA8C0BE00D0AA10 /* MapDetailViewController.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,

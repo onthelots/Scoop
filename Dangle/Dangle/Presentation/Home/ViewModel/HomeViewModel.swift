@@ -45,7 +45,7 @@ class HomeViewModel: ObservableObject {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
-        userInfoUseCase.execute(userId: userId) { result in
+        userInfoUseCase.getUserInfo(userId: userId) { result in
             switch result {
             case .success(let userInfo):
                 self.userInfo = userInfo
@@ -58,7 +58,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func newIssueFetch(category: String) {
-        localEventUseCase.execute(categoryCode: category) { result in
+        localEventUseCase.newIssueParsing(categoryCode: category) { result in
             switch result {
             case .success(let newIssue):
                 self.newIssueSubject.send(newIssue.seoulNewsList.detail)
@@ -70,7 +70,7 @@ class HomeViewModel: ObservableObject {
 
 
     func culturalEventFetch(location: String) {
-        localEventUseCase.execute(location: location) { result in
+        localEventUseCase.culturalEventParsing(location: location) { result in
             switch result {
             case .success(let culturalEvent):
                 self.culturalEventSubject.send(culturalEvent.culturalEventInfo.detail)
@@ -81,7 +81,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func educationEventFetch(location: String) {
-        localEventUseCase.execute(location: location) { result in
+        localEventUseCase.educationEventParsing(location: location) { result in
             switch result {
             case .success(let educationEvent):
                 self.educationEventSubject.send(educationEvent.educationEventInfo.detail)

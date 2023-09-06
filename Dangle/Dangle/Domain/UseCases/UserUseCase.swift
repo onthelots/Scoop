@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UserInfoUseCase {
-    func execute(
+    func getUserInfo(
         userId: String,
         completion: @escaping (Result<UserInfo, Error>) -> Void
     )
@@ -20,7 +20,7 @@ final class DefaultsUserInfoUseCase: UserInfoUseCase {
         self.userInfoRepository = userInfoRepository
     }
 
-    func execute(
+    func getUserInfo(
         userId: String,
         completion: @escaping (Result<UserInfo, Error>) -> Void
     ) {

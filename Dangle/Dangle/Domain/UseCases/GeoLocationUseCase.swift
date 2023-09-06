@@ -11,13 +11,13 @@ import CoreLocation
 protocol UserLocationUseCase {
 
     // 리버스 지오코딩, 행정동 변환
-    func execute(
+    func execreverseGeocodeute(
         coordinate: CLLocation,
         completion: @escaping (Result<ReverseGeocode, Error>) -> Void
     )
 
     // 검색 UseCase
-    func execute(
+    func geocode(
         query: String,
         completion: @escaping (Result<Geocode, Error>) -> Void
     )
@@ -35,7 +35,7 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
     }
 
     // 리버스 지오코딩 (좌표 to 법점동)
-    func execute(
+    func execreverseGeocodeute(
         coordinate: CLLocation,
         completion: @escaping (Result<ReverseGeocode, Error>) -> Void
     ) {
@@ -55,7 +55,7 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
     }
 
     // 지오코딩 (검색 쿼리)
-    func execute(query: String, completion: @escaping (Result<Geocode, Error>) -> Void) {
+    func geocode(query: String, completion: @escaping (Result<Geocode, Error>) -> Void) {
         // Repository
         geocodeRepositoy.geocode(
             query: query

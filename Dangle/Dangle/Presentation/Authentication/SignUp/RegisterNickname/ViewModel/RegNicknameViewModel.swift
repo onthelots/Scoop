@@ -50,7 +50,7 @@ final class RegNicknameViewModel: ObservableObject {
 
     // Checked Dubplication
     func executeNicknameDuplicationCheck(nickname: String, completion: @escaping (Bool) -> Void) {
-            signUpUseCase.execute(nickname: nickname) { [weak self] result in
+            signUpUseCase.checkNickname(nickname: nickname) { [weak self] result in
                 switch result {
                 case .success(let isDuplicated):
                     print("닉네임 중복여부 : \(isDuplicated)")

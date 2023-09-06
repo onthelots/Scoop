@@ -12,15 +12,14 @@ import UIKit
 
 class ReviewViewModel: ObservableObject {
 
-    private let postUseCase: DefaultPostUseCase
-    
-    // 선택된 점포 정보 리스트 (Cell)
+    let postUseCase: DefaultPostUseCase
+
     @Published var userInfo: UserInfo!
     @Published var searchResults: [SearchResult] = []
 
     // Output (사용자가 최종적으로 선택한 Cell 값)
     let locationItemTapped = PassthroughSubject<SearchResult, Never>()
-    let postButtonTapped = PassthroughSubject<Post, Never>()
+    let postButtonTapped = PassthroughSubject<(Post, UIImage), Never>() // 튜플로 변경
     
     private var subscription = Set<AnyCancellable>()
     
@@ -31,7 +30,7 @@ class ReviewViewModel: ObservableObject {
     
     // 쿼리(검색)을 통해 주소값 가져오기
     func fetchSearchLoction(query: String, longitude: String, latitude: String, radius: Int) {
-        postUseCase.execute(
+        postUseCase.searchLocation(
             query: query,
             longitude: longitude,
             latitude: latitude,
@@ -39,19 +38,27 @@ class ReviewViewModel: ObservableObject {
         ) { result in
             switch result {
             case .success(let address):
-                print("받아온 데이터 : \(address)")
                 self.searchResults = address.documents
             case .failure(let error):
                 print("error : \(error)")
             }
         }
     }
-    
-    // 저장하기
+
+    // 리뷰 저장하기
     func addUserPost() {
         postButtonTapped
-            .sink { post in
-                print("저장된 포스트: \(post)")
+            .sink { post, image in
+                // 이미지가 nil이 아닌 경우에만 저장하도록 처리
+                self.postUseCase.addPost(post, image: image) { result in
+                    switch result {
+                    case .success:
+                        print("Post가 성공적으로 저장되었습니다.")
+                    case .failure(let error):
+                        print("Post 저장 실패: \(error.localizedDescription)")
+                    }
+                }
+
             }.store(in: &subscription)
     }
 }
