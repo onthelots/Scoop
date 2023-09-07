@@ -25,6 +25,7 @@ class MapViewModel: ObservableObject {
 
     // Output
     let itemTapped = PassthroughSubject<LocationInfo, Never>()
+    let categoryTapped = PassthroughSubject<PostCategory, Never>()
 
     //
     private var subscription = Set<AnyCancellable>()
@@ -51,43 +52,39 @@ class MapViewModel: ObservableObject {
     }
 
     // MARK: - viewDidLoad()시 나타낼 초기화 메서드
-    func fetchFoodCategoryData() {
-        filterAndMarkPostsOnMap(for: .restaurant)
-    }
 
-    // MARK: - 모든 Post 데이터 가져와서 지도에 마킹하기
-    func fetchAllPostsAndMarkOnMap() {
-        postUseCase.fetchPosts { result in
-            switch result {
-            case .success(let posts):
-                // Post 데이터를 가져왔으므로, 지도에 마킹하기
-                self.markPostsOnMap(posts)
-            case .failure(let error):
-                print("Error fetching all posts: \(error)")
-            }
-        }
-    }
+//    // MARK: - 모든 Post 데이터 가져와서 지도에 마킹하기
+//    func fetchAllPostsAndMarkOnMap() {
+//        postUseCase.fetchPosts { result in
+//            switch result {
+//            case .success(let posts):
+//                // Post 데이터를 가져왔으므로, 지도에 마킹하기
+//                self.markPostsOnMap(posts)
+//            case .failure(let error):
+//                print("Error fetching all posts: \(error)")
+//            }
+//        }
+//    }
 
-    // MARK: - 카테고리 별 데이터 필터링 및 지도에 마킹
-    func filterAndMarkPostsOnMap(for category: PostCategory) {
-        postUseCase.fetchPostsForCategory(category) { result in
-            switch result {
-            case .success(let posts):
-                self.filteredPostsForCategory = posts
-                self.markPostsOnMap(posts)
-            case .failure(let error):
-                print("Error fetching posts for category \(category.rawValue): \(error)")
-            }
-        }
-    }
+//    // MARK: - 카테고리 별 데이터 필터링 및 지도에 마킹
+//    func filterAndMarkPostsOnMap(for category: PostCategory) {
+//        postUseCase.fetchPostsForCategory(category) { result in
+//            switch result {
+//            case .success(let posts):
+//                self.filteredPostsForCategory = posts
+//                self.markPostsOnMap(posts)
+//            case .failure(let error):
+//                print("Error fetching posts for category \(category.rawValue): \(error)")
+//            }
+//        }
+//    }
 
     // Post 데이터를 지도에 마킹하는 메서드
     private func markPostsOnMap(_ posts: [Post]) {
         mapView?.removeAnnotations(mapView?.annotations ?? [])
         for post in posts {
-            guard let latitude = Double(post.latitude), let longitude = Double(post.longitude) else {
-                continue
-            }
+            let latitude = post.location.latitude
+            let longitude = post.location.longitude
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 
             // 어노테이션 생성 및 설정
@@ -102,8 +99,33 @@ class MapViewModel: ObservableObject {
         }
     }
 
+    // 중심 좌표 주변의 데이터를 가져오는 메서드
+    func fetchPostsAroundCoordinate(category: PostCategory, coordinate: CLLocationCoordinate2D) {
+        // 반경 설정 (미터)
+        let radius: CLLocationDistance = 5000 // 예: 5km
+
+        postUseCase.fetchPostsAroundCoordinate(category: category, coordinate: coordinate, radius: radius) { [weak self] result in
+            switch result {
+            case .success(let posts):
+                print("중심좌표 주변 데이터 : \(posts)")
+                self?.filteredPostsForCategory = posts
+                self?.markPostsOnMap(posts)
+            case .failure(let error):
+                // 에러 처리
+                print("Error fetching posts around coordinate: \(error)")
+            }
+        }
+    }
+
+
+    // 첫 화면에서 나타날 초기값
+    func fetchFoodCategoryData(category: PostCategory, coordinate: CLLocationCoordinate2D) {
+        fetchPostsAroundCoordinate(category: category, coordinate: coordinate)
+    }
+
+
     // Coordinate 변환
-    private func fetchMyLocationCoordinate(latitude: String, longitude: String) -> CLLocationCoordinate2D? {
+    public func fetchMyLocationCoordinate(latitude: String, longitude: String) -> CLLocationCoordinate2D? {
         guard let latitudeDouble = Double(latitude),
               let longitudeDouble = Double(longitude) else {
             return nil

@@ -39,6 +39,7 @@ protocol PostUseCase {
     )
 
     func fetchPostsAroundCoordinate(
+        category: PostCategory,
         coordinate: CLLocationCoordinate2D,
         radius: CLLocationDistance,
         completion: @escaping (Result<[Post], Error>) -> Void
@@ -108,8 +109,9 @@ class DefaultPostUseCase: PostUseCase {
     }
 
     // 중심 좌표 주변의 데이터 가져오기
-    func fetchPostsAroundCoordinate(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, completion: @escaping (Result<[Post], Error>) -> Void) {
+    func fetchPostsAroundCoordinate(category: PostCategory, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, completion: @escaping (Result<[Post], Error>) -> Void) {
         postRepository.fetchPostsAroundCoordinate(
+            category: category,
             coordinate: coordinate,
             radius: radius,
             completion: completion

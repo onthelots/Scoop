@@ -84,13 +84,6 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
                 self?.tableView.reloadData()
             }
             .store(in: &subscription)
-
-        // MARK: - 여기서, reviewView도 설정해주면 될듯?
-//        viewModel.locationItemTapped
-//            .sink { location in
-//                self.navigationController?.popViewController(animated: true)
-//                print("결정된 위치 : \(String(describing: location.first?.addressName))")
-//            }.store(in: &subscription)
     }
 
     // 검색 결과를 실시간으로 업데이트

@@ -166,6 +166,7 @@ class DefaultPostRepository: PostRepository {
 
     // MARK: - 문서 리뷰를 모두 가져오기
     func fetchPostsAroundCoordinate(
+        category: PostCategory,
         coordinate: CLLocationCoordinate2D,
         radius: CLLocationDistance,
         completion: @escaping (Result<[Post], Error>) -> Void
@@ -173,36 +174,49 @@ class DefaultPostRepository: PostRepository {
         // 중심 좌표를 기반으로 GeoPoint를 생성
         let centerGeoPoint = GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
 
-        // 중심 좌표에서 반경(radius) 내 데이터를 쿼리
-        let latOffset = 0.01449 * (radius / 1000.0) // 1도의 위도 차이에 대한 상수값입니다.
-        let lonOffset = 0.01850 * (radius / 1000.0) // 1도의 경도 차이에 대한 상수값입니다.
+        // MARK: - 여기서 부터 조정해서, 현재 맵뷰에서 안보이면 중심 좌표에서 반경(radius) 내 데이터를 쿼리하도록 함
+        let latOffset = 0.007245 * (radius / 1000.0) // 1도의 위도 차이에 대한 상수값입니다.
+        let lonOffset = 0.00925 * (radius / 1000.0) // 1도의 경도 차이에 대한 상수값입니다.
 
         let northEast = GeoPoint(latitude: centerGeoPoint.latitude + latOffset, longitude: centerGeoPoint.longitude + lonOffset)
         let southWest = GeoPoint(latitude: centerGeoPoint.latitude - latOffset, longitude: centerGeoPoint.longitude - lonOffset)
 
-        let query = firestore.collectionGroup("UserReviews")
+        var posts: [Post] = []
+
+        let dispatchGroup = DispatchGroup()
+
+        // Firestore 쿼리 - latitude와 longitude를 함께 사용하여 쿼리
+        dispatchGroup.enter()
+        let query = database.collectionGroup("UserReviews")
+            .whereField("category", isEqualTo: category.rawValue) // 카테고리 별로 필터링
             .whereField("location", isGreaterThan: southWest)
             .whereField("location", isLessThan: northEast)
 
         query.getDocuments { (snapshot, error) in
             if let error = error {
                 completion(.failure(error))
+                dispatchGroup.leave()
                 return
             }
-            var posts: [Post] = []
 
             for document in snapshot!.documents {
-                do {
-                    let post = try? document.data(as: Post.self)
-                    if let post = post {
-                        posts.append(post)
-                    }
+                if let post = try? document.data(as: Post.self) {
+                    posts.append(post)
                 }
             }
 
+            dispatchGroup.leave()
+        }
+
+        // 모든 쿼리가 완료될 때까지 기다립니다.
+        dispatchGroup.notify(queue: .main) {
+            // 여기에서 posts 배열과 Firestore 쿼리 결과를 검사하는 추가 디버그를 수행할 수 있습니다.
+            print("최종 검색된 게시물 수: \(posts.count)")
             completion(.success(posts))
         }
     }
+
+
 
     // 작성한 Post 업데이트
     func updatePost(_ post: Post, in category: PostCategory, completion: @escaping (Result<Void, Error>) -> Void) {

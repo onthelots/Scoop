@@ -39,6 +39,7 @@ protocol PostRepository {
 
     // 중심 좌표 주변의 데이터 가져오기
      func fetchPostsAroundCoordinate(
+         category: PostCategory,
          coordinate: CLLocationCoordinate2D,
          radius: CLLocationDistance,
          completion: @escaping (Result<[Post], Error>) -> Void

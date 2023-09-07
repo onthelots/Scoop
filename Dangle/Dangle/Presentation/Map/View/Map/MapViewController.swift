@@ -61,7 +61,8 @@ class MapViewController: UIViewController {
         configureCollectionView()
         bind()
         setupUI()
-        viewModel.fetchFoodCategoryData() // View 진입시 초기화
+
+//        viewModel.fetchFoodCategoryData(category: .restaurant, coordinate: mapView.map.centerCoordinate)
     }
 
     // viewModel 초기화
@@ -149,7 +150,7 @@ class MapViewController: UIViewController {
                 if let latitudeStr = userInfo?.latitude, let longitudeStr = userInfo?.longitude,
                    let latitude = Double(latitudeStr), let longitude = Double(longitudeStr) {
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
+                    let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
                     self.mapView.map.setRegion(region, animated: true)
                     self.userInfo = userInfo
                 }
@@ -226,12 +227,9 @@ extension MapViewController: PostCategoryViewDelegate {
         if let label = gesture.view as? UILabel,
            let selectedCategory = PostCategory(rawValue: label.text ?? "") {
             self.postCategoryView.update(for: selectedCategory)
-            filterAndReloadCollectionViewData(for: selectedCategory)
+            self.viewModel.categoryTapped.send(selectedCategory)
+            viewModel.fetchPostsAroundCoordinate(category: selectedCategory, coordinate: mapView.map.centerCoordinate)
         }
-    }
-
-    private func filterAndReloadCollectionViewData(for category: PostCategory) {
-        viewModel.filterAndMarkPostsOnMap(for: category)
     }
 }
 
@@ -244,14 +242,9 @@ extension MapViewController: MKMapViewDelegate {
         let identifier = "Custom"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         if annotationView == nil {
-               // 재사용 가능한 식별자를 갖고 어노테이션 뷰를 생성
-               annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-
-               // 콜아웃 버튼을 보이게 함
-               annotationView?.canShowCallout = true
-               // 이미지 변경
-               annotationView?.image = UIImage(systemName: "star.fill")
-
+               annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)// 재사용 가능한 식별자를 갖고 어노테이션 뷰를 생성
+               annotationView?.canShowCallout = true // 콜아웃 버튼을 보이게 함
+               annotationView?.image = UIImage(systemName: "star.fill") // 이미지 변경
                let button = UIButton(type: .detailDisclosure)
                annotationView?.rightCalloutAccessoryView = button
            }
@@ -263,5 +256,15 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
 //        self.present(UIViewController(), animated: true)
         // 모달뷰를 띄운다던지..
+    }
+
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        var centerCoordinate = mapView.centerCoordinate
+        var selectedcategory = PostCategory.restaurant
+        viewModel.categoryTapped
+            .sink { category in
+                selectedcategory = category
+            }.store(in: &subscription)
+        self.viewModel.fetchPostsAroundCoordinate(category: selectedcategory, coordinate: centerCoordinate)
     }
 }

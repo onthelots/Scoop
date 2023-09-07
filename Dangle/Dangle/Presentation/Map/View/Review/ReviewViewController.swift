@@ -118,8 +118,8 @@ class ReviewViewController: UIViewController {
                         review: reviewText,
                         nickname: nickname,
                         postImage: "",
-                        latitude: latitude,
-                        longitude: longitude,
+                        location: GeoPoint(latitude: Double(latitude) ?? 0.0,
+                                           longitude: Double(longitude) ?? 0.0),
                         timestamp: Date()
                     )
                     self?.viewModel.postButtonTapped.send((postInfo, image))
