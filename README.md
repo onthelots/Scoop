@@ -150,7 +150,7 @@ InSight
 순서  | 내용  | 비고
 ----| ----- | -----
 1| 특정 API를 JSON으로 파싱 시, HTML 형식으로 내려오는 문제 | https://github.com/onthelots/dangle/issues/31
-2| 작성중 | 작성중
+2| 사용자의 현재 위치를 기반으로 인근에 있는 카테고리 별 데이터를 받아오지 못하는 문제 | https://github.com/onthelots/dangle/issues/39
 
 <br>
 
