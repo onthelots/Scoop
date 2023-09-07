@@ -11,19 +11,22 @@ import Kingfisher
 class PostCollectionViewCell: UICollectionViewCell {
     static let identifier = "PostCollectionViewCell"
 
-    // MARK: - Components
-    private lazy var labelStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally // 내부 Components의 Intrinsic content size(높이, 너비)를 자동으로 설정함
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
+    private lazy var userImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = imageView.frame.width / 2
+        let mockupImage = UIImage(systemName: "person.circle.fill")
+        imageView.image = mockupImage
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
+
 
     private lazy var nickNameLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textAlignment = .left
         label.numberOfLines = 1
         label.sizeToFit()
@@ -33,20 +36,22 @@ class PostCollectionViewCell: UICollectionViewCell {
 
     private lazy var reviewLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 11, weight: .regular)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
         return label
     }()
 
     private lazy var locationLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 9, weight: .light)
         label.textAlignment = .left
         label.numberOfLines = 1
         label.sizeToFit()
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -64,13 +69,11 @@ class PostCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        labelStackView.addArrangedSubview(nickNameLabel)
-        labelStackView.addArrangedSubview(reviewLabel)
-        labelStackView.addArrangedSubview(locationLabel)
-
-        contentView.addSubview(labelStackView)
+        contentView.addSubview(userImageView)
+        contentView.addSubview(nickNameLabel)
+        contentView.addSubview(reviewLabel)
+        contentView.addSubview(locationLabel)
         contentView.addSubview(thumbnailImageView)
-
         contentView.clipsToBounds = true
     }
 
@@ -83,11 +86,24 @@ class PostCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
 
         NSLayoutConstraint.activate([
-            labelStackView.topAnchor.constraint(equalTo: thumbnailImageView.topAnchor),
-            labelStackView.bottomAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor),
-            labelStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            labelStackView.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: -10),
-            labelStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            userImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            userImageView.widthAnchor.constraint(equalToConstant: 15),
+            userImageView.heightAnchor.constraint(equalTo: userImageView.widthAnchor),
+
+            nickNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
+            nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10),
+
+            reviewLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
+            reviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            reviewLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: -10),
+
+            locationLabel.topAnchor.constraint(greaterThanOrEqualTo: reviewLabel.bottomAnchor, constant: 10),
+            locationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            locationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            locationLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: -10),
+
 
             thumbnailImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3),
             thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),

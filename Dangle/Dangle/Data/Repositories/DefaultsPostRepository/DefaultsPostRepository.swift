@@ -208,10 +208,8 @@ class DefaultPostRepository: PostRepository {
             dispatchGroup.leave()
         }
 
-        // 모든 쿼리가 완료될 때까지 기다립니다.
+        // 모든 쿼리가 완료될 때까지 기다린 후, 넘김
         dispatchGroup.notify(queue: .main) {
-            // 여기에서 posts 배열과 Firestore 쿼리 결과를 검사하는 추가 디버그를 수행할 수 있습니다.
-            print("최종 검색된 게시물 수: \(posts.count)")
             completion(.success(posts))
         }
     }

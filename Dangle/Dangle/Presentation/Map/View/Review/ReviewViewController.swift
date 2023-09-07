@@ -127,24 +127,10 @@ class ReviewViewController: UIViewController {
                     print("정보가 없습니다.")
                 }
             }
-
-
-            self?.delegate?.createAnnotation(title: self?.selectedLocation?.placeName ?? "",
-                                             location: self?.fetchMyLocationCoordinate(latitude: self?.selectedLocation?.latitude ?? "",
-                                                                                       longitude: self?.selectedLocation?.longitude ?? "") ?? CLLocationCoordinate2D()) // 어노테이션 생성
             self?.navigationController?.popViewController(animated: true)
+
         }))
         present(alert, animated: true)
-    }
-
-    // Coordinate 변환
-    private func fetchMyLocationCoordinate(latitude: String, longitude: String) -> CLLocationCoordinate2D? {
-        guard let latitudeDouble = Double(latitude),
-              let longitudeDouble = Double(longitude) else {
-            return nil
-        }
-            let coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longitudeDouble)
-            return coordinate
     }
 
     // setup revieewView

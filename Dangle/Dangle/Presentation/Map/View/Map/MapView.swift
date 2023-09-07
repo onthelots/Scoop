@@ -17,6 +17,8 @@ class MapView: UIView {
         super.init(frame: frame)
         self.addSubview(map)
         setupUI()
+        self.map.showsUserLocation = true
+        self.map.setUserTrackingMode(.follow, animated: true)
     }
 
     required init?(coder: NSCoder) {

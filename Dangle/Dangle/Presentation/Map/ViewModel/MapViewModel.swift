@@ -51,33 +51,22 @@ class MapViewModel: ObservableObject {
         }
     }
 
-    // MARK: - viewDidLoad()시 나타낼 초기화 메서드
+    // 중심 좌표 주변의 데이터를 가져오는 메서드
+    func fetchPostsAroundCoordinate(category: PostCategory, coordinate: CLLocationCoordinate2D) {
+        // MARK: - 반경 설정 (미터)
+        let radius: CLLocationDistance = 1000 // 1km 반경
 
-//    // MARK: - 모든 Post 데이터 가져와서 지도에 마킹하기
-//    func fetchAllPostsAndMarkOnMap() {
-//        postUseCase.fetchPosts { result in
-//            switch result {
-//            case .success(let posts):
-//                // Post 데이터를 가져왔으므로, 지도에 마킹하기
-//                self.markPostsOnMap(posts)
-//            case .failure(let error):
-//                print("Error fetching all posts: \(error)")
-//            }
-//        }
-//    }
-
-//    // MARK: - 카테고리 별 데이터 필터링 및 지도에 마킹
-//    func filterAndMarkPostsOnMap(for category: PostCategory) {
-//        postUseCase.fetchPostsForCategory(category) { result in
-//            switch result {
-//            case .success(let posts):
-//                self.filteredPostsForCategory = posts
-//                self.markPostsOnMap(posts)
-//            case .failure(let error):
-//                print("Error fetching posts for category \(category.rawValue): \(error)")
-//            }
-//        }
-//    }
+        postUseCase.fetchPostsAroundCoordinate(category: category, coordinate: coordinate, radius: radius) { [weak self] result in
+            switch result {
+            case .success(let posts):
+                self?.filteredPostsForCategory = posts
+                self?.markPostsOnMap(posts)
+            case .failure(let error):
+                // 에러 처리
+                print("Error fetching posts around coordinate: \(error)")
+            }
+        }
+    }
 
     // Post 데이터를 지도에 마킹하는 메서드
     private func markPostsOnMap(_ posts: [Post]) {
@@ -99,38 +88,8 @@ class MapViewModel: ObservableObject {
         }
     }
 
-    // 중심 좌표 주변의 데이터를 가져오는 메서드
-    func fetchPostsAroundCoordinate(category: PostCategory, coordinate: CLLocationCoordinate2D) {
-        // 반경 설정 (미터)
-        let radius: CLLocationDistance = 5000 // 예: 5km
-
-        postUseCase.fetchPostsAroundCoordinate(category: category, coordinate: coordinate, radius: radius) { [weak self] result in
-            switch result {
-            case .success(let posts):
-                print("중심좌표 주변 데이터 : \(posts)")
-                self?.filteredPostsForCategory = posts
-                self?.markPostsOnMap(posts)
-            case .failure(let error):
-                // 에러 처리
-                print("Error fetching posts around coordinate: \(error)")
-            }
-        }
-    }
-
-
     // 첫 화면에서 나타날 초기값
     func fetchFoodCategoryData(category: PostCategory, coordinate: CLLocationCoordinate2D) {
         fetchPostsAroundCoordinate(category: category, coordinate: coordinate)
-    }
-
-
-    // Coordinate 변환
-    public func fetchMyLocationCoordinate(latitude: String, longitude: String) -> CLLocationCoordinate2D? {
-        guard let latitudeDouble = Double(latitude),
-              let longitudeDouble = Double(longitude) else {
-            return nil
-        }
-            let coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longitudeDouble)
-            return coordinate
     }
 }
