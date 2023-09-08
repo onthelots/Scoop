@@ -239,6 +239,7 @@ class MapViewController: UIViewController {
         mapView.layer.cornerRadius = 5
         mapView.layer.masksToBounds = true
         viewModel.mapView = mapView.map
+
     }
 
     // MARK: - view 진입시, 초기값 설정
@@ -246,6 +247,19 @@ class MapViewController: UIViewController {
         self.selectedCategory = .restaurant
         viewModel.fetchFoodCategoryData(category: .restaurant, coordinate: mapView.map.centerCoordinate)
         self.postCategoryView.update(for: .restaurant)
+    }
+
+    // MARK: - modalController 세팅
+    private func setSheetPresentationController(_ viewController: UIViewController) {
+        let sheet = viewController.sheetPresentationController
+        sheet?.preferredCornerRadius = 10
+        sheet?.prefersGrabberVisible = true
+        sheet?.largestUndimmedDetentIdentifier = .medium
+        sheet?.detents = [
+            .custom { _ in
+                return 200
+            }
+        ]
     }
 }
 
@@ -271,6 +285,7 @@ extension MapViewController: PostCategoryViewDelegate {
 
 // MKMap Delegate
 extension MapViewController: MKMapViewDelegate {
+
     // Annotation 커스터마이징
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
@@ -278,25 +293,24 @@ extension MapViewController: MKMapViewDelegate {
         let identifier = "Custom"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         if annotationView == nil {
-               annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)// 재사용 가능한 식별자를 갖고 어노테이션 뷰를 생성
-               annotationView?.canShowCallout = true // 콜아웃 버튼을 보이게 함
-               annotationView?.image = UIImage(systemName: "star.fill") // 이미지 변경
-               let button = UIButton(type: .detailDisclosure)
-               annotationView?.rightCalloutAccessoryView = button
-           }
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)// 재사용 가능한 식별자를 갖고 어노테이션 뷰를 생성
+            annotationView?.canShowCallout = true // 콜아웃 버튼을 보이게 함
+            annotationView?.image = UIImage(systemName: "star.circle.fill") // 이미지 변경
+            annotationView?.tintColor = .tintColor
+        }
+
 
         return annotationView
     }
 
-    // Annotation의 콜아웃을 탭했을 때
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        let viewController = MapDetailViewController()
-//        self.navigationController?.pushViewController(viewController, animated: true)
-//    }
-
     // 중심값이 이동될 때 마다
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let centerCoordinate = mapView.centerCoordinate
+        // 현재 지도에 보이는 영역의 좌표 가져오기
+        let visibleMapRect = mapView.visibleMapRect
+        let visibleRegion = MKCoordinateRegion(visibleMapRect)
+
+        // 중심 좌표와 화면 영역 내의 데이터를 가져오기
+        let centerCoordinate = visibleRegion.center
         self.viewModel.fetchPostsAroundCoordinate(category: self.selectedCategory ?? .restaurant, coordinate: centerCoordinate)
         self.viewModel.$filteredPostsForCategory
             .receive(on: RunLoop.main)

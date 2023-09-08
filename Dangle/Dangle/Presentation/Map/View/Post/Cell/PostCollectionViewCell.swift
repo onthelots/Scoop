@@ -115,10 +115,11 @@ class PostCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
+        userImageView.image = nil
         nickNameLabel.text = ""
         reviewLabel.text = ""
         locationLabel.text = ""
-        thumbnailImageView.image = UIImage(systemName: "hands.sparkles.fill")
+        thumbnailImageView.image = nil
     }
 
     func configure(items: Post) {

@@ -791,8 +791,8 @@
 		3F7ADE9A2AA328CE00AE2DD1 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */,
 				3F0BE8C32AAB1E2700B65954 /* PostDetailModalViewController.swift */,
+				3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */,
 				3F7ADEA32AA32A8E00AE2DD1 /* Cell */,
 			);
 			path = Post;

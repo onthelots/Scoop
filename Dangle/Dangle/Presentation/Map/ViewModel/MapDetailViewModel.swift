@@ -49,7 +49,7 @@ class MapDetailViewModel: ObservableObject {
         }
     }
 
-    // Store의 post 가져오기
+    // 나타날 모달뷰를 관리하고, Store의 post 가져오기
     func fetchStorePost(category: PostCategory, storeName: String, completion: @escaping (Result<[Post], Error>) -> Void) {
         postUseCase.fetchPostsStore(storeName: storeName, category: category) { result in
             switch result {
@@ -63,7 +63,6 @@ class MapDetailViewModel: ObservableObject {
             }
         }
     }
-
 
     // 해당 Post로 중심값 이동하기 👏
     func setRegionToStore(_ post: [Post]) {
@@ -103,6 +102,7 @@ class MapDetailViewModel: ObservableObject {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.title = post.storeName // 어노테이션 제목 설정
+            annotation.subtitle = post.category.rawValue
 
             // 어노테이션을 지도에 추가
             mapView.map { map in

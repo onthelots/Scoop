@@ -16,11 +16,12 @@ class PostDetailModalViewController: UIViewController {
     private var viewModel: MapDetailViewModel!
 
     private var storeUserReviews: [Post] = []
+    private var subscription = Set<AnyCancellable>()
 
-    private let tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView(
             frame: .zero,
-            style: .grouped
+            style: .insetGrouped
         )
         // SearchResultDefaultTableViewCell
         tableView.register(PostTableViewCell.self,
@@ -30,8 +31,34 @@ class PostDetailModalViewController: UIViewController {
         return tableView
     }()
 
-    private var subscription = Set<AnyCancellable>()
+    private lazy var storeNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.textColor = .label
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
+    private lazy var reviewCountLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.textColor = .tintColor
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private let seperatedLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .quaternaryLabel
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     init(storeUserReviews: [Post]) {
         self.storeUserReviews = storeUserReviews
@@ -45,21 +72,47 @@ class PostDetailModalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
+        view.backgroundColor = .systemBackground
+        configure(storeUserReviews)
         setupUI()
         tableView.delegate = self
         tableView.dataSource = self
     }
 
+    private func configure(_ posts: [Post]) {
+        self.storeNameLabel.text = posts.first?.storeName
+        self.reviewCountLabel.text = "\(posts.count)개 리뷰"
+    }
+
     private func setupUI() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.rowHeight = UITableView.automaticDimension
+        view.addSubview(tableView)
+        view.addSubview(storeNameLabel)
+        view.addSubview(reviewCountLabel)
+        view.addSubview(seperatedLineView)
+        
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            storeNameLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            storeNameLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
+            storeNameLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
+
+            reviewCountLabel.topAnchor.constraint(equalTo: storeNameLabel.bottomAnchor, constant: 5),
+            reviewCountLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
+            reviewCountLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
+
+            seperatedLineView.topAnchor.constraint(equalTo: reviewCountLabel.bottomAnchor, constant: 5),
+            seperatedLineView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
+            seperatedLineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
+            seperatedLineView.heightAnchor.constraint(equalToConstant: 2),
+
+            tableView.topAnchor.constraint(equalTo: seperatedLineView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
+
 }
 
 extension PostDetailModalViewController: UITableViewDelegate, UITableViewDataSource {
@@ -74,5 +127,13 @@ extension PostDetailModalViewController: UITableViewDelegate, UITableViewDataSou
         let post = storeUserReviews[indexPath.row]
         cell.configure(with: post)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

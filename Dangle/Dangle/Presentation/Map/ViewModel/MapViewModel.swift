@@ -79,6 +79,7 @@ class MapViewModel: ObservableObject {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.title = post.storeName // 어노테이션 제목 설정
+            annotation.subtitle = post.category.rawValue
 
             // 어노테이션을 지도에 추가
             mapView.map { map in
