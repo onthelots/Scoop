@@ -28,7 +28,7 @@ class DefaultPostRepository: PostRepository {
         self.firestore = firestore
     }
 
-    // MARK: - 카카오 키워드 검색
+    // MARK: - 주소 검색
     func searchLocation(
         query: String,
         longitude: String,
@@ -76,7 +76,7 @@ class DefaultPostRepository: PostRepository {
         return collectionRef.document(post.storeName).collection("UserReviews").document(post.authorUID)
     }
 
-    // Post 등록
+    // MARK: - 리뷰 저장
     func addPost(_ post: Post, image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
         let imageReference = storage.reference().child("postImages/\(UUID().uuidString).jpg")
         if let imageData = image.jpegData(compressionQuality: 0.8) {
@@ -116,55 +116,7 @@ class DefaultPostRepository: PostRepository {
         }
     }
 
-    // 모든 Post 가져오기
-    func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
-        firestore.collection("UserReviews").getDocuments { querySnapshot, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-
-            let posts = querySnapshot?.documents.compactMap { document -> Post? in
-                do {
-                    let post = try document.data(as: Post.self)
-                    return post
-                } catch {
-                    print("Error decoding Post: \(error)")
-                    return nil
-                }
-            } ?? []
-
-            completion(.success(posts))
-        }
-    }
-
-    // 카테고리 별 Post 가져오기
-    func fetchPostsForCategory(_ category: PostCategory, completion: @escaping (Result<[Post], Error>) -> Void) {
-        
-        database.collectionGroup("UserReviews").whereField("category", isEqualTo: category.rawValue).getDocuments { (snapshot, error) in
-
-            var posts: [Post] = []
-
-            if let error = error {
-                print("error: \(error)")
-            } else {
-                for userReviewDocument in snapshot!.documents {
-                    do {
-                        // 문서(UID)를 Post 모델로 디코딩
-                        let post = try? userReviewDocument.data(as: Post.self)
-                        if let post = post {
-                            posts.append(post)
-                        }
-                    }
-                }
-
-                // 모든 UserReviews 데이터를 가져왔을 때 완료 처리
-                completion(.success(posts))
-            }
-        }
-    }
-
-    // MARK: - 문서 리뷰를 모두 가져오기
+    // MARK: - Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
     func fetchPostsAroundCoordinate(
         category: PostCategory,
         coordinate: CLLocationCoordinate2D,
@@ -182,7 +134,6 @@ class DefaultPostRepository: PostRepository {
         let southWest = GeoPoint(latitude: centerGeoPoint.latitude - latOffset, longitude: centerGeoPoint.longitude - lonOffset)
 
         var posts: [Post] = []
-
         let dispatchGroup = DispatchGroup()
 
         // Firestore 쿼리 - latitude와 longitude를 함께 사용하여 쿼리
@@ -204,7 +155,6 @@ class DefaultPostRepository: PostRepository {
                     posts.append(post)
                 }
             }
-
             dispatchGroup.leave()
         }
 
@@ -214,9 +164,42 @@ class DefaultPostRepository: PostRepository {
         }
     }
 
+    // MARK: - 해당 점포의 리뷰 가져오기
+    func fetchPostsStore(
+        storeName: String,
+        category: PostCategory,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    ) {
+        var posts: [Post] = []
+        let dispatchGroup = DispatchGroup()
 
+        dispatchGroup.enter()
+        let query = database.collectionGroup("UserReviews")
+            .whereField("category", isEqualTo: category.rawValue) // 카테고리 별로 필터링
+            .whereField("storeName", isEqualTo: storeName)
 
-    // 작성한 Post 업데이트
+            query.getDocuments { querySnapshot, error in
+                if let error = error {
+                    completion(.failure(error))
+                    dispatchGroup.leave()
+                    return
+                }
+
+                for document in querySnapshot!.documents {
+                    if let post = try? document.data(as: Post.self) {
+                        posts.append(post)
+                    }
+                }
+                dispatchGroup.leave()
+            }
+        // 모든 쿼리가 완료될 때까지 기다린 후, 넘김
+        dispatchGroup.notify(queue: .main) {
+            completion(.success(posts))
+            print("쿼리릍 통해 불러온 posts : \(posts)")
+        }
+    }
+
+    // MARK: - 작성한 Post 업데이트
     func updatePost(_ post: Post, in category: PostCategory, completion: @escaping (Result<Void, Error>) -> Void) {
          let documentRef = getDocumentReference(for: post, in: category)
 
@@ -233,7 +216,7 @@ class DefaultPostRepository: PostRepository {
          }
      }
 
-    // 작성한 Post 삭제
+    // MARK: - 작성한 Post 삭제
     func deletePost(_ post: Post, in category: PostCategory, completion: @escaping (Result<Void, Error>) -> Void) {
         let documentRef = getDocumentReference(for: post, in: category)
 

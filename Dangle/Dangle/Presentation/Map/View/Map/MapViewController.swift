@@ -49,8 +49,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubview(postCategoryView)
-        view.addSubview(mapView)
         configureCollectionView()
         setupUI()
         initalizerViewModel()
@@ -70,6 +68,8 @@ class MapViewController: UIViewController {
 
     // MARK: - setUI()
     private func setupUI() {
+        view.addSubview(postCategoryView)
+        view.addSubview(mapView)
         view.addSubview(collectionView)
         view.addSubview(floatingButton)
 
@@ -220,6 +220,16 @@ class MapViewController: UIViewController {
                 self.dataSource.apply(snapshot)
             }.store(in: &subscription)
 
+        viewModel.itemTapped
+            .receive(on: RunLoop.main)
+            .sink { (category, storeName) in
+                let viewController = MapDetailViewController(storeCategory: category, storeName: storeName)
+                print("전달하는 데이터 : \(category), \(storeName)")
+                viewController.navigationItem.largeTitleDisplayMode = .never
+                viewController.title = "Dangle Map"
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }.store(in: &subscription)
+
         postCategoryView.viewModel = viewModel // CategoryView의 viewModel을 일치시킴
     }
 
@@ -279,10 +289,10 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     // Annotation의 콜아웃을 탭했을 때
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let viewController = MapDetailViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
+//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        let viewController = MapDetailViewController()
+//        self.navigationController?.pushViewController(viewController, animated: true)
+//    }
 
     // 중심값이 이동될 때 마다
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -296,9 +306,10 @@ extension MapViewController: MKMapViewDelegate {
             }.store(in: &subscription)
     }
 
-    // Annotation을 클릭했을 때
+    // Annotation을 클릭했을 때 -> 해당 데이터 전달을 통해, 관련 리뷰 모달뷰로 띄우기
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let mapView = mapView
-        mapView.setCenter(view.annotation?.coordinate ?? CLLocationCoordinate2D(), animated: true)
+        if let selectedCategory = selectedCategory, let storeName = view.annotation?.title! {
+            viewModel.itemTapped.send((selectedCategory, storeName))
+        }
     }
 }

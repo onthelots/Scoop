@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0BE8C42AAB1E2700B65954 /* PostDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C32AAB1E2700B65954 /* PostDetailModalViewController.swift */; };
+		3F0BE8C62AAB1E9300B65954 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */; };
 		3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */; };
 		3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */; };
 		3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */; };
@@ -141,6 +143,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0BE8C32AAB1E2700B65954 /* PostDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailModalViewController.swift; sourceTree = "<group>"; };
+		3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCategoryView.swift; sourceTree = "<group>"; };
 		3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeRepository.swift; sourceTree = "<group>"; };
 		3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeRepository.swift; sourceTree = "<group>"; };
@@ -788,6 +792,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */,
+				3F0BE8C32AAB1E2700B65954 /* PostDetailModalViewController.swift */,
 				3F7ADEA32AA32A8E00AE2DD1 /* Cell */,
 			);
 			path = Post;
@@ -797,6 +802,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7ADEA42AA32A9400AE2DD1 /* PostCollectionViewCell.swift */,
+				3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */,
 				3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */,
 			);
 			path = Cell;
@@ -1323,11 +1329,13 @@
 				3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */,
 				3FAF2E4A2AA5A739003A9964 /* LocationSearchViewController.swift in Sources */,
 				3FD618302A98A2BE00CE6690 /* EventDTO.swift in Sources */,
+				3F0BE8C42AAB1E2700B65954 /* PostDetailModalViewController.swift in Sources */,
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
 				3F80C0062A9DBCAD00F2128D /* NewIssueDTO.swift in Sources */,
 				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
 				3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */,
 				3F1AB7F02A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift in Sources */,
+				3F0BE8C62AAB1E9300B65954 /* PostTableViewCell.swift in Sources */,
 				3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */,
 				3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,

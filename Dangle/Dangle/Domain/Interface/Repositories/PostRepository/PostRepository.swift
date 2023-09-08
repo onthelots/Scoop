@@ -26,17 +26,6 @@ protocol PostRepository {
         completion: @escaping (Result<Void, Error>) -> Void
     )
 
-    // 모든 Post 가져오기
-    func fetchPosts(
-        completion: @escaping (Result<[Post], Error>) -> Void
-    )
-
-    // 카테고리 별 Post 가져오기
-    func fetchPostsForCategory(
-        _ category: PostCategory,
-        completion: @escaping (Result<[Post], Error>) -> Void
-    )
-
     // 중심 좌표 주변의 데이터 가져오기
      func fetchPostsAroundCoordinate(
          category: PostCategory,
@@ -44,6 +33,13 @@ protocol PostRepository {
          radius: CLLocationDistance,
          completion: @escaping (Result<[Post], Error>) -> Void
      )
+
+    // 해당 점포의 리뷰 가져오기
+    func fetchPostsStore(
+        storeName: String,
+        category: PostCategory,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    )
 
     // 작성한 Post 업데이트
     func updatePost(

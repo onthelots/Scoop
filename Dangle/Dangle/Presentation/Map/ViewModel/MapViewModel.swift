@@ -17,15 +17,14 @@ class MapViewModel: ObservableObject {
 
     // Input
     @Published var userInfo: UserInfo!
-    @Published var userLocation: [LocationInfo] = []
     @Published var filteredPostsForCategory: [Post] = []
 
     // MapView 프로퍼티 추가
-     var mapView: MKMapView?
+    var mapView: MKMapView?
 
     // Output
-    let itemTapped = PassthroughSubject<LocationInfo, Never>()
     let categoryTapped = PassthroughSubject<PostCategory, Never>()
+    let itemTapped = PassthroughSubject<(PostCategory, String), Never>()
 
     //
     private var subscription = Set<AnyCancellable>()
