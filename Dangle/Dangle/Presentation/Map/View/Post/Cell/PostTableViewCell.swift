@@ -1,15 +1,15 @@
 //
-//  PostCollectionViewCell.swift
+//  PostTableViewCell.swift
 //  Dangle
 //
-//  Created by Jae hyuk Yim on 2023/09/01.
+//  Created by Jae hyuk Yim on 2023/09/08.
 //
 
 import UIKit
-import Kingfisher
 
-class PostCollectionViewCell: UICollectionViewCell {
-    static let identifier = "PostCollectionViewCell"
+class PostTableViewCell: UITableViewCell {
+
+    static let identifier = "PostTableViewCell"
 
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
@@ -45,17 +45,6 @@ class PostCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var locationLabel: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 9, weight: .light)
-        label.textAlignment = .left
-        label.numberOfLines = 1
-        label.sizeToFit()
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
@@ -66,50 +55,45 @@ class PostCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        // 셀에 서브뷰 추가
         contentView.addSubview(userImageView)
         contentView.addSubview(nickNameLabel)
         contentView.addSubview(reviewLabel)
-        contentView.addSubview(locationLabel)
         contentView.addSubview(thumbnailImageView)
-        contentView.clipsToBounds = true
-    }
 
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-
-    // MARK: - Layout SubViews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
+        // AutoLayout 제약 조건 설정
         NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            userImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            userImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             userImageView.widthAnchor.constraint(equalToConstant: 15),
             userImageView.heightAnchor.constraint(equalTo: userImageView.widthAnchor),
 
             nickNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
-            nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10),
+            nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor),
 
-            reviewLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
-            reviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            reviewLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: -10),
-
-            locationLabel.topAnchor.constraint(greaterThanOrEqualTo: reviewLabel.bottomAnchor, constant: 10),
-            locationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            locationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            locationLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: -10),
-
+            reviewLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor),
+            reviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            reviewLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor),
+            reviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             thumbnailImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3),
             thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             thumbnailImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func prepareForReuse() {
@@ -118,16 +102,18 @@ class PostCollectionViewCell: UICollectionViewCell {
         userImageView.image = nil
         nickNameLabel.text = ""
         reviewLabel.text = ""
-        locationLabel.text = ""
         thumbnailImageView.image = nil
     }
 
-    func configure(items: Post) {
-        self.nickNameLabel.text = items.nickname
-        self.reviewLabel.text = items.review
-        self.locationLabel.text = items.storeName
+    func configure(with post: Post) {
+//        self.userImageView.kf.setImage(
+//            with: URL(string: post.postImage ?? ""),
+//            placeholder: UIImage(systemName: "person.circle.fill")
+//        )
+        nickNameLabel.text = post.nickname
+        reviewLabel.text = post.review
         self.thumbnailImageView.kf.setImage(
-            with: URL(string: items.postImage ?? ""),
+            with: URL(string: post.postImage ?? ""),
             placeholder: UIImage(systemName: "hands.sparkles.fill")
         )
     }

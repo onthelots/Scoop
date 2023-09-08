@@ -5,8 +5,11 @@
 //  Created by Jae hyuk Yim on 2023/08/26.
 //
 
+import CoreLocation
 import Foundation
+import Firebase
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 struct Post: Identifiable, Codable, Hashable {
     @DocumentID var id: String?
@@ -16,8 +19,9 @@ struct Post: Identifiable, Codable, Hashable {
     var review: String
     var nickname: String
     var postImage: String?
-    var latitude: String
-    var longitude: String
+    var location: GeoPoint // "location" 필드 추가
+//    var latitude: String
+//    var longitude: String
     var timestamp: Date
 }
 

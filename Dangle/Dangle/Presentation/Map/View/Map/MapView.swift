@@ -17,6 +17,8 @@ class MapView: UIView {
         super.init(frame: frame)
         self.addSubview(map)
         setupUI()
+        cameraConstraining()
+        self.map.setUserTrackingMode(.follow, animated: true)
     }
 
     required init?(coder: NSCoder) {
@@ -31,5 +33,29 @@ class MapView: UIView {
             self.map.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.map.leadingAnchor.constraint(equalTo: self.leadingAnchor)
         ])
+    }
+
+    private func cameraConstraining() {
+        let visibleMapRect = map.visibleMapRect
+
+        // visibleMapRect의 중심 좌표 계산
+        let midX = visibleMapRect.midX
+        let midY = visibleMapRect.midY
+
+        // 중심 좌표로 CLLocation 생성
+        let centerCoordinate = MKMapPoint(x: midX, y: midY).coordinate
+        let initialLocation = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
+
+        let region = MKCoordinateRegion(
+            center: initialLocation.coordinate,
+            latitudinalMeters: 500,
+            longitudinalMeters: 500
+        )
+        map.setCameraBoundary(
+            MKMapView.CameraBoundary(coordinateRegion: region),
+            animated: true
+        )
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 20000)
+        map.setCameraZoomRange(zoomRange, animated: true)
     }
 }

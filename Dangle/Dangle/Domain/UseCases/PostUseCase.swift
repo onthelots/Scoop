@@ -9,9 +9,8 @@ import CoreLocation
 import Foundation
 import UIKit
 
-// UseCase
 protocol PostUseCase {
-    // 주소 검색 메서드
+    // 주소 검색
     func searchLocation(
         query: String,
         longitude: String,
@@ -27,20 +26,18 @@ protocol PostUseCase {
         completion: @escaping (Result<Void, Error>) -> Void
     )
 
-    // 모든 Post 가져오기
-    func fetchPosts(
-        completion: @escaping (Result<[Post], Error>) -> Void
-    )
-
-    // 카테고리 별 Post 가져오기
-    func fetchPostsForCategory(
-        _ category: PostCategory,
-        completion: @escaping (Result<[Post], Error>) -> Void
-    )
-
+    // Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
     func fetchPostsAroundCoordinate(
+        category: PostCategory,
         coordinate: CLLocationCoordinate2D,
         radius: CLLocationDistance,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    )
+
+    // 해당 점포의 리뷰 가져오기
+    func fetchPostsStore(
+        storeName: String,
+        category: PostCategory,
         completion: @escaping (Result<[Post], Error>) -> Void
     )
 
@@ -66,7 +63,7 @@ class DefaultPostUseCase: PostUseCase {
         self.postRepository = postRepository
     }
 
-    // 주소 검색 메서드
+    // MARK: - 주소 검색
     func searchLocation(
         query: String,
         longitude: String,
@@ -83,7 +80,7 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
-    // 리뷰 저장 메서드
+    // MARK: - 리뷰 저장
     func addPost(
         _ post: Post,
         image: UIImage,
@@ -96,26 +93,32 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
-    func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
-        postRepository.fetchPosts(completion: completion)
-    }
-
-    func fetchPostsForCategory(_ category: PostCategory, completion: @escaping (Result<[Post], Error>) -> Void) {
-        postRepository.fetchPostsForCategory(
-            category,
-            completion: completion
-        )
-    }
-
-    // 중심 좌표 주변의 데이터 가져오기
-    func fetchPostsAroundCoordinate(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, completion: @escaping (Result<[Post], Error>) -> Void) {
+    // MARK: - Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
+    func fetchPostsAroundCoordinate(category: PostCategory, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, completion: @escaping (Result<[Post], Error>) -> Void
+    ) {
         postRepository.fetchPostsAroundCoordinate(
+            category: category,
             coordinate: coordinate,
             radius: radius,
             completion: completion
         )
     }
 
+    // MARK: - 해당 점포의 리뷰 가져오기
+    func fetchPostsStore(
+        storeName: String,
+        category: PostCategory,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    ) {
+        postRepository.fetchPostsStore(
+            storeName: storeName,
+            category: category,
+            completion: completion
+        )
+    }
+
+
+    // MARK: - 리뷰 업데이트
     func updatePost(
         _ post: Post,
         in category: PostCategory,
@@ -128,6 +131,7 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
+    // MARK: - 리뷰 삭제
     func deletePost(
         _ post: Post,
         in category: PostCategory,

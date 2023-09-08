@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0BE8C42AAB1E2700B65954 /* PostDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C32AAB1E2700B65954 /* PostDetailModalViewController.swift */; };
+		3F0BE8C62AAB1E9300B65954 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */; };
 		3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */; };
 		3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */; };
 		3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */; };
@@ -62,6 +64,9 @@
 		3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4964982A8FA1FD00078EE3 /* UserInfo.swift */; };
 		3F5D40412AA3628F00D6692D /* ReviewFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */; };
 		3F5D40462AA362EC00D6692D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40452AA362EC00D6692D /* ReviewView.swift */; };
+		3F738F412AA9A06900B6C6D2 /* MapDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F402AA9A06900B6C6D2 /* MapDetailViewModel.swift */; };
+		3F738F432AA9ABE500B6C6D2 /* PostFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */; };
+		3F738F462AA9E19600B6C6D2 /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F452AA9E19600B6C6D2 /* PagingInfo.swift */; };
 		3F7ADE992AA3281100AE2DD1 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */; };
 		3F7ADE9E2AA32A6900AE2DD1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */; };
 		3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */; };
@@ -138,6 +143,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0BE8C32AAB1E2700B65954 /* PostDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailModalViewController.swift; sourceTree = "<group>"; };
+		3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCategoryView.swift; sourceTree = "<group>"; };
 		3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeRepository.swift; sourceTree = "<group>"; };
 		3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeRepository.swift; sourceTree = "<group>"; };
@@ -187,6 +194,9 @@
 		3F4964982A8FA1FD00078EE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewFloatingView.swift; path = "../../../../../../../../무제 폴더/ReviewFloatingView.swift"; sourceTree = "<group>"; };
 		3F5D40452AA362EC00D6692D /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		3F738F402AA9A06900B6C6D2 /* MapDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewModel.swift; sourceTree = "<group>"; };
+		3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooterReusableView.swift; sourceTree = "<group>"; };
+		3F738F452AA9E19600B6C6D2 /* PagingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingInfo.swift; sourceTree = "<group>"; };
 		3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
@@ -608,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */,
+				3F738F402AA9A06900B6C6D2 /* MapDetailViewModel.swift */,
 				3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */,
 			);
 			path = ViewModel;
@@ -646,6 +657,7 @@
 				3F1AB7D02A8DC96E0076CEAB /* SensitiveInfoManager */,
 				3F1AB7952A8DC96E0076CEAB /* Terms */,
 				3FD6182E2A98A27000CE6690 /* LocalEvent */,
+				3F738F472AA9E1A600B6C6D2 /* PagingInfo */,
 			);
 			path = PersistentStorages;
 			sourceTree = "<group>";
@@ -719,6 +731,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		3F738F472AA9E1A600B6C6D2 /* PagingInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3F738F452AA9E19600B6C6D2 /* PagingInfo.swift */,
+			);
+			path = PagingInfo;
+			sourceTree = "<group>";
+		};
 		3F7ADE922AA3275E00AE2DD1 /* NewIssue */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +791,7 @@
 		3F7ADE9A2AA328CE00AE2DD1 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				3F0BE8C32AAB1E2700B65954 /* PostDetailModalViewController.swift */,
 				3F7ADEA12AA32A7C00AE2DD1 /* PostCategoryView.swift */,
 				3F7ADEA32AA32A8E00AE2DD1 /* Cell */,
 			);
@@ -781,6 +802,8 @@
 			isa = PBXGroup;
 			children = (
 				3F7ADEA42AA32A9400AE2DD1 /* PostCollectionViewCell.swift */,
+				3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */,
+				3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1306,18 +1329,22 @@
 				3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */,
 				3FAF2E4A2AA5A739003A9964 /* LocationSearchViewController.swift in Sources */,
 				3FD618302A98A2BE00CE6690 /* EventDTO.swift in Sources */,
+				3F0BE8C42AAB1E2700B65954 /* PostDetailModalViewController.swift in Sources */,
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,
 				3F80C0062A9DBCAD00F2128D /* NewIssueDTO.swift in Sources */,
 				3F1AB7D92A8DC96E0076CEAB /* Geocode.swift in Sources */,
 				3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */,
 				3F1AB7F02A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift in Sources */,
+				3F0BE8C62AAB1E9300B65954 /* PostTableViewCell.swift in Sources */,
 				3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */,
 				3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
+				3F738F412AA9A06900B6C6D2 /* MapDetailViewModel.swift in Sources */,
 				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
 				3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */,
 				3F8CD6F72A97101300307372 /* HomeViewModel.swift in Sources */,
 				3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */,
+				3F738F432AA9ABE500B6C6D2 /* PostFooterReusableView.swift in Sources */,
 				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
 				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
@@ -1359,6 +1386,7 @@
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
 				3F5D40462AA362EC00D6692D /* ReviewView.swift in Sources */,
 				3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */,
+				3F738F462AA9E19600B6C6D2 /* PagingInfo.swift in Sources */,
 				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
 				3F7ADE992AA3281100AE2DD1 /* ReviewViewController.swift in Sources */,
 				3F4964712A8E827600078EE3 /* CustomNavigationItem.swift in Sources */,
