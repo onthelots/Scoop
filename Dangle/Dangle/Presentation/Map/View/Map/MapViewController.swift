@@ -56,7 +56,6 @@ class MapViewController: UIViewController {
         setupMapView()
         viewModel.userAllInfoFetch()
     }
-
     // MARK: - ViewWillAppera (Floating View initializer)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -182,7 +181,7 @@ class MapViewController: UIViewController {
     private func bind() {
         viewModel.$userInfo
             .sink { userInfo in
-                // 지도 중심값 할당
+                // 1. 유저의 위치를 바탕으로 Center와 span값을 설정 (초기값)
                 if let latitudeStr = userInfo?.latitude, let longitudeStr = userInfo?.longitude,
                    let latitude = Double(latitudeStr), let longitude = Double(longitudeStr) {
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -290,26 +289,19 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
 
-        let identifier = "Custom"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)// 재사용 가능한 식별자를 갖고 어노테이션 뷰를 생성
-            annotationView?.canShowCallout = true // 콜아웃 버튼을 보이게 함
-            annotationView?.image = UIImage(systemName: "star.circle.fill") // 이미지 변경
-            annotationView?.tintColor = .tintColor
-        }
-
-
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        annotationView.canShowCallout = true
+        annotationView.glyphImage = UIImage(systemName: "star.circle.fill")
+        annotationView.markerTintColor = .tintColor
         return annotationView
     }
+
 
     // 중심값이 이동될 때 마다
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // 현재 지도에 보이는 영역의 좌표 가져오기
         let visibleMapRect = mapView.visibleMapRect
         let visibleRegion = MKCoordinateRegion(visibleMapRect)
-
-        // 중심 좌표와 화면 영역 내의 데이터를 가져오기
         let centerCoordinate = visibleRegion.center
         self.viewModel.fetchPostsAroundCoordinate(category: self.selectedCategory ?? .restaurant, coordinate: centerCoordinate)
         self.viewModel.$filteredPostsForCategory

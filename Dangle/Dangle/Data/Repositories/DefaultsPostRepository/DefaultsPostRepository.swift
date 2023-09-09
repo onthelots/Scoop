@@ -120,33 +120,41 @@ class DefaultPostRepository: PostRepository {
     func fetchPostsAroundCoordinate(
         category: PostCategory,
         coordinate: CLLocationCoordinate2D,
-        radius: CLLocationDistance,
+        radiusInKilometers: Double, // 반경을 km 단위로 받음
         completion: @escaping (Result<[Post], Error>) -> Void
     ) {
         // 중심 좌표를 기반으로 GeoPoint를 생성
         let centerGeoPoint = GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
 
-        // MARK: - 여기서 부터 조정해서, 현재 맵뷰에서 안보이면 중심 좌표에서 반경(radius) 내 데이터를 쿼리하도록 함
-        let latOffset = 0.007245 * (radius / 1000.0) // 1도의 위도 차이에 대한 상수값입니다.
-        let lonOffset = 0.00925 * (radius / 1000.0) // 1도의 경도 차이에 대한 상수값입니다.
+        // 위도 1도와 경도 1도의 크기 (약 111km)
+        let degreesLatitudeInKilometers: Double = 110.574
+            let degreesLongitudeInKilometers: Double = 111.32 * cos(coordinate.latitude * .pi / 180.0)
 
-        let northEast = GeoPoint(latitude: centerGeoPoint.latitude + latOffset, longitude: centerGeoPoint.longitude + lonOffset)
+
+        // 반경을 기반으로 실제 위도 및 경도의 변화량을 계산
+        let latOffset = radiusInKilometers / degreesLatitudeInKilometers
+        let lonOffset = radiusInKilometers / degreesLongitudeInKilometers
+
+        // 쿼리 범위 계산
         let southWest = GeoPoint(latitude: centerGeoPoint.latitude - latOffset, longitude: centerGeoPoint.longitude - lonOffset)
+        let northEast = GeoPoint(latitude: centerGeoPoint.latitude + latOffset, longitude: centerGeoPoint.longitude + lonOffset)
 
-        var posts: [Post] = []
-        let dispatchGroup = DispatchGroup()
-
-        // Firestore 쿼리 - latitude와 longitude를 함께 사용하여 쿼리
-        dispatchGroup.enter()
+        // Firestore 쿼리 작성
         let query = database.collectionGroup("UserReviews")
-            .whereField("category", isEqualTo: category.rawValue) // 카테고리 별로 필터링
+            .whereField("category", isEqualTo: category.rawValue)
             .whereField("location", isGreaterThan: southWest)
             .whereField("location", isLessThan: northEast)
+
+        var posts: [Post] = []
+
+        // 디버그 출력: 쿼리 범위 확인 (km로 환산)
+        print("Querying data within the following range (in kilometers):")
+        print("Latitude: \(radiusInKilometers) km")
+        print("Longitude: \(radiusInKilometers) km")
 
         query.getDocuments { (snapshot, error) in
             if let error = error {
                 completion(.failure(error))
-                dispatchGroup.leave()
                 return
             }
 
@@ -155,11 +163,7 @@ class DefaultPostRepository: PostRepository {
                     posts.append(post)
                 }
             }
-            dispatchGroup.leave()
-        }
 
-        // 모든 쿼리가 완료될 때까지 기다린 후, 넘김
-        dispatchGroup.notify(queue: .main) {
             completion(.success(posts))
         }
     }
