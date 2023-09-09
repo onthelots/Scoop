@@ -18,7 +18,6 @@ class MapView: UIView {
         self.addSubview(map)
         setupUI()
         cameraConstraining()
-        self.map.setUserTrackingMode(.follow, animated: true)
     }
 
     required init?(coder: NSCoder) {
@@ -48,8 +47,8 @@ class MapView: UIView {
 
         let region = MKCoordinateRegion(
             center: initialLocation.coordinate,
-            latitudinalMeters: 500,
-            longitudinalMeters: 500
+            latitudinalMeters: 1000,
+            longitudinalMeters: 1000
         )
         map.setCameraBoundary(
             MKMapView.CameraBoundary(coordinateRegion: region),

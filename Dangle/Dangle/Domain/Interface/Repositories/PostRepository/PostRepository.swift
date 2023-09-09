@@ -30,7 +30,7 @@ protocol PostRepository {
      func fetchPostsAroundCoordinate(
          category: PostCategory,
          coordinate: CLLocationCoordinate2D,
-         radius: CLLocationDistance,
+         radiusInKilometers: Double,
          completion: @escaping (Result<[Post], Error>) -> Void
      )
 

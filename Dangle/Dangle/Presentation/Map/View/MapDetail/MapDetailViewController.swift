@@ -44,6 +44,7 @@ class MapDetailViewController: UIViewController {
     // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackButton()
         view.backgroundColor = .systemBackground
         setupUI()
         initalizerViewModel()
@@ -51,12 +52,13 @@ class MapDetailViewController: UIViewController {
         setupMapView()
     }
 
+    // MARK: - ViewWillAppear() : 이전 MapViewController에서 선택한 데이터를 우선적으로 나타냄 (모달뷰를 바로 띄움)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchStorePost(category: storeCategory ?? .restaurant, storeName: storeName ?? "") { result in
             switch result {
             case .success(let posts):
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     let modalViewController = PostDetailModalViewController(storeUserReviews: posts)
                     self.setSheetPresentationController(modalViewController)
                     modalViewController.tableView.isScrollEnabled = posts.count > 3
@@ -123,11 +125,13 @@ class MapDetailViewController: UIViewController {
                 self.viewModel.fetchStorePost(category: category, storeName: storeName) { result in
                     switch result {
                     case .success(let updateReviews):
-                        self.storeUserReviews = updateReviews
-                        let modalViewController = PostDetailModalViewController(storeUserReviews: self.storeUserReviews)
-                        self.setSheetPresentationController(modalViewController)
-                        modalViewController.tableView.isScrollEnabled = self.storeUserReviews.count > 3
-                        self.present(modalViewController, animated: true, completion: nil)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.storeUserReviews = updateReviews
+                            let modalViewController = PostDetailModalViewController(storeUserReviews: self.storeUserReviews)
+                            self.setSheetPresentationController(modalViewController)
+                            modalViewController.tableView.isScrollEnabled = self.storeUserReviews.count > 3
+                            self.present(modalViewController, animated: true, completion: nil)
+                        }
                     case .failure(let error):
                         print("error : \(error)")
                     }
@@ -181,15 +185,10 @@ extension MapDetailViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
 
-        let identifier = "Custom"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)// 재사용 가능한 식별자를 갖고 어노테이션 뷰를 생성
-            annotationView?.canShowCallout = true // 콜아웃 버튼을 보이게 함
-            annotationView?.image = UIImage(systemName: "star.circle.fill") // 이미지 변경
-            annotationView?.tintColor = .tintColor
-        }
-
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        annotationView.canShowCallout = true
+        annotationView.glyphImage = UIImage(systemName: "star.circle.fill")
+        annotationView.markerTintColor = .tintColor
         return annotationView
     }
 
