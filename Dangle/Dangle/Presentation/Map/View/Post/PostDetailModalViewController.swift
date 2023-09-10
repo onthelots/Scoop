@@ -78,7 +78,7 @@ class PostDetailModalViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
     private func configure(_ posts: [Post]) {
         self.storeNameLabel.text = posts.first?.storeName
         self.reviewCountLabel.text = "\(posts.count)개 리뷰"
@@ -94,16 +94,16 @@ class PostDetailModalViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             storeNameLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            storeNameLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
-            storeNameLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
+            storeNameLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            storeNameLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
 
             reviewCountLabel.topAnchor.constraint(equalTo: storeNameLabel.bottomAnchor, constant: 5),
-            reviewCountLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
-            reviewCountLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
+            reviewCountLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            reviewCountLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
 
-            seperatedLineView.topAnchor.constraint(equalTo: reviewCountLabel.bottomAnchor, constant: 5),
-            seperatedLineView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
-            seperatedLineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
+            seperatedLineView.topAnchor.constraint(equalTo: reviewCountLabel.bottomAnchor, constant: 10),
+            seperatedLineView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            seperatedLineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             seperatedLineView.heightAnchor.constraint(equalToConstant: 2),
 
             tableView.topAnchor.constraint(equalTo: seperatedLineView.bottomAnchor),
@@ -130,7 +130,7 @@ extension PostDetailModalViewController: UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 60
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

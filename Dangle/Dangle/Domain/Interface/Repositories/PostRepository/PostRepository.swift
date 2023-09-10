@@ -27,12 +27,12 @@ protocol PostRepository {
     )
 
     // 중심 좌표 주변의 데이터 가져오기
-     func fetchPostsAroundCoordinate(
-         category: PostCategory,
-         coordinate: CLLocationCoordinate2D,
-         radiusInKilometers: Double,
-         completion: @escaping (Result<[Post], Error>) -> Void
-     )
+    func fetchPostsAroundCoordinate(
+        category: PostCategory,
+        coordinate: CLLocationCoordinate2D,
+        radius: CLLocationDistance,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    )
 
     // 해당 점포의 리뷰 가져오기
     func fetchPostsStore(
