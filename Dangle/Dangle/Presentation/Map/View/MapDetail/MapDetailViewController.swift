@@ -50,6 +50,16 @@ class MapDetailViewController: UIViewController {
         initalizerViewModel()
         bind()
         setupMapView()
+        mapTapGestureToDismissModality()
+    }
+
+    private func mapTapGestureToDismissModality() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
+        mapView.map.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc private func mapViewTapped() {
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - ViewWillAppear() : 이전 MapViewController에서 선택한 데이터를 우선적으로 나타냄 (모달뷰를 바로 띄움)
@@ -163,7 +173,7 @@ class MapDetailViewController: UIViewController {
                 return self.view.bounds.height * 0.35
             }
         ]
-        sheet?.largestUndimmedDetentIdentifier = .medium
+        sheet?.largestUndimmedDetentIdentifier = sheet?.detents[0].identifier
     }
 }
 
@@ -181,6 +191,7 @@ extension MapDetailViewController: PostCategoryViewDelegate {
 
 // MKMap Delegate
 extension MapDetailViewController: MKMapViewDelegate {
+
     // Annotation 커스터마이징
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
@@ -201,7 +212,17 @@ extension MapDetailViewController: MKMapViewDelegate {
     // Annotation을 클릭했을 때 -> 해당 데이터 전달을 통해, 관련 리뷰 모달뷰로 띄우기
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let selectedCategory = selectedCategory, let storeName = view.annotation?.title! {
-            viewModel.itemTapped.send((selectedCategory, storeName))
+            if presentationController != nil {
+                dismiss(animated: true) {
+                    self.showPostDetailModal(category: selectedCategory, storeName: storeName)
+                }
+            } else {
+                self.showPostDetailModal(category: selectedCategory, storeName: storeName)
+            }
         }
     }
+
+    private func showPostDetailModal(category: PostCategory, storeName: String) {
+          viewModel.itemTapped.send((category, storeName))
+      }
 }

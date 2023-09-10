@@ -59,6 +59,11 @@ class MapViewController: UIViewController {
     // MARK: - ViewWillAppera (Floating View initializer)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        if let presentedModal = presentedViewController as? PostDetailModalViewController {
+            presentedModal.dismiss(animated: true)
+        }
+
         floatingButton.categoryMenuStackView.arrangedSubviews.forEach { (button) in
             button.isHidden = true
         }
@@ -267,6 +272,7 @@ extension MapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let items = viewModel.filteredPostsForCategory[indexPath.item]
         print("--- didSelected Item: \(items)")
+        viewModel.itemTapped.send((items.category, items.storeName))
     }
 }
 

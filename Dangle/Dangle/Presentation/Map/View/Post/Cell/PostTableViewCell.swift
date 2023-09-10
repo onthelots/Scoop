@@ -84,9 +84,9 @@ class PostTableViewCell: UITableViewCell {
             reviewLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor),
             reviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            thumbnailImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3),
+            thumbnailImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor),
             thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             thumbnailImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
 
