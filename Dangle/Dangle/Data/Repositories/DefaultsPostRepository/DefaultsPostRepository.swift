@@ -13,6 +13,8 @@ import FirebaseStorage
 
 class DefaultPostRepository: PostRepository {
 
+
+
     let database = Firestore.firestore()
     let storage = Storage.storage()
 
@@ -77,42 +79,63 @@ class DefaultPostRepository: PostRepository {
     }
 
     // MARK: - 리뷰 저장
-    func addPost(_ post: Post, image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
-        let imageReference = storage.reference().child("postImages/\(UUID().uuidString).jpg")
-        if let imageData = image.jpegData(compressionQuality: 0.8) {
-            imageReference.putData(imageData, metadata: nil) { _, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
+    func addPost(_ post: Post, images: [UIImage], completion: @escaping (Result<Void, Error>) -> Void) {
+        var imageUrls: [String] = []
 
-                imageReference.downloadURL { url, error in
+        let dispatchGroup = DispatchGroup()
+
+        for image in images {
+            dispatchGroup.enter()
+            let imageReference = storage.reference().child("postImages/\(UUID().uuidString).jpg")
+
+            if let imageData = image.jpegData(compressionQuality: 0.8) {
+                imageReference.putData(imageData, metadata: nil) { metadata, error in
                     if let error = error {
+                        dispatchGroup.leave()
                         completion(.failure(error))
                         return
                     }
-                    var updatedPost = post
-                    updatedPost.postImage = url?.absoluteString
 
-                    do {
-                        let categoryName = post.category.rawValue
-                        let categoryCollection = self.firestore.collection(categoryName)
-                        let storeRef = categoryCollection.document(post.storeName)
-                        let userDocRef = storeRef.collection("UserReviews").document(post.authorUID)
-                        try userDocRef.setData(from: updatedPost) { error in
-                            if let error = error {
-                                completion(.failure(error))
-                            } else {
-                                completion(.success(()))
-                            }
+                    imageReference.downloadURL { url, error in
+                        if let error = error {
+                            dispatchGroup.leave()
+                            completion(.failure(error))
+                            return
                         }
-                    } catch {
-                        completion(.failure(error))
+
+                        if let imageUrl = url?.absoluteString {
+                            imageUrls.append(imageUrl)
+                        }
+
+                        dispatchGroup.leave()
                     }
                 }
+            } else {
+                dispatchGroup.leave()
+                completion(.failure(NSError(domain: "Image Data Error", code: 0, userInfo: nil)))
             }
-        } else {
-            completion(.failure(NSError(domain: "Image Data Error", code: 0, userInfo: nil)))
+        }
+
+        // 모든 이미지가 업로드 및 URL 획득될 때까지 기다립니다.
+        dispatchGroup.notify(queue: .global()) {
+            var updatedPost = post
+            updatedPost.postImage = imageUrls
+
+            do {
+                let categoryName = post.category.rawValue
+                let categoryCollection = self.firestore.collection(categoryName)
+                let storeRef = categoryCollection.document(post.storeName)
+                let userDocRef = storeRef.collection("UserReviews").document(post.authorUID)
+                try userDocRef.setData(from: updatedPost) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                }
+            } catch {
+                completion(.failure(error))
+            }
         }
     }
 
@@ -199,7 +222,6 @@ class DefaultPostRepository: PostRepository {
         // 모든 쿼리가 완료될 때까지 기다린 후, 넘김
         dispatchGroup.notify(queue: .main) {
             completion(.success(posts))
-            print("쿼리릍 통해 불러온 posts : \(posts)")
         }
     }
 

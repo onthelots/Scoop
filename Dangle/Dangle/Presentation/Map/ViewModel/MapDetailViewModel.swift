@@ -23,7 +23,7 @@ class MapDetailViewModel: ObservableObject {
     var mapView: MKMapView?
 
     // Output
-    let itemTapped = PassthroughSubject<(PostCategory, String), Never>() // 해당 점포를 눌렀을 때
+    let annotationTapped = PassthroughSubject<(PostCategory, String), Never>() // 해당 점포를 눌렀을 때
     let categoryTapped = PassthroughSubject<PostCategory, Never>()
 
     private var subscription = Set<AnyCancellable>()

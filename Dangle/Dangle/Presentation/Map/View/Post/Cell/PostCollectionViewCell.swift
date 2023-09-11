@@ -14,15 +14,12 @@ class PostCollectionViewCell: UICollectionViewCell {
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        let mockupImage = UIImage(systemName: "person.circle.fill")
-        imageView.image = mockupImage
-        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 30
+        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
 
     private lazy var nickNameLabel: UILabel = {
        let label = UILabel()
@@ -93,7 +90,7 @@ class PostCollectionViewCell: UICollectionViewCell {
             userImageView.heightAnchor.constraint(equalTo: userImageView.widthAnchor),
 
             nickNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
-            nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10),
+            nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 5),
 
             reviewLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
             reviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -114,7 +111,6 @@ class PostCollectionViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
         userImageView.image = nil
         nickNameLabel.text = ""
         reviewLabel.text = ""
@@ -123,11 +119,12 @@ class PostCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(items: Post) {
+        userImageView.image = UIImage(systemName: "person.circle.fill")
         self.nickNameLabel.text = items.nickname
         self.reviewLabel.text = items.review
         self.locationLabel.text = items.storeName
         self.thumbnailImageView.kf.setImage(
-            with: URL(string: items.postImage ?? ""),
+            with: URL(string: items.postImage?.first ?? ""),
             placeholder: UIImage(systemName: "hands.sparkles.fill")
         )
     }
