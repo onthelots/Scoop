@@ -61,7 +61,6 @@ class ReviewViewController: UIViewController {
 
     private func initializeViewModel() {
         let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
-        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
         viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
     }
 
@@ -95,43 +94,45 @@ class ReviewViewController: UIViewController {
                                       style: .default,
                                       handler: { [weak self] _ in
             // MARK: - API createdPlaylists (POST)
-            guard let userId = Auth.auth().currentUser?.uid else {
+            guard let userId = Auth.auth().currentUser?.uid,
+                  let selectedImages = self?.selectedImage, // 이미지 배열
+                  let category = self?.category,
+                  let storeName = self?.selectedLocation?.placeName,
+                  let reviewText = self?.reviewView.reviewTextView.text,
+                  let nickname = self?.userInfo.nickname,
+                  let latitude = self?.selectedLocation?.latitude,
+                  let longitude = self?.selectedLocation?.longitude,
+                  let categoryGroupName = self?.selectedLocation?.categoryGroupName,
+                  let roadAddressName = self?.selectedLocation?.roadAddressName,
+                  let placeURL = self?.selectedLocation?.placeURL else {
+                print("정보가 없습니다.")
                 return
             }
 
-            guard let selectedImage = self?.selectedImage else {
-                return
-            }
-            // 다중 이미지이기 때문에, selectedImage 내 image를 받아서, Post로 저장하고, postUseCase에서 처리하도록 넘김
-            for image in selectedImage {
-                if let category = self?.category,
-                   let storeName = self?.selectedLocation?.placeName,
-                   let reviewText = self?.reviewView.reviewTextView.text,
-                   let nickname = self?.userInfo.nickname,
-                   let latitude = self?.selectedLocation?.latitude,
-                   let longitude = self?.selectedLocation?.longitude {
+            let postInfo = Post(
+                authorUID: userId,
+                category: PostCategory(rawValue: category.rawValue) ?? .beauty,
+                storeName: storeName,
+                review: reviewText,
+                nickname: nickname,
+                postImage: [], // 이미지 배열 전달
+                location: GeoPoint(latitude: Double(latitude) ?? 0.0,
+                                   longitude: Double(longitude) ?? 0.0),
+                categoryGroupName: categoryGroupName,
+                roadAddressName: roadAddressName,
+                placeURL: placeURL,
+                timestamp: Date()
+            )
 
-                    let postInfo = Post(
-                        authorUID: userId,
-                        category: PostCategory(rawValue: category.rawValue) ?? .beauty,
-                        storeName: storeName,
-                        review: reviewText,
-                        nickname: nickname,
-                        postImage: "",
-                        location: GeoPoint(latitude: Double(latitude) ?? 0.0,
-                                           longitude: Double(longitude) ?? 0.0),
-                        timestamp: Date()
-                    )
-                    self?.viewModel.postButtonTapped.send((postInfo, image))
-                } else {
-                    print("정보가 없습니다.")
-                }
-            }
+            // 이미지 배열과 함께 Post 정보 전달
+            self?.viewModel.postButtonTapped.send((postInfo, selectedImages))
+
             self?.navigationController?.popViewController(animated: true)
 
         }))
         present(alert, animated: true)
     }
+
 
     // setup revieewView
     private func setupUI() {
@@ -207,7 +208,6 @@ extension ReviewViewController: ReviewViewDelegate {
     }
 
     func didTappedLocationButton() {
-        // MARK: - 수정하려고 누를때, SelectedLocation을 초기화해야 하는데?
         let viewController = LocationSearchViewController(userLocation: [userInfo.longitude ?? "", userInfo.latitude ?? ""])
         viewController.navigationItem.largeTitleDisplayMode = .never
         viewController.navigationItem.title = "위치검색"

@@ -22,7 +22,7 @@ protocol PostRepository {
     // Post 등록
     func addPost(
         _ post: Post,
-        image: UIImage,
+        images: [UIImage],
         completion: @escaping (Result<Void, Error>) -> Void
     )
 

@@ -21,6 +21,8 @@ class MapViewController: UIViewController {
     private var currentPage = 0
     private var totalPages = 0
 
+    private var emptyPostToggleView = EmptyPostToggleView()
+
     // MARK: - Components
     private lazy var postCategoryView: PostCategoryView = {
         let postCategoryView = PostCategoryView()
@@ -55,12 +57,13 @@ class MapViewController: UIViewController {
         bind()
         setupMapView()
         viewModel.userAllInfoFetch()
+        dataLoadingCompleted()
     }
     // MARK: - ViewWillAppera (Floating View initializer)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let presentedModal = presentedViewController as? PostDetailModalViewController {
+        if let presentedModal = presentedViewController as? PostsModalViewController {
             presentedModal.dismiss(animated: true)
         }
 
@@ -83,25 +86,58 @@ class MapViewController: UIViewController {
         floatingButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-
             floatingButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             floatingButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-
             postCategoryView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
             postCategoryView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             postCategoryView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-
             mapView.topAnchor.constraint(equalTo: postCategoryView.bottomAnchor, constant: 20),
             mapView.leadingAnchor.constraint(equalTo: postCategoryView.leadingAnchor, constant: 10),
             mapView.trailingAnchor.constraint(equalTo: postCategoryView.trailingAnchor, constant: -10),
             mapView.heightAnchor.constraint(equalTo: mapView.widthAnchor, multiplier: 0.6),
-
             collectionView.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 5),
-            collectionView.leadingAnchor.constraint(equalTo: postCategoryView.leadingAnchor), // 수정된 부분
-            collectionView.trailingAnchor.constraint(equalTo: postCategoryView.trailingAnchor), // 수정된 부분
+            collectionView.leadingAnchor.constraint(equalTo: postCategoryView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: postCategoryView.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+
+    // ToogleView 나타내기
+    private func showEmptyPostToggleView() {
+        if emptyPostToggleView.superview == nil {
+            view.addSubview(emptyPostToggleView)
+            emptyPostToggleView.translatesAutoresizingMaskIntoConstraints = false
+
+            // 애니메이션 효과 추가
+            UIView.animate(withDuration: 0.3) {
+                NSLayoutConstraint.activate([
+                    self.emptyPostToggleView.heightAnchor.constraint(equalToConstant: 50),
+                    self.emptyPostToggleView.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor),
+                    self.emptyPostToggleView.leadingAnchor.constraint(equalTo: self.postCategoryView.leadingAnchor),
+                    self.emptyPostToggleView.trailingAnchor.constraint(equalTo: self.postCategoryView.trailingAnchor),
+                ])
+
+                // floatingButton을 emptyPostToggleView 위에 오도록 함
+                self.view.bringSubviewToFront(self.floatingButton)
+                self.view.layoutIfNeeded()
+            }
+        }
+
+        emptyPostToggleView.isHidden = false
+    }
+
+    private func hideEmptyPostToggleView() {
+        // 애니메이션 효과 추가
+        UIView.animate(withDuration: 1.3) {
+            self.emptyPostToggleView.isHidden = true
+        }
+    }
+
+    private func dataLoadingCompleted() {
+        // 데이터 로딩이 완료되면 emptyPostToggleView를 숨깁니다.
+        hideEmptyPostToggleView()
+    }
+
 
     // viewModel 초기화
     private func initalizerViewModel() {
@@ -145,7 +181,7 @@ class MapViewController: UIViewController {
             return nil
         }
         collectionView.collectionViewLayout = self.layout()
-        collectionView.delegate = self
+        collectionView.delegate = self  
     }
 
     // 3. CollectionView layout
@@ -222,6 +258,14 @@ class MapViewController: UIViewController {
                 snapshot.appendSections([.main])
                 snapshot.appendItems(post, toSection: .main)
                 self.dataSource.apply(snapshot)
+
+                if post.isEmpty {
+                    self.showEmptyPostToggleView() // 데이터가 없을 때 emptyPostToggleView를 표시
+                } else {
+                    self.hideEmptyPostToggleView() // 데이터가 있을 때 emptyPostToggleView를 숨김
+                    self.filteredPostsForCategory = post
+                }
+
             }.store(in: &subscription)
 
         viewModel.itemTapped
@@ -271,7 +315,6 @@ class MapViewController: UIViewController {
 extension MapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let items = viewModel.filteredPostsForCategory[indexPath.item]
-        print("--- didSelected Item: \(items)")
         viewModel.itemTapped.send((items.category, items.storeName))
     }
 }

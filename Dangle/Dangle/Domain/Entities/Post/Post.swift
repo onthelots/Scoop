@@ -18,10 +18,11 @@ struct Post: Identifiable, Codable, Hashable {
     var storeName: String // 점포 이름 또는 ID
     var review: String
     var nickname: String
-    var postImage: String?
+    var postImage: [String]?
     var location: GeoPoint // "location" 필드 추가
-//    var latitude: String
-//    var longitude: String
+    var categoryGroupName: String
+    var roadAddressName: String
+    var placeURL: String
     var timestamp: Date
 }
 

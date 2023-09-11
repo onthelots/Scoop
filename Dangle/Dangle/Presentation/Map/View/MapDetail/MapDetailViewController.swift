@@ -37,6 +37,7 @@ class MapDetailViewController: UIViewController {
         self.hidesBottomBarWhenPushed = true
     }
 
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -69,7 +70,7 @@ class MapDetailViewController: UIViewController {
             switch result {
             case .success(let posts):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    let modalViewController = PostDetailModalViewController(storeUserReviews: posts)
+                    let modalViewController = PostsModalViewController(storeUserReviews: posts)
                     self.setSheetPresentationController(modalViewController)
                     modalViewController.tableView.isScrollEnabled = posts.count > 3
                     self.present(modalViewController, animated: true, completion: nil)
@@ -109,26 +110,20 @@ class MapDetailViewController: UIViewController {
         viewModel = MapDetailViewModel(userInfoUseCase: userInfoUseCase, postUseCase: postUseCase)
     }
 
-
     private func bind() {
-        // 점포의 중심값을 받아와서, 세팅해야함
-        viewModel.$posts
-            .receive(on: RunLoop.main)
-            .sink { posts in
-                self.storeUserReviews = posts ?? [Post(authorUID: "", category: .restaurant, storeName: "선택된 점포가 없습니다.", review: "", nickname: "", location: GeoPoint(latitude: 0.0, longitude: 0.0), timestamp: Date())]
-                print("선택된 점포의 post : \(self.storeUserReviews.count)")
-            }.store(in: &subscription)
-
         // 카테고리 라벨을 탭 할때마다 업데이트
         viewModel.categoryTapped
             .receive(on: RunLoop.main)
             .sink { [weak self] category in
                 guard let self = self else { return }
                 self.selectedCategory = category
+                if let presentedModal = presentedViewController as? PostsModalViewController {
+                    presentedModal.dismiss(animated: true)
+                }
             }.store(in: &subscription)
 
         // 해당 점포를 눌렀을 때 -> post 정보 받아와서 모달뷰 띄우기
-        viewModel.itemTapped
+        viewModel.annotationTapped
             .receive(on: RunLoop.main)
             .sink { [weak self] (category, storeName) in
                 guard let self = self else { return }
@@ -137,7 +132,7 @@ class MapDetailViewController: UIViewController {
                     case .success(let updateReviews):
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             self.storeUserReviews = updateReviews
-                            let modalViewController = PostDetailModalViewController(storeUserReviews: self.storeUserReviews)
+                            let modalViewController = PostsModalViewController(storeUserReviews: updateReviews)
                             self.setSheetPresentationController(modalViewController)
                             modalViewController.tableView.isScrollEnabled = self.storeUserReviews.count > 3
                             self.present(modalViewController, animated: true, completion: nil)
@@ -165,7 +160,7 @@ class MapDetailViewController: UIViewController {
     // MARK: - 모달뷰 세팅
     private func setSheetPresentationController(_ viewController: UIViewController) {
         let sheet = viewController.sheetPresentationController
-        sheet?.preferredCornerRadius = 10
+        sheet?.preferredCornerRadius = 20
         sheet?.prefersGrabberVisible = true
         sheet?.prefersScrollingExpandsWhenScrolledToEdge = false
         sheet?.detents = [
@@ -223,6 +218,6 @@ extension MapDetailViewController: MKMapViewDelegate {
     }
 
     private func showPostDetailModal(category: PostCategory, storeName: String) {
-          viewModel.itemTapped.send((category, storeName))
+          viewModel.annotationTapped.send((category, storeName))
       }
 }

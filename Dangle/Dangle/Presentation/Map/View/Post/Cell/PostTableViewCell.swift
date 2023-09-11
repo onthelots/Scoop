@@ -14,10 +14,8 @@ class PostTableViewCell: UITableViewCell {
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        let mockupImage = UIImage(systemName: "person.circle.fill")
-        imageView.image = mockupImage
-        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 30
+        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -25,8 +23,8 @@ class PostTableViewCell: UITableViewCell {
 
 
     private lazy var nickNameLabel: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         label.textAlignment = .left
         label.numberOfLines = 1
         label.sizeToFit()
@@ -34,9 +32,9 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var reviewLabel: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+    private lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 11, weight: .light)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.sizeToFit()
@@ -45,15 +43,24 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 5
-        imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private lazy var reviewTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+        textView.textAlignment = .left
+        textView.sizeToFit()
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.isScrollEnabled = false
+        textView.textContainer.maximumNumberOfLines = 2
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return textView
     }()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = bounds
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -61,35 +68,28 @@ class PostTableViewCell: UITableViewCell {
         // 셀에 서브뷰 추가
         contentView.addSubview(userImageView)
         contentView.addSubview(nickNameLabel)
-        contentView.addSubview(reviewLabel)
-        contentView.addSubview(thumbnailImageView)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(reviewTextView)
 
         // AutoLayout 제약 조건 설정
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
             userImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             userImageView.widthAnchor.constraint(equalToConstant: 15),
             userImageView.heightAnchor.constraint(equalTo: userImageView.widthAnchor),
 
             nickNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
-            nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor),
+            nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10),
 
-            reviewLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor),
-            reviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            reviewLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor),
-            reviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            dateLabel.centerYAnchor.constraint(equalTo: nickNameLabel.centerYAnchor),
+            dateLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nickNameLabel.trailingAnchor, constant: 10).withPriority(.defaultLow),
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).withPriority(.required),
 
-            thumbnailImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor),
-            thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            thumbnailImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            reviewTextView.topAnchor.constraint(equalTo: nickNameLabel.bottomAnchor, constant: 5),
+            reviewTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            reviewTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            reviewTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -98,23 +98,18 @@ class PostTableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
         userImageView.image = nil
         nickNameLabel.text = ""
-        reviewLabel.text = ""
-        thumbnailImageView.image = nil
+        dateLabel.text = ""
+        reviewTextView.text = ""
     }
 
     func configure(with post: Post) {
-//        self.userImageView.kf.setImage(
-//            with: URL(string: post.postImage ?? ""),
-//            placeholder: UIImage(systemName: "person.circle.fill")
-//        )
+        userImageView.image = UIImage(systemName: "person.circle.fill")
         nickNameLabel.text = post.nickname
-        reviewLabel.text = post.review
-        self.thumbnailImageView.kf.setImage(
-            with: URL(string: post.postImage ?? ""),
-            placeholder: UIImage(systemName: "hands.sparkles.fill")
-        )
+        reviewTextView.text = post.review
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd" // 원하는 날짜 형식 설정
+        dateLabel.text = dateFormatter.string(from: post.timestamp)
     }
 }

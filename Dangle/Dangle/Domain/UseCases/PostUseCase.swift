@@ -22,7 +22,7 @@ protocol PostUseCase {
     // Post 등록
     func addPost(
         _ post: Post,
-        image: UIImage,
+        images: [UIImage],
         completion: @escaping (Result<Void, Error>) -> Void
     )
 
@@ -83,14 +83,13 @@ class DefaultPostUseCase: PostUseCase {
     // MARK: - 리뷰 저장
     func addPost(
         _ post: Post,
-        image: UIImage,
+        images: [UIImage],
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         postRepository.addPost(
             post,
-            image: image,
-            completion: completion
-        )
+            images: images,
+            completion: completion)
     }
 
     // MARK: - Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
