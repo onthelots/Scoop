@@ -54,7 +54,6 @@ final class EditUserProfileViewModel: ObservableObject {
                     switch result {
                     case .success:
                         print("변경된 닉네임: \(nickname)")
-                        // ProfileViewModel에도 변경된 닉네임을 던져야 함
                     case .failure(let error):
                         print("Post 저장 실패: \(error.localizedDescription)")
                     }

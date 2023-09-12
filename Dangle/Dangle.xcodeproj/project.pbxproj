@@ -131,7 +131,6 @@
 		3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */; };
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
 		3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */; };
-		3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D32A93475A000F1B38 /* SettingViewController.swift */; };
 		3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */; };
 		3FE68BC52AA0B00100595733 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3FE68BC42AA0B00100595733 /* SwiftSoup */; };
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
@@ -276,7 +275,6 @@
 		3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewModel.swift; sourceTree = "<group>"; };
 		3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
-		3FE361D32A93475A000F1B38 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDetailViewController.swift; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -942,7 +940,6 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
-				3FE361D32A93475A000F1B38 /* SettingViewController.swift */,
 				3F9F68292AB01C5400E36F29 /* UserProfile */,
 				3F9F681D2AB0160500E36F29 /* MyPost */,
 				3F9F683B2AB0750E00E36F29 /* ProfileTable */,
@@ -953,8 +950,8 @@
 		3F9F681D2AB0160500E36F29 /* MyPost */ = {
 			isa = PBXGroup;
 			children = (
+				3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */,
 				3F9F681F2AB0165500E36F29 /* MyPostView.swift */,
-				3F9F68322AB0240300E36F29 /* CheckMyPost */,
 			);
 			path = MyPost;
 			sourceTree = "<group>";
@@ -962,8 +959,8 @@
 		3F9F68292AB01C5400E36F29 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				3F9F68272AB01C2300E36F29 /* EditUserProfileViewController.swift */,
 				3F9F682D2AB01CEB00E36F29 /* UserProfileView.swift */,
-				3F9F68372AB06F9A00E36F29 /* EditUserProfile */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -974,22 +971,6 @@
 				3F9F68302AB0227F00E36F29 /* HomePageURL.swift */,
 			);
 			path = HomePage;
-			sourceTree = "<group>";
-		};
-		3F9F68322AB0240300E36F29 /* CheckMyPost */ = {
-			isa = PBXGroup;
-			children = (
-				3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */,
-			);
-			path = CheckMyPost;
-			sourceTree = "<group>";
-		};
-		3F9F68372AB06F9A00E36F29 /* EditUserProfile */ = {
-			isa = PBXGroup;
-			children = (
-				3F9F68272AB01C2300E36F29 /* EditUserProfileViewController.swift */,
-			);
-			path = EditUserProfile;
 			sourceTree = "<group>";
 		};
 		3F9F683B2AB0750E00E36F29 /* ProfileTable */ = {
@@ -1391,7 +1372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FAF2E4F2AA5C1C2003A9964 /* KeywordSearchResult.swift in Sources */,
-				3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */,
 				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
 				3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */,
 				3F8CD6FC2A972D1E00307372 /* UserInfoRepository.swift in Sources */,

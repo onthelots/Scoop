@@ -8,19 +8,20 @@
 import Combine
 import UIKit
 import Firebase
+import SafariServices
 
 class ProfileViewController: UIViewController {
 
     private var myPosts: [Post] = []
     private var userInfo: UserInfo!
-    private var viewModel: ProfileViewModel!
+    private var profileViewModel: ProfileViewModel!
     private var profileTableViewModel: ProfileTableViewModel = ProfileTableViewModel()
     private var profileTableItems: [ProfileTableItem] = []
 
     private var subscription = Set<AnyCancellable>()
 
     // MARK: - Components
-    // 결과를 보여주는 테이블 뷰
+    // TableView
     lazy var tableView: UITableView = {
         let tableView = UITableView(
             frame: .zero,
@@ -37,42 +38,50 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
 
+    // UserProfileView
     private var userProfileView = UserProfileView()
+    // MyPostView
     private var myPostView = MyPostView()
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        initalizerViewModel()
-        initializerProfileTable()
+        initialViewModel()
+        initialTableView()
         bind()
         setupUI()
-        viewModel.userInfoFetch()
+        profileViewModel.userInfoFetch()
         userProfileView.delegate = self
         myPostView.delegate = self
     }
-    // viewModel 초기화
-    private func initalizerViewModel() {
+
+    // MARK: - Initial ViewModel
+    private func initialViewModel() {
         let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
         let postUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
-        viewModel = ProfileViewModel(userInfoUseCase: userInfoUseCase, postUseCase: postUseCase)
+        profileViewModel = ProfileViewModel(userInfoUseCase: userInfoUseCase, postUseCase: postUseCase)
     }
 
-    private func initializerProfileTable() {
+    // MARK: - Initial TableView
+    private func initialTableView() {
         profileTableViewModel.fetchData()
         tableView.delegate = self
         tableView.dataSource = self
     }
 
+    // MARK: - Bind()
     private func bind() {
-        viewModel.$userInfo
+        profileViewModel.$userInfo
             .receive(on: RunLoop.main)
             .sink { [weak self] userInfo in
                 guard let self = self else { return }
                 self.userInfo = userInfo
+                guard let updateUserInfo = self.userInfo else { return }
+                self.userProfileView.userProfileConfigure(updateUserInfo) // TODO: - 왜 View가 업데이트가 잘안되지?
             }.store(in: &subscription)
 
-        viewModel.editProfileTapped
+        profileViewModel.editProfileTapped
             .sink { userInfo in
                 let editUserProfileViewController = EditUserProfileViewController(userInfo: userInfo)
                 editUserProfileViewController.title = "프로필 수정"
@@ -80,7 +89,7 @@ class ProfileViewController: UIViewController {
                 self.navigationController?.pushViewController(editUserProfileViewController, animated: true)
             }.store(in: &subscription)
 
-        viewModel.checkMyPostTapped
+        profileViewModel.checkMyPostTapped
             .sink { myPotsts in
                 let checkMyPostViewController = CheckMyPostViewController(myPosts: myPotsts)
                 checkMyPostViewController.title = "내가 쓴 글"
@@ -88,7 +97,7 @@ class ProfileViewController: UIViewController {
                 self.navigationController?.pushViewController(checkMyPostViewController, animated: true)
             }.store(in: &subscription)
         
-        viewModel.$myPosts
+        profileViewModel.$myPosts
             .sink { posts in
                 self.myPosts = posts
             }.store(in: &subscription)
@@ -97,11 +106,11 @@ class ProfileViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] items in
                 self?.profileTableItems = items
-                print("테이블 뷰 갯수 : \(self?.profileTableItems.count)")
                 self?.tableView.reloadData()
             }.store(in: &subscription)
     }
 
+    // MARK: - setupUI()
     private func setupUI() {
         view.addSubview(tableView)
         view.addSubview(userProfileView)
@@ -132,29 +141,36 @@ class ProfileViewController: UIViewController {
     }
 
     private func updateUserProfileView(_ userInfo: UserInfo) {
-        viewModel.userInfoFetch()
+        profileViewModel.userInfoFetch()
         self.userProfileView.userProfileConfigure(userInfo)
     }
 }
 
 extension ProfileViewController: UserProfileViewDelegate {
     func editButtonTapped() {
-        viewModel.editProfileTapped.send(userInfo)
-
+        profileViewModel.editProfileTapped.send(userInfo)
     }
 }
 
 extension ProfileViewController: MyPostViewDelegete {
     func myPostCheckButtonTapped() {
-        viewModel.checkMyPostTapped.send(myPosts)
+        profileViewModel.checkMyPostTapped.send(myPosts)
     }
 
     func customerServiceButtonTapped() {
-        //
+        guard let url = URL(string: "https://naver.com") else {
+            return
+        }
+        let safariViewController = SFSafariViewController(url: url)
+        self.present(safariViewController, animated: true, completion: nil)
     }
 
     func noticeButtonTapped() {
-        //
+        guard let url = URL(string: "https://naver.com") else {
+            return
+        }
+        let safariViewController = SFSafariViewController(url: url)
+        self.present(safariViewController, animated: true, completion: nil)
     }
 }
 
@@ -167,8 +183,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as? ProfileTableViewCell else {
             return UITableViewCell()
         }
-
-        // 셀을 구성하고 ViewModel에서 가져온 항목을 전달합니다.
         let item = profileTableItems[indexPath.row]
         cell.configure(with: item)
         cell.backgroundColor = .systemBackground
@@ -179,12 +193,16 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = profileTableItems[indexPath.row]
 
+        // WebView Present
         switch item.action {
         case .openURL(let url):
-            if let url = URL(string: url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            guard let url = URL(string: url) else {
+                return
             }
+            let safariViewController = SFSafariViewController(url: url)
+            self.present(safariViewController, animated: true, completion: nil)
 
+        // Logout button Tapped
         case .showAlert:
             let alert = UIAlertController(title: "로그아웃",
                                           message: "정말 로그아웃 하시겠습니까?",

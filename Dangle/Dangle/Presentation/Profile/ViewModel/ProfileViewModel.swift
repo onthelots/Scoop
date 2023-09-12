@@ -36,12 +36,10 @@ class ProfileViewModel: ObservableObject {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
-
         userInfoUseCase.getUserInfo(userId: userId) { result in
             switch result {
             case .success(let userInfo):
                 self.userInfo = userInfo
-                print("내 닉네임 : \(userInfo.nickname)")
                 self.postUseCase.fetchUserPosts(uid: userId) { posts in
                     switch posts {
                     case .success(let myPosts):

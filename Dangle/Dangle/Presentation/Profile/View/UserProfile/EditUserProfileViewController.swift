@@ -155,8 +155,8 @@ class EditUserProfileViewController: UIViewController {
     @objc private func nextButtonTapped() {
         if let nickname = textFieldView.textField.text {
             print("저장될 닉네임 : \(nickname)")
-            DispatchQueue.main.async {
-                self.viewModel.newNicknameInput.send(nickname)
+            self.viewModel.newNicknameInput.send(nickname)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.navigationController?.popViewController(animated: true)
             }
         }

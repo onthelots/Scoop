@@ -48,7 +48,7 @@ class UserProfileView: UIView {
 
     private lazy var nicknameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textAlignment = .left
         label.textColor = .white
         label.numberOfLines = 1
@@ -61,7 +61,7 @@ class UserProfileView: UIView {
     lazy var editProfileButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "pencil.circle.fill")
-        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 20)
+        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 25)
         configuration.imagePlacement = .top
         let button = UIButton(configuration: configuration)
         button.tintColor = .white
@@ -73,7 +73,6 @@ class UserProfileView: UIView {
     @objc private func editButtonTapped() {
         delegate.editButtonTapped()
     }
-
 
     private func setupUI() {
         self.verticalStackView.addArrangedSubview(emailLabel)
