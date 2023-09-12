@@ -13,8 +13,8 @@ class PostCollectionViewCell: UICollectionViewCell {
 
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 30
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,9 +101,8 @@ class PostCollectionViewCell: UICollectionViewCell {
             locationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             locationLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: -10),
 
-
             thumbnailImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3),
-            thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),
+            thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.8),
             thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             thumbnailImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
@@ -124,8 +123,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         self.reviewLabel.text = items.review
         self.locationLabel.text = items.storeName
         self.thumbnailImageView.kf.setImage(
-            with: URL(string: items.postImage?.first ?? ""),
-            placeholder: UIImage(systemName: "hands.sparkles.fill")
+            with: URL(string: items.postImage?.first ?? "")
         )
     }
 }

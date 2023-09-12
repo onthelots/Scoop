@@ -221,12 +221,24 @@ extension ReviewViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true, completion: nil) // 완료시, 화면 내리기
 
+        var isAnyImageSelected = false // 선택된 이미지를 확인하기 위한 변수
+
         var newSelection = [String: PHPickerResult]() // 1. Picker에서 이미지를 선택한 후, 새로 만들어질 selection 변수 선언
 
         for result in results {
             let identifier = result.assetIdentifier! // 2. Asset의 Identifier 설정
             // [Selection] 딕셔너리의 identifier값을 순서대로 할당함
-            newSelection[identifier] = selections[identifier] ?? result
+            // 이미 선택한 이미지인지 확인
+            if selections[identifier] == nil {
+                newSelection[identifier] = result
+            } else {
+                isAnyImageSelected = true
+            }
+        }
+
+        // 기존에 선택한 이미지가 없고, 새로 선택한 이미지도 없을 경우, 빈 배열로 업데이트
+        if !isAnyImageSelected && newSelection.isEmpty {
+            self.selectedImage = []
         }
 
         // 3. 새롭게 만들어진 selection을 기존에 선언한 전역변수인 selection로 다시 할당

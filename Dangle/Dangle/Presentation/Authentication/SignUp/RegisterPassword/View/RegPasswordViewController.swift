@@ -53,8 +53,6 @@ class RegPasswordViewController: UIViewController {
         return textFieldView
     }()
 
-    // MARK: - View로 파일 나누기(너무 길어..)
-
     private lazy var passwordValidationLabelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal

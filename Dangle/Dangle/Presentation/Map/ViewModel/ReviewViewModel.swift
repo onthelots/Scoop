@@ -49,13 +49,7 @@ class ReviewViewModel: ObservableObject {
     func addUserPost() {
         postButtonTapped
             .sink { [weak self] post, imageUrls in
-                // 이미지 URL 배열이 nil이 아닌 경우에만 저장하도록 처리
-                guard let self = self, !imageUrls.isEmpty else {
-                    print("이미지 URL이 없습니다.")
-                    return
-                }
-
-                self.postUseCase.addPost(post, images: imageUrls) { result in
+                self?.postUseCase.addPost(post, images: imageUrls) { result in
                     switch result {
                     case .success:
                         print("Post가 성공적으로 저장되었습니다.")

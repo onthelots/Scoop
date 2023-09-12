@@ -41,17 +41,21 @@ protocol PostRepository {
         completion: @escaping (Result<[Post], Error>) -> Void
     )
 
+    // 유저가 작성한 게시물 가져오기
+    func fetchUserPosts(
+        uid: String,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    )
+
     // 작성한 Post 업데이트
     func updatePost(
         _ post: Post,
-        in category: PostCategory,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 
     // 작성한 Post 삭제
     func deletePost(
         _ post: Post,
-        in category: PostCategory,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }

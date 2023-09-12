@@ -43,23 +43,23 @@ final class RegNicknameViewModel: ObservableObject {
     }
 
 
-    // 패스워드 넘기기
-    func setUserNickname(nickname: String) {
-        self.nickname = nickname
-    }
-
-    // Checked Dubplication
-    func executeNicknameDuplicationCheck(nickname: String, completion: @escaping (Bool) -> Void) {
-            signUpUseCase.checkNickname(nickname: nickname) { [weak self] result in
-                switch result {
-                case .success(let isDuplicated):
-                    print("닉네임 중복여부 : \(isDuplicated)")
-                    self?.isDuplication = isDuplicated
-                    completion(isDuplicated)
-                case .failure:
-                    print("문제가 발생했습니다.")
-                    completion(true)
-                }
-            }
-        }
+//    // 패스워드 넘기기
+//    func setUserNickname(nickname: String) {
+//        self.nickname = nickname
+//    }
+//
+//    // Checked Dubplication
+//    func executeNicknameDuplicationCheck(nickname: String, completion: @escaping (Bool) -> Void) {
+//            signUpUseCase.checkNickname(nickname: nickname) { [weak self] result in
+//                switch result {
+//                case .success(let isDuplicated):
+//                    print("닉네임 중복여부 : \(isDuplicated)")
+//                    self?.isDuplication = isDuplicated
+//                    completion(isDuplicated)
+//                case .failure:
+//                    print("문제가 발생했습니다.")
+//                    completion(true)
+//                }
+//            }
+//        }
 }

@@ -138,8 +138,6 @@ class PostCategoryView: UIView {
      }
 
     @objc private func categoryLabelTapped(_ gesture: UITapGestureRecognizer) {
-        if let label = gesture.view as? UILabel {
-            delegate?.postCategoryLabelTapped(gesture)
-        }
+        delegate?.postCategoryLabelTapped(gesture)
     }
 }

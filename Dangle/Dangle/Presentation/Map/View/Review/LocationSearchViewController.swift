@@ -70,7 +70,6 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
 
     private func initializeViewModel() {
         let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
-        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
         viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
     }
 

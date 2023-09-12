@@ -17,26 +17,23 @@ class MapViewController: UIViewController {
     private var viewModel: MapViewModel!
     private var userInfo: UserInfo! // 유저의 정보
     private var selectedCategory: PostCategory?
+    private var filteredPostsForCategory: [Post] = []
+    private var subscription = Set<AnyCancellable>()
 
     private var currentPage = 0
     private var totalPages = 0
 
-    private var emptyPostToggleView = EmptyPostToggleView()
-
     // MARK: - Components
+    private var emptyPostToggleView = EmptyPostToggleView()
     private lazy var postCategoryView: PostCategoryView = {
         let postCategoryView = PostCategoryView()
         postCategoryView.delegate = self
         return postCategoryView
     }()
 
-    private var filteredPostsForCategory: [Post] = []
-
     private lazy var mapView = MapView()
-    private var collectionView: UICollectionView!
     private lazy var floatingButton = ReviewFloatingView()
-
-    private var subscription = Set<AnyCancellable>()
+    private var collectionView: UICollectionView!
 
     // MARK: - Diffable DataSource
     enum Section {
@@ -114,7 +111,7 @@ class MapViewController: UIViewController {
                     self.emptyPostToggleView.heightAnchor.constraint(equalToConstant: 50),
                     self.emptyPostToggleView.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor),
                     self.emptyPostToggleView.leadingAnchor.constraint(equalTo: self.postCategoryView.leadingAnchor),
-                    self.emptyPostToggleView.trailingAnchor.constraint(equalTo: self.postCategoryView.trailingAnchor),
+                    self.emptyPostToggleView.trailingAnchor.constraint(equalTo: self.postCategoryView.trailingAnchor)
                 ])
 
                 // floatingButton을 emptyPostToggleView 위에 오도록 함
