@@ -11,7 +11,7 @@ struct UserInfo: Codable {
     let email: String
     let password: String?
     let location: String?
-    let nickname: String?
+    var nickname: String?
     let longitude: String?
     let latitude: String?
 }

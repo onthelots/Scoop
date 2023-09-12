@@ -225,28 +225,56 @@ class DefaultPostRepository: PostRepository {
         }
     }
 
-    // MARK: - 작성한 Post 업데이트
-    func updatePost(_ post: Post, in category: PostCategory, completion: @escaping (Result<Void, Error>) -> Void) {
-         let documentRef = getDocumentReference(for: post, in: category)
+    // MARK: - 유저가 작성한 모든 게시물 가져오기
+    func fetchUserPosts(uid: String, completion: @escaping (Result<[Post], Error>) -> Void) {
+        let query = database.collectionGroup("UserReviews")
+            .whereField("authorUID", isEqualTo: uid)
 
-         do {
-             try documentRef.setData(from: post) { error in
-                 if let error = error {
-                     completion(.failure(error))
-                 } else {
-                     completion(.success(()))
-                 }
-             }
-         } catch {
-             completion(.failure(error))
-         }
-     }
+        query.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
 
-    // MARK: - 작성한 Post 삭제
-    func deletePost(_ post: Post, in category: PostCategory, completion: @escaping (Result<Void, Error>) -> Void) {
-        let documentRef = getDocumentReference(for: post, in: category)
+            var posts: [Post] = []
+            for document in snapshot!.documents {
+                if let post = try? document.data(as: Post.self) {
+                    posts.append(post)
+                }
+            }
 
-        documentRef.delete { error in
+            completion(.success(posts))
+        }
+    }
+
+    // MARK: - 게시물을 업데이트
+    func updatePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
+        let categoryName = post.category.rawValue
+        let categoryCollection = firestore.collection(categoryName)
+        let storeRef = categoryCollection.document(post.storeName)
+        let userDocRef = storeRef.collection("UserReviews").document(post.authorUID)
+
+        do {
+            try userDocRef.setData(from: post) { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(()))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
+    // 게시물을 삭제합니다.
+    func deletePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
+        let categoryName = post.category.rawValue
+        let categoryCollection = firestore.collection(categoryName)
+        let storeRef = categoryCollection.document(post.storeName)
+        let userDocRef = storeRef.collection("UserReviews").document(post.authorUID)
+
+        userDocRef.delete { error in
             if let error = error {
                 completion(.failure(error))
             } else {

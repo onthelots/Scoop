@@ -41,22 +41,27 @@ protocol PostUseCase {
         completion: @escaping (Result<[Post], Error>) -> Void
     )
 
+    // 유저가 작성한 게시물 가져오기
+    func fetchUserPosts(
+        uid: String,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    )
+
     // 작성한 Post 업데이트
     func updatePost(
         _ post: Post,
-        in category: PostCategory,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 
     // 작성한 Post 삭제
     func deletePost(
         _ post: Post,
-        in category: PostCategory,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }
 
 class DefaultPostUseCase: PostUseCase {
+
     private let postRepository: PostRepository
 
     init(postRepository: PostRepository) {
@@ -120,16 +125,23 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
+    // MARK: - 유저가 작성한 게시물 가져오기
+    func fetchUserPosts(
+        uid: String,
+        completion: @escaping (Result<[Post], Error>) -> Void
+    ) {
+        postRepository.fetchUserPosts(
+            uid: uid,
+            completion: completion)
+    }
 
     // MARK: - 리뷰 업데이트
     func updatePost(
         _ post: Post,
-        in category: PostCategory,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         postRepository.updatePost(
             post,
-            in: category,
             completion: completion
         )
     }
@@ -137,12 +149,10 @@ class DefaultPostUseCase: PostUseCase {
     // MARK: - 리뷰 삭제
     func deletePost(
         _ post: Post,
-        in category: PostCategory,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         postRepository.deletePost(
             post,
-            in: category,
             completion: completion
         )
     }

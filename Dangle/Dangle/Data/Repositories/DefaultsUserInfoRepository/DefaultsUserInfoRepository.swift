@@ -33,4 +33,32 @@ class DefaultsUserInfoRepository: UserInfoRepository {
             completion(.success(userInfo))
         }
     }
+
+    // MARK: - 변경된 닉네임 저장
+    func updateNickname(uid: String, newNickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let database = Firestore.firestore()
+        let userRef = database.collection("users").document(uid)
+
+        userRef.updateData(["nickname": newNickname]) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
+    // MARK: - 변경된 이메일을 저장
+    func updateEmail(uid: String, newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let database = Firestore.firestore()
+        let userRef = database.collection("users").document(uid)
+
+        userRef.updateData(["email": newEmail]) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
 }

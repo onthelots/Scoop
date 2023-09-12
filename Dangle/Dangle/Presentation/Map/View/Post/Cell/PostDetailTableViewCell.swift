@@ -13,8 +13,8 @@ class PostDetailTableViewCell: UITableViewCell {
 
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 30
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,12 +42,6 @@ class PostDetailTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var imageScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
-
     private lazy var imageStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -58,18 +52,15 @@ class PostDetailTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    private lazy var reviewTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 11, weight: .regular)
-        textView.textAlignment = .left
-        textView.sizeToFit()
-        textView.isEditable = false
-        textView.isSelectable = false
-        textView.isScrollEnabled = false
-        textView.textContainer.maximumNumberOfLines = 0 // 여러 줄 지원
-        textView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    private lazy var reviewLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 11, weight: .light)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return label
     }()
 
     override func layoutSubviews() {
@@ -84,38 +75,29 @@ class PostDetailTableViewCell: UITableViewCell {
         contentView.addSubview(userImageView)
         contentView.addSubview(nickNameLabel)
         contentView.addSubview(dateLabel)
-        contentView.addSubview(imageScrollView)
-        imageScrollView.addSubview(imageStackView)
-        contentView.addSubview(reviewTextView)
+        contentView.addSubview(imageStackView)
+        contentView.addSubview(reviewLabel)
 
         NSLayoutConstraint.activate([
-            userImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            userImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            userImageView.widthAnchor.constraint(equalToConstant: 50),
+            userImageView.widthAnchor.constraint(equalToConstant: 20),
             userImageView.heightAnchor.constraint(equalTo: userImageView.widthAnchor),
 
             nickNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
             nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10),
 
-            dateLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 5),
-            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            dateLabel.topAnchor.constraint(equalTo: nickNameLabel.bottomAnchor, constant: 5),
+            dateLabel.leadingAnchor.constraint(equalTo: nickNameLabel.leadingAnchor),
 
-            imageScrollView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
-            imageScrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageScrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
+            imageStackView.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
+            imageStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
 
-            imageStackView.topAnchor.constraint(equalTo: imageScrollView.topAnchor),
-            imageStackView.leadingAnchor.constraint(equalTo: imageScrollView.leadingAnchor),
-            imageStackView.trailingAnchor.constraint(equalTo: imageScrollView.trailingAnchor),
-            imageStackView.bottomAnchor.constraint(equalTo: imageScrollView.bottomAnchor),
-            imageStackView.heightAnchor.constraint(equalTo: imageScrollView.heightAnchor),
-            imageStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-
-            reviewTextView.topAnchor.constraint(equalTo: imageStackView.bottomAnchor, constant: 5),
-            reviewTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            reviewTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            reviewTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            reviewTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+            reviewLabel.topAnchor.constraint(equalTo: imageStackView.bottomAnchor, constant: 10),
+            reviewLabel.leadingAnchor.constraint(equalTo: imageStackView.leadingAnchor),
+            reviewLabel.trailingAnchor.constraint(equalTo: imageStackView.trailingAnchor),
+            reviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
 
@@ -128,7 +110,7 @@ class PostDetailTableViewCell: UITableViewCell {
         userImageView.image = nil
         nickNameLabel.text = ""
         dateLabel.text = ""
-        reviewTextView.text = ""
+        reviewLabel.text = ""
 
         // 이미지 스크롤뷰와 스택뷰를 초기화합니다.
         for subview in imageStackView.arrangedSubviews {
@@ -140,17 +122,17 @@ class PostDetailTableViewCell: UITableViewCell {
     func configure(with post: Post) {
         userImageView.image = UIImage(systemName: "person.circle.fill")
         nickNameLabel.text = post.nickname
-        reviewTextView.text = post.review
+        reviewLabel.text = post.review
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
         dateLabel.text = dateFormatter.string(from: post.timestamp)
 
-        // 이미지 스크롤뷰에 이미지 뷰 추가
-        if let postImages = post.postImage, postImages.count > 0 {
+        if let postImages = post.postImage,
+           postImages.count > 0 {
             for imageUrlString in postImages {
                 if let imageUrl = URL(string: imageUrlString) {
                     let imageView = UIImageView()
-                    imageView.contentMode = .scaleAspectFit
+                    imageView.contentMode = .scaleAspectFill
                     imageView.translatesAutoresizingMaskIntoConstraints = false
                     imageView.clipsToBounds = true
                     imageView.kf.setImage(
@@ -161,36 +143,27 @@ class PostDetailTableViewCell: UITableViewCell {
                     imageStackView.addArrangedSubview(imageView)
                 }
             }
-
-            // 이미지 스크롤뷰의 높이를 이미지 수에 맞게 동적으로 조정
-            imageScrollView.heightAnchor.constraint(equalToConstant: 100).isActive = false
-            let scrollViewHeight = CGFloat(postImages.count * 100) // 이미지 높이 * 이미지 수
-            imageScrollView.heightAnchor.constraint(equalToConstant: scrollViewHeight).isActive = true
-
-            // 이미지가 하나일 때 reviewTextView와 너비를 같게 설정
             if postImages.count == 1 {
+                // 이미지가 2개 또는 3개인 경우
                 NSLayoutConstraint.activate([
-                    imageScrollView.leadingAnchor.constraint(equalTo: reviewTextView.leadingAnchor),
-                    imageScrollView.trailingAnchor.constraint(equalTo: reviewTextView.trailingAnchor),
-                    imageStackView.topAnchor.constraint(equalTo: imageScrollView.topAnchor),
-                    imageStackView.leadingAnchor.constraint(equalTo: imageScrollView.leadingAnchor),
-                    imageStackView.trailingAnchor.constraint(equalTo: imageScrollView.trailingAnchor),
-                    imageStackView.bottomAnchor.constraint(equalTo: imageScrollView.bottomAnchor),
-                    imageStackView.heightAnchor.constraint(equalTo: imageScrollView.heightAnchor),
-                    imageStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor)
+                    imageStackView.heightAnchor.constraint(equalToConstant: 150),
+                    imageStackView.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
+                    imageStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    imageStackView.heightAnchor.constraint(equalToConstant: 100),
+                    imageStackView.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
+                    imageStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
                 ])
             }
         } else {
-            // 이미지가 없는 경우 imageScrollView와 imageStackView를 숨깁니다.
-            imageScrollView.isHidden = true
-            imageStackView.isHidden = true
-
+            self.imageStackView.isHidden = true
             NSLayoutConstraint.activate([
-                reviewTextView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
-                reviewTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                reviewTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                reviewTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-                reviewTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+                reviewLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
+                reviewLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
+                reviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+                reviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
             ])
         }
 

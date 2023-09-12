@@ -12,6 +12,18 @@ protocol UserInfoUseCase {
         userId: String,
         completion: @escaping (Result<UserInfo, Error>) -> Void
     )
+
+    func updateNickname(
+        uid: String,
+        newNickname: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    )
+
+    func updateEmail(
+        uid: String,
+        newEmail: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    )
 }
 
 final class DefaultsUserInfoUseCase: UserInfoUseCase {
@@ -32,5 +44,29 @@ final class DefaultsUserInfoUseCase: UserInfoUseCase {
                 completion(.failure(error))
             }
         }
+    }
+
+    func updateNickname(
+        uid: String,
+        newNickname: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        userInfoRepository.updateNickname(
+            uid: uid,
+            newNickname: newNickname,
+            completion: completion
+        )
+    }
+
+    func updateEmail(
+        uid: String,
+        newEmail: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        userInfoRepository.updateEmail(
+            uid: uid,
+            newEmail: newEmail,
+            completion: completion
+        )
     }
 }

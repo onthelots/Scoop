@@ -20,6 +20,8 @@ class PostDetailViewController: UIViewController {
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.separatorInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         tableView.backgroundColor = .systemBackground
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = .zero
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()

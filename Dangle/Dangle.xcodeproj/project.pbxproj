@@ -91,6 +91,14 @@
 		3F8CD6FF2A972D5D00307372 /* DefaultsUserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6FE2A972D5D00307372 /* DefaultsUserInfoRepository.swift */; };
 		3F8CD7012A97474200307372 /* CulturalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD7002A97474200307372 /* CulturalEvent.swift */; };
 		3F8CD7032A97479400307372 /* EducationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD7022A97479400307372 /* EducationEvent.swift */; };
+		3F9F68202AB0165500E36F29 /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F681F2AB0165500E36F29 /* MyPostView.swift */; };
+		3F9F68282AB01C2300E36F29 /* EditUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F68272AB01C2300E36F29 /* EditUserProfileViewController.swift */; };
+		3F9F682E2AB01CEB00E36F29 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F682D2AB01CEB00E36F29 /* UserProfileView.swift */; };
+		3F9F68312AB0227F00E36F29 /* HomePageURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F68302AB0227F00E36F29 /* HomePageURL.swift */; };
+		3F9F68342AB0241F00E36F29 /* CheckMyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */; };
+		3F9F68362AB02BA600E36F29 /* EditUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F68352AB02BA600E36F29 /* EditUserProfileViewModel.swift */; };
+		3F9F683E2AB0753B00E36F29 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */; };
+		3F9F68402AB0758C00E36F29 /* ProfileTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F683F2AB0758C00E36F29 /* ProfileTableViewModel.swift */; };
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
@@ -123,7 +131,6 @@
 		3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */; };
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
 		3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */; };
-		3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D32A93475A000F1B38 /* SettingViewController.swift */; };
 		3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */; };
 		3FE68BC52AA0B00100595733 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3FE68BC42AA0B00100595733 /* SwiftSoup */; };
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
@@ -224,6 +231,14 @@
 		3F8CD6FE2A972D5D00307372 /* DefaultsUserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsUserInfoRepository.swift; sourceTree = "<group>"; };
 		3F8CD7002A97474200307372 /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
 		3F8CD7022A97479400307372 /* EducationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationEvent.swift; sourceTree = "<group>"; };
+		3F9F681F2AB0165500E36F29 /* MyPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostView.swift; sourceTree = "<group>"; };
+		3F9F68272AB01C2300E36F29 /* EditUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileViewController.swift; sourceTree = "<group>"; };
+		3F9F682D2AB01CEB00E36F29 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		3F9F68302AB0227F00E36F29 /* HomePageURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageURL.swift; sourceTree = "<group>"; };
+		3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMyPostViewController.swift; sourceTree = "<group>"; };
+		3F9F68352AB02BA600E36F29 /* EditUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileViewModel.swift; sourceTree = "<group>"; };
+		3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		3F9F683F2AB0758C00E36F29 /* ProfileTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewModel.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,7 +275,6 @@
 		3FE361C92A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWelcomeViewModel.swift; sourceTree = "<group>"; };
 		3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
-		3FE361D32A93475A000F1B38 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDetailViewController.swift; sourceTree = "<group>"; };
 		3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -556,7 +570,8 @@
 		3F1AB7BF2A8DC96E0076CEAB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				3F8CD6D62A96D5A900307372 /* ProfileTab */,
+				3F9F68162AB007D200E36F29 /* ViewModel */,
+				3F9F68172AB007D900E36F29 /* View */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -666,6 +681,7 @@
 				3F1AB7952A8DC96E0076CEAB /* Terms */,
 				3FD6182E2A98A27000CE6690 /* LocalEvent */,
 				3F738F472AA9E1A600B6C6D2 /* PagingInfo */,
+				3F9F682F2AB0225B00E36F29 /* HomePage */,
 			);
 			path = PersistentStorages;
 			sourceTree = "<group>";
@@ -728,14 +744,6 @@
 				3F49648B2A8F866400078EE3 /* AuthRepository.swift */,
 			);
 			path = AuthRepository;
-			sourceTree = "<group>";
-		};
-		3F59688B2AAF503100CFC0C8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3F59688C2AAF504200CFC0C8 /* ProfileViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3F5D40422AA362B400D6692D /* Map */ = {
@@ -868,24 +876,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3F8CD6D62A96D5A900307372 /* ProfileTab */ = {
-			isa = PBXGroup;
-			children = (
-				3F59688B2AAF503100CFC0C8 /* ViewModel */,
-				3F8CD6D72A96D5AE00307372 /* View */,
-			);
-			path = ProfileTab;
-			sourceTree = "<group>";
-		};
-		3F8CD6D72A96D5AE00307372 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
-				3FE361D32A93475A000F1B38 /* SettingViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		3F8CD6D92A96D5C300307372 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +924,69 @@
 				3F8CD6FE2A972D5D00307372 /* DefaultsUserInfoRepository.swift */,
 			);
 			path = DefaultsUserInfoRepository;
+			sourceTree = "<group>";
+		};
+		3F9F68162AB007D200E36F29 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F59688C2AAF504200CFC0C8 /* ProfileViewModel.swift */,
+				3F9F68352AB02BA600E36F29 /* EditUserProfileViewModel.swift */,
+				3F9F683F2AB0758C00E36F29 /* ProfileTableViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F9F68172AB007D900E36F29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
+				3F9F68292AB01C5400E36F29 /* UserProfile */,
+				3F9F681D2AB0160500E36F29 /* MyPost */,
+				3F9F683B2AB0750E00E36F29 /* ProfileTable */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F9F681D2AB0160500E36F29 /* MyPost */ = {
+			isa = PBXGroup;
+			children = (
+				3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */,
+				3F9F681F2AB0165500E36F29 /* MyPostView.swift */,
+			);
+			path = MyPost;
+			sourceTree = "<group>";
+		};
+		3F9F68292AB01C5400E36F29 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				3F9F68272AB01C2300E36F29 /* EditUserProfileViewController.swift */,
+				3F9F682D2AB01CEB00E36F29 /* UserProfileView.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		3F9F682F2AB0225B00E36F29 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				3F9F68302AB0227F00E36F29 /* HomePageURL.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		3F9F683B2AB0750E00E36F29 /* ProfileTable */ = {
+			isa = PBXGroup;
+			children = (
+				3F9F683C2AB0752A00E36F29 /* Cell */,
+			);
+			path = ProfileTable;
+			sourceTree = "<group>";
+		};
+		3F9F683C2AB0752A00E36F29 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3FACA86C2A7CE47B00F2544C = {
@@ -1319,7 +1372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FAF2E4F2AA5C1C2003A9964 /* KeywordSearchResult.swift in Sources */,
-				3FE361D42A93475A000F1B38 /* SettingViewController.swift in Sources */,
 				3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */,
 				3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */,
 				3F8CD6FC2A972D1E00307372 /* UserInfoRepository.swift in Sources */,
@@ -1331,6 +1383,7 @@
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F5968882AAED85D00CFC0C8 /* PostDetailTableViewCell.swift in Sources */,
+				3F9F68402AB0758C00E36F29 /* ProfileTableViewModel.swift in Sources */,
 				3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */,
 				3F44C76C2AA1F2C30037CCC5 /* PostUseCase.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
@@ -1362,9 +1415,11 @@
 				3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */,
 				3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
+				3F9F683E2AB0753B00E36F29 /* ProfileTableViewCell.swift in Sources */,
 				3F738F412AA9A06900B6C6D2 /* MapDetailViewModel.swift in Sources */,
 				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
 				3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */,
+				3F9F68342AB0241F00E36F29 /* CheckMyPostViewController.swift in Sources */,
 				3F8CD6F72A97101300307372 /* HomeViewModel.swift in Sources */,
 				3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */,
 				3F738F432AA9ABE500B6C6D2 /* PostFooterReusableView.swift in Sources */,
@@ -1373,9 +1428,11 @@
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
 				3FB1120B2AA06E3E00C73A3A /* BackgroundDecorationView.swift in Sources */,
 				3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */,
+				3F9F682E2AB01CEB00E36F29 /* UserProfileView.swift in Sources */,
 				3FB112132AA088F600C73A3A /* NewIssueDetailViewModel.swift in Sources */,
 				3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
+				3F9F68202AB0165500E36F29 /* MyPostView.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
 				3F5D40412AA3628F00D6692D /* ReviewFloatingView.swift in Sources */,
 				3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */,
@@ -1385,6 +1442,7 @@
 				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
 				3F7B8EE32AA70FB300B8D66B /* LocationDTO.swift in Sources */,
 				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
+				3F9F68312AB0227F00E36F29 /* HomePageURL.swift in Sources */,
 				3F7ADEA52AA32A9400AE2DD1 /* PostCollectionViewCell.swift in Sources */,
 				3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */,
 				3F59688D2AAF504200CFC0C8 /* ProfileViewModel.swift in Sources */,
@@ -1405,6 +1463,7 @@
 				3F1AB7DE2A8DC96E0076CEAB /* DefaultReverseGeocodeRepository.swift in Sources */,
 				3F7ADE9E2AA32A6900AE2DD1 /* MapViewModel.swift in Sources */,
 				3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */,
+				3F9F68362AB02BA600E36F29 /* EditUserProfileViewModel.swift in Sources */,
 				3F44C7722AA1F3320037CCC5 /* DefaultsPostRepository.swift in Sources */,
 				3F8CD6F52A96EAFD00307372 /* DefaultsLocalEventRepository.swift in Sources */,
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
@@ -1419,6 +1478,7 @@
 				3F8CD6EF2A96E91A00307372 /* LocalEventUseCase.swift in Sources */,
 				3F4964952A8F884300078EE3 /* SignUpUseCase.swift in Sources */,
 				3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */,
+				3F9F68282AB01C2300E36F29 /* EditUserProfileViewController.swift in Sources */,
 				3FB14B592A90F08A00A356DA /* CommonTextFieldView.swift in Sources */,
 				3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */,
 				3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */,

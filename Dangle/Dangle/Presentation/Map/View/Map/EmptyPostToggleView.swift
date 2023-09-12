@@ -28,7 +28,8 @@ class EmptyPostToggleView: UIView {
         label.sizeToFit()
         label.numberOfLines = 0
         label.text = "인근에 작성된 이웃의 이야기가 없습니다"
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+//        label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -40,8 +41,9 @@ class EmptyPostToggleView: UIView {
         label.textAlignment = .center
         label.sizeToFit()
         label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.text = "+ 버튼을 눌러, 내 동네 이야기를 작성해주세요"
-        label.font = .preferredFont(forTextStyle: .headline)
+//        label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .tintColor
         return label
     }()
