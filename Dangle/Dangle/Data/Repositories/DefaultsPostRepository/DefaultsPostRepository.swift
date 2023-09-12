@@ -12,12 +12,10 @@ import Firebase
 import FirebaseStorage
 
 class DefaultPostRepository: PostRepository {
-
-
-
     let database = Firestore.firestore()
     let storage = Storage.storage()
 
+    private let kakaoAPIKey = Bundle.main.kakaoAPI
     private let networkManager: NetworkService
     private let geocodeManager: GeocodingManager
     private var subscriptions = Set<AnyCancellable>()
@@ -49,7 +47,7 @@ class DefaultPostRepository: PostRepository {
             base: geocodeManager.keywordSearchBaseURL,
             path: "",
             params: params,
-            header: ["Authorization": "KakaoAK \(geocodeManager.restAPIKey)"]
+            header: ["Authorization": "KakaoAK \(kakaoAPIKey)"]
         )
 
         networkManager.load(resource)

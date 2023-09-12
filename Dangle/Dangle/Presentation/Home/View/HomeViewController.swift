@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
         let localEventUseCase = DefaultLocalEventUseCase(
             localEventRepository: DefaultsLocalEventRepository(
                 networkManager: NetworkService(configuration: .default),
-                seoulOpenDataManager: SeoulOpenDataMaanger()
+                seoulOpenDataManager: SeoulOpenDataManager()
             )
         )
         let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())

@@ -36,7 +36,7 @@
 		3F1AB7F22A8DC96E0076CEAB /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */; };
 		3F1AB7F32A8DC96E0076CEAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C32A8DC96E0076CEAB /* Assets.xcassets */; };
 		3F1AB7F42A8DC96E0076CEAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C42A8DC96E0076CEAB /* LaunchScreen.storyboard */; };
-		3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */; };
+		3F1AB7F52A8DC96E0076CEAB /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C72A8DC96E0076CEAB /* APIService.swift */; };
 		3F1AB7F62A8DC96E0076CEAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */; };
 		3F1AB7F72A8DC96E0076CEAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */; };
 		3F1AB7F82A8DC96E0076CEAB /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CC2A8DC96E0076CEAB /* UserDefaultStorage.swift */; };
@@ -79,6 +79,8 @@
 		3F7B8EE32AA70FB300B8D66B /* LocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B8EE22AA70FB300B8D66B /* LocationDTO.swift */; };
 		3F7B8EE52AA7167B00B8D66B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B8EE42AA7167B00B8D66B /* User.swift */; };
 		3F80C0062A9DBCAD00F2128D /* NewIssueDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */; };
+		3F8A76742AB0A09D00C5F967 /* DangleInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F8A76732AB0A09D00C5F967 /* DangleInfo.plist */; };
+		3F8A76762AB0A12000C5F967 /* Dangle++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8A76752AB0A12000C5F967 /* Dangle++Bundle.swift */; };
 		3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */; };
 		3F8CD6E22A96D8FA00307372 /* InformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */; };
 		3F8CD6E72A96D92300307372 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8CD6E62A96D92300307372 /* Kingfisher */; };
@@ -183,7 +185,7 @@
 		3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3F1AB7C32A8DC96E0076CEAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F1AB7C52A8DC96E0076CEAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
+		3F1AB7C72A8DC96E0076CEAB /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3F1AB7CC2A8DC96E0076CEAB /* UserDefaultStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
@@ -220,6 +222,8 @@
 		3F7B8EE22AA70FB300B8D66B /* LocationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDTO.swift; sourceTree = "<group>"; };
 		3F7B8EE42AA7167B00B8D66B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3F80C0052A9DBCAD00F2128D /* NewIssueDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueDTO.swift; sourceTree = "<group>"; };
+		3F8A76732AB0A09D00C5F967 /* DangleInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DangleInfo.plist; sourceTree = "<group>"; };
+		3F8A76752AB0A12000C5F967 /* Dangle++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dangle++Bundle.swift"; sourceTree = "<group>"; };
 		3F8CD6DF2A96D8EC00307372 /* NewIssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F8CD6E12A96D8FA00307372 /* InformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCollectionViewCell.swift; sourceTree = "<group>"; };
 		3F8CD6EE2A96E91A00307372 /* LocalEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEventUseCase.swift; sourceTree = "<group>"; };
@@ -579,6 +583,7 @@
 		3F1AB7C22A8DC96E0076CEAB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				3F8A76752AB0A12000C5F967 /* Dangle++Bundle.swift */,
 				3F1AB7C32A8DC96E0076CEAB /* Assets.xcassets */,
 				3F1AB7C42A8DC96E0076CEAB /* LaunchScreen.storyboard */,
 			);
@@ -588,7 +593,6 @@
 		3F1AB7C62A8DC96E0076CEAB /* App */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7C72A8DC96E0076CEAB /* AppConfigurations.swift */,
 				3F1AB7C82A8DC96E0076CEAB /* AppDelegate.swift */,
 				3F1AB7C92A8DC96E0076CEAB /* SceneDelegate.swift */,
 			);
@@ -697,6 +701,7 @@
 		3F4964782A8F5CE300078EE3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3F8A76772AB0A43300C5F967 /* API */,
 				3F4964792A8F5D0700078EE3 /* Validation */,
 			);
 			path = Services;
@@ -841,6 +846,14 @@
 				3F7B8EE22AA70FB300B8D66B /* LocationDTO.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		3F8A76772AB0A43300C5F967 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7C72A8DC96E0076CEAB /* APIService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		3F8CD6CA2A96D40F00307372 /* View */ = {
@@ -1021,6 +1034,7 @@
 				3F1AB7C22A8DC96E0076CEAB /* Resource */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
 				3FD6181C2A9866B000CE6690 /* GoogleService-Info.plist */,
+				3F8A76732AB0A09D00C5F967 /* DangleInfo.plist */,
 			);
 			path = Dangle;
 			sourceTree = "<group>";
@@ -1325,6 +1339,7 @@
 				3FD6181D2A9866B000CE6690 /* GoogleService-Info.plist in Resources */,
 				3F1AB7F42A8DC96E0076CEAB /* LaunchScreen.storyboard in Resources */,
 				3F1AB7F32A8DC96E0076CEAB /* Assets.xcassets in Resources */,
+				3F8A76742AB0A09D00C5F967 /* DangleInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1443,6 +1458,7 @@
 				3F7B8EE32AA70FB300B8D66B /* LocationDTO.swift in Sources */,
 				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
 				3F9F68312AB0227F00E36F29 /* HomePageURL.swift in Sources */,
+				3F8A76762AB0A12000C5F967 /* Dangle++Bundle.swift in Sources */,
 				3F7ADEA52AA32A9400AE2DD1 /* PostCollectionViewCell.swift in Sources */,
 				3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */,
 				3F59688D2AAF504200CFC0C8 /* ProfileViewModel.swift in Sources */,
@@ -1480,7 +1496,7 @@
 				3F1AB7DF2A8DC96E0076CEAB /* HomeViewController.swift in Sources */,
 				3F9F68282AB01C2300E36F29 /* EditUserProfileViewController.swift in Sources */,
 				3FB14B592A90F08A00A356DA /* CommonTextFieldView.swift in Sources */,
-				3F1AB7F52A8DC96E0076CEAB /* AppConfigurations.swift in Sources */,
+				3F1AB7F52A8DC96E0076CEAB /* APIService.swift in Sources */,
 				3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */,
 				3F1AB7F22A8DC96E0076CEAB /* TabBarViewController.swift in Sources */,
 			);

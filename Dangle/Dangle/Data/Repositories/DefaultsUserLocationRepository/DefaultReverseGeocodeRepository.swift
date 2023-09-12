@@ -10,6 +10,7 @@ import Combine
 import CoreLocation
 
 final class DefaultReverseGeocodeRepository: ReverseGeocodeRepository {
+    private let kakaoAPIKey = Bundle.main.kakaoAPI
     private let networkManager: NetworkService
     private let geocodeManager: GeocodingManager
     private var subscriptions = Set<AnyCancellable>()
@@ -31,7 +32,7 @@ final class DefaultReverseGeocodeRepository: ReverseGeocodeRepository {
             base: geocodeManager.reverseGeocodeBaseURL,
             path: "",
             params: params,
-            header: ["Authorization": "KakaoAK \(geocodeManager.restAPIKey)"]
+            header: ["Authorization": "KakaoAK \(kakaoAPIKey)"]
         )
 
         networkManager.load(resource)

@@ -10,10 +10,10 @@ import Combine
 
 final class DefaultsLocalEventRepository: LocalEventRepository {
     private let networkManager: NetworkService
-    private let seoulOpenDataManager: SeoulOpenDataMaanger
+    private let seoulOpenDataManager: SeoulOpenDataManager
     private var subscriptions = Set<AnyCancellable>()
 
-    init(networkManager: NetworkService, seoulOpenDataManager: SeoulOpenDataMaanger) {
+    init(networkManager: NetworkService, seoulOpenDataManager: SeoulOpenDataManager) {
         self.networkManager = networkManager
         self.seoulOpenDataManager = seoulOpenDataManager
     }

@@ -11,6 +11,7 @@ import CoreLocation
 
 final class DefaultGeocodeRepository: GeocodeRepository {
 
+    private let kakaoAPIKey = Bundle.main.kakaoAPI
     private let networkManager: NetworkService
     private let geocodeManager: GeocodingManager
     private var subscriptions = Set<AnyCancellable>()
@@ -32,7 +33,7 @@ final class DefaultGeocodeRepository: GeocodeRepository {
             base: geocodeManager.geocodeBaseURL,
             path: "",
             params: params,
-            header: ["Authorization": "KakaoAK \(geocodeManager.restAPIKey)"]
+            header: ["Authorization": "KakaoAK \(kakaoAPIKey)"]
         )
 
         networkManager.load(resource)
