@@ -12,10 +12,8 @@ import SafariServices
 
 class ProfileViewController: UIViewController {
 
-    private var myPosts: [Post] = []
-    private var userInfo: UserInfo!
-    private var profileViewModel: ProfileViewModel!
-    private var profileTableViewModel: ProfileTableViewModel = ProfileTableViewModel()
+    private var userInfo = CurrentValueSubject<UserInfo, Never>(UserInfo(email: "", password: "", location: "", longitude: "", latitude: ""))
+    private var viewModel: ProfileViewModel!
     private var profileTableItems: [ProfileTableItem] = []
 
     private var subscription = Set<AnyCancellable>()
@@ -51,7 +49,7 @@ class ProfileViewController: UIViewController {
         initialTableView()
         bind()
         setupUI()
-        profileViewModel.userInfoFetch()
+        viewModel.userInfoFetch()
         userProfileView.delegate = self
         myPostView.delegate = self
     }
@@ -60,53 +58,49 @@ class ProfileViewController: UIViewController {
     private func initialViewModel() {
         let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
         let postUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
-        profileViewModel = ProfileViewModel(userInfoUseCase: userInfoUseCase, postUseCase: postUseCase)
+        viewModel = ProfileViewModel(userInfoUseCase: userInfoUseCase, postUseCase: postUseCase)
     }
 
     // MARK: - Initial TableView
     private func initialTableView() {
-        profileTableViewModel.fetchData()
+        viewModel.fetchProfileTableView()
         tableView.delegate = self
         tableView.dataSource = self
     }
 
     // MARK: - Bind()
     private func bind() {
-        profileViewModel.$userInfo
+        // 내 정보 불러오기 (+userProfileView 업데이트)
+        // MARK: - userProfileView 업데이트 이슈 발생
+        viewModel.$userInfo
             .receive(on: RunLoop.main)
             .sink { [weak self] userInfo in
                 guard let self = self else { return }
-                self.userInfo = userInfo
-                guard let updateUserInfo = self.userInfo else { return }
-                self.userProfileView.userProfileConfigure(updateUserInfo) // TODO: - 왜 View가 업데이트가 잘안되지?
+                guard let email = userInfo?.email,
+                      let password = userInfo?.password,
+                      let location = userInfo?.location,
+                      let nickname = userInfo?.nickname,
+                      let longitude = userInfo?.longitude,
+                      let latitude = userInfo?.latitude
+                else {
+                    return
+                }
+                self.userInfo.send(UserInfo(email: email, password: password, location: location, nickname: nickname, longitude: longitude, latitude: latitude))
             }.store(in: &subscription)
 
-        profileViewModel.editProfileTapped
-            .sink { userInfo in
-                let editUserProfileViewController = EditUserProfileViewController(userInfo: userInfo)
-                editUserProfileViewController.title = "프로필 수정"
-                editUserProfileViewController.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(editUserProfileViewController, animated: true)
-            }.store(in: &subscription)
-
-        profileViewModel.checkMyPostTapped
-            .sink { myPotsts in
-                let checkMyPostViewController = CheckMyPostViewController(myPosts: myPotsts)
-                checkMyPostViewController.title = "내가 쓴 글"
-                checkMyPostViewController.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(checkMyPostViewController, animated: true)
-            }.store(in: &subscription)
-        
-        profileViewModel.$myPosts
-            .sink { posts in
-                self.myPosts = posts
-            }.store(in: &subscription)
-
-        profileTableViewModel.$items
+        // Profile Table Item 불러오기
+        viewModel.$items
             .receive(on: RunLoop.main)
             .sink { [weak self] items in
                 self?.profileTableItems = items
                 self?.tableView.reloadData()
+            }.store(in: &subscription)
+
+        userInfo
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] userInfo in
+                print("방출 및 업데이트 된 닉네임 : \(userInfo.nickname)")
+                self.userProfileView.userProfileConfigure(userInfo)
             }.store(in: &subscription)
     }
 
@@ -141,36 +135,44 @@ class ProfileViewController: UIViewController {
     }
 
     private func updateUserProfileView(_ userInfo: UserInfo) {
-        profileViewModel.userInfoFetch()
+        viewModel.userInfoFetch()
         self.userProfileView.userProfileConfigure(userInfo)
+    }
+
+    private func presentWebView(_ url: String) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        let safariViewController = SFSafariViewController(url: url)
+        self.present(safariViewController, animated: true, completion: nil)
     }
 }
 
 extension ProfileViewController: UserProfileViewDelegate {
     func editButtonTapped() {
-        profileViewModel.editProfileTapped.send(userInfo)
+        let editUserProfileViewController = EditUserProfileViewController()
+        editUserProfileViewController.title = "프로필 수정"
+        editUserProfileViewController.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.pushViewController(editUserProfileViewController, animated: true)
     }
 }
 
 extension ProfileViewController: MyPostViewDelegete {
     func myPostCheckButtonTapped() {
-        profileViewModel.checkMyPostTapped.send(myPosts)
+        let checkMyPostViewController = CheckMyPostViewController()
+        checkMyPostViewController.title = "내가 쓴 글"
+        checkMyPostViewController.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.pushViewController(checkMyPostViewController, animated: true)
     }
 
     func customerServiceButtonTapped() {
-        guard let url = URL(string: "https://naver.com") else {
-            return
-        }
-        let safariViewController = SFSafariViewController(url: url)
-        self.present(safariViewController, animated: true, completion: nil)
+        let customServiceURL = "https://naver.com"
+        self.presentWebView(customServiceURL)
     }
 
     func noticeButtonTapped() {
-        guard let url = URL(string: "https://naver.com") else {
-            return
-        }
-        let safariViewController = SFSafariViewController(url: url)
-        self.present(safariViewController, animated: true, completion: nil)
+        let noticeURL = "https://naver.com"
+        self.presentWebView(noticeURL)
     }
 }
 
@@ -196,11 +198,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         // WebView Present
         switch item.action {
         case .openURL(let url):
-            guard let url = URL(string: url) else {
-                return
-            }
-            let safariViewController = SFSafariViewController(url: url)
-            self.present(safariViewController, animated: true, completion: nil)
+            self.presentWebView(url)
 
         // Logout button Tapped
         case .showAlert:

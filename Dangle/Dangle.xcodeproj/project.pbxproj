@@ -100,7 +100,6 @@
 		3F9F68342AB0241F00E36F29 /* CheckMyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */; };
 		3F9F68362AB02BA600E36F29 /* EditUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F68352AB02BA600E36F29 /* EditUserProfileViewModel.swift */; };
 		3F9F683E2AB0753B00E36F29 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */; };
-		3F9F68402AB0758C00E36F29 /* ProfileTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F683F2AB0758C00E36F29 /* ProfileTableViewModel.swift */; };
 		3FACA8902A7CE47C00F2544C /* DangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA88F2A7CE47C00F2544C /* DangleTests.swift */; };
 		3FACA89A2A7CE47C00F2544C /* DangleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA8992A7CE47C00F2544C /* DangleUITests.swift */; };
 		3FACA89C2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */; };
@@ -121,6 +120,9 @@
 		3FB14B752A91D9B500A356DA /* RegNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */; };
 		3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */; };
 		3FB14B792A91DC0D00A356DA /* NickNameValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */; };
+		3FB7F9D22AB11BDE00016290 /* MyPostCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9D12AB11BDE00016290 /* MyPostCategoryView.swift */; };
+		3FB7F9D72AB1249C00016290 /* MyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9D62AB1249C00016290 /* MyPostTableViewCell.swift */; };
+		3FB7F9DB2AB12B9900016290 /* EmptyMyPostToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */; };
 		3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */; };
 		3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */; };
 		3FCFE6122AA8C0BE00D0AA10 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */; };
@@ -242,7 +244,6 @@
 		3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMyPostViewController.swift; sourceTree = "<group>"; };
 		3F9F68352AB02BA600E36F29 /* EditUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileViewModel.swift; sourceTree = "<group>"; };
 		3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
-		3F9F683F2AB0758C00E36F29 /* ProfileTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewModel.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +268,9 @@
 		3FB14B742A91D9B500A356DA /* RegNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewModel.swift; sourceTree = "<group>"; };
 		3FB14B762A91D9C700A356DA /* RegNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNicknameViewController.swift; sourceTree = "<group>"; };
 		3FB14B782A91DC0D00A356DA /* NickNameValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameValidationService.swift; sourceTree = "<group>"; };
+		3FB7F9D12AB11BDE00016290 /* MyPostCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostCategoryView.swift; sourceTree = "<group>"; };
+		3FB7F9D62AB1249C00016290 /* MyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewCell.swift; sourceTree = "<group>"; };
+		3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMyPostToggleView.swift; sourceTree = "<group>"; };
 		3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
 		3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
@@ -944,7 +948,6 @@
 			children = (
 				3F59688C2AAF504200CFC0C8 /* ProfileViewModel.swift */,
 				3F9F68352AB02BA600E36F29 /* EditUserProfileViewModel.swift */,
-				3F9F683F2AB0758C00E36F29 /* ProfileTableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -952,10 +955,9 @@
 		3F9F68172AB007D900E36F29 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
-				3F9F68292AB01C5400E36F29 /* UserProfile */,
+				3FB7F9CF2AB1188200016290 /* Profile */,
+				3F9F68292AB01C5400E36F29 /* EditUserProfile */,
 				3F9F681D2AB0160500E36F29 /* MyPost */,
-				3F9F683B2AB0750E00E36F29 /* ProfileTable */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -964,18 +966,19 @@
 			isa = PBXGroup;
 			children = (
 				3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */,
-				3F9F681F2AB0165500E36F29 /* MyPostView.swift */,
+				3FB7F9D12AB11BDE00016290 /* MyPostCategoryView.swift */,
+				3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */,
+				3FB7F9D52AB1248800016290 /* Cell */,
 			);
 			path = MyPost;
 			sourceTree = "<group>";
 		};
-		3F9F68292AB01C5400E36F29 /* UserProfile */ = {
+		3F9F68292AB01C5400E36F29 /* EditUserProfile */ = {
 			isa = PBXGroup;
 			children = (
 				3F9F68272AB01C2300E36F29 /* EditUserProfileViewController.swift */,
-				3F9F682D2AB01CEB00E36F29 /* UserProfileView.swift */,
 			);
-			path = UserProfile;
+			path = EditUserProfile;
 			sourceTree = "<group>";
 		};
 		3F9F682F2AB0225B00E36F29 /* HomePage */ = {
@@ -984,14 +987,6 @@
 				3F9F68302AB0227F00E36F29 /* HomePageURL.swift */,
 			);
 			path = HomePage;
-			sourceTree = "<group>";
-		};
-		3F9F683B2AB0750E00E36F29 /* ProfileTable */ = {
-			isa = PBXGroup;
-			children = (
-				3F9F683C2AB0752A00E36F29 /* Cell */,
-			);
-			path = ProfileTable;
 			sourceTree = "<group>";
 		};
 		3F9F683C2AB0752A00E36F29 /* Cell */ = {
@@ -1153,6 +1148,25 @@
 				3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3FB7F9CF2AB1188200016290 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3F1AB7C02A8DC96E0076CEAB /* ProfileViewController.swift */,
+				3F9F682D2AB01CEB00E36F29 /* UserProfileView.swift */,
+				3F9F681F2AB0165500E36F29 /* MyPostView.swift */,
+				3F9F683C2AB0752A00E36F29 /* Cell */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		3FB7F9D52AB1248800016290 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3FB7F9D62AB1249C00016290 /* MyPostTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3FC8D9BB2A99EF01007BDEB5 /* Post */ = {
@@ -1392,13 +1406,13 @@
 				3F8CD6FC2A972D1E00307372 /* UserInfoRepository.swift in Sources */,
 				3FB14B692A91184C00A356DA /* RegPasswordViewModel.swift in Sources */,
 				3F8CD7032A97479400307372 /* EducationEvent.swift in Sources */,
+				3FB7F9DB2AB12B9900016290 /* EmptyMyPostToggleView.swift in Sources */,
 				3F4964912A8F873000078EE3 /* DefaultsAuthRepository.swift in Sources */,
 				3FCFE6122AA8C0BE00D0AA10 /* MapDetailViewController.swift in Sources */,
 				3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */,
 				3F1AB7ED2A8DC96E0076CEAB /* UserLocationTableViewCell.swift in Sources */,
 				3F1AB7D82A8DC96E0076CEAB /* ReverseGeocode.swift in Sources */,
 				3F5968882AAED85D00CFC0C8 /* PostDetailTableViewCell.swift in Sources */,
-				3F9F68402AB0758C00E36F29 /* ProfileTableViewModel.swift in Sources */,
 				3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */,
 				3F44C76C2AA1F2C30037CCC5 /* PostUseCase.swift in Sources */,
 				3FB14B532A90EFA100A356DA /* RegEmailViewController.swift in Sources */,
@@ -1454,6 +1468,7 @@
 				3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
 				3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */,
+				3FB7F9D22AB11BDE00016290 /* MyPostCategoryView.swift in Sources */,
 				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
 				3F7B8EE32AA70FB300B8D66B /* LocationDTO.swift in Sources */,
 				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
@@ -1485,6 +1500,7 @@
 				3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */,
 				3F5D40462AA362EC00D6692D /* ReviewView.swift in Sources */,
 				3F4964992A8FA1FD00078EE3 /* UserInfo.swift in Sources */,
+				3FB7F9D72AB1249C00016290 /* MyPostTableViewCell.swift in Sources */,
 				3F738F462AA9E19600B6C6D2 /* PagingInfo.swift in Sources */,
 				3F1AB7EE2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift in Sources */,
 				3F7ADE992AA3281100AE2DD1 /* ReviewViewController.swift in Sources */,

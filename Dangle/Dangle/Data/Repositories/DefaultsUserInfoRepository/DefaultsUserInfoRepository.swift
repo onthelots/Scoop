@@ -43,7 +43,39 @@ class DefaultsUserInfoRepository: UserInfoRepository {
             if let error = error {
                 completion(.failure(error))
             } else {
-                completion(.success(()))
+                self.updatePostsForUser(uid: uid, newNickname: newNickname, completion: completion)
+            }
+        }
+    }
+
+    func updatePostsForUser(uid: String, newNickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let database = Firestore.firestore()
+
+        // "UserReviews" 컬렉션에서 해당 사용자(uid)가 작성한 게시물을 찾습니다.
+        let query = database.collectionGroup("UserReviews")
+            .whereField("authorUID", isEqualTo: uid)
+
+        query.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            // 가져온 게시물을 순회하면서 닉네임을 업데이트합니다.
+            let batch = database.batch()
+
+            for document in querySnapshot?.documents ?? [] {
+                let postReference = document.reference
+                batch.updateData(["nickname": newNickname], forDocument: postReference)
+            }
+
+            // 업데이트를 커밋합니다.
+            batch.commit { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(()))
+                }
             }
         }
     }

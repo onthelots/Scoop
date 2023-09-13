@@ -20,9 +20,6 @@ class MapViewController: UIViewController {
     private var filteredPostsForCategory: [Post] = []
     private var subscription = Set<AnyCancellable>()
 
-    private var currentPage = 0
-    private var totalPages = 0
-
     // MARK: - Components
     private var emptyPostToggleView = EmptyPostToggleView()
     private lazy var postCategoryView: PostCategoryView = {

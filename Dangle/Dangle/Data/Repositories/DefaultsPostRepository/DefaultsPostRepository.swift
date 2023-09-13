@@ -12,6 +12,7 @@ import Firebase
 import FirebaseStorage
 
 class DefaultPostRepository: PostRepository {
+
     let database = Firestore.firestore()
     let storage = Storage.storage()
 
@@ -224,9 +225,10 @@ class DefaultPostRepository: PostRepository {
     }
 
     // MARK: - 유저가 작성한 모든 게시물 가져오기
-    func fetchUserPosts(uid: String, completion: @escaping (Result<[Post], Error>) -> Void) {
+    func fetchUserPosts(uid: String, category: PostCategory, completion: @escaping (Result<[Post], Error>) -> Void) {
         let query = database.collectionGroup("UserReviews")
             .whereField("authorUID", isEqualTo: uid)
+            .whereField("category", isEqualTo: category.rawValue) // 카테고리 별로 필터링
 
         query.getDocuments { (snapshot, error) in
             if let error = error {
@@ -265,18 +267,30 @@ class DefaultPostRepository: PostRepository {
         }
     }
 
-    // 게시물을 삭제합니다.
-    func deletePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
-        let categoryName = post.category.rawValue
-        let categoryCollection = firestore.collection(categoryName)
-        let storeRef = categoryCollection.document(post.storeName)
-        let userDocRef = storeRef.collection("UserReviews").document(post.authorUID)
+    // MARK: - 게시물 삭제
+    func deletePost(storeName: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let database = Firestore.firestore()
+        let query = database.collectionGroup("UserReviews")
+            .whereField("storeName", isEqualTo: storeName)
+            .whereField("nickname", isEqualTo: nickname)
 
-        userDocRef.delete { error in
+        query.getDocuments { (snapshot, error) in
             if let error = error {
                 completion(.failure(error))
+                return
+            }
+
+            if let document = snapshot?.documents.first {
+                document.reference.delete { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                }
             } else {
-                completion(.success(()))
+                let error = NSError(domain: "com.yourapp.post", code: 404, userInfo: [NSLocalizedDescriptionKey: "게시물을 찾을 수 없습니다."])
+                completion(.failure(error))
             }
         }
     }
