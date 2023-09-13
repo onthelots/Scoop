@@ -68,6 +68,7 @@ class NewIssueDetailView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .leading
+        stackView.spacing = 5
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -75,7 +76,7 @@ class NewIssueDetailView: UIView {
 
     private lazy var publishDate: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 9, weight: .light)
         label.textAlignment = .left
         label.textColor = .secondaryLabel
         label.numberOfLines = 1
@@ -86,7 +87,7 @@ class NewIssueDetailView: UIView {
 
     private lazy var modifyDate: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 9, weight: .light)
         label.textAlignment = .left
         label.textColor = .secondaryLabel
         label.numberOfLines = 1

@@ -66,7 +66,7 @@ class UnderLineTextField: UITextField {
 extension UnderLineTextField {
     @objc func editingDidBegin() {
         setPlaceholder()
-        underLineView.backgroundColor = .black
+        underLineView.backgroundColor = .label
     }
 
     @objc func editingDidEnd() {

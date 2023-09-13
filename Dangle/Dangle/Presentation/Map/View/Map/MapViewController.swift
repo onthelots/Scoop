@@ -11,17 +11,13 @@ import MapKit
 import Firebase
 import CoreLocation
 
-class MapViewController: UIViewController {
-
+class MapViewController: UIViewController, ReviewFloatingViewDelegate {
     // MARK: - Binding Data, ViewModel
     private var viewModel: MapViewModel!
     private var userInfo: UserInfo! // 유저의 정보
     private var selectedCategory: PostCategory?
     private var filteredPostsForCategory: [Post] = []
     private var subscription = Set<AnyCancellable>()
-
-    private var currentPage = 0
-    private var totalPages = 0
 
     // MARK: - Components
     private var emptyPostToggleView = EmptyPostToggleView()
@@ -34,6 +30,13 @@ class MapViewController: UIViewController {
     private lazy var mapView = MapView()
     private lazy var floatingButton = ReviewFloatingView()
     private var collectionView: UICollectionView!
+    private var dimView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // MARK: - Diffable DataSource
     enum Section {
@@ -55,7 +58,36 @@ class MapViewController: UIViewController {
         setupMapView()
         viewModel.userAllInfoFetch()
         dataLoadingCompleted()
+
+        // dim 처리
+        floatingButton.delegate = self // delegate 설정
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissDimView))
+        dimView.addGestureRecognizer(tapGesture)
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        viewInitializer()
+    }
+
+    private func viewInitializer() {
+        dimView.isHidden = true
+        floatingButton.categoryMenuStackView.arrangedSubviews.forEach { (button) in
+            button.isHidden.toggle()
+        }
+    }
+
+    @objc private func dismissDimView() {
+        dimView.isHidden = true
+        floatingButton.categoryMenuStackView.arrangedSubviews.forEach { (button) in
+            button.isHidden.toggle()
+        }
+    }
+
+    func activateDimView(_ activate: Bool) {
+        dimView.isHidden = activate
+    }
+
     // MARK: - ViewWillAppera (Floating View initializer)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,16 +107,15 @@ class MapViewController: UIViewController {
         view.addSubview(postCategoryView)
         view.addSubview(mapView)
         view.addSubview(collectionView)
+        view.addSubview(dimView)
         view.addSubview(floatingButton)
 
         postCategoryView.translatesAutoresizingMaskIntoConstraints = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         floatingButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
-            floatingButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            floatingButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             postCategoryView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
             postCategoryView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             postCategoryView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
@@ -95,7 +126,13 @@ class MapViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 5),
             collectionView.leadingAnchor.constraint(equalTo: postCategoryView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: postCategoryView.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            dimView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            dimView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            dimView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            dimView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            floatingButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            floatingButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 
@@ -104,22 +141,19 @@ class MapViewController: UIViewController {
         if emptyPostToggleView.superview == nil {
             view.addSubview(emptyPostToggleView)
             emptyPostToggleView.translatesAutoresizingMaskIntoConstraints = false
-
-            // 애니메이션 효과 추가
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseInOut) {
                 NSLayoutConstraint.activate([
                     self.emptyPostToggleView.heightAnchor.constraint(equalToConstant: 50),
                     self.emptyPostToggleView.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor),
                     self.emptyPostToggleView.leadingAnchor.constraint(equalTo: self.postCategoryView.leadingAnchor),
                     self.emptyPostToggleView.trailingAnchor.constraint(equalTo: self.postCategoryView.trailingAnchor)
                 ])
-
                 // floatingButton을 emptyPostToggleView 위에 오도록 함
+                self.view.bringSubviewToFront(self.dimView)
                 self.view.bringSubviewToFront(self.floatingButton)
                 self.view.layoutIfNeeded()
             }
         }
-
         emptyPostToggleView.isHidden = false
     }
 
@@ -134,7 +168,6 @@ class MapViewController: UIViewController {
         // 데이터 로딩이 완료되면 emptyPostToggleView를 숨깁니다.
         hideEmptyPostToggleView()
     }
-
 
     // viewModel 초기화
     private func initalizerViewModel() {
@@ -274,7 +307,6 @@ class MapViewController: UIViewController {
                 viewController.title = "Dangle Map"
                 self.navigationController?.pushViewController(viewController, animated: true)
             }.store(in: &subscription)
-
         postCategoryView.viewModel = viewModel // CategoryView의 viewModel을 일치시킴
     }
 
@@ -284,7 +316,6 @@ class MapViewController: UIViewController {
         mapView.layer.cornerRadius = 5
         mapView.layer.masksToBounds = true
         viewModel.mapView = mapView.map
-
     }
 
     // MARK: - view 진입시, 초기값 설정
@@ -341,7 +372,6 @@ extension MapViewController: MKMapViewDelegate {
         annotationView.markerTintColor = .tintColor
         return annotationView
     }
-
 
     // 중심값이 이동될 때 마다
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

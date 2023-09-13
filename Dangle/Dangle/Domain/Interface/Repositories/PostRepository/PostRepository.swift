@@ -44,6 +44,7 @@ protocol PostRepository {
     // 유저가 작성한 게시물 가져오기
     func fetchUserPosts(
         uid: String,
+        category: PostCategory,
         completion: @escaping (Result<[Post], Error>) -> Void
     )
 
@@ -55,7 +56,8 @@ protocol PostRepository {
 
     // 작성한 Post 삭제
     func deletePost(
-        _ post: Post,
+        storeName: String,
+        nickname: String,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }

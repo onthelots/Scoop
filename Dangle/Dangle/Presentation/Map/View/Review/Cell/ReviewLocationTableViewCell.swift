@@ -84,7 +84,6 @@ class ReviewLocationTableViewCell: UITableViewCell {
     }
 
     // 레이아웃 설정
-    // 레이아웃 설정
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -123,19 +122,13 @@ class ReviewLocationTableViewCell: UITableViewCell {
         distanceLabel.text = "\(address.distance)m"
         dotLabel.text = "|"
         addressLabel.text = address.addressName
-
-        // categoryGroupName이 있는 경우, categoryGroupName을 사용
         if let categoryGroupName = address.categoryGroupName, !categoryGroupName.isEmpty {
             categoryNameLabel.text = categoryGroupName
         } else {
-            // categoryGroupName이 없는 경우, categoryName에서 ' > '를 기준으로 분할하여 배열로 만듭니다
             let categories = address.categoryName?.components(separatedBy: " > ")
-
-            // 배열에서 마지막 요소를 가져옵니다 (맨 뒤의 항목)
             if let lastCategory = categories?.last {
                 categoryNameLabel.text = lastCategory
             } else {
-                // 만약 분할된 배열이 비어있다면 categoryName 자체를 사용합니다
                 categoryNameLabel.text = address.categoryName
             }
         }

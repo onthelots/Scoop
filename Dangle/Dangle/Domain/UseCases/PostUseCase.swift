@@ -44,6 +44,7 @@ protocol PostUseCase {
     // 유저가 작성한 게시물 가져오기
     func fetchUserPosts(
         uid: String,
+        category: PostCategory,
         completion: @escaping (Result<[Post], Error>) -> Void
     )
 
@@ -55,13 +56,13 @@ protocol PostUseCase {
 
     // 작성한 Post 삭제
     func deletePost(
-        _ post: Post,
+        storeName: String,
+        nickname: String,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }
 
 class DefaultPostUseCase: PostUseCase {
-
     private let postRepository: PostRepository
 
     init(postRepository: PostRepository) {
@@ -128,10 +129,12 @@ class DefaultPostUseCase: PostUseCase {
     // MARK: - 유저가 작성한 게시물 가져오기
     func fetchUserPosts(
         uid: String,
+        category: PostCategory,
         completion: @escaping (Result<[Post], Error>) -> Void
     ) {
         postRepository.fetchUserPosts(
             uid: uid,
+            category: category,
             completion: completion)
     }
 
@@ -148,11 +151,13 @@ class DefaultPostUseCase: PostUseCase {
 
     // MARK: - 리뷰 삭제
     func deletePost(
-        _ post: Post,
+        storeName: String,
+        nickname: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         postRepository.deletePost(
-            post,
+            storeName: storeName,
+            nickname: nickname,
             completion: completion
         )
     }

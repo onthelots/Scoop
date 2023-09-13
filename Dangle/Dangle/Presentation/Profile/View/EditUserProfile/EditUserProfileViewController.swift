@@ -12,8 +12,6 @@ import Firebase
 
 class EditUserProfileViewController: UIViewController {
 
-    let userInfo: UserInfo
-
     private var viewModel: EditUserProfileViewModel!
     private var subscription = Set<AnyCancellable>()
 
@@ -83,8 +81,7 @@ class EditUserProfileViewController: UIViewController {
         nextButtonView.nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
 
-    init(userInfo: UserInfo) {
-        self.userInfo = userInfo
+    init() {
         super.init(nibName: nil, bundle: nil)
         self.hidesBottomBarWhenPushed = true
     }
