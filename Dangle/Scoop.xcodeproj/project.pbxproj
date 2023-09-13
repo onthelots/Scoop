@@ -242,11 +242,11 @@
 		3F9F68332AB0241F00E36F29 /* CheckMyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMyPostViewController.swift; sourceTree = "<group>"; };
 		3F9F68352AB02BA600E36F29 /* EditUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileViewModel.swift; sourceTree = "<group>"; };
 		3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
-		3FACA8752A7CE47B00F2544C /* Dangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA8752A7CE47B00F2544C /* Scoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA88F2A7CE47C00F2544C /* DangleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleTests.swift; sourceTree = "<group>"; };
-		3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DangleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* DangleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* DangleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
@@ -1011,9 +1011,9 @@
 		3FACA8762A7CE47B00F2544C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3FACA8752A7CE47B00F2544C /* Dangle.app */,
-				3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */,
-				3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */,
+				3FACA8752A7CE47B00F2544C /* Scoop.app */,
+				3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */,
+				3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1232,9 +1232,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3FACA8742A7CE47B00F2544C /* Dangle */ = {
+		3FACA8742A7CE47B00F2544C /* Scoop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FACA89F2A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "Dangle" */;
+			buildConfigurationList = 3FACA89F2A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "Scoop" */;
 			buildPhases = (
 				3FACA8712A7CE47B00F2544C /* Sources */,
 				3FACA8722A7CE47B00F2544C /* Frameworks */,
@@ -1245,7 +1245,7 @@
 			);
 			dependencies = (
 			);
-			name = Dangle;
+			name = Scoop;
 			packageProductDependencies = (
 				3F8CD6E62A96D92300307372 /* Kingfisher */,
 				3FE68BC42AA0B00100595733 /* SwiftSoup */,
@@ -1257,12 +1257,12 @@
 				3F44C75F2AA1D8760037CCC5 /* FirebaseStorage */,
 			);
 			productName = Dangle;
-			productReference = 3FACA8752A7CE47B00F2544C /* Dangle.app */;
+			productReference = 3FACA8752A7CE47B00F2544C /* Scoop.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3FACA88A2A7CE47C00F2544C /* DangleTests */ = {
+		3FACA88A2A7CE47C00F2544C /* ScoopTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FACA8A22A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "DangleTests" */;
+			buildConfigurationList = 3FACA8A22A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "ScoopTests" */;
 			buildPhases = (
 				3FACA8872A7CE47C00F2544C /* Sources */,
 				3FACA8882A7CE47C00F2544C /* Frameworks */,
@@ -1273,14 +1273,14 @@
 			dependencies = (
 				3FACA88D2A7CE47C00F2544C /* PBXTargetDependency */,
 			);
-			name = DangleTests;
+			name = ScoopTests;
 			productName = DangleTests;
-			productReference = 3FACA88B2A7CE47C00F2544C /* DangleTests.xctest */;
+			productReference = 3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3FACA8942A7CE47C00F2544C /* DangleUITests */ = {
+		3FACA8942A7CE47C00F2544C /* ScoopUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FACA8A52A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "DangleUITests" */;
+			buildConfigurationList = 3FACA8A52A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "ScoopUITests" */;
 			buildPhases = (
 				3FACA8912A7CE47C00F2544C /* Sources */,
 				3FACA8922A7CE47C00F2544C /* Frameworks */,
@@ -1291,9 +1291,9 @@
 			dependencies = (
 				3FACA8972A7CE47C00F2544C /* PBXTargetDependency */,
 			);
-			name = DangleUITests;
+			name = ScoopUITests;
 			productName = DangleUITests;
-			productReference = 3FACA8952A7CE47C00F2544C /* DangleUITests.xctest */;
+			productReference = 3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1319,7 +1319,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3FACA8702A7CE47B00F2544C /* Build configuration list for PBXProject "Dangle" */;
+			buildConfigurationList = 3FACA8702A7CE47B00F2544C /* Build configuration list for PBXProject "Scoop" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1337,9 +1337,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3FACA8742A7CE47B00F2544C /* Dangle */,
-				3FACA88A2A7CE47C00F2544C /* DangleTests */,
-				3FACA8942A7CE47C00F2544C /* DangleUITests */,
+				3FACA8742A7CE47B00F2544C /* Scoop */,
+				3FACA88A2A7CE47C00F2544C /* ScoopTests */,
+				3FACA8942A7CE47C00F2544C /* ScoopUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1540,12 +1540,12 @@
 /* Begin PBXTargetDependency section */
 		3FACA88D2A7CE47C00F2544C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3FACA8742A7CE47B00F2544C /* Dangle */;
+			target = 3FACA8742A7CE47B00F2544C /* Scoop */;
 			targetProxy = 3FACA88C2A7CE47C00F2544C /* PBXContainerItemProxy */;
 		};
 		3FACA8972A7CE47C00F2544C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3FACA8742A7CE47B00F2544C /* Dangle */;
+			target = 3FACA8742A7CE47B00F2544C /* Scoop */;
 			targetProxy = 3FACA8962A7CE47C00F2544C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1756,7 +1756,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dangle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dangle";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scoop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scoop";
 			};
 			name = Debug;
 		};
@@ -1776,7 +1776,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dangle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dangle";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scoop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scoop";
 			};
 			name = Release;
 		};
@@ -1819,7 +1819,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3FACA8702A7CE47B00F2544C /* Build configuration list for PBXProject "Dangle" */ = {
+		3FACA8702A7CE47B00F2544C /* Build configuration list for PBXProject "Scoop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FACA89D2A7CE47C00F2544C /* Debug */,
@@ -1828,7 +1828,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FACA89F2A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "Dangle" */ = {
+		3FACA89F2A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "Scoop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FACA8A02A7CE47C00F2544C /* Debug */,
@@ -1837,7 +1837,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FACA8A22A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "DangleTests" */ = {
+		3FACA8A22A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "ScoopTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FACA8A32A7CE47C00F2544C /* Debug */,
@@ -1846,7 +1846,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FACA8A52A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "DangleUITests" */ = {
+		3FACA8A52A7CE47C00F2544C /* Build configuration list for PBXNativeTarget "ScoopUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FACA8A62A7CE47C00F2544C /* Debug */,

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3FACA8742A7CE47B00F2544C"
-               BuildableName = "Dangle.app"
-               BlueprintName = "Dangle"
-               ReferencedContainer = "container:Dangle.xcodeproj">
+               BuildableName = "Scoop.app"
+               BlueprintName = "Scoop"
+               ReferencedContainer = "container:Scoop.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3FACA88A2A7CE47C00F2544C"
-               BuildableName = "DangleTests.xctest"
-               BlueprintName = "DangleTests"
-               ReferencedContainer = "container:Dangle.xcodeproj">
+               BuildableName = "ScoopTests.xctest"
+               BlueprintName = "ScoopTests"
+               ReferencedContainer = "container:Scoop.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,9 +46,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3FACA8942A7CE47C00F2544C"
-               BuildableName = "DangleUITests.xctest"
-               BlueprintName = "DangleUITests"
-               ReferencedContainer = "container:Dangle.xcodeproj">
+               BuildableName = "ScoopUITests.xctest"
+               BlueprintName = "ScoopUITests"
+               ReferencedContainer = "container:Scoop.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FACA8742A7CE47B00F2544C"
-            BuildableName = "Dangle.app"
-            BlueprintName = "Dangle"
-            ReferencedContainer = "container:Dangle.xcodeproj">
+            BuildableName = "Scoop.app"
+            BlueprintName = "Scoop"
+            ReferencedContainer = "container:Scoop.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FACA8742A7CE47B00F2544C"
-            BuildableName = "Dangle.app"
-            BlueprintName = "Dangle"
-            ReferencedContainer = "container:Dangle.xcodeproj">
+            BuildableName = "Scoop.app"
+            BlueprintName = "Scoop"
+            ReferencedContainer = "container:Scoop.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
