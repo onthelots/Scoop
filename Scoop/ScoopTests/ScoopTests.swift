@@ -1,14 +1,14 @@
 //
-//  DangleTests.swift
-//  DangleTests
+//  ScoopTests.swift
+//  ScoopTests
 //
 //  Created by Jae hyuk Yim on 2023/08/04.
 //
 
 import XCTest
-@testable import Dangle
+@testable import Scoop
 
-final class DangleTests: XCTestCase {
+final class ScoopTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

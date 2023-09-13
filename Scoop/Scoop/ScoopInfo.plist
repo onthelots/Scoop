@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KAKAO_API_KEY</key>
+	<string>d2e7271e2f362be0582f1b7897a516d3</string>
+	<key>SEOUL_API_KEY</key>
+	<string>6d6d676c586f6e74313130434f696361</string>
+</dict>
+</plist>

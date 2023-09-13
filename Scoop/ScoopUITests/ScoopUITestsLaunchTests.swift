@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class DangleUITestsLaunchTests: XCTestCase {
+final class ScoopUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
