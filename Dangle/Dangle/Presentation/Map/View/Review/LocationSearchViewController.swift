@@ -25,7 +25,7 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
     private let searchController: UISearchController = {
         let searchBar = UISearchController()
         searchBar.searchBar.searchTextField.font = .systemFont(ofSize: 10)
-        searchBar.searchBar.placeholder = "자세한 주소를 검색해주세요"
+        searchBar.searchBar.placeholder = "장소, 주소, 키워드 검색"
         searchBar.searchBar.searchBarStyle = .minimal
         searchBar.definesPresentationContext = true
         return searchBar

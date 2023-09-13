@@ -23,7 +23,6 @@
 		3F1AB7E42A8DC96E0076CEAB /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7A82A8DC96E0076CEAB /* TermsViewModel.swift */; };
 		3F1AB7E52A8DC96E0076CEAB /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AB2A8DC96E0076CEAB /* TermsTableViewCell.swift */; };
 		3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */; };
-		3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AD2A8DC96E0076CEAB /* TermsDetailViewController.swift */; };
 		3F1AB7E82A8DC96E0076CEAB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */; };
 		3F1AB7E92A8DC96E0076CEAB /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B12A8DC96E0076CEAB /* StartPageViewController.swift */; };
 		3F1AB7EA2A8DC96E0076CEAB /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7B22A8DC96E0076CEAB /* StartPageView.swift */; };
@@ -66,7 +65,6 @@
 		3F5968842AAEC0D100CFC0C8 /* EmptyPostToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5968832AAEC0D100CFC0C8 /* EmptyPostToggleView.swift */; };
 		3F5968882AAED85D00CFC0C8 /* PostDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5968872AAED85D00CFC0C8 /* PostDetailTableViewCell.swift */; };
 		3F59688D2AAF504200CFC0C8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F59688C2AAF504200CFC0C8 /* ProfileViewModel.swift */; };
-		3F5D40412AA3628F00D6692D /* ReviewFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */; };
 		3F5D40462AA362EC00D6692D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D40452AA362EC00D6692D /* ReviewView.swift */; };
 		3F738F412AA9A06900B6C6D2 /* MapDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F402AA9A06900B6C6D2 /* MapDetailViewModel.swift */; };
 		3F738F432AA9ABE500B6C6D2 /* PostFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */; };
@@ -123,6 +121,8 @@
 		3FB7F9D22AB11BDE00016290 /* MyPostCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9D12AB11BDE00016290 /* MyPostCategoryView.swift */; };
 		3FB7F9D72AB1249C00016290 /* MyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9D62AB1249C00016290 /* MyPostTableViewCell.swift */; };
 		3FB7F9DB2AB12B9900016290 /* EmptyMyPostToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */; };
+		3FB7F9DD2AB1AC6B00016290 /* ReviewFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DC2AB1AC6B00016290 /* ReviewFloatingView.swift */; };
+		3FB7F9DF2AB1CEE000016290 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DE2AB1CEE000016290 /* UIImage+Resize.swift */; };
 		3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */; };
 		3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */; };
 		3FCFE6122AA8C0BE00D0AA10 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */; };
@@ -174,7 +174,6 @@
 		3F1AB7A82A8DC96E0076CEAB /* TermsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		3F1AB7AB2A8DC96E0076CEAB /* TermsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
 		3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
-		3F1AB7AD2A8DC96E0076CEAB /* TermsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsDetailViewController.swift; sourceTree = "<group>"; };
 		3F1AB7AF2A8DC96E0076CEAB /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3F1AB7B12A8DC96E0076CEAB /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		3F1AB7B22A8DC96E0076CEAB /* StartPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
@@ -211,7 +210,6 @@
 		3F5968832AAEC0D100CFC0C8 /* EmptyPostToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPostToggleView.swift; sourceTree = "<group>"; };
 		3F5968872AAED85D00CFC0C8 /* PostDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3F59688C2AAF504200CFC0C8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewFloatingView.swift; path = "../../../../../../../../무제 폴더/ReviewFloatingView.swift"; sourceTree = "<group>"; };
 		3F5D40452AA362EC00D6692D /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		3F738F402AA9A06900B6C6D2 /* MapDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewModel.swift; sourceTree = "<group>"; };
 		3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooterReusableView.swift; sourceTree = "<group>"; };
@@ -271,6 +269,8 @@
 		3FB7F9D12AB11BDE00016290 /* MyPostCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostCategoryView.swift; sourceTree = "<group>"; };
 		3FB7F9D62AB1249C00016290 /* MyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewCell.swift; sourceTree = "<group>"; };
 		3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMyPostToggleView.swift; sourceTree = "<group>"; };
+		3FB7F9DC2AB1AC6B00016290 /* ReviewFloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewFloatingView.swift; sourceTree = "<group>"; };
+		3FB7F9DE2AB1CEE000016290 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
 		3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
@@ -489,7 +489,6 @@
 			isa = PBXGroup;
 			children = (
 				3F1AB7AC2A8DC96E0076CEAB /* TermsViewController.swift */,
-				3F1AB7AD2A8DC96E0076CEAB /* TermsDetailViewController.swift */,
 				3F1AB7AA2A8DC96E0076CEAB /* Cells */,
 			);
 			path = View;
@@ -571,6 +570,7 @@
 				3F1AB7BE2A8DC96E0076CEAB /* NSLayoutConstraint+Priority.swift */,
 				3F4964752A8F592D00078EE3 /* String+SignUpCheckValid.swift */,
 				3FB14B5C2A90F8BE00A356DA /* UnderLineTextField.swift */,
+				3FB7F9DE2AB1CEE000016290 /* UIImage+Resize.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -814,8 +814,8 @@
 			isa = PBXGroup;
 			children = (
 				3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */,
+				3FB7F9DC2AB1AC6B00016290 /* ReviewFloatingView.swift */,
 				3F5D40452AA362EC00D6692D /* ReviewView.swift */,
-				3F5D40402AA3628F00D6692D /* ReviewFloatingView.swift */,
 				3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */,
 				3FAF2E4B2AA5B161003A9964 /* Cell */,
 			);
@@ -1452,18 +1452,18 @@
 				3F8CD6F72A97101300307372 /* HomeViewModel.swift in Sources */,
 				3F1AB7E62A8DC96E0076CEAB /* TermsViewController.swift in Sources */,
 				3F738F432AA9ABE500B6C6D2 /* PostFooterReusableView.swift in Sources */,
-				3F1AB7E72A8DC96E0076CEAB /* TermsDetailViewController.swift in Sources */,
+				3FB7F9DF2AB1CEE000016290 /* UIImage+Resize.swift in Sources */,
 				3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */,
 				3F49647B2A8F5D1800078EE3 /* EmailValidationService.swift in Sources */,
 				3FB1120B2AA06E3E00C73A3A /* BackgroundDecorationView.swift in Sources */,
 				3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */,
 				3F9F682E2AB01CEB00E36F29 /* UserProfileView.swift in Sources */,
+				3FB7F9DD2AB1AC6B00016290 /* ReviewFloatingView.swift in Sources */,
 				3FB112132AA088F600C73A3A /* NewIssueDetailViewModel.swift in Sources */,
 				3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */,
 				3FE361C72A92D437000F1B38 /* RegisterWelcomeViewController.swift in Sources */,
 				3F9F68202AB0165500E36F29 /* MyPostView.swift in Sources */,
 				3F8CD6F92A972CCB00307372 /* UserUseCase.swift in Sources */,
-				3F5D40412AA3628F00D6692D /* ReviewFloatingView.swift in Sources */,
 				3FD618282A98909300CE6690 /* EventDetailViewController.swift in Sources */,
 				3FD618242A987F1F00CE6690 /* HomeSectionHeaderReusableView.swift in Sources */,
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,

@@ -131,8 +131,8 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
             dimView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             dimView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             dimView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            floatingButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
-            floatingButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            floatingButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            floatingButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 
@@ -149,6 +149,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
                     self.emptyPostToggleView.trailingAnchor.constraint(equalTo: self.postCategoryView.trailingAnchor)
                 ])
                 // floatingButton을 emptyPostToggleView 위에 오도록 함
+                self.view.bringSubviewToFront(self.dimView)
                 self.view.bringSubviewToFront(self.floatingButton)
                 self.view.layoutIfNeeded()
             }
@@ -306,7 +307,6 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
                 viewController.title = "Dangle Map"
                 self.navigationController?.pushViewController(viewController, animated: true)
             }.store(in: &subscription)
-
         postCategoryView.viewModel = viewModel // CategoryView의 viewModel을 일치시킴
     }
 
@@ -316,7 +316,6 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         mapView.layer.cornerRadius = 5
         mapView.layer.masksToBounds = true
         viewModel.mapView = mapView.map
-
     }
 
     // MARK: - view 진입시, 초기값 설정
@@ -373,7 +372,6 @@ extension MapViewController: MKMapViewDelegate {
         annotationView.markerTintColor = .tintColor
         return annotationView
     }
-
 
     // 중심값이 이동될 때 마다
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

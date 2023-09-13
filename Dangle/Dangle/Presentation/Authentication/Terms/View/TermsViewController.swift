@@ -5,8 +5,10 @@
 //  Created by Jae hyuk Yim on 2023/08/15.
 //
 //
-import UIKit
+
 import Combine
+import UIKit
+import SafariServices
 
 class TermsViewController: UIViewController {
 
@@ -173,10 +175,14 @@ class TermsViewController: UIViewController {
 
         viewModel.itemTapped
             .sink { items in
-                let viewController = TermsDetailViewController()
-                viewController.termType = items
-                viewController.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(viewController, animated: true)
+                switch items {
+                case .ageAgree:
+                    self.presentWebView("https://naver.com")
+                case .sensitiveAgree:
+                    self.presentWebView("https://naver.com")
+                case .serviceAgree:
+                    self.presentWebView("https://naver.com")
+                }
             }.store(in: &subscription)
     }
 
@@ -220,6 +226,15 @@ class TermsViewController: UIViewController {
         resetAllTerms()
         let regEmailViewController = RegEmailViewController()
         navigationController?.pushViewController(regEmailViewController, animated: true)
+    }
+
+    // 관련 Terms로 이동
+    private func presentWebView(_ url: String) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        let safariViewController = SFSafariViewController(url: url)
+        self.present(safariViewController, animated: true, completion: nil)
     }
 }
 
