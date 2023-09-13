@@ -1,4 +1,4 @@
-# dangle(댕글) ![30x30](https://github.com/onthelots/Dangle/assets/107039500/4e289239-10f5-40cf-8e2f-2fdefdb681f2)
+# Scoop
 
 > 서울시, 그리고 내 동네 소식을 통해 이웃과 지역사회가 함께 소통하는 로컬 플랫폼
 
