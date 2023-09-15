@@ -1,6 +1,6 @@
 //
-//  DangleUITests.swift
-//  DangleUITests
+//  ScoopUITests.swift
+//  ScoopUITests
 //
 //  Created by Jae hyuk Yim on 2023/08/04.
 //

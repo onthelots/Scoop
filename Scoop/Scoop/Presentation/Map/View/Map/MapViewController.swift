@@ -1,6 +1,6 @@
 //
 //  MapViewController.swift
-//  Dangle
+//  Scoop
 //
 //  Created by Jae hyuk Yim on 2023/08/07.
 //
@@ -299,7 +299,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
                 let viewController = MapDetailViewController(storeCategory: category, storeName: storeName)
                 print("전달하는 데이터 : \(category), \(storeName)")
                 viewController.navigationItem.largeTitleDisplayMode = .never
-                viewController.title = "Dangle Map"
+                viewController.title = "Scoop Map"
                 self.navigationController?.pushViewController(viewController, animated: true)
             }.store(in: &subscription)
         postCategoryView.viewModel = viewModel // CategoryView의 viewModel을 일치시킴

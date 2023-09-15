@@ -1,6 +1,6 @@
 //
 //  AppConfigurations.swift
-//  Dangle
+//  Scoop
 //
 //  Created by Jae hyuk Yim on 2023/08/16.
 //

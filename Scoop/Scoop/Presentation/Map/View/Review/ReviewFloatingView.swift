@@ -1,6 +1,6 @@
 //
 //  WriteFloatingButtonView.swift
-//  Dangle
+//  Scoop
 //
 //  Created by Jae hyuk Yim on 2023/09/01.
 //
@@ -63,7 +63,7 @@ class ReviewFloatingView: UIView {
                 configuration.imagePadding = 20
                 configuration.imagePlacement = .trailing
                 let button = UIButton(configuration: configuration)
-                button.tintColor = .tintColor
+                button.tintColor = .label
                 stackView.addArrangedSubview(button)
                 button.addTarget(self, action: #selector(categoryButtonTapped(_:)), for: .touchUpInside)
             }

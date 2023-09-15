@@ -1,6 +1,6 @@
 //
 //  SignInViewController.swift
-//  Dangle
+//  Scoop
 //
 //  Created by Jae hyuk Yim on 2023/08/07.
 //
@@ -16,7 +16,7 @@ class SignInViewController: UIViewController {
 
     lazy var appNameImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Dangle_font")
+        imageView.image = UIImage(named: "scoop_font")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -81,11 +81,11 @@ class SignInViewController: UIViewController {
         NSLayoutConstraint.activate([
 
             appNameImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            appNameImageView.widthAnchor.constraint(equalToConstant: 150),
-            appNameImageView.heightAnchor.constraint(equalToConstant: 83),
+            appNameImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
+            appNameImageView.heightAnchor.constraint(equalTo: appNameImageView.widthAnchor, multiplier: 1.0),
             appNameImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
 
-            emailTextFieldView.topAnchor.constraint(equalTo: appNameImageView.bottomAnchor, constant: 30),
+            emailTextFieldView.topAnchor.constraint(equalTo: appNameImageView.bottomAnchor),
             emailTextFieldView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             emailTextFieldView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
 
