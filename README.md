@@ -1,6 +1,7 @@
-# Scoop
+# Scoop ![29](https://github.com/onthelots/Scoop/assets/107039500/7d014abd-8c50-4a64-90ec-8e068ba7a5f6)
+> 내가 살고 있는 서울, 그리고 동네를 더욱 풍부하게 경험할 수 있도록, [Scoop]을 통해 다양한 맛을 즐겨보세요.
 
-> 서울시, 그리고 내 동네 소식을 통해 이웃과 지역사회가 함께 소통하는 로컬 플랫폼
+<img width="2340" alt="scoop_screenshot" src="https://github.com/onthelots/Scoop/assets/107039500/5f455b3e-2b98-45b4-bbf5-fc66060c704d">
 
 <br> 
 
@@ -29,59 +30,172 @@
 ## 1-프로젝트 소개
 
 ### 1-1 개요
-`Title`
-- descripiton
+`서울, 그리고 우리동네 소식 맛보기`
+- 기획 및 개발 : 2023.08.01 ~ 2023.09.15 (약 6주)
+- 서울의 주요한 분야별 소식과 이벤트를 전달하고, 주변에서 일어나는 이야기, 리뷰를 이웃과 함께 나누는 하이퍼 로컬 서비스 앱
+- 5개 분야 서울 새소식과 사용자가 거주하는 자치구 문화행사 및 교육서비스 정보 제공
+- 지도를 통한 사용자 리뷰 작성 및 내가 쓴 글 확인
+
+<br>
 
 ### 1-2 주요목표
-`Title`
-- descripiton
+`클린 아키텍쳐 및 MVVM 패턴 활용`
+- 서버 파싱과 UITable, UICollection, MKMap 등 다양한 컴포넌트와 기능 구현에 따라 유연하고 가독성 있는 앱 플로우를 위한 MVVM 패턴 적용
+- UseCase를 기능별로 구분하여 구성, Massive ViewModel의 문제를 해결하고 유지보수 하기 좋은 코드를 작성하고자 함
+- Combine 프레임워크를 활용한 동시성 프로그래밍 구현
+
+`서울시 API, Kakao 개발자 API 활용`
+- 서울시 OPEN API를 파싱하여 관련된 데이터를 실시간(혹은 주기별)로 제공, RESTFul API 구현
+- 주소 관련 로직 구현을 위하여 Geocoding, Reverse Geocoding API 활용 (SDK 미 활용)
+
+`사용자 계정관리를 위한 이메일 형식의 Firebase 로그인/회원가입`
+- 회원가입을 통한 유저 위치정보, 닉네임 등 개인정보 저장 및 활용
+- 특정 장소에 대한 리뷰 작성을 위한 카테고리 별 데이터 구조 구현
+
+<br>
 
 ### 1-3 개발환경
 - 활용기술 외 키워드
-  - iOS : 
-  - Network: 
-  - UI : 
-  - Layout : 
+  - iOS : swift 5.8, xcode 14.3.1, UIKit
+  - Network: URLSession
+  - UI : UIScrollView, UITableView, UICollectionView(Diffable DataSource), UITabbar, MKMapView 등
+  - Layout : AutoLayout(Code-base), Compositional Layout
+
 - 라이브러리
-  - 
+   - KingFisher (7.0.0)
+   - SwiftSoup (2.0.0)
+   - Firebase (10.0.0)
+
+<br>
  
 ### 1-4 구동방법
-- 🗣️ 반드시 아래 절차에 따라 구동해주시길 바랍니다. 
+- 아래 2가지 과정이 모두 필요합니다. 도움이 필요하실 경우 아래 남긴 이메일로 연락바랍니다.
+- 1️⃣ ScoopInfo.plist API-KEY 작성 (Value)
+  - **KAKAO_API_KEY** : [Kakao Developers](https://developers.kakao.com/console/app/954109) 가입 후, 어플리케이션 등록(임의)후 REST API를 발급, 기입하기
+  - **SEOUL_API_KEY** : [서울시 열린 데이터 광장](https://data.seoul.go.kr/index.do) 회원가입 후, 인증키를 발급받아서 기입하기
 
-순서  | 내용  | 비고
------ | ----- | -----
-1 | descripiton | descripiton
-2 | descripiton | descripiton
-3 | descripiton | descripiton
-4 | descripiton | descripiton
+- 2️⃣ GoogleService-plist 파일
+  - 아래 이메일을 통해 파일을 요청해주세요.
+  - jhyim1992@gmail.com
 
 <br>
 
 ## 2-Architecture
 ### 2-1 구조도
 
-`Title`
-- descripiton
+`Clean Architecture을 통해 보다 체계적이고 규칙적인 개발 도모`
+- 사전 앱 아이디어 구상 및 프로토타입 과정에 따라 **최소 10개 이상의 API 파싱 및 클라우딩** 로직이 필요하다고 판단함
+- 또한, 다양한 UI 형태와 지도 활용, 사용자 프로필 구현 등 비교적 다수의 기능과 계층이 포함될 것으로 예상함
+- 따라서, [클린 아키텍쳐] 패턴을 최대한 적용함으로서 **계층 간 독립과 유지보수**가 용이하도록 유도
+<img width="4768" alt="Scoop Architecture" src="https://github.com/onthelots/Scoop/assets/107039500/2d43a2e9-3f2d-43b0-9dc9-5d48c50d89c2">
 
-`Title`
-- descripiton
 
 ### 2-2 파일 디렉토리
 ```
-InSight
- ┣ 📂
- ┣ 📂
- ┣ 📂
+📦Scoop
+ ┣ 📂App
+ ┣ 📂Data
+ ┃ ┣ 📂PersistentStorages
+ ┃ ┗ 📂Repositories
+ ┣ 📂Domain
+ ┃ ┣ 📂Entities
+ ┃ ┣ 📂Interface
+ ┃ ┃ ┗ 📂Repositories
+ ┃ ┃ ┃ ┣ 📂AuthRepository
+ ┃ ┃ ┃ ┣ 📂LocalEventRepository
+ ┃ ┃ ┃ ┣ 📂PostRepository
+ ┃ ┃ ┃ ┣ 📂UserInfoRepository
+ ┃ ┃ ┃ ┗ 📂UserLocationRepository
+ ┃ ┣ 📂Services
+ ┃ ┃ ┣ 📂API
+ ┃ ┃ ┗ 📂Validation
+ ┃ ┗ 📂UseCases
+ ┃ ┃ ┣ 📜GeoLocationUseCase.swift
+ ┃ ┃ ┣ 📜LocalEventUseCase.swift
+ ┃ ┃ ┣ 📜PostUseCase.swift
+ ┃ ┃ ┣ 📜SignInUseCase.swift
+ ┃ ┃ ┣ 📜SignUpUseCase.swift
+ ┃ ┃ ┗ 📜UserUseCase.swift
+ ┣ 📂Infrastructure
+ ┃ ┣ 📂CoreLocation
+ ┃ ┗ 📂Network
+ ┣ 📂Presentation
+ ┃ ┣ 📂Authentication
+ ┃ ┃ ┣ 📂SignIn
+ ┃ ┃ ┣ 📂SignUp
+ ┃ ┃ ┃ ┣ 📂RegisterEmail
+ ┃ ┃ ┃ ┣ 📂RegisterNickname
+ ┃ ┃ ┃ ┣ 📂RegisterPassword
+ ┃ ┃ ┃ ┗ 📂RegisterWelcome
+ ┃ ┃ ┣ 📂StartPage
+ ┃ ┃ ┣ 📂Terms
+ ┃ ┃ ┗ 📂UserLocation
+ ┃ ┣ 📂Home
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┣ 📂Event
+ ┃ ┃ ┃ ┣ 📂NewIssue
+ ┃ ┃ ┃ ┗ 📜HomeViewController.swift
+ ┃ ┃ ┗ 📂ViewModel
+ ┃ ┣ 📂Map
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┣ 📂Map
+ ┃ ┃ ┃ ┃ ┗ 📜MapViewController.swift
+ ┃ ┃ ┃ ┣ 📂MapDetail
+ ┃ ┃ ┃ ┣ 📂Post
+ ┃ ┃ ┃ ┗ 📂Review
+ ┃ ┣ 📂Profile
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┣ 📂EditUserProfile
+ ┃ ┃ ┃ ┃ ┗ 📜EditUserProfileViewController.swift
+ ┃ ┃ ┃ ┣ 📂MyPost
+ ┃ ┃ ┃ ┗ 📂Profile
+ ┃ ┃ ┗ 📂ViewModel
+ ┃ ┣ 📂TabBar
+ ┃ ┃ ┗ 📜TabBarViewController.swift
+ ┃ ┗ 📂Utils
+ ┃ ┃ ┣ 📂Extensions
+ ┃ ┃ ┗ 📂UI
+ ┣ 📂Resource
 ```
 
 <br>
 
 ## 3-프로젝트 특징
-### SubTitle
-- description
-- App Image
+### 3-1 클라우딩 서비스를 활용한 이메일 로그인 기능 제공 (Auth)
+- Firebase Authentication, FireStore Database를 통한 회원가입 및 로그인 기능 구현
+- 기존 클라우딩 서버에 있는 유저 데이터 유효성 검사를 통해 이메일, 닉네임 등 중복여부 검사 로직 구축
+- 사용자 위치권한(CoreLocation)을 통한 현재 위치(법정동 필터링) 확인, 저장
+
+|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 12](https://github.com/onthelots/Scoop/assets/107039500/09b1e640-61ce-4fcd-af95-8cac824096eb)|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 13](https://github.com/onthelots/Scoop/assets/107039500/4dcb5e9f-672d-4061-b191-9a96738de397)|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 15](https://github.com/onthelots/Scoop/assets/107039500/d20786b3-5a75-4e48-967f-2c439b55902e)|
 |:-:|:-:|:-:|
-|`scene`|`scene`|`scene`|
+|`시작뷰`|`약관동의`|`비밀번호 입력`|
+
+<br<
+
+### 3-2 서울시 공공데이터 및 자치구 데이터를 활용한 정보전달 (Home Tab)
+- 주기적으로 업데이트 되는 분야별(교통, 안전, 주택, 경제, 환경) 서울 소식을 나타냄으로서 서울 시민(사용자)에게 유용한 정보를 전달함
+- 현재 사용자의 위치(법정동)를 기반으로 현재 개최되고 있거나, 예정된 문화행사(이벤트)와 교육강좌를 알리고 상세페이지(URL)로 이동할 수 있도록 함
+
+|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 10](https://github.com/onthelots/Scoop/assets/107039500/ccc28967-84f8-4283-a3ab-fcf03c10ca27)|![image 1](https://github.com/onthelots/Scoop/assets/107039500/e0b61c31-3ef4-4c6e-a21d-a8d4a28705a7)|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 11](https://github.com/onthelots/Scoop/assets/107039500/c286ec1b-7063-4c37-b24c-67efaa882d18)|
+|:-:|:-:|:-:|
+|`홈뷰`|`분야별 서울소식`|`자치구 행사`|
+
+### 3-3 클라우딩을 통한 Scoop 앱 사용자들이 이용할 수 있는 전용지도 생성, 리뷰기능 구현(Map Tab)
+- 설정된 사용자의 위치를 기반으로, 인근 1km내 반경에 있는 리뷰글을 나타내고, 해당 지도의 Annotation을 클릭 시 다른 사용자들이 남긴 이야기(리뷰)를 확인할 수 있음
+- 리뷰 작성의 경우, PHPicker를 통해 최대 3개의 사진을 업로드 할 수 있으며, 특정 장소를 직접 검색함으로서 클라우딩 서버를 거쳐 지도에 마커를 생성하여 더욱 직관적으로 확인할 수 있음
+
+|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 56](https://github.com/onthelots/Scoop/assets/107039500/ccfbb815-f481-4a52-99af-1621d2fe3439)|![IMG_400E456601E0-1](https://github.com/onthelots/Scoop/assets/107039500/96b315b0-9dfb-4d0c-a23e-a878b5bd06f0)|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 15 06 49](https://github.com/onthelots/Scoop/assets/107039500/8f17b7fe-69fe-4d79-a10b-a863d7881d61)|
+|:-:|:-:|:-:|
+|`지도뷰`|`리뷰작성`|`리뷰 확인`|
+
+### 3-4 사용자의 프로필(닉네임 외)과 작성한 리뷰글을 확인하고, 앱 관련된 지원 페이지를 확인 (Profile Tab)
+- 회원가입 시 설정한 닉네임을 변경할 수 있으며, 카테고리별로 남긴 리뷰를 확인하고 삭제할 수 있음
+- 이용약관 확인, 고객센터, 앱 정보 등 전반적인 앱 이용과 관련된 지원과 로그아웃을 실시할 수 있음
+
+|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 56](https://github.com/onthelots/Scoop/assets/107039500/74324d84-7867-4a59-9b54-765dab4d7735)|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 57](https://github.com/onthelots/Scoop/assets/107039500/3764ef18-0b86-4cfe-8b3c-e68f73d19c78)|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 57](https://github.com/onthelots/Scoop/assets/107039500/451b2a48-b78d-4d37-82ba-9eb0e6b534c4)|
+|:-:|:-:|:-:|
+|`프로필뷰`|`내가 쓴 글`|`앱 페이지`|
+
 
 <br>
 
@@ -92,8 +206,7 @@ InSight
 - 앱 컨셉 설정 사용자의 일상, 그리고 주변의 다양한 이슈와 이벤트를 제공하는 `하이퍼 로컬 뉴스 앱`을 목표로 설정
 - 본격적인 앱을 구현하기에 앞서, `사용자 친화적인 UX`를 제공하기 위해 Figma를 통한 프로토타입 생성
 - 디자인-개발-수정 단계를 반복적으로 수행함으로서 `애자일 개발방식` 실천
-
-![image](https://github.com/onthelots/dangle/assets/107039500/06ee2adb-f992-47dd-903a-57a0c622fc2c)
+<img width="648" alt="image" src="https://github.com/onthelots/Scoop/assets/107039500/108fbf36-bb04-4c3a-a5c9-2a333884c175">
 
 <br>
 
@@ -103,18 +216,14 @@ InSight
 
 ### 4-2 [Feature 2] 사용자 위치정보 업데이트 (CLLocation, Reverse Geocoding) 및 계정 관리
 #### 4-2-1 위치정보 인증부터 좌표를 활용한 행정동 단위로의 변환 실시, 위치 검색을 통한 위치 직접 설정 허용
-- 사용자 위치정보 `허용/비허용` 과정에 대한 분기처리 실시(ToggleView)
-- [UseCase 1] : 좌표 » 코드 » 동 단위
-   - CLLocation을 통해 `Coordinate`를 1차로 받아오고, `Reverse Geocoding`을 2차로 수행함으로서 법정동/행정동 단위로 위치를 나타냄
-  
-- [UseCase 2] : 주소검색(코드) » 인근 동 단위 
-   - 사용자가 원하는 위치를 검색하여 선택할 수 있도록 동 코드를 재 변환
-   - 주소코드 앞 5자리를 추출하기 위해 `WildCard Pattern`을 활용, 사용자의 인근 위치의 동 단위 주소를 모두 반환함
+> [UseCase] : GeoLocation (좌표 » 코드 » 동 단위)
+- 사용자 위치서비스 권한을 바탕으로 `Coordinate`를 1차로 받아오고, `Reverse Geocoding`을 2차로 수행함으로서 법정동 단위로 위치를 나타냄
+- 또한, 권한 비 허용시 직접 검색을 통해 위치를 설정할 수 있도록 `KAKAO Geocoding API`를 통해 검색 쿼리(주소값)를 저장함
 
 #### 4-2-2 Keychain, UserDefaults, Fiebase를 통한 계정관리 시스템 구축
+> [UseCase] : SignUp, SignIn, UserInfo
 - `Firebase`를 통하여 계정관리(회원가입, 로그인, 로그아웃) 외 추가 유저정보(위치 등)를 저장하고 활용할 수 있도록 구성함
-- 자동 로그인 기능을 구현하기 위해 `Keychain`을 통해 email과 password를 안전하게 저장, 활용함 (Scene 분기처리 담당)
-  
+- 자동 로그인 기능을 구현하기 위해 `UserDefaults`을 통해 email과 password를 안전하게 저장, 활용함 (Scene 분기처리 담당)
 
 <br>
 
@@ -134,7 +243,7 @@ InSight
 ### 4-3 [Feature 3] Home, Map, Profile 탭 별 UI 구현 및 데이터 나타내기
 
 #### 4-3-1 Home Tab
-> 서울시의 분야별 새 소식과, 자치구 내 문화행사, 강좌(서울시 공공데이터) 등 유용한 정보 제공
+> [UseCase] : LocalEvent
 - 로그인 한 사용자의 `UID`를 기반으로 서버(FireStore)에서 위치값을 활용, 서울시 공공 API 데이터를 필터링하여 화면에 나타냄
 - Paging 기능을 비롯하여 Section 별 상이한 레이아웃을 구성하기 위해, `Compositional Layout`을 활용함
 - 각각의 이벤트를 선택 » 세부 정보 뷰를 확인 » 예약 혹은 더욱 자세한 정보를 앱웹으로 확인하기 위해 `SFSafariViewController`를 활용
@@ -142,8 +251,14 @@ InSight
 <br>
 
 #### 4-3-2 Dangle Map Tab
-> 작성중
-- 작성중
+> [UseCase] : Post(+User)
+- **사용자의 현재위치와 점포의 위치데이터(CLLocation2D)를 바탕으로 `인근 1km이내 데이터`를 필터링하여 실시간으로 데이터를 파싱함**
+    - 위 내용을 토대로, 첫 화면에 진입할 시 보고있는 '카메라(사용자 위치)'를 기준으로 리뷰 데이터를 Cell로 나타냄
+    - 지도 위치를 이동할 경우, 중심 위치와 가까운 리뷰가 상위에 나타나고, 멀어질 경우 사라지는 로직을 구현함
+ 
+- **앱 사용자들이 고유하게 활용할 수 있는 지도를 만들고자 의도, 이를 위해 클라우딩 서버 내 위치데이터를 저장**
+    - 리뷰를 작성할 시, 직접 사용자가 해당 위치(점포)의 주소를 검색하도록 유도함으로서 `위치데이터를 저장`하고 `Pin을 생성`함
+ 
 
 🚫 Trouble Shooting
 
@@ -154,26 +269,17 @@ InSight
 
 <br>
 
-
 #### 4-3-3 Profile Tab 
-> 작성중
-- 작성중
+> [UseCase] : User, Post
+- 유저의 정보를 받아온 후, updateData 메서드를 활용하여 닉네임을 수정할 수 있도록 함
+- 내가 작성한 리뷰 글의 경우, 유저의 고유한 UID를 활용, 클라우드 서버 내 `필드(Field)`검색을 토대로 카테고리 별 유저의 모든 리뷰글을 받아옴 
 
 <br>
-
-🚫 Trouble Shooting
-
-순서  | 내용  | 비고
-----| ----- | -----
-1| 작성중 | 작성중
-2| 작성중 | 작성중
-
-<br>
-
 
 ## 5-업데이트 및 리팩토링 사항
 ### 5-1 우선 순위별 개선항목
 1) Issue
-- [] 
-  
-<br>
+- 리뷰 글 작성 내 PHPicker를 열어 선택한 후, 재 선택할 시 사진 데이터는 정상적으로 초기화, 저장되지만 View에 나타나지 않는 이슈 발생
+- 유저 닉네임 변경 시, 즉각적으로 반영되지 않는 이슈 발생(Publisher 로직 변경 필요)
+- Map의 경도, 위도값이 상이하여 비 규칙적인 데이터 파싱문제 발생
+
