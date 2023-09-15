@@ -193,7 +193,6 @@ class HomeViewController: UIViewController {
                                    thumbNail: items.mainImg,
                                    url: items.hmpgAddr)
                 }
-
                 var educationEvents: [EventDetailDTO] = []
                 educationEvents = educationEvent.compactMap { items in
                     let dateFormatter = DateFormatter()
@@ -266,7 +265,6 @@ class HomeViewController: UIViewController {
                 return false
             }
         }
-
         // 필터링한 아이템들을 스냅샷에 추가
         snapshot.appendItems(newIssuesToAdd.map { Item.newIssue($0) }, toSection: .newIssue)
         snapshot.appendItems(culturalEventsToAdd.map { Item.event($0) }, toSection: .culturalEvent)
@@ -276,10 +274,9 @@ class HomeViewController: UIViewController {
         self.dataSource.apply(snapshot)
     }
 
-
     // MARK: - CollectionView Layout (2가지 Case)
     private func layout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
             let section = Section.allCases[sectionIndex]
             if section == .newIssue {
                 return self.createNewIssueSectionLayout()
@@ -331,7 +328,6 @@ class HomeViewController: UIViewController {
         let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
                                                                  repeatingSubitem: item,
                                                                  count: 1)
-
         let sectionLayout = NSCollectionLayoutSection(group: horizontalGroup)
         sectionLayout.orthogonalScrollingBehavior = .groupPaging
         sectionLayout.boundarySupplementaryItems = [createSectionHeader()]
