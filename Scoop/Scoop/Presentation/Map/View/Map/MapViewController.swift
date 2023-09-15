@@ -58,9 +58,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         setupMapView()
         viewModel.userAllInfoFetch()
         dataLoadingCompleted()
-
-        // dim 처리
-        floatingButton.delegate = self // delegate 설정
+        floatingButton.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissDimView))
         dimView.addGestureRecognizer(tapGesture)
     }
@@ -165,7 +163,6 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
     }
 
     private func dataLoadingCompleted() {
-        // 데이터 로딩이 완료되면 emptyPostToggleView를 숨깁니다.
         hideEmptyPostToggleView()
     }
 
@@ -227,13 +224,11 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize,
                                                              repeatingSubitem: item,
                                                              count: 3)
-
         let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                          heightDimension: .absolute(270))
         let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
                                                                  repeatingSubitem: verticalGroup,
                                                                  count: 1)
-
         let section = NSCollectionLayoutSection(group: horizontalGroup)
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
         section.orthogonalScrollingBehavior = .groupPaging
