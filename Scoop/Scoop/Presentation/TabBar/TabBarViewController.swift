@@ -18,8 +18,8 @@ class TabBarViewController: UITabBarController {
         vc2.navigationItem.largeTitleDisplayMode = .always
         vc3.navigationItem.largeTitleDisplayMode = .always
 
-        vc1.title = "Dangle News"
-        vc2.title = "Dangle Map"
+        vc1.title = "Scoop News"
+        vc2.title = "Scoop Map"
         vc3.title = "Profile"
 
         // nav들은, UINavigationController(Stack기반)이며, rootView는 각각의 viewController로 설정함
