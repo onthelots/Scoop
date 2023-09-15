@@ -99,7 +99,6 @@ class ProfileViewController: UIViewController {
         userInfo
             .receive(on: RunLoop.main)
             .sink { [unowned self] userInfo in
-                print("방출 및 업데이트 된 닉네임 : \(userInfo.nickname)")
                 self.userProfileView.userProfileConfigure(userInfo)
             }.store(in: &subscription)
     }
@@ -166,12 +165,12 @@ extension ProfileViewController: MyPostViewDelegete {
     }
 
     func customerServiceButtonTapped() {
-        let customServiceURL = "https://naver.com"
+        let customServiceURL = "http://pf.kakao.com/_bDPuG/chat"
         self.presentWebView(customServiceURL)
     }
 
     func noticeButtonTapped() {
-        let noticeURL = "https://naver.com"
+        let noticeURL = "https://www.notion.so/onthelots/50bcef7e3c104f269b57f40e9d9dabac?pvs=4"
         self.presentWebView(noticeURL)
     }
 }

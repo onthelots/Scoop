@@ -41,7 +41,7 @@ class EmptyMyPostToggleView: UIView {
         label.sizeToFit()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        label.text = "Dangle 지도탭에서 +버튼을 눌러 리뷰를 작성해주세요"
+        label.text = "지도탭에서 +버튼을 눌러 리뷰를 작성해주세요"
         label.textColor = .tintColor
         return label
     }()

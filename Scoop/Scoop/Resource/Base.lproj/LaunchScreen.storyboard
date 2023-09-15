@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,17 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dangle_1024" translatesAutoresizingMaskIntoConstraints="NO" id="EFq-kx-6AB">
-                                <rect key="frame" x="50" y="359" width="293" height="159"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scoop" translatesAutoresizingMaskIntoConstraints="NO" id="EFq-kx-6AB">
+                                <rect key="frame" x="30" y="129" width="333" height="619"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.34509804840000002" green="0.74117648599999997" blue="0.85882353779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.34509804840000002" green="0.74117648599999997" blue="0.85882353779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EFq-kx-6AB" secondAttribute="bottom" constant="300" id="5Jh-94-ByF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EFq-kx-6AB" secondAttribute="trailing" constant="50" id="cFK-X1-rs2"/>
-                            <constraint firstItem="EFq-kx-6AB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="xEV-Pd-9fZ"/>
-                            <constraint firstItem="EFq-kx-6AB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="300" id="xPd-zA-ffG"/>
+                            <constraint firstAttribute="bottom" secondItem="EFq-kx-6AB" secondAttribute="bottom" constant="104" id="5Jh-94-ByF"/>
+                            <constraint firstAttribute="trailing" secondItem="EFq-kx-6AB" secondAttribute="trailing" constant="30" id="cFK-X1-rs2"/>
+                            <constraint firstItem="EFq-kx-6AB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="30" id="xEV-Pd-9fZ"/>
+                            <constraint firstItem="EFq-kx-6AB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="129" id="xPd-zA-ffG"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,9 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Dangle_1024" width="1024" height="1024"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="scoop" width="1024" height="1024"/>
     </resources>
 </document>

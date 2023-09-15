@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct HomePageURL: Hashable {
-    let url: String = "https://www.naver.com/"
+struct HomePageURL: Hashable, Equatable {
+    let homePage: String = "https://www.notion.so/onthelots/32eb5fa184c14426a4f32b654f76ec0e?v=96817719164f49e398abae2bc4c8565c&pvs=4"
 }

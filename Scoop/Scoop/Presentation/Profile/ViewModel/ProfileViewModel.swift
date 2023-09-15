@@ -64,9 +64,9 @@ class ProfileViewModel: ObservableObject {
     // 테이블 뷰 초기화
     func fetchProfileTableView() {
         items = [
-            ProfileTableItem(title: "약관 확인", action: .openURL("https://naver.com")),
-            ProfileTableItem(title: "자주 찾는 질문", action: .openURL("https://naver.com")),
-            ProfileTableItem(title: "앱 소개", action: .openURL("https://naver.com")),
+            ProfileTableItem(title: "약관 확인", action: .openURL("https://www.notion.so/onthelots/72f35ba1c5b14c919ac3a7016840e79d?pvs=4")),
+            ProfileTableItem(title: "자주 찾는 질문", action: .openURL("https://www.notion.so/onthelots/Q-A-8a07aa6f15614e318e210430a54c421a?pvs=4")),
+            ProfileTableItem(title: "앱 소개", action: .openURL("https://www.notion.so/onthelots/32eb5fa184c14426a4f32b654f76ec0e?v=96817719164f49e398abae2bc4c8565c&pvs=4")),
             ProfileTableItem(title: "로그아웃", action: .showAlert)
         ]
     }

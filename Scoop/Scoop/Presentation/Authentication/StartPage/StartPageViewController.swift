@@ -21,7 +21,7 @@ class StartPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startPageView.delegate = self
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .tintColor
         view.addSubview(startPageView)
     }
 
