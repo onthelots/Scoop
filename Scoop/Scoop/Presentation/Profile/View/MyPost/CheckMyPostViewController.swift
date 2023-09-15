@@ -109,8 +109,6 @@ class CheckMyPostViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] post in
                 guard let self = self else { return }
-                print("데이터가 방출됨: \(post)")
-
                 if post.isEmpty {
                     self.showEmptyMyPostToggleView() // 데이터가 없을 때 emptyPostToggleView를 표시
                     self.tableView.isHidden = true

@@ -177,11 +177,11 @@ class TermsViewController: UIViewController {
             .sink { items in
                 switch items {
                 case .ageAgree:
-                    self.presentWebView("https://naver.com")
+                    self.presentWebView("https://www.notion.so/onthelots/72f35ba1c5b14c919ac3a7016840e79d?pvs=4#def20628181a4a6e865b56811e92dafd")
                 case .sensitiveAgree:
-                    self.presentWebView("https://naver.com")
+                    self.presentWebView("https://www.notion.so/onthelots/72f35ba1c5b14c919ac3a7016840e79d?pvs=4#def20628181a4a6e865b56811e92dafd")
                 case .serviceAgree:
-                    self.presentWebView("https://naver.com")
+                    self.presentWebView("https://www.notion.so/onthelots/72f35ba1c5b14c919ac3a7016840e79d?pvs=4#b1c28638976e41f68f3f7e78883a270f")
                 }
             }.store(in: &subscription)
     }

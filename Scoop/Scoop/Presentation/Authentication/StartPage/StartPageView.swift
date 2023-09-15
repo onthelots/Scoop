@@ -21,7 +21,7 @@ class StartPageView: UIView {
     // appNameImageView
     lazy var appNameImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Dangle_font")
+        imageView.image = UIImage(named: "scoop")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -31,11 +31,11 @@ class StartPageView: UIView {
     lazy var keywordLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .label
+        label.textColor = .white
         label.sizeToFit()
-        label.text = "daily, discover, deliver"
+        label.text = "서울, 그리고 우리 동네 소식 맛보기"
         label.numberOfLines = 0
-        label.font = .preferredFont(forTextStyle: .subheadline)
+        label.font = .preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -44,11 +44,11 @@ class StartPageView: UIView {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .label
+        label.textColor = .white
         label.sizeToFit()
         label.text = """
-우리 동네 이웃의 다양한 일상소식
-댕글을 통해 쉽고 빠르게 만나보세요
+다양한 이벤트와 일상의 소식들
+스쿱을 통해 쉽고 빠르게 만나보세요
 """
         label.numberOfLines = 0
         label.font = .preferredFont(forTextStyle: .subheadline)
@@ -60,9 +60,9 @@ class StartPageView: UIView {
     lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("내 동네 설정하고 소식 만나보기", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
-        button.backgroundColor = .tintColor
+        button.setTitleColor(UIColor.tintColor, for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        button.backgroundColor = .white
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         button.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
@@ -73,8 +73,8 @@ class StartPageView: UIView {
     // signInButton
     lazy var signInButton: UIButton = {
         let button = UIButton()
-        button.setTitle("이미 댕글 계정이 있으신가요? >", for: .normal)
-        button.setTitleColor(UIColor.tintColor, for: .normal)
+        button.setTitle("이미 스쿱 계정이 있으신가요? >", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .callout)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -123,8 +123,8 @@ class StartPageView: UIView {
         NSLayoutConstraint.activate([
             // imageView
             appNameImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            appNameImageView.widthAnchor.constraint(equalToConstant: 201),
-            appNameImageView.heightAnchor.constraint(equalToConstant: 83),
+            appNameImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
+            appNameImageView.heightAnchor.constraint(equalTo: appNameImageView.widthAnchor, multiplier: 1.0),
             appNameImageView.topAnchor.constraint(equalTo: self.topAnchor),
 
             // keywordLabel
