@@ -77,7 +77,7 @@ class DefaultPostRepository: PostRepository {
             let imageReference = storage.reference().child("postImages/\(UUID().uuidString).jpg")
 
             if let imageData = image.jpegData(compressionQuality: 0.8) {
-                imageReference.putData(imageData, metadata: nil) { metadata, error in
+                imageReference.putData(imageData, metadata: nil) { _, error in
                     if let error = error {
                         dispatchGroup.leave()
                         completion(.failure(error))
