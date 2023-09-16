@@ -18,6 +18,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
         self.seoulOpenDataManager = seoulOpenDataManager
     }
 
+    // newIssue 파싱
     func newIssueParsing(
         categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
@@ -41,6 +42,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
             }.store(in: &subscriptions)
     }
 
+    // culturalEvent 파싱
     func culturalEventParsing(
         location: String,
         completion: @escaping (Result<CulturalEvent, Error>) -> Void
@@ -88,6 +90,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
             }.store(in: &subscriptions)
     }
 
+    // educationEvent 파싱
     func educationEventParsing(
         location: String,
         completion: @escaping (Result<EducationEvent, Error>) -> Void
@@ -128,7 +131,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
     }
 }
 
-// MARK: - 받아오는 location의 '구' 명칭만 필터링
+// 받아오는 location의 '구' 명칭만 필터링
 func extractGuFromLocation(_ location: String) -> String? {
     let components = location.split(separator: " ")
     guard components.count >= 2 else {

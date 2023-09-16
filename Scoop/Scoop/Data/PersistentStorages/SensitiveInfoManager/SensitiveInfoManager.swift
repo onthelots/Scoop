@@ -10,7 +10,6 @@ import Security
 
 
 // MARK: - 로그인 시, 아이디 + 비밀번호 저장 / 사용자 위치정보 저장
-
 class SensitiveInfoManager {
 
     // 데이터 추가하기

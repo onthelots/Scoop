@@ -15,11 +15,11 @@ struct Post: Identifiable, Codable, Hashable {
     @DocumentID var id: String?
     var authorUID: String
     var category: PostCategory
-    var storeName: String // 점포 이름 또는 ID
+    var storeName: String
     var review: String
     var nickname: String
     var postImage: [String]?
-    var location: GeoPoint // "location" 필드 추가
+    var location: GeoPoint
     var categoryGroupName: String
     var roadAddressName: String
     var placeURL: String

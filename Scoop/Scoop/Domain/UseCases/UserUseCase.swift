@@ -32,6 +32,7 @@ final class DefaultsUserInfoUseCase: UserInfoUseCase {
         self.userInfoRepository = userInfoRepository
     }
 
+    // 유저 정보 가져오기
     func getUserInfo(
         userId: String,
         completion: @escaping (Result<UserInfo, Error>) -> Void
@@ -46,6 +47,7 @@ final class DefaultsUserInfoUseCase: UserInfoUseCase {
         }
     }
 
+    // 닉네임 수정
     func updateNickname(
         uid: String,
         newNickname: String,
@@ -58,6 +60,7 @@ final class DefaultsUserInfoUseCase: UserInfoUseCase {
         )
     }
 
+    // 이메일 수정
     func updateEmail(
         uid: String,
         newEmail: String,

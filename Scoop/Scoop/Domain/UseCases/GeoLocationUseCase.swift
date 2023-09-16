@@ -9,14 +9,11 @@ import Foundation
 import CoreLocation
 
 protocol UserLocationUseCase {
-
-    // 리버스 지오코딩, 행정동 변환
     func execreverseGeocodeute(
         coordinate: CLLocation,
         completion: @escaping (Result<ReverseGeocode, Error>) -> Void
     )
 
-    // 검색 UseCase
     func geocode(
         query: String,
         completion: @escaping (Result<Geocode, Error>) -> Void
@@ -25,7 +22,6 @@ protocol UserLocationUseCase {
 
 final class DefaultUserLocationUseCase: UserLocationUseCase {
 
-    // Interface Repository의 로직(Protocol)을 가져옴 (구체적인 로직은 Data Repository에서 구현함)
     private let reverseGeocodeRepository: ReverseGeocodeRepository
     private let geocodeRepositoy: GeocodeRepository
 

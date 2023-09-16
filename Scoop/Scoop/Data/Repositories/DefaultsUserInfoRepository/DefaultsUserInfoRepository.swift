@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 
 class DefaultsUserInfoRepository: UserInfoRepository {
+    // 유저 정보 가져오기
     func getUserInfo(userId: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         let database = Firestore.firestore()
         database.collection("users").document(userId).getDocument { snapshot, error in
@@ -34,7 +35,7 @@ class DefaultsUserInfoRepository: UserInfoRepository {
         }
     }
 
-    // MARK: - 변경된 닉네임 저장
+    // 변경된 닉네임 저장
     func updateNickname(uid: String, newNickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let database = Firestore.firestore()
         let userRef = database.collection("users").document(uid)
@@ -48,6 +49,7 @@ class DefaultsUserInfoRepository: UserInfoRepository {
         }
     }
 
+    // 리뷰 업데이트
     func updatePostsForUser(uid: String, newNickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let database = Firestore.firestore()
 
@@ -61,15 +63,12 @@ class DefaultsUserInfoRepository: UserInfoRepository {
                 return
             }
 
-            // 가져온 게시물을 순회하면서 닉네임을 업데이트합니다.
             let batch = database.batch()
-
             for document in querySnapshot?.documents ?? [] {
                 let postReference = document.reference
                 batch.updateData(["nickname": newNickname], forDocument: postReference)
             }
 
-            // 업데이트를 커밋합니다.
             batch.commit { error in
                 if let error = error {
                     completion(.failure(error))
@@ -80,7 +79,7 @@ class DefaultsUserInfoRepository: UserInfoRepository {
         }
     }
 
-    // MARK: - 변경된 이메일을 저장
+    // 이메일 업데이트
     func updateEmail(uid: String, newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let database = Firestore.firestore()
         let userRef = database.collection("users").document(uid)

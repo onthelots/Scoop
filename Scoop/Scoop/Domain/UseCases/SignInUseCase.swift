@@ -19,6 +19,7 @@ class DefaultSignInUseCase: SignInUseCase {
         self.authRepository = authRepository
     }
 
+    // 로그인
     func signIn(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
         authRepository.signIn(email: email, password: password) { result in
             switch result {

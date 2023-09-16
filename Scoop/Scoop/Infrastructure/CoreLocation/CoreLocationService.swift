@@ -41,7 +41,6 @@ class CoreLocationService: NSObject, CLLocationManagerDelegate {
     }
 
     // MARK: - Location Authorization Handling
-
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print("1. 앱 권한이 변경되었습니다.")
         checkUserDeviceLocationServicesAuthorization()

@@ -13,8 +13,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: windowScene)
-
-        // 키체인에 저장되어 있다면
         if let savedUserEmail = UserDefaultStorage<String>().getCached(key: "email"),
             let savedUserPassword = UserDefaultStorage<String>().getCached(key: "password") {
 

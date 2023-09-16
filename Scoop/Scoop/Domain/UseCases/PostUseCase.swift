@@ -69,7 +69,7 @@ class DefaultPostUseCase: PostUseCase {
         self.postRepository = postRepository
     }
 
-    // MARK: - 주소 검색
+    // 주소 검색
     func searchLocation(
         query: String,
         longitude: String,
@@ -86,7 +86,7 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
-    // MARK: - 리뷰 저장
+    // 리뷰 저장
     func addPost(
         _ post: Post,
         images: [UIImage],
@@ -98,7 +98,7 @@ class DefaultPostUseCase: PostUseCase {
             completion: completion)
     }
 
-    // MARK: - Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
+    // Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
     func fetchPostsAroundCoordinate(
         category: PostCategory,
         coordinate: CLLocationCoordinate2D,
@@ -113,7 +113,7 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
-    // MARK: - 해당 점포의 리뷰 가져오기
+    // 해당 점포의 리뷰 가져오기
     func fetchPostsStore(
         storeName: String,
         category: PostCategory,
@@ -126,7 +126,7 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
-    // MARK: - 유저가 작성한 게시물 가져오기
+    // 유저가 작성한 게시물 가져오기
     func fetchUserPosts(
         uid: String,
         category: PostCategory,
@@ -138,7 +138,7 @@ class DefaultPostUseCase: PostUseCase {
             completion: completion)
     }
 
-    // MARK: - 리뷰 업데이트
+    // 리뷰 업데이트
     func updatePost(
         _ post: Post,
         completion: @escaping (Result<Void, Error>) -> Void
@@ -149,7 +149,7 @@ class DefaultPostUseCase: PostUseCase {
         )
     }
 
-    // MARK: - 리뷰 삭제
+    // 리뷰 삭제
     func deletePost(
         storeName: String,
         nickname: String,

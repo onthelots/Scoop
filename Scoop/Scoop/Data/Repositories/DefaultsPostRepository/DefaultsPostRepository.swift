@@ -29,7 +29,7 @@ class DefaultPostRepository: PostRepository {
         self.firestore = firestore
     }
 
-    // MARK: - 주소 검색
+    // 주소 검색
     func searchLocation(
         query: String,
         longitude: String,
@@ -66,18 +66,7 @@ class DefaultPostRepository: PostRepository {
 
     }
 
-    // 카테고리에 따른 Firestore 컬렉션 참조를 가져오는 도움 함수
-    private func getCollectionReference(for category: PostCategory) -> CollectionReference {
-        return firestore.collection(category.rawValue)
-    }
-
-    // Post와 관련된 Firestore 문서 참조를 가져오는 도움 함수
-    private func getDocumentReference(for post: Post, in category: PostCategory) -> DocumentReference {
-        let collectionRef = getCollectionReference(for: category)
-        return collectionRef.document(post.storeName).collection("UserReviews").document(post.authorUID)
-    }
-
-    // MARK: - 리뷰 저장
+    // 리뷰 저장
     func addPost(_ post: Post, images: [UIImage], completion: @escaping (Result<Void, Error>) -> Void) {
         var imageUrls: [String] = []
 
@@ -138,7 +127,7 @@ class DefaultPostRepository: PostRepository {
         }
     }
 
-    // MARK: - Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
+    // Map 중심 위치에 따라, 데이터 가져오기 (카테고리 별로)
     func fetchPostsAroundCoordinate(
             category: PostCategory,
             coordinate: CLLocationCoordinate2D,
@@ -182,15 +171,13 @@ class DefaultPostRepository: PostRepository {
                 dispatchGroup.leave()
             }
 
-            // 모든 쿼리가 완료될 때까지 기다립니다.
             dispatchGroup.notify(queue: .main) {
-                // 여기에서 posts 배열과 Firestore 쿼리 결과를 검사하는 추가 디버그를 수행할 수 있습니다.
                 print("최종 검색된 게시물 수: \(posts.count)")
                 completion(.success(posts))
             }
         }
 
-    // MARK: - 해당 점포의 리뷰 가져오기
+    // 해당 점포의 리뷰 가져오기
     func fetchPostsStore(
         storeName: String,
         category: PostCategory,
@@ -218,13 +205,13 @@ class DefaultPostRepository: PostRepository {
                 }
                 dispatchGroup.leave()
             }
-        // 모든 쿼리가 완료될 때까지 기다린 후, 넘김
+
         dispatchGroup.notify(queue: .main) {
             completion(.success(posts))
         }
     }
 
-    // MARK: - 유저가 작성한 모든 게시물 가져오기
+    // 유저가 작성한 모든 게시물 가져오기
     func fetchUserPosts(uid: String, category: PostCategory, completion: @escaping (Result<[Post], Error>) -> Void) {
         let query = database.collectionGroup("UserReviews")
             .whereField("authorUID", isEqualTo: uid)
@@ -247,7 +234,7 @@ class DefaultPostRepository: PostRepository {
         }
     }
 
-    // MARK: - 게시물을 업데이트
+    // 리뷰 업데이트
     func updatePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
         let categoryName = post.category.rawValue
         let categoryCollection = firestore.collection(categoryName)
@@ -267,7 +254,7 @@ class DefaultPostRepository: PostRepository {
         }
     }
 
-    // MARK: - 게시물 삭제
+    // 리뷰 삭제
     func deletePost(storeName: String, nickname: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let database = Firestore.firestore()
         let query = database.collectionGroup("UserReviews")

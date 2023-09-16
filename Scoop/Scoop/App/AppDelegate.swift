@@ -14,8 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        //        KakaoSDK.initSDK(appKey: "3b61d69dccfeedfdc824b3a7e958633d")
         FirebaseApp.configure()
 
         let window = UIWindow(frame: UIScreen.main.bounds)
