@@ -285,3 +285,6 @@
 - 유저 닉네임 변경 시, 즉각적으로 반영되지 않는 이슈 발생(Publisher 로직 변경 필요)
 - Map의 경도, 위도값이 상이하여 비 규칙적인 데이터 파싱문제 발생
 
+
+
+<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fonthelots%2FScoop&count_bg=%230CC0DF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
