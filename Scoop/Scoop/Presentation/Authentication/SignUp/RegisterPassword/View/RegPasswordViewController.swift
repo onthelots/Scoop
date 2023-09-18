@@ -42,7 +42,7 @@ class RegPasswordViewController: UIViewController {
         let textFieldView = CommonTextFieldView()
 
         textFieldView.textField.tintColor = .tintColor
-        textFieldView.textField.textColor = .black
+        textFieldView.textField.textColor = .label
         textFieldView.textField.isSecureTextEntry = true
 
         textFieldView.textField.setPlaceholder(

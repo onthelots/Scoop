@@ -49,8 +49,8 @@
 		3F3A18FD2AB7B7F6002B3E84 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A18FC2AB7B7F6002B3E84 /* FirebaseAuth */; };
 		3F3A18FF2AB7B7F8002B3E84 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A18FE2AB7B7F8002B3E84 /* FirebaseFirestore */; };
 		3F3A19012AB7B7FC002B3E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A19002AB7B7FC002B3E84 /* FirebaseStorage */; };
-		3F3A19022AB7BA6F002B3E84 /* ScoopTests.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */; };
-		3F3A19032AB7BA71002B3E84 /* ScoopUITests.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */; };
+		3F3A19022AB7BA6F002B3E84 /* ScoopTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */; };
+		3F3A19032AB7BA71002B3E84 /* ScoopUITests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */; };
 		3F41C19D2AA1866100E9A48C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41C19C2AA1866100E9A48C /* MapView.swift */; };
 		3F44C7562AA1D8760037CCC5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7552AA1D8760037CCC5 /* FirebaseAuth */; };
 		3F44C7582AA1D8760037CCC5 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7572AA1D8760037CCC5 /* FirebaseDatabase */; };
@@ -201,6 +201,7 @@
 		3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
 		3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
 		3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
+		3F3A19042AB89017002B3E84 /* Scoop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scoop.entitlements; sourceTree = "<group>"; };
 		3F41C19C2AA1866100E9A48C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3F44C76B2AA1F2C30037CCC5 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
 		3F44C76E2AA1F30A0037CCC5 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
@@ -250,9 +251,9 @@
 		3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Scoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopTests.swift; path = ScoopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA88F2A7CE47C00F2544C /* ScoopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopTests.swift; sourceTree = "<group>"; };
-		3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopUITests.swift; path = ScoopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* ScoopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* ScoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
@@ -1023,8 +1024,8 @@
 			isa = PBXGroup;
 			children = (
 				3FACA8752A7CE47B00F2544C /* Scoop.app */,
-				3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */,
-				3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */,
+				3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */,
+				3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1032,6 +1033,7 @@
 		3FACA8772A7CE47B00F2544C /* Scoop */ = {
 			isa = PBXGroup;
 			children = (
+				3F3A19042AB89017002B3E84 /* Scoop.entitlements */,
 				3F1AB7C62A8DC96E0076CEAB /* App */,
 				3F1AB7882A8DC96E0076CEAB /* Domain */,
 				3F1AB7972A8DC96E0076CEAB /* Data */,
@@ -1291,7 +1293,7 @@
 				3F3A18FA2AB7B757002B3E84 /* FirebaseStorage */,
 			);
 			productName = DangleTests;
-			productReference = 3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */;
+			productReference = 3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3FACA8942A7CE47C00F2544C /* ScoopUITests */ = {
@@ -1314,7 +1316,7 @@
 				3F3A19002AB7B7FC002B3E84 /* FirebaseStorage */,
 			);
 			productName = DangleUITests;
-			productReference = 3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */;
+			productReference = 3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1382,7 +1384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F3A19022AB7BA6F002B3E84 /* ScoopTests.swift in Resources */,
+				3F3A19022AB7BA6F002B3E84 /* ScoopTests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,7 +1392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F3A19032AB7BA71002B3E84 /* ScoopUITests.swift in Resources */,
+				3F3A19032AB7BA71002B3E84 /* ScoopUITests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1703,6 +1705,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scoop/Scoop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
@@ -1714,19 +1717,23 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lime.scoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1735,6 +1742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scoop/Scoop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
@@ -1746,19 +1754,23 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lime.scoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1775,9 +1787,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scoop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scoop";
 			};
 			name = Debug;
@@ -1795,9 +1810,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scoop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scoop";
 			};
 			name = Release;
@@ -1813,9 +1831,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Scoop;
 			};
 			name = Debug;
@@ -1831,9 +1852,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Scoop;
 			};
 			name = Release;

@@ -77,7 +77,7 @@ class ReviewViewController: UIViewController {
 
         // 버튼의 활성화 및 색상 설정
         navigationItem.rightBarButtonItem?.isEnabled = isReviewTextValid && isLocationSelected
-        navigationItem.rightBarButtonItem?.tintColor = isReviewTextValid && isLocationSelected ? .black : .gray
+        navigationItem.rightBarButtonItem?.tintColor = isReviewTextValid && isLocationSelected ? .label : .quaternaryLabel
     }
 
 

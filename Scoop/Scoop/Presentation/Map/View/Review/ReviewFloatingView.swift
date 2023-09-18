@@ -58,14 +58,14 @@ class ReviewFloatingView: UIView {
                 let resizeImage = image.resize()
                 var configuration = UIButton.Configuration.plain()
                 var titleContainer = AttributeContainer()
-                titleContainer.font = UIFont.boldSystemFont(ofSize: 15)
+                titleContainer.font = UIFont.preferredFont(forTextStyle: .caption1)
                 configuration.attributedTitle = AttributedString(category.rawValue, attributes: titleContainer)
                 configuration.image = resizeImage
                 configuration.image?.withRenderingMode(.alwaysTemplate)
                 configuration.imagePadding = 20
                 configuration.imagePlacement = .trailing
                 let button = UIButton(configuration: configuration)
-                button.tintColor = .secondaryLabel
+                button.setTitleColor(.black, for: .normal)
                 stackView.addArrangedSubview(button)
                 button.addTarget(self, action: #selector(categoryButtonTapped(_:)), for: .touchUpInside)
             }

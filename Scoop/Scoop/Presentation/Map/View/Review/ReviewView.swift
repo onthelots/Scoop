@@ -68,7 +68,7 @@ class ReviewView: UIView {
         textView.font = UIFont.systemFont(ofSize: 15.0)
         textView.text = textViewPlaceHolder
         textView.textContainerInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-        textView.textColor = .lightGray
+        textView.textColor = .label
         textView.textAlignment = NSTextAlignment.left
         textView.layer.cornerRadius = 5
         textView.layer.masksToBounds = true
@@ -183,7 +183,7 @@ class ReviewView: UIView {
             reviewTextView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: 10),
             reviewTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             reviewTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            reviewTextView.heightAnchor.constraint(equalToConstant: 250),
+            reviewTextView.heightAnchor.constraint(equalToConstant: 150),
 
             reviewTextCountLabel.topAnchor.constraint(equalTo: reviewTextView.bottomAnchor, constant: 10),
             reviewTextCountLabel.trailingAnchor.constraint(equalTo: reviewTextView.trailingAnchor),
@@ -197,7 +197,7 @@ class ReviewView: UIView {
             imageStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             imageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             imageStackView.bottomAnchor.constraint(equalTo: seperatedLineView.topAnchor, constant: -5),
-            imageStackView.heightAnchor.constraint(equalToConstant: 100),
+            imageStackView.heightAnchor.constraint(equalToConstant: 85),
 
             seperatedLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             seperatedLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
@@ -332,13 +332,13 @@ extension ReviewView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
-            textView.textColor = .black
+            textView.textColor = .secondaryLabel
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = textViewPlaceHolder
-            textView.textColor = .lightGray
+            textView.textColor = .secondaryLabel
         }
     }
 

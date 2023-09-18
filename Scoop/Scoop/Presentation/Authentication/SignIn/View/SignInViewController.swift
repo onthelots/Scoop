@@ -14,19 +14,23 @@ class SignInViewController: UIViewController {
     private var subscription: Set<AnyCancellable> = []
     private var errorAlert: UIAlertController? // alert
 
-    lazy var appNameImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "scoop_font")
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.sizeToFit()
+        label.numberOfLines = 0
+        label.text = "Scoop에 오신걸 환영합니다"
+        label.font = .boldSystemFont(ofSize: 25)
+        label.textColor = .label
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     private lazy var emailTextFieldView: CommonTextFieldView = {
         let textFieldView = CommonTextFieldView()
 
         textFieldView.textField.tintColor = .tintColor
-        textFieldView.textField.textColor = .black
+        textFieldView.textField.textColor = .label
 
         textFieldView.textField.setPlaceholder(
             placeholder: "이메일",
@@ -40,7 +44,7 @@ class SignInViewController: UIViewController {
         let textFieldView = CommonTextFieldView()
 
         textFieldView.textField.tintColor = .tintColor
-        textFieldView.textField.textColor = .black
+        textFieldView.textField.textColor = .label
         textFieldView.textField.isSecureTextEntry = true
 
         textFieldView.textField.setPlaceholder(
@@ -60,6 +64,7 @@ class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackButton()
         let signInUseCase = DefaultSignInUseCase(authRepository: DefaultsAuthRepository())
         let emailValidationService = DefaultEmailValidationService()
         viewModel = SignInViewModel(signInUseCase: signInUseCase, emailValidationService: emailValidationService)
@@ -73,19 +78,18 @@ class SignInViewController: UIViewController {
 
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        view.addSubview(appNameImageView)
+        view.addSubview(titleLabel)
         view.addSubview(emailTextFieldView)
         view.addSubview(passwordTextFieldView)
         view.addSubview(nextButtonView)
 
         NSLayoutConstraint.activate([
 
-            appNameImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            appNameImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
-            appNameImageView.heightAnchor.constraint(equalTo: appNameImageView.widthAnchor, multiplier: 1.0),
-            appNameImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
 
-            emailTextFieldView.topAnchor.constraint(equalTo: appNameImageView.bottomAnchor),
+            emailTextFieldView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
             emailTextFieldView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             emailTextFieldView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
 
