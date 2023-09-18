@@ -12,6 +12,7 @@ class EventDetailViewModel {
 
     let eventDetailItem: EventDetailDTO
 
+    // MARK: - Input
     @Published var eventDetailDTO: EventDetailDTO?
 
     init(eventDetailItem: EventDetailDTO) {
@@ -22,6 +23,7 @@ class EventDetailViewModel {
         self.eventDetailDTO = eventDetailItem
     }
 
+    // Safariview 열기
     func openWebPage(from viewController: UIViewController) {
         guard let urlString = eventDetailItem.url,
               let url = URL(string: urlString) else {

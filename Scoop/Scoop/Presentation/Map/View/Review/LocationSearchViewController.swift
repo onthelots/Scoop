@@ -9,6 +9,7 @@ import UIKit
 import Combine
 import Firebase
 
+// MARK: - SerachController 위임
 protocol LocationSearchViewControllerDelegate: AnyObject {
     func locationSelected(_ location: SearchResult)
 }
@@ -21,6 +22,7 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
 
     weak var delegate: LocationSearchViewControllerDelegate?
 
+    // MARK: - Components
     // searchController
     private let searchController: UISearchController = {
         let searchBar = UISearchController()
@@ -53,6 +55,7 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackButton()
@@ -62,17 +65,18 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
         tableView.delegate = self
         tableView.dataSource = self
         bind()
-        // Configure navigationItem SearchController
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
     }
 
+    // ViewModel 초기화
     private func initializeViewModel() {
         let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
         viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
     }
 
+    // MARK: - ViewModel Binding
     private func bind() {
         // UserLocation (실시간 검색결과)를 selectedLocation으로 전달하고, tableView를 새로고침 (여기는 리스트임)
         viewModel.$searchResults
@@ -112,6 +116,7 @@ class LocationSearchViewController: UIViewController, UISearchResultsUpdating, U
     }
 }
 
+// MARK: - UITableView Delegate
 extension LocationSearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchLocations.count
@@ -136,10 +141,7 @@ extension LocationSearchViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let address = searchLocations[indexPath.row]
-        self.delegate?.locationSelected(address) // delegate 패턴도 활용하고
-        print("전달되는 address : \(address.addressName)")
-        print("전달되는 x좌표 : \(address.longitude)")
-        print("전달되는 y좌표 : \(address.latitude)")
+        self.delegate?.locationSelected(address)
         navigationController?.popViewController(animated: true)
     }
 }

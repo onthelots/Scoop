@@ -12,6 +12,7 @@ class NewIssueDetailViewModel {
 
     let newIssueItem: NewIssueDTO
 
+    // MARK: - Input
     @Published var newIssueDTO: NewIssueDTO?
 
     init(newIssueItem: NewIssueDTO) {

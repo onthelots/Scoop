@@ -13,11 +13,11 @@ import CoreLocation
 
 class MapDetailViewController: UIViewController {
 
-    let storeCategory: PostCategory? // 이전 뷰에서 선택한 카테고리
+    let storeCategory: PostCategory?
     let storeName: String?
 
     private var viewModel: MapDetailViewModel!
-    private var selectedCategory: PostCategory? // 사용자가 직접 선택하는 Category
+    private var selectedCategory: PostCategory?
     private var storeUserReviews: [Post] = []
     private var subscription = Set<AnyCancellable>()
 
@@ -54,6 +54,7 @@ class MapDetailViewController: UIViewController {
         mapTapGestureToDismissModality()
     }
 
+    // 맵 클릭시, 리뷰 Moadlity 닫기
     private func mapTapGestureToDismissModality() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
         mapView.map.addGestureRecognizer(tapGestureRecognizer)
@@ -63,7 +64,7 @@ class MapDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    // MARK: - ViewWillAppear() : 이전 MapViewController에서 선택한 데이터를 우선적으로 나타냄 (모달뷰를 바로 띄움)
+    // MARK: - ViewWillAppear() 이전 MapViewController에서 선택한 데이터를 우선적으로 나타냄 (모달뷰를 바로 띄움)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchStorePost(category: storeCategory ?? .restaurant, storeName: storeName ?? "") { result in
@@ -184,7 +185,7 @@ extension MapDetailViewController: PostCategoryViewDelegate {
     }
 }
 
-// MKMap Delegate
+// MARK: - MKMap Delegate
 extension MapDetailViewController: MKMapViewDelegate {
 
     // Annotation 커스터마이징
@@ -198,7 +199,7 @@ extension MapDetailViewController: MKMapViewDelegate {
         return annotationView
     }
 
-    // 중심값이 이동될 때 마다
+    // 중심값이 이동될 때 마다 데이터 업데이트
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centerCoordinate = mapView.centerCoordinate
         self.viewModel.fetchPostsAroundCoordinate(category: selectedCategory ?? .restaurant, coordinate: centerCoordinate)

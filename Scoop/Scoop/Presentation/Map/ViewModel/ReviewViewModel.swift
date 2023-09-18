@@ -14,10 +14,11 @@ class ReviewViewModel: ObservableObject {
 
     let postUseCase: DefaultPostUseCase
 
+    // MARK: - Input
     @Published var userInfo: UserInfo!
     @Published var searchResults: [SearchResult] = []
 
-    // Output (사용자가 최종적으로 선택한 Cell 값)
+    // MARK: - OutPut
     let locationItemTapped = PassthroughSubject<SearchResult, Never>()
     let postButtonTapped = PassthroughSubject<(Post, [UIImage]), Never>() // 튜플로 변경
     

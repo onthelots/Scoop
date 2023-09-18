@@ -21,6 +21,7 @@ class EventDetailViewController: UIViewController {
         self.hidesBottomBarWhenPushed = true
     }
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -30,6 +31,7 @@ class EventDetailViewController: UIViewController {
         setupBackButton()
     }
 
+    // MARK: - UI Setting
     private func setupUI() {
         view.backgroundColor = .systemBackground
         view.addSubview(eventDetailView)
@@ -46,7 +48,7 @@ class EventDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Bind
+    // ViewModel Binding
     private func bind() {
         viewModel.$eventDetailDTO
             .compactMap { $0 }
@@ -56,6 +58,7 @@ class EventDetailViewController: UIViewController {
             }.store(in: &subscripiton)
     }
 
+    // Item Tapped Action 
     private func itemTapped() {
         self.eventDetailView.webButtonView.nextButton.addTarget(self, action: #selector(openWebPage), for: .touchUpInside)
     }

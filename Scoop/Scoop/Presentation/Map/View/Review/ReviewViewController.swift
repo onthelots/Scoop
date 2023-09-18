@@ -10,18 +10,9 @@ import Firebase
 import UIKit
 import PhotosUI
 
-protocol ReviewViewControllerDelegate: AnyObject {
-    func createAnnotation(title: String, location: CLLocationCoordinate2D)
-}
-
 class ReviewViewController: UIViewController {
 
-    weak var delegate: ReviewViewControllerDelegate?
-
-    // 저장된 카테고리
     let category: PostCategory
-
-    // 유저정보
     let userInfo: UserInfo!
 
     private var selectedLocation: SearchResult? // 선택한 위치 정보를 저장할 변수
@@ -32,7 +23,7 @@ class ReviewViewController: UIViewController {
     private var reviewView = ReviewView()
     private var subscription = Set<AnyCancellable>()
 
-    // 선택한 이미지의 id
+    // 선택한 이미지의 identifier
     private var selectedAssetIdentifiers = [String]()
 
     // id와 Phpicker로 만든 딕셔너리 (이미지 데이터 저장)
@@ -49,6 +40,7 @@ class ReviewViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackButton()
@@ -59,13 +51,13 @@ class ReviewViewController: UIViewController {
         setupUI()
     }
 
+    // ViewModel 초기화
     private func initializeViewModel() {
         let userLocationUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
         viewModel = ReviewViewModel(postUseCase: userLocationUseCase)
     }
 
     private func updateBarButton() {
-        // barButton update -> 분기처리
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "완료",
             style: .done,
@@ -74,12 +66,11 @@ class ReviewViewController: UIViewController {
         )
     }
 
-    // didTapAdd(playlistview)
     @objc func didTapAddReview() {
         showReviewAddAlert()
     }
 
-    // MARK: - FireStore에 저장하기
+    // MARK: - 사용자 리뷰 저장 Action
     public func showReviewAddAlert() {
         let alert = UIAlertController(
             title: "저장하기",
@@ -93,7 +84,7 @@ class ReviewViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "저장",
                                       style: .default,
                                       handler: { [weak self] _ in
-            // MARK: - API createdPlaylists (POST)
+
             guard let userId = Auth.auth().currentUser?.uid,
                   let selectedImages = self?.selectedImage, // 이미지 배열
                   let category = self?.category,
@@ -126,7 +117,6 @@ class ReviewViewController: UIViewController {
 
             // 이미지 배열과 함께 Post 정보 전달
             self?.viewModel.postButtonTapped.send((postInfo, selectedImages))
-
             self?.navigationController?.popViewController(animated: true)
 
         }))
@@ -134,7 +124,7 @@ class ReviewViewController: UIViewController {
     }
 
 
-    // setup revieewView
+    // MARK: - UI Setting
     private func setupUI() {
         view.addSubview(reviewView)
         reviewView.translatesAutoresizingMaskIntoConstraints = false
@@ -160,7 +150,7 @@ class ReviewViewController: UIViewController {
         self.present(picker, animated: true)
     }
 
-    // ImageProvider 처리 -> 로드 후, ImageView에 뿌려주거나 혹은 전역변수에 저장 (itemProvider가 비동기적 처리임. 따라서 순서대로가 아닌 용량이 작은 순서대로 나타나기 때문에, 이에 따라 dispatchGroup으로 작업함)
+    // MARK: - ImageProvider 처리 -> 로드 후, ImageView에 뿌려주거나 혹은 전역변수에 저장 (itemProvider가 비동기적 처리임. 따라서 순서대로가 아닌 용량이 작은 순서대로 나타나기 때문에, 이에 따라 dispatchGroup으로 작업함)
     private func displayAndSaveImage() {
         // 1. 스택뷰의 모든 서브뷰를 제거함
         self.reviewView.imageStackView.subviews.forEach { $0.removeFromSuperview() }
@@ -201,6 +191,7 @@ class ReviewViewController: UIViewController {
     }
 }
 
+// MARK: - ReviewView(리뷰 작성뷰) Delegate
 extension ReviewViewController: ReviewViewDelegate {
 
     func didTappedPictureButton() {
