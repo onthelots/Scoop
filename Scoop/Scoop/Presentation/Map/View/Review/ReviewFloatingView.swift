@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 
+// MARK: - Floating 버튼에 대한 Delegate 설정 (-> 메인뷰인 MapViewController에서 위임받아 처리)
 protocol ReviewFloatingViewDelegate: AnyObject {
     func activateDimView(_ activate: Bool)
 }
@@ -15,7 +16,8 @@ protocol ReviewFloatingViewDelegate: AnyObject {
 class ReviewFloatingView: UIView {
 
     weak var delegate: ReviewFloatingViewDelegate?
-    var floatingButtonFlag: Bool = false
+    var floatingButtonFlag: Bool = true
+    let initialRotationAngle: CGFloat = 0.0 // 플로팅 버튼 초기 회전 각도 (0도)
     var textLabelTappedSubject = PassthroughSubject<String, Never>()
 
     let categoryButtonImages: [PostCategory: UIImage] = [
@@ -28,17 +30,17 @@ class ReviewFloatingView: UIView {
     ]
 
     // 플로팅 버튼
-    private var floatingButton: UIButton = {
+    lazy var floatingButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
-        configuration.image = UIImage(systemName: "plus.circle.fill")
-        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 40)
+        configuration.image = UIImage(named: "plusButton")
+        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 60)
         configuration.imagePlacement = .all
-        configuration.baseForegroundColor = .tintColor
         let button = UIButton(configuration: configuration)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
+    // 스택뷰 (카테고리 선택을 통한 글 작성하기)
     lazy var categoryMenuStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -63,7 +65,7 @@ class ReviewFloatingView: UIView {
                 configuration.imagePadding = 20
                 configuration.imagePlacement = .trailing
                 let button = UIButton(configuration: configuration)
-                button.tintColor = .label
+                button.tintColor = .secondaryLabel
                 stackView.addArrangedSubview(button)
                 button.addTarget(self, action: #selector(categoryButtonTapped(_:)), for: .touchUpInside)
             }
@@ -77,6 +79,7 @@ class ReviewFloatingView: UIView {
         addSubview(categoryMenuStackView)
 
         floatingButton.addTarget(self, action: #selector(tapMenuButton), for: .touchUpInside)
+        floatingButton.transform = CGAffineTransform(rotationAngle: initialRotationAngle)
     }
 
     required init?(coder: NSCoder) {
@@ -91,24 +94,29 @@ class ReviewFloatingView: UIView {
             floatingButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             floatingButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             floatingButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-
             categoryMenuStackView.topAnchor.constraint(equalTo: topAnchor).withPriority(.defaultHigh),
             categoryMenuStackView.centerXAnchor.constraint(equalTo: floatingButton.centerXAnchor),
             categoryMenuStackView.bottomAnchor.constraint(equalTo: floatingButton.topAnchor, constant: -10)
         ])
     }
 
+    // 메뉴 버튼(Floating Button)을 눌렀을 시
     @objc private func tapMenuButton() {
+        self.floatingButtonFlag.toggle()
+        let rotationAngle: CGFloat = self.floatingButtonFlag ? initialRotationAngle : CGFloat.pi / 4.0 // 토글 상태에 따라 회전 각도 결정
         UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseInOut) {
+            self.floatingButton.transform = CGAffineTransform(rotationAngle: rotationAngle) // 버튼 회전 각도 적용
             self.categoryMenuStackView.arrangedSubviews.forEach { (button) in
-                self.floatingButtonFlag.toggle()
                 button.isHidden.toggle()
                 self.delegate?.activateDimView(button.isHidden)
             }
+            self.categoryMenuStackView.layoutIfNeeded()
         }
-        categoryMenuStackView.layoutIfNeeded()
     }
 
+
+
+    // 카테고리 버튼을 눌렀을 시
     @objc private func categoryButtonTapped(_ sender: UIButton) {
         if let text = sender.titleLabel?.text {
             textLabelTappedSubject.send(text)

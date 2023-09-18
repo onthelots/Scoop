@@ -12,11 +12,12 @@ import Firebase
 import CoreLocation
 
 class MapViewController: UIViewController, ReviewFloatingViewDelegate {
-    // MARK: - Binding Data, ViewModel
+
     private var viewModel: MapViewModel!
     private var userInfo: UserInfo! // 유저의 정보
     private var selectedCategory: PostCategory?
     private var filteredPostsForCategory: [Post] = []
+    private var dimViewFlage: Bool = true
     private var subscription = Set<AnyCancellable>()
 
     // MARK: - Components
@@ -28,7 +29,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
     }()
 
     private lazy var mapView = MapView()
-    private lazy var floatingButton = ReviewFloatingView()
+    private lazy var reviewFloatingView = ReviewFloatingView()
     private var collectionView: UICollectionView!
     private var dimView: UIView = {
         let view = UIView()
@@ -58,7 +59,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         setupMapView()
         viewModel.userAllInfoFetch()
         dataLoadingCompleted()
-        floatingButton.delegate = self
+        reviewFloatingView.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissDimView))
         dimView.addGestureRecognizer(tapGesture)
     }
@@ -68,25 +69,36 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         viewInitializer()
     }
 
+    // 뷰가 사라질 시, category 버튼 toggle
     private func viewInitializer() {
         dimView.isHidden = true
-        floatingButton.categoryMenuStackView.arrangedSubviews.forEach { (button) in
+        reviewFloatingView.categoryMenuStackView.arrangedSubviews.forEach { (button) in
             button.isHidden.toggle()
         }
+        reviewFloatingView.floatingButtonFlag = true
+        reviewFloatingView.floatingButton.transform = CGAffineTransform(rotationAngle: 0.0)
     }
 
+    // background TapGestrue에 따른 dim 뷰 toggle
     @objc private func dismissDimView() {
         dimView.isHidden = true
-        floatingButton.categoryMenuStackView.arrangedSubviews.forEach { (button) in
+        reviewFloatingView.floatingButtonFlag = true
+        UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseInOut) {
+            self.reviewFloatingView.floatingButton.transform = CGAffineTransform(rotationAngle: 0.0)
+        }
+
+        print("현재 floatingButtonFlag의 상태는? : \(self.reviewFloatingView.floatingButtonFlag)")
+        reviewFloatingView.categoryMenuStackView.arrangedSubviews.forEach { (button) in
             button.isHidden.toggle()
         }
     }
 
+    // delegate(review Button Tapped)를 통해, dim 뷰 값 할당하기
     func activateDimView(_ activate: Bool) {
         dimView.isHidden = activate
     }
 
-    // MARK: - ViewWillAppera (Floating View initializer)
+    // MARK: - ViewWillApperar (Floating View initializer)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -94,7 +106,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
             presentedModal.dismiss(animated: true)
         }
 
-        floatingButton.categoryMenuStackView.arrangedSubviews.forEach { (button) in
+        reviewFloatingView.categoryMenuStackView.arrangedSubviews.forEach { (button) in
             button.isHidden = true
         }
         categoryAndfetchPostInitializer()
@@ -106,12 +118,12 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         view.addSubview(mapView)
         view.addSubview(collectionView)
         view.addSubview(dimView)
-        view.addSubview(floatingButton)
+        view.addSubview(reviewFloatingView)
 
         postCategoryView.translatesAutoresizingMaskIntoConstraints = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        reviewFloatingView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             postCategoryView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -129,8 +141,8 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
             dimView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             dimView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             dimView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            floatingButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            floatingButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            reviewFloatingView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            reviewFloatingView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 
@@ -148,7 +160,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
                 ])
                 // floatingButton을 emptyPostToggleView 위에 오도록 함
                 self.view.bringSubviewToFront(self.dimView)
-                self.view.bringSubviewToFront(self.floatingButton)
+                self.view.bringSubviewToFront(self.reviewFloatingView)
                 self.view.layoutIfNeeded()
             }
         }
@@ -156,7 +168,6 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
     }
 
     private func hideEmptyPostToggleView() {
-        // 애니메이션 효과 추가
         UIView.animate(withDuration: 1.3) {
             self.emptyPostToggleView.isHidden = true
         }
@@ -197,7 +208,6 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
             cell.backgroundColor = .systemGray6
             return cell
         })
-
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionFooter {
                 guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PostFooterReusableView.identifier, for: indexPath) as? PostFooterReusableView else {
@@ -216,9 +226,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-
         let verticalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                        heightDimension: .absolute(90))
         let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize,
@@ -243,8 +251,9 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         return footer
     }
 
-    // 4. viewModel 바인딩 (userInfo, Post 내용 가져오기)
+    // viewModel Binding
     private func bind() {
+        // 유저정보 받아오기
         viewModel.$userInfo
             .sink { userInfo in
                 // 1. 유저의 위치를 바탕으로 Center와 span값을 설정 (초기값)
@@ -258,7 +267,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
             }.store(in: &subscription)
 
         // floatingButton의 Category데이터 전달
-        floatingButton.textLabelTappedSubject
+        reviewFloatingView.textLabelTappedSubject
             .receive(on: RunLoop.main)
             .sink { [weak self] text in
                 guard let self = self else { return }
@@ -283,14 +292,12 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
                 snapshot.appendSections([.main])
                 snapshot.appendItems(post, toSection: .main)
                 self.dataSource.apply(snapshot)
-
                 if post.isEmpty {
-                    self.showEmptyPostToggleView() // 데이터가 없을 때 emptyPostToggleView를 표시
+                    self.showEmptyPostToggleView()
                 } else {
-                    self.hideEmptyPostToggleView() // 데이터가 있을 때 emptyPostToggleView를 숨김
+                    self.hideEmptyPostToggleView()
                     self.filteredPostsForCategory = post
                 }
-
             }.store(in: &subscription)
 
         viewModel.itemTapped
@@ -354,13 +361,12 @@ extension MapViewController: PostCategoryViewDelegate {
     }
 }
 
-// MKMap Delegate
+// MARK: - MKMap Delegate
 extension MapViewController: MKMapViewDelegate {
 
     // Annotation 커스터마이징
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
-
         let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: nil)
         annotationView.canShowCallout = true
         annotationView.glyphImage = UIImage(systemName: "star.circle.fill")
@@ -368,7 +374,7 @@ extension MapViewController: MKMapViewDelegate {
         return annotationView
     }
 
-    // 중심값이 이동될 때 마다
+    // 중심값이 이동될 때 마다 데이터 새롭게 파싱하기
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // 현재 지도에 보이는 영역의 좌표 가져오기
         let visibleMapRect = mapView.visibleMapRect

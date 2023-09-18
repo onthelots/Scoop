@@ -12,6 +12,9 @@ import Firebase
 class HomeViewController: UIViewController {
 
     private var viewModel: HomeViewModel!
+    private var subscription: Set<AnyCancellable> = []
+
+    // MARK: - Components
     private var collectionView: UICollectionView!
 
     private lazy var newIssueCategoryView: NewIssueCategoryView = {
@@ -37,7 +40,7 @@ class HomeViewController: UIViewController {
         }
     }
 
-    // MARK: - Section
+    // MARK: - CollectionView Section
     enum Section: CaseIterable, Hashable {
         case newIssue
         case culturalEvent
@@ -54,15 +57,17 @@ class HomeViewController: UIViewController {
         }
     }
 
-    // MARK: - Item
+    // MARK: - DiffableDataSource
+
+    // Item
     enum Item: Hashable {
         case newIssue(NewIssueDTO)
         case event(EventDetailDTO)
     }
-    // MARK: - DataSource (3개의 섹션, 2개의 아이템)
+    // DataSource
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
-    private var subscription: Set<AnyCancellable> = []
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -163,7 +168,9 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
     }
 
+    // ViewModel Binding
     private func bind() {
+        // 3개의 Item에 대한 combineLatest 활용
         viewModel.newIssueSubject
             .combineLatest(viewModel.culturalEventSubject, viewModel.educationEventSubject)
             .receive(on: RunLoop.main)
@@ -217,6 +224,7 @@ class HomeViewController: UIViewController {
             }
             .store(in: &subscription)
 
+        // 개별 Item을 선택했을 시, ViewController Push
         viewModel.itemTapped
             .sink { item in
                 switch item {
@@ -236,7 +244,7 @@ class HomeViewController: UIViewController {
             }.store(in: &subscription)
     }
 
-    // Item 할당 (to dataSource)
+    // Item 할당
     private func applyItem(newIssues: [NewIssueDTO], culturalEvents: [EventDetailDTO], educationEvents: [EventDetailDTO]) {
         var snapshot = dataSource.snapshot()
 
@@ -274,41 +282,35 @@ class HomeViewController: UIViewController {
         self.dataSource.apply(snapshot)
     }
 
-    // MARK: - CollectionView Layout (2가지 Case)
+    // MARK: - Layout
     private func layout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
             let section = Section.allCases[sectionIndex]
             if section == .newIssue {
                 return self.createNewIssueSectionLayout()
             } else {
-                return self.createSectionLayout()
+                return self.createOtherSectionLayout()
             }
         }
-
-        // Add background decoration to the layout
         layout.register(BackgroundDecorationView.self, forDecorationViewOfKind: BackgroundDecorationView.identifier)
         return layout
     }
 
-    // Layout1 ->0번째 Section
+    // Layout (newIssue Section)
     private func createNewIssueSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
-
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(30)) // Adjust the height as needed
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 5)
-
         let sectionLayout = NSCollectionLayoutSection(group: group)
 
         sectionLayout.boundarySupplementaryItems = [createIssueSectionHeader()]
         sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         sectionLayout.orthogonalScrollingBehavior = .groupPaging
 
-
-        // Add decoration item to surround the group
         let decorationItem = NSCollectionLayoutDecorationItem.background(elementKind: BackgroundDecorationView.identifier)
         decorationItem.contentInsets = NSDirectionalEdgeInsets(top: 90, leading: 10, bottom: 5, trailing: 10)
         sectionLayout.decorationItems = [decorationItem]
@@ -316,8 +318,8 @@ class HomeViewController: UIViewController {
         return sectionLayout
     }
 
-    // Layout2 -> 1, 2번째 Section
-    private func createSectionLayout() -> NSCollectionLayoutSection {
+    // Layout (Other Section)
+    private func createOtherSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -330,11 +332,12 @@ class HomeViewController: UIViewController {
                                                                  count: 1)
         let sectionLayout = NSCollectionLayoutSection(group: horizontalGroup)
         sectionLayout.orthogonalScrollingBehavior = .groupPaging
-        sectionLayout.boundarySupplementaryItems = [createSectionHeader()]
+        sectionLayout.boundarySupplementaryItems = [createOtherSectionHeader()]
         sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
         return sectionLayout
     }
 
+    // Layout (newIssue Header)
     private func createIssueSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         return NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -344,7 +347,8 @@ class HomeViewController: UIViewController {
         )
     }
 
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+    // Layout (Other Section Header)
+    private func createOtherSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         return NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(40)),
@@ -354,6 +358,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - CollectionView Delegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedItem = dataSource.itemIdentifier(for: indexPath) else {
@@ -370,6 +375,7 @@ extension HomeViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - NewIssueCategoryView Delegate
 extension HomeViewController: NewIssueCategoryViewDelegate {
     func categoryLabelTapped(_ gesture: UITapGestureRecognizer) {
         if let label = gesture.view as? UILabel,

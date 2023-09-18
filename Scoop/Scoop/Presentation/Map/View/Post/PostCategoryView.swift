@@ -17,8 +17,7 @@ class PostCategoryView: UIView {
     weak var delegate: PostCategoryViewDelegate?
 
     var viewModel: MapViewModel!
-    
-    // enum 타입을 활용할 것
+
     let categories: [PostCategory] = [.restaurant, .cafe, .beauty, .hobby, .education, .hospital]
     var state: PostCategory = .restaurant
 
@@ -57,7 +56,7 @@ class PostCategoryView: UIView {
         update(for: state)
     }
 
-    // 1. viewModel 초기화
+    // ViewModel 초기화
     private func initalizerViewModel() {
         let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
         let postUseCase = DefaultPostUseCase(postRepository: DefaultPostRepository(networkManager: NetworkService(configuration: .default), geocodeManager: GeocodingManager(), firestore: Firestore.firestore()))
@@ -77,7 +76,6 @@ class PostCategoryView: UIView {
             categoryLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
             categoryLabel.translatesAutoresizingMaskIntoConstraints = false
             categoryLabel.isUserInteractionEnabled = true
-
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryLabelTapped(_:)))
             categoryLabel.addGestureRecognizer(tapGesture)
             stackView.addArrangedSubview(categoryLabel)

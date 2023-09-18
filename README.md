@@ -281,10 +281,15 @@
 ## 5-업데이트 및 리팩토링 사항
 ### 5-1 우선 순위별 개선항목
 1) Issue
-- 리뷰 글 작성 내 PHPicker를 열어 선택한 후, 재 선택할 시 사진 데이터는 정상적으로 초기화, 저장되지만 View에 나타나지 않는 이슈 발생
-- 유저 닉네임 변경 시, 즉각적으로 반영되지 않는 이슈 발생(Publisher 로직 변경 필요)
-- Map의 경도, 위도값이 상이하여 비 규칙적인 데이터 파싱문제 발생
+- [ ] 리뷰 글 작성 내 PHPicker를 열어 선택한 후, 재 선택할 시 사진 데이터는 정상적으로 초기화, 저장되지만 View에 나타나지 않는 이슈 발생
+- [ ] 유저 닉네임 변경 시, 즉각적으로 반영되지 않는 이슈 발생(Publisher 로직 변경 필요)
+- [ ] Map의 경도, 위도값이 상이하여 비 규칙적인 데이터 파싱문제 발생
 
+2) UI
+- [x] Floatingbutton 로직 및 형태 수정
+- [ ] CollectionView Cell의 FooterView로 UIPageControl 할당하기
+
+<br>
 
 
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fonthelots%2FScoop&count_bg=%230CC0DF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>

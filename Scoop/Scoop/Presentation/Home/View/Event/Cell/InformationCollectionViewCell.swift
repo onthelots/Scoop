@@ -16,7 +16,7 @@ class InformationCollectionViewCell: UICollectionViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.distribution = .fillProportionally // 내부 Components의 Intrinsic content size(높이, 너비)를 자동으로 설정함
+        stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()

@@ -14,6 +14,7 @@ import CoreLocation
 class PostsModalViewController: UIViewController {
     private var storeUserReviews: [Post] = []
 
+    // MARK: - Common Components
     lazy var tableView: UITableView = {
         let tableView = UITableView(
             frame: .zero,
@@ -101,6 +102,7 @@ class PostsModalViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -117,6 +119,7 @@ class PostsModalViewController: UIViewController {
         self.addressLabel.text = posts.first?.roadAddressName
     }
 
+    // MARK: - UI Setting
     private func setupUI() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
@@ -157,6 +160,7 @@ class PostsModalViewController: UIViewController {
     }
 }
 
+// MARK: - UITableView Delegate
 extension PostsModalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return storeUserReviews.count
