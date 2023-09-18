@@ -15,19 +15,17 @@ class MapViewModel: ObservableObject {
     private let userInfoUseCase: UserInfoUseCase
     private let postUseCase: PostUseCase
 
-    // Input
+    var mapView: MKMapView?
+
+    // MARK: - Input
     @Published var userInfo: UserInfo!
     @Published var filteredPostsForCategory: [Post] = []
     @Published private(set) var emptyLabelHidden: Bool = true
 
-    // MapView 프로퍼티 추가
-    var mapView: MKMapView?
-
-    // Output
+    // MARK: - Output
     let categoryTapped = PassthroughSubject<PostCategory, Never>()
     let itemTapped = PassthroughSubject<(PostCategory, String), Never>()
 
-    //
     private var subscription = Set<AnyCancellable>()
 
     init(userInfoUseCase: UserInfoUseCase, postUseCase: PostUseCase) {

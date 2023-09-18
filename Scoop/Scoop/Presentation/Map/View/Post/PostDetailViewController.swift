@@ -10,6 +10,7 @@ import UIKit
 class PostDetailViewController: UIViewController {
     var storeUserReview: [Post]
 
+    // MARK: - Common Components
     lazy var tableView: UITableView = {
         let tableView = UITableView(
             frame: .zero,
@@ -97,6 +98,7 @@ class PostDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -113,7 +115,7 @@ class PostDetailViewController: UIViewController {
         self.addressLabel.text = posts.first?.roadAddressName
     }
 
-
+    // MARK: - UI Setting
     private func setupUI() {
         view.addSubview(tableView)
         view.addSubview(storeNameLabel)
@@ -153,6 +155,7 @@ class PostDetailViewController: UIViewController {
     }
 }
 
+// MARK: - UITableView Delegate
 extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return storeUserReview.count

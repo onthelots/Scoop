@@ -19,12 +19,7 @@ class HomeViewModel: ObservableObject {
         case event(EventDetailDTO)
     }
 
-    var newIssueSubject = PassthroughSubject<[NewIssueDetail], Never>()
-    var culturalEventSubject = PassthroughSubject<[CulturalEventDetail], Never>()
-    var educationEventSubject = PassthroughSubject<[EducationEventDetail], Never>()
-
-    let itemTapped = PassthroughSubject<Item, Never>()
-
+    // MARK: - Input
     @Published var userInfo: UserInfo!
     @Published var selectedCategory: String? {
          didSet {
@@ -34,13 +29,21 @@ class HomeViewModel: ObservableObject {
          }
      }
 
+    // MARK: - OutPut
+    var newIssueSubject = PassthroughSubject<[NewIssueDetail], Never>()
+    var culturalEventSubject = PassthroughSubject<[CulturalEventDetail], Never>()
+    var educationEventSubject = PassthroughSubject<[EducationEventDetail], Never>()
+    let itemTapped = PassthroughSubject<Item, Never>()
+
     private var subscription = Set<AnyCancellable>()
+
     init(localEventUseCase: LocalEventUseCase, userInfoUseCase: UserInfoUseCase) {
         self.localEventUseCase = localEventUseCase
         self.userInfoUseCase = userInfoUseCase
         self.selectedCategory = "21"
     }
 
+    // 유저 정보 가져오기
     func userInfoFetch() {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
@@ -57,6 +60,7 @@ class HomeViewModel: ObservableObject {
         }
     }
 
+    // NewIssue 데이터 파싱
     func newIssueFetch(category: String) {
         localEventUseCase.newIssueParsing(categoryCode: category) { result in
             switch result {
@@ -68,7 +72,7 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-
+    // culturalEvent 데이터 파싱
     func culturalEventFetch(location: String) {
         localEventUseCase.culturalEventParsing(location: location) { result in
             switch result {
@@ -80,6 +84,7 @@ class HomeViewModel: ObservableObject {
         }
     }
 
+    // educationEvent 데이터 파싱
     func educationEventFetch(location: String) {
         localEventUseCase.educationEventParsing(location: location) { result in
             switch result {

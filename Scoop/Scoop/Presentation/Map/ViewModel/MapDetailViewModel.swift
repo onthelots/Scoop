@@ -15,14 +15,14 @@ class MapDetailViewModel: ObservableObject {
 
     private let userInfoUseCase: UserInfoUseCase
     private let postUseCase: PostUseCase
-    
+
+    var mapView: MKMapView?
+
+    // MARK: - Input
     @Published var userInfo: UserInfo!
     @Published var posts: [Post]?
 
-    // MapView 프로퍼티 추가
-    var mapView: MKMapView?
-
-    // Output
+    // MARK: - Output
     let annotationTapped = PassthroughSubject<(PostCategory, String), Never>() // 해당 점포를 눌렀을 때
     let categoryTapped = PassthroughSubject<PostCategory, Never>()
 

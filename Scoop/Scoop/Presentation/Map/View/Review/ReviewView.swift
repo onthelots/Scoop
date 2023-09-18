@@ -21,9 +21,7 @@ class ReviewView: UIView {
 
     // 이미지 뷰 배열
     var imageViews: [UIImageView] = []
-
     let textViewPlaceHolder = "해당 장소에 대한 이야기를 공유해주세요\n구체적으로 작성해주신 글은 이웃에게 큰 도움이 될거에요"
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -136,6 +134,7 @@ class ReviewView: UIView {
         return view
     }()
 
+    // MARK: - UI Setting
     private func setupUI() {
         self.addSubview(warningView)
         self.addSubview(reviewTextView)

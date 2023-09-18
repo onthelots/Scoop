@@ -10,7 +10,6 @@ import MapKit
 
 class MapView: UIView {
 
-    // map 인스턴스 생성
     let map = MKMapView()
 
     override init(frame: CGRect) {
@@ -34,6 +33,7 @@ class MapView: UIView {
         ])
     }
 
+    // 카메라 Region, zoom 설정 (한계값)
     private func cameraConstraining() {
         let visibleMapRect = map.visibleMapRect
 
