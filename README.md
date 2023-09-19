@@ -1,7 +1,7 @@
 # Scoop ![29](https://github.com/onthelots/Scoop/assets/107039500/7d014abd-8c50-4a64-90ec-8e068ba7a5f6)
 > 내가 살고 있는 서울, 그리고 동네를 더욱 풍부하게 경험할 수 있도록, [Scoop]을 통해 다양한 맛을 즐겨보세요.
 
-<img width="2340" alt="scoop_screenshot" src="https://github.com/onthelots/Scoop/assets/107039500/5f455b3e-2b98-45b4-bbf5-fc66060c704d">
+![scoop_ss](https://github.com/onthelots/Scoop/assets/107039500/44841de9-9f8f-46f2-a720-64411a3c6250)
 
 <br> 
 
