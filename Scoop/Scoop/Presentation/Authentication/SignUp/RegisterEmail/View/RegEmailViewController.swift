@@ -116,7 +116,7 @@ class RegEmailViewController: UIViewController {
         ])
     }
 
-    // -----> 값을 바인딩  -----> 3. isEmailValid 유효값에 따라, 컴포넌트를 변경시킴
+    // MARK: - ViewModel Binding
     private func bind() {
         viewModel.$isEmailValid
             .receive(on: RunLoop.main)
@@ -126,7 +126,6 @@ class RegEmailViewController: UIViewController {
             }.store(in: &subscription)
     }
 
-    // <---- 값을 전달함 <--- 1. 텍스트 필드에서 입력하는 값을 전달함 (emailInput)
     @objc private func emailTextFieldEditingChanged(_ textField: UITextField) {
         if let email = textField.text {
             DispatchQueue.main.async {
@@ -140,7 +139,7 @@ class RegEmailViewController: UIViewController {
     // NextButton
     @objc private func nextButtonTapped() {
         if let email = textFieldView.textField.text {
-            viewModel.executeEmailDuplicationCheck(email: email) { [weak self] isDuplicated in
+            viewModel.checkEmailDuplication(email: email) { [weak self] isDuplicated in
                 // 1. 만약, 중복되었다면?
                 if isDuplicated {
                     // isEmailValide도 false로 변경시킴

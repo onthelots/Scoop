@@ -11,6 +11,7 @@ import Combine
 protocol ReviewViewDelegate: AnyObject {
     func didTappedLocationButton()
     func didTappedPictureButton()
+    func textViewDidChange(_ textView: UITextView)
 }
 
 class ReviewView: UIView {
@@ -21,13 +22,15 @@ class ReviewView: UIView {
 
     // 이미지 뷰 배열
     var imageViews: [UIImageView] = []
-    let textViewPlaceHolder = "해당 장소에 대한 이야기를 공유해주세요\n구체적으로 작성해주신 글은 이웃에게 큰 도움이 될거에요"
+    let textViewPlaceHolder = "해당 장소에 대한 이야기를 공유해주세요.\n구체적으로 작성해주신 글은 이웃에게 큰 도움이 될거에요\n(최소 10자이상, 리뷰를 작성할 주소등록은 필수입니다)"
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         self.backgroundColor = .systemBackground
         setupUI()
+        updateCharacterCountLabel()
+        initializerReviewTextLabel()
     }
 
     required init?(coder: NSCoder) {
@@ -64,12 +67,28 @@ class ReviewView: UIView {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 15.0)
         textView.text = textViewPlaceHolder
-        textView.textContainerInset = UIEdgeInsets(top: 15.0, left: 0.0, bottom: 15.0, right: 0.0)
-        textView.textColor = .lightGray
+        textView.textContainerInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        textView.textColor = .secondaryLabel
         textView.textAlignment = NSTextAlignment.left
+        textView.layer.cornerRadius = 5
+        textView.layer.masksToBounds = true
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.tertiaryLabel.cgColor
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.delegate = self
         return textView
+    }()
+
+    // text Count Label
+    private lazy var reviewTextCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.textAlignment = .right
+        label.textColor = .secondaryLabel
+        label.numberOfLines = 1
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     // location View
@@ -134,10 +153,16 @@ class ReviewView: UIView {
         return view
     }()
 
+    private func initializerReviewTextLabel() {
+        reviewTextCountLabel.text = "0 / 최소 20자"
+        reviewTextCountLabel.textColor = .secondaryLabel
+    }
+
     // MARK: - UI Setting
     private func setupUI() {
         self.addSubview(warningView)
         self.addSubview(reviewTextView)
+        self.addSubview(reviewTextCountLabel)
         self.addSubview(locationView)
         self.addSubview(imageStackView)
         self.addSubview(seperatedLineView)
@@ -148,8 +173,8 @@ class ReviewView: UIView {
 
         NSLayoutConstraint.activate([
             warningView.topAnchor.constraint(equalTo: self.topAnchor),
-            warningView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            warningView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            warningView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            warningView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             warningView.heightAnchor.constraint(equalTo: warningView.widthAnchor, multiplier: 0.15),
 
             warningLabel.centerXAnchor.constraint(equalTo: warningView.centerXAnchor),
@@ -158,7 +183,11 @@ class ReviewView: UIView {
             reviewTextView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: 10),
             reviewTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             reviewTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            reviewTextView.heightAnchor.constraint(equalToConstant: 200),
+            reviewTextView.heightAnchor.constraint(equalToConstant: 150),
+
+            reviewTextCountLabel.topAnchor.constraint(equalTo: reviewTextView.bottomAnchor, constant: 10),
+            reviewTextCountLabel.trailingAnchor.constraint(equalTo: reviewTextView.trailingAnchor),
+            reviewTextCountLabel.leadingAnchor.constraint(greaterThanOrEqualTo: reviewTextView.trailingAnchor, constant: 10).withPriority(.defaultLow),
 
             locationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             locationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
@@ -168,7 +197,7 @@ class ReviewView: UIView {
             imageStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             imageStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             imageStackView.bottomAnchor.constraint(equalTo: seperatedLineView.topAnchor, constant: -5),
-            imageStackView.heightAnchor.constraint(equalToConstant: 100),
+            imageStackView.heightAnchor.constraint(equalToConstant: 85),
 
             seperatedLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             seperatedLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
@@ -195,9 +224,22 @@ class ReviewView: UIView {
         self.addGestureRecognizer(tapGesture)
     }
 
-    private func createImageView(image: UIImage) -> UIImageView {
+    // Update the character count label based on the text in the TextView
+     private func updateCharacterCountLabel() {
+         let currentTextCount = reviewTextView.text.count
+         let minimumTextCount = 20 // 최소 글자 수 (원하는 값으로 변경 가능)
+         // 현재 글자 수에 따라 적절한 색상 설정
+         if currentTextCount >= minimumTextCount {
+             reviewTextCountLabel.textColor = .label
+         } else {
+             reviewTextCountLabel.textColor = .secondaryLabel
+         }
 
-        // imageView 반환
+         // 현재 글자 수 표시
+         reviewTextCountLabel.text = "\(currentTextCount) / 최소 20자"
+     }
+
+    private func createImageView(image: UIImage) -> UIImageView {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -286,16 +328,22 @@ class ReviewView: UIView {
 }
 
 extension ReviewView: UITextViewDelegate {
+
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
-            textView.textColor = .black
+            textView.textColor = .label
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = textViewPlaceHolder
-            textView.textColor = .lightGray
+            textView.textColor = .label
         }
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        updateCharacterCountLabel()
+        self.delegate?.textViewDidChange(textView)
     }
 }

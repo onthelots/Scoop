@@ -51,6 +51,7 @@
 		3F3A19012AB7B7FC002B3E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A19002AB7B7FC002B3E84 /* FirebaseStorage */; };
 		3F3A19022AB7BA6F002B3E84 /* ScoopTests.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */; };
 		3F3A19032AB7BA71002B3E84 /* ScoopUITests.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */; };
+		3F3C5C842ABA130800AE75DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C5C832ABA130800AE75DE /* GoogleService-Info.plist */; };
 		3F41C19D2AA1866100E9A48C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41C19C2AA1866100E9A48C /* MapView.swift */; };
 		3F44C7562AA1D8760037CCC5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7552AA1D8760037CCC5 /* FirebaseAuth */; };
 		3F44C7582AA1D8760037CCC5 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7572AA1D8760037CCC5 /* FirebaseDatabase */; };
@@ -130,7 +131,6 @@
 		3FB7F9DB2AB12B9900016290 /* EmptyMyPostToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */; };
 		3FB7F9DD2AB1AC6B00016290 /* ReviewFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DC2AB1AC6B00016290 /* ReviewFloatingView.swift */; };
 		3FB7F9DF2AB1CEE000016290 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DE2AB1CEE000016290 /* UIImage+Resize.swift */; };
-		3FB7F9E32AB1E7E500016290 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FB7F9E22AB1E7E500016290 /* GoogleService-Info.plist */; };
 		3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */; };
 		3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */; };
 		3FCFE6122AA8C0BE00D0AA10 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */; };
@@ -201,6 +201,8 @@
 		3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
 		3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
 		3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
+		3F3A19042AB89017002B3E84 /* Scoop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scoop.entitlements; sourceTree = "<group>"; };
+		3F3C5C832ABA130800AE75DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F41C19C2AA1866100E9A48C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3F44C76B2AA1F2C30037CCC5 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
 		3F44C76E2AA1F30A0037CCC5 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
@@ -277,7 +279,6 @@
 		3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMyPostToggleView.swift; sourceTree = "<group>"; };
 		3FB7F9DC2AB1AC6B00016290 /* ReviewFloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewFloatingView.swift; sourceTree = "<group>"; };
 		3FB7F9DE2AB1CEE000016290 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
-		3FB7F9E22AB1E7E500016290 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
 		3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
@@ -1032,6 +1033,7 @@
 		3FACA8772A7CE47B00F2544C /* Scoop */ = {
 			isa = PBXGroup;
 			children = (
+				3F3A19042AB89017002B3E84 /* Scoop.entitlements */,
 				3F1AB7C62A8DC96E0076CEAB /* App */,
 				3F1AB7882A8DC96E0076CEAB /* Domain */,
 				3F1AB7972A8DC96E0076CEAB /* Data */,
@@ -1039,8 +1041,8 @@
 				3F1AB79C2A8DC96E0076CEAB /* Presentation */,
 				3F1AB7C22A8DC96E0076CEAB /* Resource */,
 				3FACA8862A7CE47C00F2544C /* Info.plist */,
-				3FB7F9E22AB1E7E500016290 /* GoogleService-Info.plist */,
 				3F8A76732AB0A09D00C5F967 /* ScoopInfo.plist */,
+				3F3C5C832ABA130800AE75DE /* GoogleService-Info.plist */,
 			);
 			path = Scoop;
 			sourceTree = "<group>";
@@ -1372,7 +1374,7 @@
 			files = (
 				3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */,
 				3F1AB7F42A8DC96E0076CEAB /* LaunchScreen.storyboard in Resources */,
-				3FB7F9E32AB1E7E500016290 /* GoogleService-Info.plist in Resources */,
+				3F3C5C842ABA130800AE75DE /* GoogleService-Info.plist in Resources */,
 				3F1AB7F32A8DC96E0076CEAB /* Assets.xcassets in Resources */,
 				3F8A76742AB0A09D00C5F967 /* ScoopInfo.plist in Resources */,
 			);
@@ -1703,6 +1705,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scoop/Scoop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
@@ -1714,19 +1717,23 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lime.scoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1735,6 +1742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scoop/Scoop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V7TH2GUA8U;
@@ -1746,19 +1754,23 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 현재 위치를 토대로 인근 소식을 파악합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lime.scoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1775,9 +1787,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scoop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scoop";
 			};
 			name = Debug;
@@ -1795,9 +1810,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scoop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scoop";
 			};
 			name = Release;
@@ -1813,9 +1831,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Scoop;
 			};
 			name = Debug;
@@ -1831,9 +1852,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lime.ScoopUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Scoop;
 			};
 			name = Release;

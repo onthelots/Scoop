@@ -18,7 +18,6 @@ class ReviewViewController: UIViewController {
     private var selectedLocation: SearchResult? // 선택한 위치 정보를 저장할 변수
     private var selectedImage: [UIImage] = []
 
-    
     private var viewModel: ReviewViewModel!
     private var reviewView = ReviewView()
     private var subscription = Set<AnyCancellable>()
@@ -46,6 +45,7 @@ class ReviewViewController: UIViewController {
         setupBackButton()
         view.backgroundColor = .systemBackground
         initializeViewModel()
+        updatePostReviewButtonState()
         updateBarButton()
         reviewView.delegate = self
         setupUI()
@@ -58,13 +58,28 @@ class ReviewViewController: UIViewController {
     }
 
     private func updateBarButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+        let saveReviewBarButton: UIBarButtonItem = UIBarButtonItem(
             title: "완료",
             style: .done,
             target: self,
             action: #selector(didTapAddReview)
         )
+
+        self.navigationItem.rightBarButtonItem = saveReviewBarButton
     }
+
+    private func updatePostReviewButtonState() {
+        // reviewTextView에 적어도 10자 이상의 텍스트가 있는지 확인
+        let isReviewTextValid = reviewView.reviewTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count >= 10
+
+        // 위치가 선택되었는지 확인
+        let isLocationSelected = selectedLocation != nil
+
+        // 버튼의 활성화 및 색상 설정
+        navigationItem.rightBarButtonItem?.isEnabled = isReviewTextValid && isLocationSelected
+        navigationItem.rightBarButtonItem?.tintColor = isReviewTextValid && isLocationSelected ? .label : .quaternaryLabel
+    }
+
 
     @objc func didTapAddReview() {
         showReviewAddAlert()
@@ -193,7 +208,6 @@ class ReviewViewController: UIViewController {
 
 // MARK: - ReviewView(리뷰 작성뷰) Delegate
 extension ReviewViewController: ReviewViewDelegate {
-
     func didTappedPictureButton() {
         presentPHPicker()
     }
@@ -204,6 +218,10 @@ extension ReviewViewController: ReviewViewDelegate {
         viewController.navigationItem.title = "위치검색"
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        self.updatePostReviewButtonState()
     }
 }
 
@@ -254,5 +272,6 @@ extension ReviewViewController: LocationSearchViewControllerDelegate {
     func locationSelected(_ location: SearchResult) {
         self.selectedLocation = location
         self.reviewView.addLocationLabel(location: location)
+        updatePostReviewButtonState()
     }
 }

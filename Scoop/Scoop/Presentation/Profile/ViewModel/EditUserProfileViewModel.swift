@@ -10,6 +10,7 @@ import FirebaseAuth
 
 final class EditUserProfileViewModel: ObservableObject {
     internal let userInfoUseCase: DefaultsUserInfoUseCase
+    internal let signUpUseCase: DefaultSignUpUseCase
     private let nicknameValidationService: NickNameValidationService
 
     @Published var isNicknameValid = false
@@ -21,8 +22,9 @@ final class EditUserProfileViewModel: ObservableObject {
 
     private var subscription = Set<AnyCancellable>()
 
-    init(userInfoUseCase: DefaultsUserInfoUseCase, nicknameValidationService: NickNameValidationService) {
+    init(userInfoUseCase: DefaultsUserInfoUseCase,signUpUseCase: DefaultSignUpUseCase, nicknameValidationService: NickNameValidationService) {
         self.userInfoUseCase = userInfoUseCase
+        self.signUpUseCase = signUpUseCase
         self.nicknameValidationService = nicknameValidationService
         checkNicknameValidAndSave()
         saveUserNickname()
@@ -38,9 +40,25 @@ final class EditUserProfileViewModel: ObservableObject {
             .assign(to: \.isNicknameValid, on: self)
             .store(in: &subscription)
     }
+
     // 서비스 불러오기
     func validateNickname(_ nickname: String) -> Bool {
         return nicknameValidationService.validateNickname(nickname)
+    }
+
+    // 닉네임 중복여부 확인
+    func checkNicknameDuplication(nickname: String, completion: @escaping (Bool) -> Void) {
+        signUpUseCase.checkNickname(nickname: nickname) { result in
+            switch result {
+            case .success(let isDuplicated):
+                print("이메일 중복여부 : \(isDuplicated)")
+                completion(isDuplicated)
+            case .failure:
+                self.isNicknameValid = false
+                print("닉네임이 중복됩니다.")
+                completion(false)
+            }
+        }
     }
 
     // 닉네임 설정하기
