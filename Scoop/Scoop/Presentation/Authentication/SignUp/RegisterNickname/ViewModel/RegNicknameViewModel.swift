@@ -12,12 +12,14 @@ final class RegNicknameViewModel: ObservableObject {
     internal let signUpUseCase: DefaultSignUpUseCase
     private let nicknameValidationService: NickNameValidationService
 
-    let nicknameInput = PassthroughSubject<String, Never>()
-
+    // MARK: - Input
     @Published var isNicknameValid = false
     @Published var isDuplication = false
     @Published var nickname: String = ""
     @Published var isSignUpButtonEnabled = false
+
+    // MARK: - Output
+    let nicknameInput = PassthroughSubject<String, Never>()
 
     private var subscription = Set<AnyCancellable>()
 
@@ -42,24 +44,18 @@ final class RegNicknameViewModel: ObservableObject {
         return nicknameValidationService.validateNickname(nickname)
     }
 
-
-//    // 패스워드 넘기기
-//    func setUserNickname(nickname: String) {
-//        self.nickname = nickname
-//    }
-//
-//    // Checked Dubplication
-//    func executeNicknameDuplicationCheck(nickname: String, completion: @escaping (Bool) -> Void) {
-//            signUpUseCase.checkNickname(nickname: nickname) { [weak self] result in
-//                switch result {
-//                case .success(let isDuplicated):
-//                    print("닉네임 중복여부 : \(isDuplicated)")
-//                    self?.isDuplication = isDuplicated
-//                    completion(isDuplicated)
-//                case .failure:
-//                    print("문제가 발생했습니다.")
-//                    completion(true)
-//                }
-//            }
-//        }
+    // 닉네임 중복여부 확인
+    func checkNicknameDuplication(nickname: String, completion: @escaping (Bool) -> Void) {
+        signUpUseCase.checkNickname(nickname: nickname) { result in
+            switch result {
+            case .success(let isDuplicated):
+                print("이메일 중복여부 : \(isDuplicated)")
+                completion(isDuplicated)
+            case .failure:
+                self.isNicknameValid = false
+                print("닉네임이 중복됩니다.")
+                completion(false)
+            }
+        }
+    }
 }

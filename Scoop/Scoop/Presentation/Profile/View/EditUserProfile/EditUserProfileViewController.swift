@@ -8,6 +8,7 @@
 import Combine
 import UIKit
 import Firebase
+import FirebaseAuth
 
 
 class EditUserProfileViewController: UIViewController {
@@ -61,6 +62,15 @@ class EditUserProfileViewController: UIViewController {
         return label
     }()
 
+    // 회원탈퇴 버튼
+    lazy var unregisterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("회원탈퇴", for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     // 수정완료 라벨
     private lazy var nextButtonView: CommonButtonView = {
         let buttonView = CommonButtonView()
@@ -69,6 +79,7 @@ class EditUserProfileViewController: UIViewController {
         return buttonView
     }()
 
+    // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -78,6 +89,7 @@ class EditUserProfileViewController: UIViewController {
         viewModel.checkNicknameValidAndSave()
         setupUI()
         textFieldView.textField.addTarget(self, action: #selector(nicknameTextFieldEditingChanged), for: .editingChanged)
+        unregisterButton.addTarget(self, action: #selector(unregisterButtonTapped), for: .touchUpInside)
         nextButtonView.nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
 
@@ -90,10 +102,12 @@ class EditUserProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - UI Setting
     private func setupUI() {
         view.addSubview(nicknameLabel)
         view.addSubview(textFieldView)
         view.addSubview(eventLabel)
+        view.addSubview(unregisterButton)
         view.addSubview(nextButtonView)
 
         NSLayoutConstraint.activate([
@@ -107,7 +121,11 @@ class EditUserProfileViewController: UIViewController {
             eventLabel.topAnchor.constraint(equalTo: textFieldView.bottomAnchor, constant: 10),
             eventLabel.leadingAnchor.constraint(equalTo: nicknameLabel.leadingAnchor),
 
-            nextButtonView.topAnchor.constraint(greaterThanOrEqualTo: eventLabel.bottomAnchor, constant: 150).withPriority(.defaultLow),
+            unregisterButton.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 10),
+            unregisterButton.leadingAnchor.constraint(equalTo: nicknameLabel.leadingAnchor),
+            unregisterButton.trailingAnchor.constraint(equalTo: nicknameLabel.trailingAnchor),
+
+            nextButtonView.topAnchor.constraint(greaterThanOrEqualTo: unregisterButton.bottomAnchor, constant: 150).withPriority(.defaultLow),
             nextButtonView.leadingAnchor.constraint(equalTo: nicknameLabel.leadingAnchor),
             nextButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButtonView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).withPriority(.defaultHigh)
@@ -118,9 +136,10 @@ class EditUserProfileViewController: UIViewController {
     // viewModel 초기화
     private func initalizerViewModel() {
         let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
+        let signUpUseCase = DefaultSignUpUseCase(authRepository: DefaultsAuthRepository())
         let nicknameValidationService = DefaultNicknameValidationService()
 
-        viewModel = EditUserProfileViewModel(userInfoUseCase: userInfoUseCase, nicknameValidationService: nicknameValidationService)
+        viewModel = EditUserProfileViewModel(userInfoUseCase: userInfoUseCase, signUpUseCase: signUpUseCase, nicknameValidationService: nicknameValidationService)
     }
 
     // -----> 값을 바인딩  -----> 3. isEmailValid 유효값에 따라, 컴포넌트를 변경시킴
@@ -148,13 +167,53 @@ class EditUserProfileViewController: UIViewController {
             }
         }
     }
+
+    @objc private func unregisterButtonTapped() {
+        let alert = UIAlertController(title: "로그아웃",
+                                      message: "정말 로그아웃 하시겠습니까?",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "아니오",
+                                      style: .cancel))
+        alert.addAction(UIAlertAction(title: "네",
+                                      style: .destructive, handler: { _ in
+
+            if let user = Auth.auth().currentUser {
+                user.delete()
+                UserDefaultStorage<String>().deleteCache(key: "email")
+                UserDefaultStorage<String>().deleteCache(key: "password")
+
+                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                    let startPageViewController = UINavigationController(rootViewController: StartPageViewController())
+                    let transitionOptions: UIView.AnimationOptions = [.transitionCrossDissolve, .curveEaseInOut]
+                    UIView.transition(with: sceneDelegate.window!, duration: 0.5, options: transitionOptions, animations: {
+                        sceneDelegate.window?.rootViewController = startPageViewController
+                        sceneDelegate.window?.makeKeyAndVisible()
+                    }, completion: nil)
+                }
+            }
+        }))
+        present(alert, animated: true)
+    }
+
     // NextButton
     @objc private func nextButtonTapped() {
         if let nickname = textFieldView.textField.text {
-            print("저장될 닉네임 : \(nickname)")
-            self.viewModel.newNicknameInput.send(nickname)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.navigationController?.popViewController(animated: true)
+            viewModel.checkNicknameDuplication(nickname: nickname) { [weak self] isDuplicated in
+                if isDuplicated {
+                    self?.viewModel.isNicknameValid = false
+                    DispatchQueue.main.async {
+                        self?.textFieldView.textField.text = ""
+                        self?.textFieldView.textField.setError()
+                        self?.eventLabel.isHidden = false
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.viewModel.newNicknameInput.send(nickname)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self?.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }
             }
         }
     }

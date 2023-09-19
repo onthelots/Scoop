@@ -124,7 +124,6 @@ class RegNicknameViewController: UIViewController {
         ])
     }
 
-    // -----> 값을 바인딩  -----> 3. isEmailValid 유효값에 따라, 컴포넌트를 변경시킴
     private func bind() {
         viewModel.$isNicknameValid
             .receive(on: RunLoop.main)
@@ -134,7 +133,6 @@ class RegNicknameViewController: UIViewController {
             }.store(in: &subscription)
     }
 
-    // <---- 값을 전달함 <--- 1. 텍스트 필드에서 입력하는 값을 전달함 (emailInput)
     @objc private func nicknameTextFieldEditingChanged(_ textField: UITextField) {
         if let nickname = textField.text {
             DispatchQueue.main.async {
@@ -146,23 +144,33 @@ class RegNicknameViewController: UIViewController {
 
             } else {
                 viewModel.isNicknameValid = false
-                
+
             }
         }
     }
     // NextButton
     @objc private func nextButtonTapped() {
         if let nickname = textFieldView.textField.text {
-            print("저장될 닉네임 : \(nickname)")
-            DispatchQueue.main.async {
-                self.textFieldView.textField.text = ""
-                let viewController = RegisterWelcomeViewController(
-                    email: self.email,
-                    password: self.password,
-                    nickname: nickname
-                )
-                viewController.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(viewController, animated: true)
+            viewModel.checkNicknameDuplication(nickname: nickname) { [weak self] isDuplicated in
+                if isDuplicated {
+                    self?.viewModel.isNicknameValid = false
+                    DispatchQueue.main.async {
+                        self?.textFieldView.textField.text = ""
+                        self?.textFieldView.textField.setError()
+                        self?.eventLabel.isHidden = false
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.textFieldView.textField.text = ""
+                        let viewController = RegisterWelcomeViewController(
+                            email: self?.email ?? "",
+                            password: self?.password ?? "",
+                            nickname: nickname
+                        )
+                        viewController.navigationItem.largeTitleDisplayMode = .never
+                        self?.navigationController?.pushViewController(viewController, animated: true)
+                    }
+                }
             }
         }
     }

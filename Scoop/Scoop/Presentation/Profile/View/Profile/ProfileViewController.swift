@@ -70,8 +70,6 @@ class ProfileViewController: UIViewController {
 
     // MARK: - Bind()
     private func bind() {
-        // 내 정보 불러오기 (+userProfileView 업데이트)
-        // MARK: - userProfileView 업데이트 이슈 발생
         viewModel.$userInfo
             .receive(on: RunLoop.main)
             .sink { [weak self] userInfo in

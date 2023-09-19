@@ -92,4 +92,23 @@ class DefaultsUserInfoRepository: UserInfoRepository {
             }
         }
     }
+
+    // 유저 탈퇴
+    func deleteUser(completion: @escaping (Result<Void, Error>) -> Void) {
+        // Firebase Authentication에서 현재 로그인한 사용자 가져오기
+        if let user = Auth.auth().currentUser {
+            // 사용자를 삭제합니다.
+            user.delete { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(()))
+                }
+            }
+        } else {
+            // 사용자가 로그인되어 있지 않으면 에러를 반환합니다.
+            let error = NSError(domain: "AuthenticationError", code: 0, userInfo: nil)
+            completion(.failure(error))
+        }
+    }
 }

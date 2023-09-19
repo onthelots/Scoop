@@ -13,15 +13,13 @@ class RegEmailViewModel: ObservableObject {
     private let signUpUseCase: DefaultSignUpUseCase
     private let emailValidationService: EmailValidationService
 
-    // Input
+    // MARK: - Input
     @Published var isEmailValid: Bool = false // 이메일 유효혀부 확인 (EmailValidationService)
     @Published var isDuplication: Bool = false // 이메일 중복여부 확인
-    // 사용자 정보
     @Published var email: String = ""
 
-    // Output
-    let emailInput = PassthroughSubject<String, Never>() // 외부에서도 일련의 값을 전달할 수 있음
-    let validEmailInput = PassthroughSubject<String, Never>() // 외부에서도 일련의 값을 전달할 수 있음
+    // MARK: - Output
+    let emailInput = PassthroughSubject<String, Never>()
 
     private var subscription = Set<AnyCancellable>()
 
@@ -30,7 +28,6 @@ class RegEmailViewModel: ObservableObject {
         self.emailValidationService = emailValidationService
     }
 
-    // -----> 값을 받아옴 ---> 2. 이메일 유효성 여부 검사를 실시하고 -> 해당 결과값을 isEmailValid에 할당함
     func checkEmailValidAndSave() {
         emailInput
             .map { [weak self] email in
@@ -46,7 +43,7 @@ class RegEmailViewModel: ObservableObject {
      }
 
     // Checked Dubplication
-    func executeEmailDuplicationCheck(email: String, completion: @escaping (Bool) -> Void) {
+    func checkEmailDuplication(email: String, completion: @escaping (Bool) -> Void) {
             signUpUseCase.checkEmail(email: email) { [weak self] result in
                 switch result {
                 case .success(let isDuplicated):
@@ -54,8 +51,8 @@ class RegEmailViewModel: ObservableObject {
                     completion(isDuplicated)
                 case .failure:
                     self?.isEmailValid = false
-                    print("문제가 발생했습니다.")
-                    completion(true)
+                    print("이메일이 중복됩니다.")
+                    completion(false)
                 }
             }
         }
