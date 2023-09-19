@@ -49,8 +49,8 @@
 		3F3A18FD2AB7B7F6002B3E84 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A18FC2AB7B7F6002B3E84 /* FirebaseAuth */; };
 		3F3A18FF2AB7B7F8002B3E84 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A18FE2AB7B7F8002B3E84 /* FirebaseFirestore */; };
 		3F3A19012AB7B7FC002B3E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A19002AB7B7FC002B3E84 /* FirebaseStorage */; };
-		3F3A19022AB7BA6F002B3E84 /* ScoopTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */; };
-		3F3A19032AB7BA71002B3E84 /* ScoopUITests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */; };
+		3F3A19022AB7BA6F002B3E84 /* ScoopTests.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */; };
+		3F3A19032AB7BA71002B3E84 /* ScoopUITests.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */; };
 		3F3C5C842ABA130800AE75DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C5C832ABA130800AE75DE /* GoogleService-Info.plist */; };
 		3F41C19D2AA1866100E9A48C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F41C19C2AA1866100E9A48C /* MapView.swift */; };
 		3F44C7562AA1D8760037CCC5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F44C7552AA1D8760037CCC5 /* FirebaseAuth */; };
@@ -252,9 +252,9 @@
 		3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Scoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopTests.swift; path = ../../../../../../../../Desktop/GithubRepo/Scoop/Scoop/ScoopTests/ScoopTests.swift; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA88F2A7CE47C00F2544C /* ScoopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopTests.swift; sourceTree = "<group>"; };
-		3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopUITests.swift; path = ../../../../../../../../Desktop/GithubRepo/Scoop/Scoop/ScoopUITests/ScoopUITests.swift; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* ScoopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* ScoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
@@ -1024,8 +1024,8 @@
 			isa = PBXGroup;
 			children = (
 				3FACA8752A7CE47B00F2544C /* Scoop.app */,
-				3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */,
-				3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */,
+				3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */,
+				3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1293,7 +1293,7 @@
 				3F3A18FA2AB7B757002B3E84 /* FirebaseStorage */,
 			);
 			productName = DangleTests;
-			productReference = 3FACA88B2A7CE47C00F2544C /* ScoopTests.xctest */;
+			productReference = 3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3FACA8942A7CE47C00F2544C /* ScoopUITests */ = {
@@ -1316,7 +1316,7 @@
 				3F3A19002AB7B7FC002B3E84 /* FirebaseStorage */,
 			);
 			productName = DangleUITests;
-			productReference = 3FACA8952A7CE47C00F2544C /* ScoopUITests.xctest */;
+			productReference = 3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1384,7 +1384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F3A19022AB7BA6F002B3E84 /* ScoopTests.xctest in Resources */,
+				3F3A19022AB7BA6F002B3E84 /* ScoopTests.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1392,7 +1392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F3A19032AB7BA71002B3E84 /* ScoopUITests.xctest in Resources */,
+				3F3A19032AB7BA71002B3E84 /* ScoopUITests.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

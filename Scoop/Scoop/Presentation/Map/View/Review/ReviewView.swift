@@ -68,7 +68,7 @@ class ReviewView: UIView {
         textView.font = UIFont.systemFont(ofSize: 15.0)
         textView.text = textViewPlaceHolder
         textView.textContainerInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-        textView.textColor = .label
+        textView.textColor = .secondaryLabel
         textView.textAlignment = NSTextAlignment.left
         textView.layer.cornerRadius = 5
         textView.layer.masksToBounds = true
@@ -332,13 +332,13 @@ extension ReviewView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
-            textView.textColor = .secondaryLabel
+            textView.textColor = .label
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = textViewPlaceHolder
-            textView.textColor = .secondaryLabel
+            textView.textColor = .label
         }
     }
 

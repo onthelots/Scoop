@@ -64,8 +64,8 @@ class ReviewFloatingView: UIView {
                 configuration.image?.withRenderingMode(.alwaysTemplate)
                 configuration.imagePadding = 20
                 configuration.imagePlacement = .trailing
+                configuration.baseForegroundColor = .black
                 let button = UIButton(configuration: configuration)
-                button.setTitleColor(.black, for: .normal)
                 stackView.addArrangedSubview(button)
                 button.addTarget(self, action: #selector(categoryButtonTapped(_:)), for: .touchUpInside)
             }

@@ -63,9 +63,10 @@ class EditUserProfileViewController: UIViewController {
     }()
 
     // 회원탈퇴 버튼
-    lazy var unregisterButton: UIButton = {
+    private lazy var unregisterButton: UIButton = {
         let button = UIButton()
-        button.setTitle("회원탈퇴", for: .normal)
+        button.setTitle("탈퇴하기", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15)
         button.setTitleColor(.secondaryLabel, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -121,14 +122,13 @@ class EditUserProfileViewController: UIViewController {
             eventLabel.topAnchor.constraint(equalTo: textFieldView.bottomAnchor, constant: 10),
             eventLabel.leadingAnchor.constraint(equalTo: nicknameLabel.leadingAnchor),
 
-            unregisterButton.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 10),
+            unregisterButton.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 20),
             unregisterButton.leadingAnchor.constraint(equalTo: nicknameLabel.leadingAnchor),
-            unregisterButton.trailingAnchor.constraint(equalTo: nicknameLabel.trailingAnchor),
 
             nextButtonView.topAnchor.constraint(greaterThanOrEqualTo: unregisterButton.bottomAnchor, constant: 150).withPriority(.defaultLow),
             nextButtonView.leadingAnchor.constraint(equalTo: nicknameLabel.leadingAnchor),
             nextButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButtonView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).withPriority(.defaultHigh)
+            nextButtonView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -10).withPriority(.defaultHigh)
         ])
     }
 
@@ -169,8 +169,8 @@ class EditUserProfileViewController: UIViewController {
     }
 
     @objc private func unregisterButtonTapped() {
-        let alert = UIAlertController(title: "로그아웃",
-                                      message: "정말 로그아웃 하시겠습니까?",
+        let alert = UIAlertController(title: "회원 탈퇴하기",
+                                      message: "기존 회원님의 데이터는 복구가 불가능합니다. 동의하십니까?",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "아니오",
                                       style: .cancel))
