@@ -142,7 +142,6 @@ class EditUserProfileViewController: UIViewController {
         viewModel = EditUserProfileViewModel(userInfoUseCase: userInfoUseCase, signUpUseCase: signUpUseCase, nicknameValidationService: nicknameValidationService)
     }
 
-    // -----> 값을 바인딩  -----> 3. isEmailValid 유효값에 따라, 컴포넌트를 변경시킴
     private func bind() {
         viewModel.$isNicknameValid
             .receive(on: RunLoop.main)
@@ -168,6 +167,7 @@ class EditUserProfileViewController: UIViewController {
         }
     }
 
+    // 유저 탈퇴
     @objc private func unregisterButtonTapped() {
         let alert = UIAlertController(title: "회원 탈퇴하기",
                                       message: "기존 회원님의 데이터는 복구가 불가능합니다. 동의하십니까?",
@@ -175,20 +175,25 @@ class EditUserProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "아니오",
                                       style: .cancel))
         alert.addAction(UIAlertAction(title: "네",
-                                      style: .destructive, handler: { _ in
+                                      style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.deleteUser { result in
+                switch result {
+                case .success:
+                    // UserDefault 해당 유저값 삭제
+                    UserDefaultStorage<String>().deleteCache(key: "email")
+                    UserDefaultStorage<String>().deleteCache(key: "password")
 
-            if let user = Auth.auth().currentUser {
-                user.delete()
-                UserDefaultStorage<String>().deleteCache(key: "email")
-                UserDefaultStorage<String>().deleteCache(key: "password")
-
-                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-                    let startPageViewController = UINavigationController(rootViewController: StartPageViewController())
-                    let transitionOptions: UIView.AnimationOptions = [.transitionCrossDissolve, .curveEaseInOut]
-                    UIView.transition(with: sceneDelegate.window!, duration: 0.5, options: transitionOptions, animations: {
-                        sceneDelegate.window?.rootViewController = startPageViewController
-                        sceneDelegate.window?.makeKeyAndVisible()
-                    }, completion: nil)
+                    // startPageViewController로 rootViewController를 설정하는 동시에 이동
+                    if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                        let startPageViewController = UINavigationController(rootViewController: StartPageViewController())
+                        let transitionOptions: UIView.AnimationOptions = [.transitionCrossDissolve, .curveEaseInOut]
+                        UIView.transition(with: sceneDelegate.window!, duration: 0.5, options: transitionOptions, animations: {
+                            sceneDelegate.window?.rootViewController = startPageViewController
+                            sceneDelegate.window?.makeKeyAndVisible()
+                        }, completion: nil)
+                    }
+                case .failure(let error):
+                    print("회원 탈퇴 오류: \(error.localizedDescription)")
                 }
             }
         }))

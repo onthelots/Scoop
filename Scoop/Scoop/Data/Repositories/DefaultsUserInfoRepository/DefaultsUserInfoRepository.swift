@@ -93,22 +93,27 @@ class DefaultsUserInfoRepository: UserInfoRepository {
         }
     }
 
-    // 유저 탈퇴
-    func deleteUser(completion: @escaping (Result<Void, Error>) -> Void) {
-        // Firebase Authentication에서 현재 로그인한 사용자 가져오기
-        if let user = Auth.auth().currentUser {
-            // 사용자를 삭제합니다.
-            user.delete { error in
-                if let error = error {
-                    completion(.failure(error))
+    // 유저 탈퇴(Auth, FireStore 사용자 데이터 삭제)
+    func deleteUser(uid: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let database = Firestore.firestore()
+        let auth = Auth.auth()
+
+        // "users" 컬렉션에서 사용자 문서 삭제
+        let userRef = database.collection("users").document(uid)
+        userRef.delete { userError in
+            if let userError = userError {
+                completion(.failure(userError))
+                return
+            }
+
+            // Firebase Authentication에서 사용자 삭제
+            auth.currentUser?.delete { authError in
+                if let authError = authError {
+                    completion(.failure(authError))
                 } else {
                     completion(.success(()))
                 }
             }
-        } else {
-            // 사용자가 로그인되어 있지 않으면 에러를 반환합니다.
-            let error = NSError(domain: "AuthenticationError", code: 0, userInfo: nil)
-            completion(.failure(error))
         }
     }
 }
