@@ -1,6 +1,8 @@
 # Scoop ![29](https://github.com/onthelots/Scoop/assets/107039500/7d014abd-8c50-4a64-90ec-8e068ba7a5f6)
 > 내가 살고 있는 서울, 그리고 동네를 더욱 풍부하게 경험할 수 있도록, [Scoop]을 통해 다양한 맛을 즐겨보세요.
 
+#### <a href="https://www.notion.so/onthelots/32eb5fa184c14426a4f32b654f76ec0e?v=96817719164f49e398abae2bc4c8565c&pvs=4"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/></a> <a href="https://apps.apple.com/kr/app/scoop/id6466811453"><img src="https://img.shields.io/badge/AppStore-000000?style=flat&logo=AppStore&logoColor=white"/></a>
+
 ![scoop_ss](https://github.com/onthelots/Scoop/assets/107039500/44841de9-9f8f-46f2-a720-64411a3c6250)
 
 <br> 
