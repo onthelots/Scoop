@@ -22,7 +22,7 @@ final class EditUserProfileViewModel: ObservableObject {
 
     private var subscription = Set<AnyCancellable>()
 
-    init(userInfoUseCase: DefaultsUserInfoUseCase,signUpUseCase: DefaultSignUpUseCase, nicknameValidationService: NickNameValidationService) {
+    init(userInfoUseCase: DefaultsUserInfoUseCase, signUpUseCase: DefaultSignUpUseCase, nicknameValidationService: NickNameValidationService) {
         self.userInfoUseCase = userInfoUseCase
         self.signUpUseCase = signUpUseCase
         self.nicknameValidationService = nicknameValidationService
@@ -77,5 +77,17 @@ final class EditUserProfileViewModel: ObservableObject {
                     }
                 }
             }.store(in: &subscription)
+    }
+
+    // 사용자 탈퇴
+    func deleteUser(completion: @escaping (Result<Void, Error>) -> Void) {
+        if let userId = Auth.auth().currentUser?.uid {
+            userInfoUseCase.deleteUser(uid: userId) { result in
+                completion(result)
+            }
+        } else {
+            let error = NSError(domain: "AuthenticationError", code: 0, userInfo: nil)
+            completion(.failure(error))
+        }
     }
 }

@@ -26,6 +26,7 @@ protocol UserInfoUseCase {
     )
 
     func deleteUser(
+        uid: String,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }
@@ -79,9 +80,11 @@ final class DefaultsUserInfoUseCase: UserInfoUseCase {
 
     // 회원탈퇴
     func deleteUser(
+        uid: String,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         userInfoRepository.deleteUser(
+            uid: uid,
             completion: completion
         )
     }
