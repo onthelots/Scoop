@@ -17,4 +17,18 @@ struct NewIssueDTO: Hashable {
     let postContent: String // 전체내용
     let managerDept: String // 담당부서
     let managerName: String // 담당자
+    let attributedContent: NSAttributedString // HTML 변환된 내용
+
+    init(title: String, category: String, thumbURL: String?, excerpt: String, publishDate: String, modifyDate: String, postContent: String, managerDept: String, managerName: String, attributedContent: NSAttributedString) {
+           self.title = title
+           self.category = category
+           self.thumbURL = thumbURL
+           self.excerpt = excerpt
+           self.publishDate = publishDate
+           self.modifyDate = modifyDate
+           self.postContent = postContent
+           self.managerDept = managerDept
+           self.managerName = managerName
+           self.attributedContent = attributedContent
+       }
 }

@@ -252,9 +252,9 @@
 		3F9F683D2AB0753B00E36F29 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		3FACA8752A7CE47B00F2544C /* Scoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8862A7CE47C00F2544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopTests.swift; path = ../../../../../../../../Desktop/GithubRepo/Scoop/Scoop/ScoopTests/ScoopTests.swift; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopTests.swift; path = ScoopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA88F2A7CE47C00F2544C /* ScoopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopTests.swift; sourceTree = "<group>"; };
-		3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopUITests.swift; path = ../../../../../../../../Desktop/GithubRepo/Scoop/Scoop/ScoopUITests/ScoopUITests.swift; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FACA8952A7CE47C00F2544C /* ScoopUITests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScoopUITests.swift; path = ScoopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FACA8992A7CE47C00F2544C /* ScoopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopUITests.swift; sourceTree = "<group>"; };
 		3FACA89B2A7CE47C00F2544C /* ScoopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FAF2E492AA5A739003A9964 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };

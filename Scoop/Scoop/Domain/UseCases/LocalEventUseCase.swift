@@ -45,25 +45,7 @@ final class DefaultLocalEventUseCase: LocalEventUseCase {
          ) { result in
              switch result {
              case .success(let issues):
-                 var updatedDetail: [NewIssueDetail] = []
-                 for detail in issues.seoulNewsList.detail {
-                     if !detail.postContent.isEmpty && (detail.postContent.contains("□") || detail.postContent.contains("○")) {
-                         do {
-                             let doc: Document = try SwiftSoup.parse(detail.postContent)
-                             var plainText = try doc.text()
-                             plainText = plainText.replacingOccurrences(of: "□", with: "\n")
-                             plainText = plainText.replacingOccurrences(of: "○", with: "\n")
-
-                             var updatedDetailItem = detail
-                             updatedDetailItem.postContent = plainText
-                             updatedDetail.append(updatedDetailItem)
-                         } catch {
-                             print("HTML parsing error : \(error)")
-                         }
-                     }
-                 }
-                 let updatedIssues = NewIssue(seoulNewsList: SeoulNewsList(listTotalCount: updatedDetail.count, detail: updatedDetail))
-                 completion(.success(updatedIssues))
+                 completion(.success(issues))
              case .failure(let error):
                  completion(.failure(error))
              }

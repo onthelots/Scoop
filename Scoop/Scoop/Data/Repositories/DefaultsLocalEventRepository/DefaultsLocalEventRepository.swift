@@ -5,8 +5,9 @@
 //  Created by Jae hyuk Yim on 2023/08/24.
 //
 
-import Foundation
 import Combine
+import Foundation
+import SwiftSoup
 
 final class DefaultsLocalEventRepository: LocalEventRepository {
     private let networkManager: NetworkService
@@ -18,14 +19,13 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
         self.seoulOpenDataManager = seoulOpenDataManager
     }
 
-    // newIssue 파싱
+    // newIssueParsing
     func newIssueParsing(
         categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
     ) {
-
         let resource: Resource<NewIssue> = Resource(
-            base: seoulOpenDataManager.openDataNewIssueBaseURL+"\(categoryCode)",
+            base: seoulOpenDataManager.openDataNewIssueBaseURL + "\(categoryCode)",
             path: ""
         )
         networkManager.load(resource)
@@ -38,9 +38,99 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
                     break
                 }
             } receiveValue: { items in
-                completion(.success(items))
+                // 데이터를 받은 후, HTML 파싱 및 UILabel에 표시
+                let filteredItems = self.filterItems(items)
+                completion(.success(filteredItems))
             }.store(in: &subscriptions)
     }
+
+    func filterItems(_ items: NewIssue) -> NewIssue {
+        var filteredItems = items
+        var filteredDetails: [NewIssueDetail] = []
+
+        for detail in filteredItems.seoulNewsList.detail {
+            // 이미지가 포함된 게시물은 필터링
+            if containsImages(detail.postContent) {
+                continue
+            }
+
+            // 파일 링크가 있는지 확인
+            if !containsFileLinks(detail.postContent) {
+                // 파일 링크가 없는 경우만 처리
+                if let attributedText = parseHTMLToAttributedString(htmlString: detail.postContent) {
+                    var updatedDetail = detail
+                    updatedDetail.attributedContent = attributedText
+                    filteredDetails.append(updatedDetail)
+                }
+            }
+        }
+
+        filteredItems.seoulNewsList.detail = filteredDetails
+        return filteredItems
+    }
+
+    func containsFileLinks(_ htmlString: String) -> Bool {
+        do {
+            let document = try SwiftSoup.parse(htmlString)
+            let fileLinks = try document.select("a")
+            for fileLink in fileLinks {
+                let href = try fileLink.attr("href")
+                if href.lowercased().hasSuffix(".pdf") || href.lowercased().hasSuffix(".zip") {
+                    return true // PDF 및 ZIP 파일이 포함된 경우
+                }
+            }
+        } catch {
+            print("HTML 파싱 오류: \(error)")
+        }
+
+        return false
+    }
+
+    func containsImages(_ htmlString: String) -> Bool {
+        do {
+            let document = try SwiftSoup.parse(htmlString)
+            let images = try document.select("img")
+            return !images.isEmpty
+        } catch {
+            print("HTML 파싱 오류: \(error)")
+            return false
+        }
+    }
+
+    func parseHTMLToAttributedString(htmlString: String) -> NSAttributedString? {
+        do {
+            // HTML 문자열을 SwiftSoup Document로 파싱합니다.
+            let document = try SwiftSoup.parse(htmlString)
+
+            // 파일이 포함되어 있는지 확인
+            let fileLinks = try document.select("a")
+            for fileLink in fileLinks {
+                let href = try fileLink.attr("href")
+                if href.lowercased().hasSuffix(".pdf") || href.lowercased().hasSuffix(".zip") {
+                    return nil // PDF 및 ZIP 파일이 포함되어 있으면 데이터를 무시
+                }
+            }
+
+            // NSAttributedString을 생성하여 UILabel에 표시할 준비를 합니다.
+            let attributedString = NSMutableAttributedString()
+
+            // 선택한 모든 <p> 요소를 NSAttributedString에 추가합니다.
+            let paragraphs = try document.select("p")
+            for paragraph in paragraphs {
+                let paragraphText = try paragraph.text()
+
+                // 각 단락을 NSAttributedString에 추가합니다.
+                let paragraphAttributedString = NSAttributedString(string: paragraphText + "\n\n")
+                attributedString.append(paragraphAttributedString)
+            }
+
+            return attributedString
+        } catch {
+            print("HTML 파싱 오류: \(error)")
+            return nil
+        }
+    }
+
 
     // culturalEvent 파싱
     func culturalEventParsing(
