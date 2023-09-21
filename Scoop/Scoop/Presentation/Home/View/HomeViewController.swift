@@ -186,7 +186,8 @@ class HomeViewController: UIViewController {
                         modifyDate: items.modifyDate,
                         postContent: items.postContent,
                         managerDept: items.managerDept,
-                        managerName: items.managerName
+                        managerName: items.managerName,
+                        attributedContent: items.attributedContent ?? NSAttributedString(string: "")
                     )
                 }
                 var culturalEvents: [EventDetailDTO] = []
@@ -369,8 +370,6 @@ extension HomeViewController: UICollectionViewDelegate {
             viewModel.itemTapped.send(.event(eventItem))
         case .newIssue(let newIssueItem):
             viewModel.itemTapped.send(.newIssue(newIssueItem))
-            print("선택된 Item --> : \(newIssueItem.title)")
-            print("본문 내용 --> : \(newIssueItem.postContent)")
         }
     }
 }

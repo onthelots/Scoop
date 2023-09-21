@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewIssueDetailView: UIView {
 
@@ -164,6 +165,6 @@ class NewIssueDetailView: UIView {
         self.manageName.text = newIssueDTO.managerName
         self.publishDate.text = "입력 \(newIssueDTO.publishDate)"
         self.modifyDate.text = "수정 \(newIssueDTO.modifyDate)"
-        self.postContentLabel.text = newIssueDTO.postContent
+        self.postContentLabel.text = newIssueDTO.attributedContent.string
     }
 }

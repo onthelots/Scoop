@@ -38,6 +38,7 @@ struct NewIssueDetail: Codable {
     let modifyDate: String // 수정날짜
     var postContent: String
     let managerName, managerPhone, managerDept: String
+    var attributedContent: NSAttributedString? // 추가: NSAttributedString을 저장할 속성
 
     enum CodingKeys: String, CodingKey {
         case blogID = "BLOG_ID"
