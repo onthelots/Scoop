@@ -191,23 +191,27 @@ class NewIssueDetailView: UIView, WKNavigationDelegate {
         }
 
         return updatedHTML
-    }
+        }
 
-    private func applyCustomCSS(to htmlString: String) -> String {
-        let cssStyle = """
+        private func applyCustomCSS(to htmlString: String) -> String {
+            let cssStyle = """
             <style>
                 body {
                     font-size: 30px; /* 전체 텍스트 폰트 크기를 조절합니다. */
                 }
                 table {
-                    font-size: 25px; /* 표의 폰트 크기를 조절합니다. */
-                    width: 95%; /* 표의 너비를 화면 너비에 맞게 조정합니다. */
-                    /* 표의 다른 스타일을 추가할 수도 있습니다. */
+                    font-size: 20px; /* 표의 폰트 크기를 조절합니다. */
+                    width: 100%; /* 표의 너비를 화면 너비에 맞게 조정합니다. */
+                    border-collapse: collapse; /* 표 내의 테두리를 합칩니다. */
+                }
+                th, td {
+                    border: 1px solid #000; /* 표의 테두리 스타일을 설정합니다. */
+                    padding: 8px; /* 셀의 여백을 조절합니다. */
                 }
                 /* 다른 원하는 스타일을 추가할 수 있습니다. */
             </style>
-        """
-        return cssStyle + htmlString
-    }
+            """
+            return cssStyle + htmlString
+        }
 
 }

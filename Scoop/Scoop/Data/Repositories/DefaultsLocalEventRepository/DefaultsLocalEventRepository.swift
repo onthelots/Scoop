@@ -19,7 +19,6 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
     }
 
     // newIssueParsing
-    // newIssueParsing
     func newIssueParsing(
         categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
@@ -44,7 +43,6 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
             }.store(in: &subscriptions)
     }
 
-    // 이미지 경로 수정 함수
     // 이미지 경로 수정 함수
     private func modifyImagePaths(in items: NewIssue) -> NewIssue {
         var modifiedItems = items
