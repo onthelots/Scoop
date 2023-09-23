@@ -7,22 +7,15 @@
 
 import UIKit
 import Combine
+import WebKit
 
-class NewIssueDetailViewController: UIViewController {
+class NewIssueDetailViewController: UIViewController, WKNavigationDelegate {
 
     let viewModel: NewIssueDetailViewModel!
     var subscripiton = Set<AnyCancellable>()
 
     // MARK: - Components
     private lazy var newIssueDetailView = NewIssueDetailView()
-
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.isDirectionalLockEnabled = true
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
 
     init(viewModel: NewIssueDetailViewModel) {
         self.viewModel = viewModel
@@ -38,32 +31,24 @@ class NewIssueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackButton()
-        viewModel.fetch()
         bind()
         setupUI()
+        viewModel.fetch()
     }
 
     // MARK: - UI Setting
-    private func setupUI() {
+    func setupUI() {
         view.backgroundColor = .systemBackground
-        view.addSubview(scrollView)
-        scrollView.addSubview(newIssueDetailView)
+        view.addSubview(newIssueDetailView)
         newIssueDetailView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-
-            newIssueDetailView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            newIssueDetailView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            newIssueDetailView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            newIssueDetailView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-
-            newIssueDetailView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            newIssueDetailView.heightAnchor.constraint(greaterThanOrEqualTo: self.view.heightAnchor)
+            newIssueDetailView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            newIssueDetailView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            newIssueDetailView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            newIssueDetailView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
+
 
     // ViewModel Binding
     private func bind() {

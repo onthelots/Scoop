@@ -143,7 +143,6 @@
 		3FE361CC2A931BA2000F1B38 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361CB2A931BA2000F1B38 /* SignInViewModel.swift */; };
 		3FE361D22A931EF4000F1B38 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE361D12A931EF4000F1B38 /* SignInUseCase.swift */; };
 		3FE68BC22AA0A96F00595733 /* NewIssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */; };
-		3FE68BC52AA0B00100595733 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3FE68BC42AA0B00100595733 /* SwiftSoup */; };
 		3FF76A332A80CF1000A5CA29 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3FF76A322A80CF1000A5CA29 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -279,6 +278,7 @@
 		3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMyPostToggleView.swift; sourceTree = "<group>"; };
 		3FB7F9DC2AB1AC6B00016290 /* ReviewFloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewFloatingView.swift; sourceTree = "<group>"; };
 		3FB7F9DE2AB1CEE000016290 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		3FBF332B2ABC6FAF009461FF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssue.swift; sourceTree = "<group>"; };
 		3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
@@ -305,7 +305,6 @@
 				3F44C75E2AA1D8760037CCC5 /* FirebaseFirestoreSwift in Frameworks */,
 				3F44C7582AA1D8760037CCC5 /* FirebaseDatabase in Frameworks */,
 				3F44C7602AA1D8760037CCC5 /* FirebaseStorage in Frameworks */,
-				3FE68BC52AA0B00100595733 /* SwiftSoup in Frameworks */,
 				3F44C75C2AA1D8760037CCC5 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1261,7 +1260,6 @@
 			name = Scoop;
 			packageProductDependencies = (
 				3F8CD6E62A96D92300307372 /* Kingfisher */,
-				3FE68BC42AA0B00100595733 /* SwiftSoup */,
 				3F44C7552AA1D8760037CCC5 /* FirebaseAuth */,
 				3F44C7572AA1D8760037CCC5 /* FirebaseDatabase */,
 				3F44C7592AA1D8760037CCC5 /* FirebaseDatabaseSwift */,
@@ -1344,16 +1342,16 @@
 			};
 			buildConfigurationList = 3FACA8702A7CE47B00F2544C /* Build configuration list for PBXProject "Scoop" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 3FACA86C2A7CE47B00F2544C;
 			packageReferences = (
 				3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				3FE68BC32AA0B00100595733 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				3F44C7542AA1D8760037CCC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3FACA8762A7CE47B00F2544C /* Products */;
@@ -1579,6 +1577,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3F1AB7C52A8DC96E0076CEAB /* Base */,
+				3FBF332B2ABC6FAF009461FF /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1590,6 +1589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1650,6 +1650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1724,7 +1725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lime.scoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1761,7 +1762,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lime.scoop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1920,14 +1921,6 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		3FE68BC32AA0B00100595733 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1995,11 +1988,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		3FE68BC42AA0B00100595733 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3FE68BC32AA0B00100595733 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

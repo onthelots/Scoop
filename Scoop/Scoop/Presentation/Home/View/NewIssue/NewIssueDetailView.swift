@@ -7,8 +7,9 @@
 
 import UIKit
 import Kingfisher
+import WebKit
 
-class NewIssueDetailView: UIView {
+class NewIssueDetailView: UIView, WKNavigationDelegate {
 
     // MARK: - Components
     private lazy var titleLabel: UILabel = {
@@ -104,15 +105,15 @@ class NewIssueDetailView: UIView {
         return view
     }()
 
-    private lazy var postContentLabel: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        label.textAlignment = .left
-        label.textColor = .label
-        label.numberOfLines = 0
-        label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var webView: WKWebView = {
+        let configuration = WKWebViewConfiguration()
+        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.scrollView.isScrollEnabled = true
+        webView.scrollView.showsVerticalScrollIndicator = false
+        webView.navigationDelegate = self // WKNavigationDelegate 설정
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
     }()
 
     override init(frame: CGRect) {
@@ -126,7 +127,7 @@ class NewIssueDetailView: UIView {
         addSubview(manageStackView)
         addSubview(dateStackView)
         addSubview(seperatedLineView)
-        addSubview(postContentLabel)
+        addSubview(webView)
     }
 
     required init?(coder: NSCoder) {
@@ -152,10 +153,10 @@ class NewIssueDetailView: UIView {
             seperatedLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             seperatedLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            postContentLabel.topAnchor.constraint(equalTo: seperatedLineView.bottomAnchor, constant: 15),
-            postContentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            postContentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            postContentLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -10)
+            webView.topAnchor.constraint(equalTo: seperatedLineView.bottomAnchor, constant: 15),
+            webView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            webView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -10)
         ])
     }
 
@@ -165,6 +166,48 @@ class NewIssueDetailView: UIView {
         self.manageName.text = newIssueDTO.managerName
         self.publishDate.text = "입력 \(newIssueDTO.publishDate)"
         self.modifyDate.text = "수정 \(newIssueDTO.modifyDate)"
-        self.postContentLabel.text = newIssueDTO.attributedContent.string
+        let resizedHTML = resizeImagesToFitScreenWidth(in: newIssueDTO.postContent)
+        let styledHTML = applyCustomCSS(to: resizedHTML)
+
+         self.webView.loadHTMLString(styledHTML, baseURL: nil)
     }
+
+    private func resizeImagesToFitScreenWidth(in htmlString: String) -> String {
+        var updatedHTML = htmlString
+        let screenWidth = UIScreen.main.bounds.width
+        let imageRegex = "<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>"
+        let regex = try? NSRegularExpression(pattern: imageRegex, options: .caseInsensitive)
+
+        if let matches = regex?.matches(in: htmlString, options: [], range: NSRange(htmlString.startIndex..., in: htmlString)) {
+            for match in matches {
+                let imgTag = String(htmlString[Range(match.range, in: htmlString)!])
+                if let imageURLRange = imgTag.range(of: "src=\"([^\"]+)", options: .regularExpression) {
+                    let imageURLString = String(imgTag[imageURLRange])
+                    let resizedImageTag = imgTag.replacingOccurrences(of: "src=\"\(imageURLString)",
+                                                                      with: "style=\"max-width: \(Int(screenWidth - 20))px; height: auto;\" src=\"\(imageURLString)\"")
+                    updatedHTML = updatedHTML.replacingOccurrences(of: imgTag, with: resizedImageTag)
+                }
+            }
+        }
+
+        return updatedHTML
+    }
+
+    private func applyCustomCSS(to htmlString: String) -> String {
+        let cssStyle = """
+            <style>
+                body {
+                    font-size: 30px; /* 전체 텍스트 폰트 크기를 조절합니다. */
+                }
+                table {
+                    font-size: 25px; /* 표의 폰트 크기를 조절합니다. */
+                    width: 95%; /* 표의 너비를 화면 너비에 맞게 조정합니다. */
+                    /* 표의 다른 스타일을 추가할 수도 있습니다. */
+                }
+                /* 다른 원하는 스타일을 추가할 수 있습니다. */
+            </style>
+        """
+        return cssStyle + htmlString
+    }
+
 }
