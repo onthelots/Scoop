@@ -45,7 +45,7 @@ class ReviewViewController: UIViewController {
         setupBackButton()
         view.backgroundColor = .systemBackground
         initializeViewModel()
-        updatePostReviewButtonState()
+//        updatePostReviewButtonState()
         updateBarButton()
         reviewView.delegate = self
         setupUI()
@@ -66,21 +66,20 @@ class ReviewViewController: UIViewController {
         )
 
         self.navigationItem.rightBarButtonItem = saveReviewBarButton
+        updatePostReviewButtonState()
     }
 
+    // 리뷰 완료 버튼을 위한 조건 메서드
     private func updatePostReviewButtonState() {
-        // reviewTextView에 적어도 10자 이상의 텍스트가 있는지 확인
-        let isReviewTextValid = reviewView.reviewTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count >= 10
-
-        // 위치가 선택되었는지 확인
-        let isLocationSelected = selectedLocation != nil
-
+        let isReviewTextValid = reviewView.reviewTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count >= 20 // 리뷰 글자수
+        let isLocationSelected = selectedLocation != nil // 위치 선택여부
         // 버튼의 활성화 및 색상 설정
         navigationItem.rightBarButtonItem?.isEnabled = isReviewTextValid && isLocationSelected
         navigationItem.rightBarButtonItem?.tintColor = isReviewTextValid && isLocationSelected ? .label : .quaternaryLabel
     }
 
 
+    // 리뷰 완료 버튼 Action
     @objc func didTapAddReview() {
         showReviewAddAlert()
     }
@@ -121,7 +120,7 @@ class ReviewViewController: UIViewController {
                 storeName: storeName,
                 review: reviewText,
                 nickname: nickname,
-                postImage: [], // 이미지 배열 전달
+                postImage: [], // 이미지 배열은 별도로 전달함
                 location: GeoPoint(latitude: Double(latitude) ?? 0.0,
                                    longitude: Double(longitude) ?? 0.0),
                 categoryGroupName: categoryGroupName,
@@ -164,46 +163,6 @@ class ReviewViewController: UIViewController {
         picker.delegate = self
         self.present(picker, animated: true)
     }
-
-    // MARK: - ImageProvider 처리 -> 로드 후, ImageView에 뿌려주거나 혹은 전역변수에 저장 (itemProvider가 비동기적 처리임. 따라서 순서대로가 아닌 용량이 작은 순서대로 나타나기 때문에, 이에 따라 dispatchGroup으로 작업함)
-    private func displayAndSaveImage() {
-        // 1. 스택뷰의 모든 서브뷰를 제거함
-        self.reviewView.imageStackView.subviews.forEach { $0.removeFromSuperview() }
-
-        // 2. GCD 작업을 실시할 Group을 임의 생성함
-        let dispatchGroup = DispatchGroup()
-
-        // 3. Image의 identifier, UIImage를 받아올 임의 딕셔너리를 생성
-        var imageDictionary = [String: UIImage]()
-
-        for (identifier, result) in selections {
-            dispatchGroup.enter() // 4. 디스패치 그룹에 하나 들어간다~
-
-            let itemProvider = result.itemProvider
-            if itemProvider.canLoadObject(ofClass: UIImage.self) {
-                itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
-                    guard let image = image as? UIImage else { return }
-                    // 5. 임의 딕셔너리의 identifier 값에 image를 할당 (즉, identifier 순서에 따라 사용자가 선택한 image를 할당)
-                    imageDictionary[identifier] = image
-                    dispatchGroup.leave() // 6. dispatchGroup 대기열에서 삭제
-                }
-            } else {
-                print("이미지 로드에 실패하였습니다")
-            }
-        }
-
-        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
-            guard let self = self else { return }
-            self.reviewView.imageStackView.subviews.forEach { $0.removeFromSuperview() }
-            for identifier in selectedAssetIdentifiers {
-                guard let image = imageDictionary[identifier] else { return }
-                self.reviewView.addImageView(image: image) // View 업데이트
-                // 최종 선택된 image
-                let selectedImage = imageDictionary.values.map { $0 }
-                self.selectedImage = selectedImage
-            }
-        }
-    }
 }
 
 // MARK: - ReviewView(리뷰 작성뷰) Delegate
@@ -234,35 +193,78 @@ extension ReviewViewController: PHPickerViewControllerDelegate {
 
         var newSelection = [String: PHPickerResult]() // 1. Picker에서 이미지를 선택한 후, 새로 만들어질 selection 변수 선언
 
+        // 2. 선택 여부에 따라 results값의 identifier에 대한 분기처리를 실시함
         for result in results {
-            let identifier = result.assetIdentifier! // 2. Asset의 Identifier 설정
-            // [Selection] 딕셔너리의 identifier값을 순서대로 할당함
-            // 이미 선택한 이미지인지 확인
+            let identifier = result.assetIdentifier!
+
+            // 이미지 선택 시, identifier가 존재하는지 여부 분기처리
+            // 2-1.비어있을 경우 (아무것도 선택되지 않았을 경우)
             if selections[identifier] == nil {
-                newSelection[identifier] = result
+                newSelection[identifier] = result // newSelection의 값 또한 선택 결과값과 동일하게 일치시킴
             } else {
-                isAnyImageSelected = true
+                // 2-2.비어있지 않을 경우
+                isAnyImageSelected = true // Flag 변수 toggle()
             }
         }
 
-        // 기존에 선택한 이미지가 없고, 새로 선택한 이미지도 없을 경우, 빈 배열로 업데이트
+        // 3. 기존에 선택한 이미지가 없고, 새로 선택한 이미지도 없을 경우, 빈 배열로 업데이트
         if !isAnyImageSelected && newSelection.isEmpty {
             self.selectedImage = []
         }
 
-        // 3. 새롭게 만들어진 selection을 기존에 선언한 전역변수인 selection로 다시 할당
+        // 3. 새롭게 만들어진 selection을 기존에 선언한 전역변수인 selection로 다시 할당 (즉, 새로 선택할 때 마다 최종적으로 저장될 secetions을 업데이트)
         selections = newSelection
 
         // 4. 해당 Asset의 Identifier 또한, 선택한 결과값의 Identifier로 할당 (String 값)
         selectedAssetIdentifiers = results.compactMap { $0.assetIdentifier }
 
+        // 5. selections (최종적으로 선택된 이미지)에 대한 분기처리
         if selections.isEmpty {
-            // 5. pictureStackView 내부의 Subview(ImageView)를 초기화(삭제) 함
+            // 5-1. pictureStackView 내부의 Subview(ImageView)를 초기화(삭제) 함
             self.reviewView.imageStackView.subviews.forEach { $0.removeFromSuperview() }
         } else {
-            // 6. 비어있지 않다면? 기존의 imageViews 배열의 값을 모두 지우고, 새롭게 할당시켜줌?
+            // 5-2. 비어있지 않다면? 기존의 imageViews 배열의 값을 모두 지우고, 새롭게 할당시켜줌?
             self.reviewView.imageViews = []
             displayAndSaveImage()
+        }
+    }
+
+    // MARK: - ImageProvider 처리 -> 로드 후, ImageView에 뿌려주거나 혹은 전역변수에 저장 (itemProvider가 비동기적 처리임. 따라서 순서대로가 아닌 용량이 작은 순서대로 나타나기 때문에, 이에 따라 dispatchGroup으로 작업함)
+    private func displayAndSaveImage() {
+        // 1. 스택뷰의 모든 서브뷰를 제거함
+        self.reviewView.imageStackView.subviews.forEach { $0.removeFromSuperview() }
+
+        // 2. GCD 작업을 실시할 Group을 임의 생성함
+        let dispatchGroup = DispatchGroup()
+
+        // 3. Image의 identifier, UIImage를 받아올 임의 딕셔너리를 생성
+        var imageDictionary = [String: UIImage]()
+
+        for (identifier, result) in selections {
+            dispatchGroup.enter() // 4. 디스패치 그룹에 하나 들어간다~
+
+            let itemProvider = result.itemProvider
+            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
+                    guard let image = image as? UIImage else { return }
+                    // 5. 임의 딕셔너리의 identifier 값에 image를 할당 (즉, identifier 순서에 따라 사용자가 선택한 image를 할당)
+                    imageDictionary[identifier] = image
+                    dispatchGroup.leave() // 6. dispatchGroup 대기열에서 삭제
+                }
+            } else {
+                print("이미지 로드에 실패하였습니다")
+            }
+        }
+
+        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let self = self else { return }
+            for identifier in selectedAssetIdentifiers {
+                guard let image = imageDictionary[identifier] else { return }
+                self.reviewView.addImageView(image: image) // View 업데이트
+                // 최종 선택된 image
+                let selectedImage = imageDictionary.values.map { $0 }
+                self.selectedImage = selectedImage
+            }
         }
     }
 }

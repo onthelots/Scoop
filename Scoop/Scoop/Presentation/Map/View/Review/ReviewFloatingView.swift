@@ -32,8 +32,9 @@ class ReviewFloatingView: UIView {
     // 플로팅 버튼
     lazy var floatingButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
-        configuration.image = UIImage(named: "plusButton")
-        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 60)
+        configuration.image = UIImage(systemName: "plus.circle.fill")
+        configuration.baseBackgroundColor = .white
+        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 40)
         configuration.imagePlacement = .all
         let button = UIButton(configuration: configuration)
         button.translatesAutoresizingMaskIntoConstraints = false

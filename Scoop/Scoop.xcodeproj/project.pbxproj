@@ -131,6 +131,7 @@
 		3FB7F9DB2AB12B9900016290 /* EmptyMyPostToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DA2AB12B9900016290 /* EmptyMyPostToggleView.swift */; };
 		3FB7F9DD2AB1AC6B00016290 /* ReviewFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DC2AB1AC6B00016290 /* ReviewFloatingView.swift */; };
 		3FB7F9DF2AB1CEE000016290 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F9DE2AB1CEE000016290 /* UIImage+Resize.swift */; };
+		3FC507762AC2379C00E1D5B9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3FC507752AC2379C00E1D5B9 /* Kingfisher */; };
 		3FC8D9BA2A99D02B007BDEB5 /* NewIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9B92A99D02B007BDEB5 /* NewIssue.swift */; };
 		3FC8D9BD2A99EF2A007BDEB5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D9BC2A99EF2A007BDEB5 /* Post.swift */; };
 		3FCFE6122AA8C0BE00D0AA10 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFE6112AA8C0BE00D0AA10 /* MapDetailViewController.swift */; };
@@ -313,6 +314,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC507762AC2379C00E1D5B9 /* Kingfisher in Frameworks */,
 				3F3A18F72AB7B74C002B3E84 /* FirebaseAuth in Frameworks */,
 				3F3A18F92AB7B751002B3E84 /* FirebaseFirestore in Frameworks */,
 				3F3A18FB2AB7B757002B3E84 /* FirebaseStorage in Frameworks */,
@@ -1289,6 +1291,7 @@
 				3F3A18F62AB7B74C002B3E84 /* FirebaseAuth */,
 				3F3A18F82AB7B751002B3E84 /* FirebaseFirestore */,
 				3F3A18FA2AB7B757002B3E84 /* FirebaseStorage */,
+				3FC507752AC2379C00E1D5B9 /* Kingfisher */,
 			);
 			productName = DangleTests;
 			productReference = 3FACA88B2A7CE47C00F2544C /* ScoopTests.swift */;
@@ -1985,6 +1988,11 @@
 			productName = FirebaseStorage;
 		};
 		3F8CD6E62A96D92300307372 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		3FC507752AC2379C00E1D5B9 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;

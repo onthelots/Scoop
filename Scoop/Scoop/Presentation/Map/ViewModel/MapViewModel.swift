@@ -52,7 +52,7 @@ class MapViewModel: ObservableObject {
     // 중심 좌표 주변의 데이터를 가져오는 메서드
     func fetchPostsAroundCoordinate(category: PostCategory, coordinate: CLLocationCoordinate2D) {
         // MARK: - 반경 설정 (미터)
-        let radius: Double = 1000.0 // 1km 반경
+        let radius: Double = 500.0 // 1km 반경
         postUseCase.fetchPostsAroundCoordinate(category: category, coordinate: coordinate, radius: radius) { [weak self] result in
             switch result {
             case .success(let posts):

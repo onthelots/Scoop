@@ -97,6 +97,7 @@ class ProfileViewController: UIViewController {
         userInfo
             .receive(on: RunLoop.main)
             .sink { [unowned self] userInfo in
+                viewModel.userInfoFetch()
                 self.userProfileView.userProfileConfigure(userInfo)
             }.store(in: &subscription)
     }
@@ -131,10 +132,6 @@ class ProfileViewController: UIViewController {
         ])
     }
 
-    private func updateUserProfileView(_ userInfo: UserInfo) {
-        viewModel.userInfoFetch()
-        self.userProfileView.userProfileConfigure(userInfo)
-    }
 
     private func presentWebView(_ url: String) {
         guard let url = URL(string: url) else {
