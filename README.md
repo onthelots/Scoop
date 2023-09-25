@@ -182,7 +182,7 @@
 - 주기적으로 업데이트 되는 분야별(교통, 안전, 주택, 경제, 환경) 서울 소식을 나타냄으로서 서울 시민(사용자)에게 유용한 정보를 전달함
 - 현재 사용자의 위치(법정동)를 기반으로 현재 개최되고 있거나, 예정된 문화행사(이벤트)와 교육강좌를 알리고 상세페이지(URL)로 이동할 수 있도록 함
 
-|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 10](https://github.com/onthelots/Scoop/assets/107039500/ccc28967-84f8-4283-a3ab-fcf03c10ca27)|![image 1](https://github.com/onthelots/Scoop/assets/107039500/e0b61c31-3ef4-4c6e-a21d-a8d4a28705a7)|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 11](https://github.com/onthelots/Scoop/assets/107039500/c286ec1b-7063-4c37-b24c-67efaa882d18)|
+|![Simulator Screenshot - iPhone 14 Pro - 2023-09-15 at 14 10](https://github.com/onthelots/Scoop/assets/107039500/ccc28967-84f8-4283-a3ab-fcf03c10ca27)|![image](https://github.com/onthelots/Scoop/assets/107039500/011db5a7-f7ae-44d9-b9a0-d8866846790b)|![image](https://github.com/onthelots/Scoop/assets/107039500/7dde1cf4-52d1-4cb9-9856-15a281ddb172)|
 |:-:|:-:|:-:|
 |`홈뷰`|`분야별 서울소식`|`자치구 행사`|
 
