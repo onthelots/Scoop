@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftSoup
 
 final class DefaultsLocalEventRepository: LocalEventRepository {
     private let networkManager: NetworkService
@@ -19,6 +20,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
     }
 
     // newIssueParsing
+    // newIssueParsing
     func newIssueParsing(
         categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void
@@ -29,18 +31,59 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
         )
         networkManager.load(resource)
             .receive(on: RunLoop.main)
-            .sink { completion in
-                switch completion {
+            .sink { result in
+                switch result {
                 case .failure(let error):
                     print("error : \(error)")
+                    completion(.failure(error))
                 case .finished:
                     break
                 }
             } receiveValue: { items in
                 // 이미지 경로를 수정하여 https:// 를 추가하거나 절대 URL로 변환
-                let modifiedItems = self.modifyImagePaths(in: items)
+                var modifiedItems = self.modifyImagePaths(in: items)
+
+                // postTitle을 필터링하여 백슬래시(\)가 포함된 경우 백슬래시를 제거
+                modifiedItems.seoulNewsList.detail = modifiedItems.seoulNewsList.detail.map { detail in
+                    var updatedDetail = detail
+                    if self.containsBackslash(updatedDetail.postTitle) {
+                        updatedDetail.postTitle = updatedDetail.postTitle.replacingOccurrences(of: "\\", with: "")
+                    }
+                    return updatedDetail
+                }
+
+                // PDF나 ZIP 파일이 포함되지 않은 데이터를 필터링
+                let filteredDetails = modifiedItems.seoulNewsList.detail.filter { !self.containsFileLinks($0.postContent) }
+                modifiedItems.seoulNewsList.detail = filteredDetails
+
+                // 필터링된 데이터를 completion에 넣어서 반환
                 completion(.success(modifiedItems))
-            }.store(in: &subscriptions)
+            }
+            .store(in: &subscriptions)
+    }
+
+
+    // 파일이 있는 게시물
+    private func containsFileLinks(_ htmlString: String) -> Bool {
+        do {
+            let document = try SwiftSoup.parse(htmlString)
+            let fileLinks = try document.select("a")
+            for fileLink in fileLinks {
+                let href = try fileLink.attr("href")
+                if href.lowercased().hasSuffix(".pdf") || href.lowercased().hasSuffix(".zip") {
+                    return true // PDF 및 ZIP 파일이 포함된 경우
+                }
+            }
+        } catch {
+            print("HTML 파싱 오류: \(error)")
+        }
+
+        return false
+    }
+
+    // 타이틀에 백 슬래시가 포함됨
+    private func containsBackslash(_ text: String) -> Bool {
+        return text.contains("\\")
     }
 
     // 이미지 경로 수정 함수
@@ -51,8 +94,19 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
             let modifiedDetail = detail.postContent.replacingOccurrences(of: "src=\"//", with: "src=\"https://")
             modifiedItems.seoulNewsList.detail[index].postContent = modifiedDetail
         }
+
+        // 링크 URL 앞에 https:를 추가
+        modifiedItems.seoulNewsList.detail = modifiedItems.seoulNewsList.detail.map { detail in
+            var updatedDetail = detail
+            if updatedDetail.postContent.contains("<a href=\"//") {
+                updatedDetail.postContent = updatedDetail.postContent.replacingOccurrences(of: "<a href=\"//", with: "<a href=\"https:")
+            }
+            return updatedDetail
+        }
+
         return modifiedItems
     }
+
 
     // culturalEvent 파싱
     func culturalEventParsing(

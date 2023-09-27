@@ -142,7 +142,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
             dimView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             dimView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             reviewFloatingView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            reviewFloatingView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            reviewFloatingView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
 
@@ -192,7 +192,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
         collectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
         collectionView.register(PostFooterReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PostFooterReusableView.identifier)
         collectionView.isPagingEnabled = true // 수평스크롤 Ok
-        collectionView.isScrollEnabled = false // 수직 스크롤 X
+        collectionView.showsVerticalScrollIndicator = false
         configuration()
     }
 

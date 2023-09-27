@@ -11,6 +11,7 @@
 		3F0BE8C62AAB1E9300B65954 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */; };
 		3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */; };
 		3F0FAB2B2AC3F59C00953CC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F0FAB2A2AC3F59C00953CC2 /* GoogleService-Info.plist */; };
+		3F0FAB2E2AC3FA6A00953CC2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0FAB2D2AC3FA6A00953CC2 /* SwiftSoup */; };
 		3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */; };
 		3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */; };
 		3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */; };
@@ -305,6 +306,7 @@
 				3F44C7562AA1D8760037CCC5 /* FirebaseAuth in Frameworks */,
 				3F44C75E2AA1D8760037CCC5 /* FirebaseFirestoreSwift in Frameworks */,
 				3F44C7582AA1D8760037CCC5 /* FirebaseDatabase in Frameworks */,
+				3F0FAB2E2AC3FA6A00953CC2 /* SwiftSoup in Frameworks */,
 				3F44C7602AA1D8760037CCC5 /* FirebaseStorage in Frameworks */,
 				3F44C75C2AA1D8760037CCC5 /* FirebaseFirestore in Frameworks */,
 			);
@@ -1268,6 +1270,7 @@
 				3F44C75B2AA1D8760037CCC5 /* FirebaseFirestore */,
 				3F44C75D2AA1D8760037CCC5 /* FirebaseFirestoreSwift */,
 				3F44C75F2AA1D8760037CCC5 /* FirebaseStorage */,
+				3F0FAB2D2AC3FA6A00953CC2 /* SwiftSoup */,
 			);
 			productName = Dangle;
 			productReference = 3FACA8752A7CE47B00F2544C /* Scoop.app */;
@@ -1356,6 +1359,7 @@
 			packageReferences = (
 				3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				3F44C7542AA1D8760037CCC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3F0FAB2C2AC3FA6A00953CC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 3FACA8762A7CE47B00F2544C /* Products */;
 			projectDirPath = "";
@@ -1908,6 +1912,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3F0FAB2C2AC3FA6A00953CC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.1;
+			};
+		};
 		3F44C7542AA1D8760037CCC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1927,6 +1939,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3F0FAB2D2AC3FA6A00953CC2 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F0FAB2C2AC3FA6A00953CC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
 		3F3A18F62AB7B74C002B3E84 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3F44C7542AA1D8760037CCC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

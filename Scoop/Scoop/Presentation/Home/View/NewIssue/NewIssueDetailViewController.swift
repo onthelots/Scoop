@@ -8,8 +8,9 @@
 import UIKit
 import Combine
 import WebKit
+import SafariServices
 
-class NewIssueDetailViewController: UIViewController, WKNavigationDelegate {
+class NewIssueDetailViewController: UIViewController, WKNavigationDelegate, SFSafariViewControllerDelegate, UIDocumentInteractionControllerDelegate {
 
     let viewModel: NewIssueDetailViewModel!
     var subscripiton = Set<AnyCancellable>()
@@ -40,6 +41,7 @@ class NewIssueDetailViewController: UIViewController, WKNavigationDelegate {
     func setupUI() {
         view.backgroundColor = .systemBackground
         view.addSubview(newIssueDetailView)
+        newIssueDetailView.delegate = self
         newIssueDetailView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             newIssueDetailView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -58,5 +60,26 @@ class NewIssueDetailViewController: UIViewController, WKNavigationDelegate {
             .sink { items in
                 self.newIssueDetailView.configure(newIssueDTO: items)
             }.store(in: &subscripiton)
+    }
+}
+
+extension NewIssueDetailViewController: NewIssueDetailViewDelegate {
+    func didTapExternalLink(url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.delegate = self
+        present(safariViewController, animated: true, completion: nil)
+    }
+
+    func didTapFileLink(url: URL) {
+        let downloadTask = URLSession.shared.downloadTask(with: url) { (location, _, error) in
+            if let location = location {
+                let documentController = UIDocumentInteractionController(url: location)
+                documentController.delegate = self
+                documentController.presentPreview(animated: true)
+            } else if let error = error {
+                print("다운로드 오류: \(error.localizedDescription)")
+            }
+        }
+        downloadTask.resume()
     }
 }

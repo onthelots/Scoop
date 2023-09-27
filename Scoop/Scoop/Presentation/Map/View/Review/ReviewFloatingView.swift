@@ -33,7 +33,6 @@ class ReviewFloatingView: UIView {
     lazy var floatingButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "plus.circle.fill")
-        configuration.baseBackgroundColor = .white
         configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 40)
         configuration.imagePlacement = .all
         let button = UIButton(configuration: configuration)

@@ -31,7 +31,7 @@ struct SeoulNewsList: Codable {
 struct NewIssueDetail: Codable {
     let blogID: Int
     let blogName: BlogName // 카테고리
-    let postTitle: String // 타이틀
+    var postTitle: String // 타이틀
     let thumbURI: String // 썸네일 URL (없는 경우가 많음)
     let postExcerpt: String // 요약글
     let publishDate: String // 날짜
