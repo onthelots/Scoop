@@ -45,6 +45,9 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     // 위치 권한이 거부된 경우 보여주는 뷰
     private let locationAuthDisallowedView = LocationAuthDisallowedView()
 
+    // 위치 권한을 설정했으나, 서울시가 아닐 경우 나타나는 뷰
+    private let notAvailableLocationView = NotAvailableLocationView()
+
     // 초기화
     init(viewModel: UserLocationViewModel) {
         self.viewModel = viewModel

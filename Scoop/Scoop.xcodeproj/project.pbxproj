@@ -45,6 +45,7 @@
 		3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */; };
 		3F1AB7FB2A8DC96E0076CEAB /* SensitiveInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */; };
 		3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */; };
+		3F38F3E52AC6BFE30041B436 /* NotAvailableLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38F3E42AC6BFE30041B436 /* NotAvailableLocationView.swift */; };
 		3F3A18F72AB7B74C002B3E84 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A18F62AB7B74C002B3E84 /* FirebaseAuth */; };
 		3F3A18F92AB7B751002B3E84 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A18F82AB7B751002B3E84 /* FirebaseFirestore */; };
 		3F3A18FB2AB7B757002B3E84 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3A18FA2AB7B757002B3E84 /* FirebaseStorage */; };
@@ -203,6 +204,7 @@
 		3F1AB7CF2A8DC96E0076CEAB /* NetworkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
 		3F1AB7D12A8DC96E0076CEAB /* SensitiveInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensitiveInfoManager.swift; sourceTree = "<group>"; };
 		3F1AB7D32A8DC96E0076CEAB /* CoreLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
+		3F38F3E42AC6BFE30041B436 /* NotAvailableLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAvailableLocationView.swift; sourceTree = "<group>"; };
 		3F3A19042AB89017002B3E84 /* Scoop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scoop.entitlements; sourceTree = "<group>"; };
 		3F41C19C2AA1866100E9A48C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3F44C76B2AA1F2C30037CCC5 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 				3F1AB7BB2A8DC96E0076CEAB /* UserLocationViewController.swift */,
 				3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */,
 				3F1AB7B82A8DC96E0076CEAB /* Cells */,
+				3F38F3E42AC6BFE30041B436 /* NotAvailableLocationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1475,6 +1478,7 @@
 				3FE361CA2A92D9CC000F1B38 /* RegisterWelcomeViewModel.swift in Sources */,
 				3F1AB7F12A8DC96E0076CEAB /* ProfileViewController.swift in Sources */,
 				3F9F683E2AB0753B00E36F29 /* ProfileTableViewCell.swift in Sources */,
+				3F38F3E52AC6BFE30041B436 /* NotAvailableLocationView.swift in Sources */,
 				3F738F412AA9A06900B6C6D2 /* MapDetailViewModel.swift in Sources */,
 				3F1AB7EC2A8DC96E0076CEAB /* UserLocationViewModel.swift in Sources */,
 				3F8CD6E02A96D8EC00307372 /* NewIssueCollectionViewCell.swift in Sources */,

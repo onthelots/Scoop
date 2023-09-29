@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 protocol UserLocationUseCase {
-    func execreverseGeocodeute(
+    func reverseGeocode(
         coordinate: CLLocation,
         completion: @escaping (Result<ReverseGeocode, Error>) -> Void
     )
@@ -31,7 +31,7 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
     }
 
     // 리버스 지오코딩 (좌표 to 법점동)
-    func execreverseGeocodeute(
+    func reverseGeocode(
         coordinate: CLLocation,
         completion: @escaping (Result<ReverseGeocode, Error>) -> Void
     ) {
