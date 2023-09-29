@@ -26,7 +26,7 @@ final class UserLocationViewModel: ObservableObject {
 
     // 데이터를 가져오는 메서드
     func fetchUserLocation(coordinate: CLLocation) {
-        geoLocationUseCase.execreverseGeocodeute(coordinate: coordinate) { [weak self] result in
+        geoLocationUseCase.reverseGeocode(coordinate: coordinate) { [weak self] result in
             switch result {
             case .success(let address):
                 self?.userLocation = address.reverseDocument.compactMap({ info in
