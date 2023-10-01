@@ -29,7 +29,7 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         return searchBar
     }()
 
-    // 결과를 보여주는 테이블 뷰
+    // Show Location Results TableView
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,13 +42,9 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         return tableView
     }()
 
-    // 위치 권한이 거부된 경우 보여주는 뷰
-    private let locationAuthDisallowedView = LocationAuthDisallowedView()
+    private let locationAuthDisallowedView = LocationAuthDisallowedView() // 위치 권한이 거부된 경우 보여주는 뷰
+    private let notAvailableLocationView = NotAvailableLocationView() // 위치 권한을 설정했으나, 서울시가 아닐 경우 나타나는 뷰
 
-    // 위치 권한을 설정했으나, 서울시가 아닐 경우 나타나는 뷰
-    private let notAvailableLocationView = NotAvailableLocationView()
-
-    // 초기화
     init(viewModel: UserLocationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -58,18 +54,13 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - ViewDidLoad()
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        coreLocationService.delegate = self
-        setUplocationAuthDisallowedView()
         setupBackButton()
-        // 테이블 뷰 추가 및 델리게이트 설정
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-
+        coreLocationService.delegate = self
+        setUpSubViews()
         bind()
 
         // 위치 서비스 허용여부 확인
@@ -81,7 +72,17 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         navigationItem.searchController = searchController
     }
 
-    // ViwModel Bind
+    private func setUpSubViews() {
+        view.addSubview(tableView)
+        view.addSubview(locationAuthDisallowedView)
+        view.addSubview(notAvailableLocationView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        locationAuthDisallowedView.delegate = self
+        navigationItem.searchController?.isActive = true
+    }
+
+    // MARK: - bind
     private func bind() {
         // viewModel의 userLocation값을 구독, 가져오고(sink), 구독시키기(subscription)
         viewModel.$userLocation
@@ -89,6 +90,18 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
             .sink { [weak self] items in
                 self?.userlocation = items
                 self?.tableView.reloadData()
+            }.store(in: &subscription)
+
+        viewModel.$isAvailableLocation
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isAvailable in
+                guard let self = self else { return }
+                if isAvailable {
+                    self.tableView.isHidden = true
+                } else {
+                    self.notAvailableLocationView.isHidden = false
+                    navigationItem.searchController?.isActive = true
+                }
             }.store(in: &subscription)
 
         viewModel.itemTapped
@@ -108,6 +121,7 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
             return
         }
         locationAuthDisallowedView.isHidden = true
+        notAvailableLocationView.isHidden = true
         tableView.isHidden = false
         viewModel.fetchUserSearchLocation(query: query) // ViewModel 실시
         tableView.reloadData()
@@ -116,45 +130,32 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     // MARK: - View Layout
     override func viewDidLayoutSubviews() {
         locationAuthDisallowedView.translatesAutoresizingMaskIntoConstraints = false
+        notAvailableLocationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             locationAuthDisallowedView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            locationAuthDisallowedView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            locationAuthDisallowedView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            notAvailableLocationView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            notAvailableLocationView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
-    // 위치 권한 거부 뷰 설정
-    private func setUplocationAuthDisallowedView() {
-        view.addSubview(locationAuthDisallowedView)
-        locationAuthDisallowedView.delegate = self
-        navigationItem.searchController?.isActive = true
-    }
 }
 
-// CoreLocationServiceDelegate 델리게이트 메서드 구현
+// MARK: - CoreLocationServiceDelegate
 extension UserLocationViewController: CoreLocationServiceDelegate {
     func presentDisallowedView() {
         self.locationAuthDisallowedView.isHidden = false
+        self.notAvailableLocationView.isHidden = true
     }
 
     func updateLocation(coordinate: CLLocation) {
-        // coordinate를 활용하여 현재 위치를 regcodes로 변환
-        viewModel.fetchUserLocation(coordinate: coordinate)
-        print("UserLocationViewController에서 델리게이트를 통해 받아오는 현재위치 : \(coordinate)")
-        userlocation = viewModel.userLocation
-        tableView.isHidden = false
-        tableView.reloadData()
-        // 위치 업데이트에 필요한 작업 수행
+        self.viewModel.fetchUserLocation(coordinate: coordinate)
     }
 
     func showLocationServiceError() {
-        // 위치 서비스 오류를 처리하는 알림 뷰 표시
         let alert = UIAlertController(
             title: "위치정보 이용",
             message: "위치 서비스를 사용할 수 없습니다.\n디바이스의 '설정 > 개인정보 보호'에서 위치 서비스를 켜주세요.",
@@ -164,8 +165,6 @@ extension UserLocationViewController: CoreLocationServiceDelegate {
         let goToSettingsAction = UIAlertAction(title: "설정으로 이동", style: .default) { _ in
             if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsURL)
-
-                // 🚫 한번 더 체크함
                 self.coreLocationService.checkUserDeviceLocationServicesAuthorization()
             }
         }
@@ -180,14 +179,14 @@ extension UserLocationViewController: CoreLocationServiceDelegate {
 
 }
 
-// LocationAuthDisallowedViewDelegate 델리게이트 메서드 구현
+// MARK: - LocationAuthDisallowedViewDelegate
 extension UserLocationViewController: LocationAuthDisallowedViewDelegate {
     func locationAuthDisallowedViewDidTapButton(_ view: LocationAuthDisallowedView) {
         showLocationServiceError()
     }
 }
 
-// UITableViewDelegate 및 UITableViewDataSource 메서드 구현
+// MARK: - UITableView Delegate, DataSource
 extension UserLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userlocation.count
@@ -207,11 +206,10 @@ extension UserLocationViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let address = userlocation[indexPath.row]
         viewModel.itemTapped.send(address)
-        print("item이 선택되었습니다.")
     }
 }

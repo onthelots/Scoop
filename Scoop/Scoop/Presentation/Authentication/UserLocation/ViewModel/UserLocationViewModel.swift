@@ -13,7 +13,9 @@ final class UserLocationViewModel: ObservableObject {
 
     private let geoLocationUseCase: DefaultUserLocationUseCase
 
+    // MARK: - Input
     @Published var userLocation: [LocationInfo] = []
+    @Published var isAvailableLocation: Bool = false // 사용자의 현재 위치가 서울시 인지 여부 파악
     private var previousUserLocation: [LocationInfo] = []
 
     // Output
@@ -27,14 +29,23 @@ final class UserLocationViewModel: ObservableObject {
     // 데이터를 가져오는 메서드
     func fetchUserLocation(coordinate: CLLocation) {
         geoLocationUseCase.reverseGeocode(coordinate: coordinate) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let address):
-                self?.userLocation = address.reverseDocument.compactMap({ info in
-                    return LocationInfo(code: info.code, name: info.addressName, longitude: String(info.longitude), latitude: String(info.latitude))
-                })
-                self?.previousUserLocation = address.reverseDocument.compactMap({ info in
-                    return LocationInfo(code: info.code, name: info.addressName, longitude: String(info.longitude), latitude: String(info.latitude))
-                })
+                if address.reverseDocument.first?.region1DepthName == "서울특별시" {
+                    // 즉시 받아오는 사용자의 위치정보 값
+                    self.userLocation = address.reverseDocument.compactMap({ info in
+                        return LocationInfo(code: info.code, name: info.addressName, longitude: String(info.longitude), latitude: String(info.latitude))
+                    })
+
+                    // 검색 시, 받아오는 사용자의 이전 위치정보 값
+                    self.previousUserLocation = address.reverseDocument.compactMap({ info in
+                        return LocationInfo(code: info.code, name: info.addressName, longitude: String(info.longitude), latitude: String(info.latitude))
+                    })
+                    self.isAvailableLocation = true
+                } else {
+                    self.isAvailableLocation = false
+                }
             case .failure(let error):
                 print("error: \(error)")
             }
@@ -67,7 +78,7 @@ final class UserLocationViewModel: ObservableObject {
         }
     }
 
-    // 이전 사용자 위치 데이터를 반환하는 메서드
+    // 이전 사용자 위치 데이터를 반환하는 메서드 (검색창에 아무것도 적혀있지 않을 경우 표현)
     func getPreviousUserLocation() -> [LocationInfo] {
         return previousUserLocation
     }
