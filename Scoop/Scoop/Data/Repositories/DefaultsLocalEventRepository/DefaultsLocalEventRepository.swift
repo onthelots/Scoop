@@ -20,7 +20,6 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
     }
 
     // newIssueParsing
-    // newIssueParsing
     func newIssueParsing(
         categoryCode: String,
         completion: @escaping (Result<NewIssue, Error>) -> Void

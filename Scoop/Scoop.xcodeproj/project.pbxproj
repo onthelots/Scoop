@@ -560,8 +560,8 @@
 			children = (
 				3F1AB7BB2A8DC96E0076CEAB /* UserLocationViewController.swift */,
 				3F1AB7BA2A8DC96E0076CEAB /* LocationAuthDisallowedView.swift */,
-				3F1AB7B82A8DC96E0076CEAB /* Cells */,
 				3F38F3E42AC6BFE30041B436 /* NotAvailableLocationView.swift */,
+				3F1AB7B82A8DC96E0076CEAB /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";

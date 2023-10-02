@@ -43,7 +43,6 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
                 let filteredDocuments = reverseGeocode.reverseDocument.filter { $0.regionType == "B" }
                 let filteredReverseGeocode = ReverseGeocode(reverseMeta: reverseGeocode.reverseMeta, reverseDocument: filteredDocuments)
                 completion(.success(filteredReverseGeocode))
-                print("\(reverseGeocode)")
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -61,7 +60,6 @@ final class DefaultUserLocationUseCase: UserLocationUseCase {
                 let filteredDocuments = geocode.documents.filter { $0.address.region1DepthName == "서울" }
                 let filteredGeocode = Geocode(meta: geocode.meta, documents: filteredDocuments)
                 completion(.success(filteredGeocode))
-                print("\(geocode)")
             case .failure(let error):
                 completion(.failure(error))
             }
