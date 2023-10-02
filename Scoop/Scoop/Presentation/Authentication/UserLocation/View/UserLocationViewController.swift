@@ -116,6 +116,7 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     private func setUpLocationAuthDisallowedView() {
         locationAuthDisallowedView.isHidden = false
         notAvailableLocationView.isHidden = true
+        setUpTableView()
         view.addSubview(locationAuthDisallowedView)
         locationAuthDisallowedView.delegate = self
         locationAuthDisallowedView.translatesAutoresizingMaskIntoConstraints = false
@@ -161,8 +162,8 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         }
         locationAuthDisallowedView.isHidden = true
         notAvailableLocationView.isHidden = true
-        tableView.isHidden = false
         viewModel.fetchUserSearchLocation(query: query) // ViewModel 실시
+        tableView.isHidden = false
         tableView.reloadData()
     }
 }

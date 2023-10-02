@@ -103,3 +103,5 @@ iOSInjectionProject/
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode
 Scoop/Scoop.xcodeproj/project.pbxproj
+Scoop/Scoop.xcodeproj/project.pbxproj
+*.pbxproj
