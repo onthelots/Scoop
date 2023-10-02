@@ -17,6 +17,9 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     private var userlocation: [LocationInfo] = []
     private var subscription = Set<AnyCancellable>()
 
+    private var locationAuthorizationStatus: Bool = false
+    private var isAvailableLocation: Bool = false
+
     // MARK: - Components (Views)
 
     // searchController
@@ -60,48 +63,45 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         view.backgroundColor = .systemBackground
         setupBackButton()
         coreLocationService.delegate = self
-        setUpSubViews()
         bind()
-
-        // 위치 서비스 허용여부 확인
         coreLocationService.checkUserDeviceLocationServicesAuthorization()
-
-        // configure navigationItem SearchController
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
     }
 
-    private func setUpSubViews() {
-        view.addSubview(tableView)
-        view.addSubview(locationAuthDisallowedView)
-        view.addSubview(notAvailableLocationView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        locationAuthDisallowedView.delegate = self
-        navigationItem.searchController?.isActive = true
-    }
-
     // MARK: - bind
     private func bind() {
-        // viewModel의 userLocation값을 구독, 가져오고(sink), 구독시키기(subscription)
-        viewModel.$userLocation
+        coreLocationService.isAuthorizationStatusAgree
             .receive(on: RunLoop.main)
-            .sink { [weak self] items in
-                self?.userlocation = items
-                self?.tableView.reloadData()
+            .sink { [weak self] authorizationStatus in
+                guard let self = self else { return }
+                locationAuthorizationStatus = authorizationStatus
+                if locationAuthorizationStatus == false {
+                    setUpLocationAuthDisallowedView()
+                }
             }.store(in: &subscription)
 
         viewModel.$isAvailableLocation
             .receive(on: RunLoop.main)
-            .sink { [weak self] isAvailable in
+            .sink { [weak self] availableLocation in
                 guard let self = self else { return }
-                if isAvailable {
-                    self.tableView.isHidden = true
+                isAvailableLocation = availableLocation
+                if isAvailableLocation {
+                    setUpTableView()
+                    navigationItem.searchController?.isActive = true
                 } else {
-                    self.notAvailableLocationView.isHidden = false
+                    setUpNotAvailableLocationView()
                     navigationItem.searchController?.isActive = true
                 }
+            }.store(in: &subscription)
+
+        viewModel.$userLocation
+            .receive(on: RunLoop.main)
+            .sink { [weak self] items in
+                guard let self = self else { return }
+                self.userlocation = items
+                self.tableView.reloadData()
             }.store(in: &subscription)
 
         viewModel.itemTapped
@@ -111,6 +111,45 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
                 viewController.navigationItem.largeTitleDisplayMode = .never
                 self.navigationController?.pushViewController(viewController, animated: true)
             }.store(in: &subscription)
+    }
+
+    private func setUpLocationAuthDisallowedView() {
+        locationAuthDisallowedView.isHidden = false
+        notAvailableLocationView.isHidden = true
+        view.addSubview(locationAuthDisallowedView)
+        locationAuthDisallowedView.delegate = self
+        locationAuthDisallowedView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            locationAuthDisallowedView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            locationAuthDisallowedView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    private func setUpTableView() {
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isHidden = false
+        notAvailableLocationView.isHidden = true
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        tableView.reloadData()
+    }
+
+    private func setUpNotAvailableLocationView() {
+        view.addSubview(notAvailableLocationView)
+        notAvailableLocationView.translatesAutoresizingMaskIntoConstraints = false
+        notAvailableLocationView.isHidden = false
+        tableView.isHidden = true
+        NSLayoutConstraint.activate([
+            notAvailableLocationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            notAvailableLocationView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     func updateSearchResults(for searchController: UISearchController) {
@@ -125,22 +164,6 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
         tableView.isHidden = false
         viewModel.fetchUserSearchLocation(query: query) // ViewModel 실시
         tableView.reloadData()
-    }
-
-    // MARK: - View Layout
-    override func viewDidLayoutSubviews() {
-        locationAuthDisallowedView.translatesAutoresizingMaskIntoConstraints = false
-        notAvailableLocationView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            locationAuthDisallowedView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            locationAuthDisallowedView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            notAvailableLocationView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            notAvailableLocationView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
     }
 }
 

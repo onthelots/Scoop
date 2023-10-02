@@ -19,14 +19,16 @@ class CoreLocationService: NSObject, CLLocationManagerDelegate {
     static let shared = CoreLocationService()
 
     weak var delegate: CoreLocationServiceDelegate?
-    private var coreLocationManager: CLLocationManager
+    var coreLocationManager: CLLocationManager
 
     // Create a subject to publish location updates
     private var locationSubject = PassthroughSubject<CLLocation, Never>()
-    
+
     var locationPublisher: AnyPublisher<CLLocation, Never> {
         return locationSubject.eraseToAnyPublisher()
     }
+
+    var isAuthorizationStatusAgree = PassthroughSubject<Bool, Never>()
 
     override init() {
         coreLocationManager = CLLocationManager()
@@ -77,10 +79,12 @@ class CoreLocationService: NSObject, CLLocationManagerDelegate {
         case .restricted, .denied:
             delegate?.presentDisallowedView()
             delegate?.showLocationServiceError()
-            print("3.앱 위치 서비스 비 허용, 설정으로")
+            isAuthorizationStatusAgree.send(false)
+            print("3.앱 위치 서비스 비 허용, 설정으로 : : \(isAuthorizationStatusAgree)")
         case .authorizedAlways, .authorizedWhenInUse:
             coreLocationManager.startUpdatingLocation()
-            print("3. 앱 위치 서비스 허용")
+            isAuthorizationStatusAgree.send(true)
+            print("3. 앱 위치 서비스 허용 : \(isAuthorizationStatusAgree)")
 
         @unknown default:
             break
