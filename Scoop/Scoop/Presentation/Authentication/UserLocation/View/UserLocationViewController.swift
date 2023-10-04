@@ -26,7 +26,7 @@ class UserLocationViewController: UIViewController, UISearchResultsUpdating, UIS
     let searchController: UISearchController = {
         let searchBar = UISearchController()
         searchBar.searchBar.searchTextField.font = .systemFont(ofSize: 10)
-        searchBar.searchBar.placeholder = "동명(읍, 면)으로 검색해주세요 (ex. 역삼동)"
+        searchBar.searchBar.placeholder = "자치구 동 이름으로 검색해주세요 (ex. 역삼동)"
         searchBar.searchBar.searchBarStyle = .minimal
         searchBar.definesPresentationContext = true
         return searchBar

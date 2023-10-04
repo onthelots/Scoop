@@ -86,7 +86,6 @@ class ProfileViewController: UIViewController {
                 self.userInfo.send(UserInfo(email: email, password: password, location: location, nickname: nickname, longitude: longitude, latitude: latitude))
             }.store(in: &subscription)
 
-        // Profile Table Item 불러오기
         viewModel.$items
             .receive(on: RunLoop.main)
             .sink { [weak self] items in

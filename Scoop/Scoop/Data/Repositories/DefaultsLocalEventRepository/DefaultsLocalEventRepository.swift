@@ -133,7 +133,6 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
                     break
                 }
             } receiveValue: { items in
-                // 종료시간이 현재 시점보다 이후인 경우만 걸러서 필터링
                 let currentDate = Date()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
@@ -143,7 +142,7 @@ final class DefaultsLocalEventRepository: LocalEventRepository {
                         return eventDetail.guname == userGu && endDate >= currentDate
                     }
                     return false
-                           }
+                }
                 let filteredCulturalEventInfo = CulturalEventInfo(
                     listTotalCount: filteredDetails.count,
                     detail: filteredDetails

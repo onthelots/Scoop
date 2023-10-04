@@ -29,6 +29,7 @@ class HomeViewModel: ObservableObject {
          }
      }
 
+
     // MARK: - OutPut
     var newIssueSubject = PassthroughSubject<[NewIssueDetail], Never>()
     var culturalEventSubject = PassthroughSubject<[CulturalEventDetail], Never>()
