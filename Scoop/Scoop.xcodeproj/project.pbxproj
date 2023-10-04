@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0080772ACD4D87007C5BA2 /* PagingSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0080762ACD4D87007C5BA2 /* PagingSectionFooterView.swift */; };
 		3F0BE8C42AAB1E2700B65954 /* PostsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C32AAB1E2700B65954 /* PostsModalViewController.swift */; };
 		3F0BE8C62AAB1E9300B65954 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */; };
 		3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */; };
@@ -167,6 +168,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0080762ACD4D87007C5BA2 /* PagingSectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSectionFooterView.swift; sourceTree = "<group>"; };
 		3F0BE8C32AAB1E2700B65954 /* PostsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModalViewController.swift; sourceTree = "<group>"; };
 		3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueCategoryView.swift; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 				3FE68BC12AA0A96F00595733 /* NewIssueDetailViewController.swift */,
 				3FB112142AA0890D00C73A3A /* NewIssueDetailView.swift */,
 				3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */,
+				3F0080762ACD4D87007C5BA2 /* PagingSectionFooterView.swift */,
 				3F7ADE942AA3279700AE2DD1 /* Cell */,
 			);
 			path = NewIssue;
@@ -1466,6 +1469,7 @@
 				3F1AB7DC2A8DC96E0076CEAB /* DefaultGeocodeRepository.swift in Sources */,
 				3FB14B672A9115F200A356DA /* RegPasswordViewController.swift in Sources */,
 				3FAF2E4A2AA5A739003A9964 /* LocationSearchViewController.swift in Sources */,
+				3F0080772ACD4D87007C5BA2 /* PagingSectionFooterView.swift in Sources */,
 				3FD618302A98A2BE00CE6690 /* EventDTO.swift in Sources */,
 				3F0BE8C42AAB1E2700B65954 /* PostsModalViewController.swift in Sources */,
 				3F1AB7E02A8DC96E0076CEAB /* MapViewController.swift in Sources */,

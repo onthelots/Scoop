@@ -309,12 +309,12 @@ class HomeViewController: UIViewController {
         let sectionLayout = NSCollectionLayoutSection(group: group)
 
         sectionLayout.boundarySupplementaryItems = [createIssueSectionHeader()]
-        sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         sectionLayout.orthogonalScrollingBehavior = .groupPaging
 
         let decorationItem = NSCollectionLayoutDecorationItem.background(elementKind: BackgroundDecorationView.identifier)
         decorationItem.contentInsets = NSDirectionalEdgeInsets(top: 90, leading: 10, bottom: 5, trailing: 10)
         sectionLayout.decorationItems = [decorationItem]
+        sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
 
         return sectionLayout
     }
