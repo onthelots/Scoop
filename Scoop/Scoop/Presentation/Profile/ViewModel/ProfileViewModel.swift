@@ -82,7 +82,6 @@ class ProfileViewModel: ObservableObject {
         }
     }
 
-
     // 첫 화면에서 나타날 초기값
     func initializerFetchMyPosts(category: PostCategory) {
         fetchMyPosts(category: category)
