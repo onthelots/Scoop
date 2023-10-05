@@ -108,14 +108,13 @@ class MyPostCategoryView: UIView {
          }
 
         indicatorView.removeFromSuperview() // 뷰 중복 방지
-        addSubview(indicatorView) // 뷰를 새롭게 할당
+        addSubview(indicatorView)
 
          NSLayoutConstraint.activate([
             indicatorView.heightAnchor.constraint(equalToConstant: 3.5),
             indicatorView.widthAnchor.constraint(equalTo: selectedLabel.widthAnchor, multiplier: 0.5),
             indicatorView.centerXAnchor.constraint(equalTo: selectedLabel.centerXAnchor),
             indicatorView.topAnchor.constraint(equalTo: selectedLabel.bottomAnchor, constant: 5.0),
-
             seperatedLineView.topAnchor.constraint(equalTo: selectedLabel.bottomAnchor, constant: 6.0),
             seperatedLineView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.9),
             seperatedLineView.heightAnchor.constraint(equalToConstant: 1.0),

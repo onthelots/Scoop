@@ -57,7 +57,6 @@ class EmptyMyPostToggleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     // UI Update
     override func layoutSubviews() {
         verticalStackView.addArrangedSubview(alertlabel)

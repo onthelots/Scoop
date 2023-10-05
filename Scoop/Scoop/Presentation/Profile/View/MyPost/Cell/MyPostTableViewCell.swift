@@ -73,30 +73,24 @@ class MyPostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        // 셀에 서브뷰 추가
         contentView.addSubview(userImageView)
         contentView.addSubview(nickNameLabel)
         contentView.addSubview(reviewLabel)
         contentView.addSubview(storeNameLabel)
         contentView.addSubview(dateLabel)
 
-        // AutoLayout 제약 조건 설정
         NSLayoutConstraint.activate([
             userImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             userImageView.widthAnchor.constraint(equalToConstant: 20),
             userImageView.heightAnchor.constraint(equalTo: userImageView.widthAnchor),
-
             nickNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
             nickNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10),
-
             dateLabel.centerYAnchor.constraint(equalTo: nickNameLabel.centerYAnchor),
             dateLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nickNameLabel.trailingAnchor, constant: 10).withPriority(.defaultLow),
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).withPriority(.required),
-
             storeNameLabel.topAnchor.constraint(equalTo: nickNameLabel.bottomAnchor, constant: 10),
             storeNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-
             reviewLabel.topAnchor.constraint(greaterThanOrEqualTo: storeNameLabel.bottomAnchor, constant: 10),
             reviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             reviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

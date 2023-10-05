@@ -29,7 +29,6 @@ final class EditUserProfileViewModel: ObservableObject {
         checkNicknameValidAndSave()
         saveUserNickname()
     }
-    
 
     // 닉네임 사용 가능여부 체크
     func checkNicknameValidAndSave() {
