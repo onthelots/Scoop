@@ -36,10 +36,11 @@ class ReviewFloatingView: UIView {
         configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 40)
         configuration.imagePlacement = .all
         let button = UIButton(configuration: configuration)
+        button.tintColor = .tintColor
+        button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
     // 스택뷰 (카테고리 선택을 통한 글 작성하기)
     lazy var categoryMenuStackView: UIStackView = {
         let stackView = UIStackView()
@@ -94,9 +95,11 @@ class ReviewFloatingView: UIView {
             floatingButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             floatingButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             floatingButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            floatingButton.widthAnchor.constraint(equalToConstant: 30),
+            floatingButton.heightAnchor.constraint(equalToConstant: 30),
             categoryMenuStackView.topAnchor.constraint(equalTo: topAnchor).withPriority(.defaultHigh),
             categoryMenuStackView.centerXAnchor.constraint(equalTo: floatingButton.centerXAnchor),
-            categoryMenuStackView.bottomAnchor.constraint(equalTo: floatingButton.topAnchor, constant: -10)
+            categoryMenuStackView.bottomAnchor.constraint(equalTo: floatingButton.topAnchor, constant: -20)
         ])
     }
 

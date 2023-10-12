@@ -141,7 +141,7 @@ class MapViewController: UIViewController, ReviewFloatingViewDelegate {
             dimView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             dimView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             dimView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            reviewFloatingView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            reviewFloatingView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             reviewFloatingView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
