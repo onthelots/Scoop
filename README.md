@@ -3,7 +3,8 @@
 
 #### <a href="https://www.notion.so/onthelots/32eb5fa184c14426a4f32b654f76ec0e?v=96817719164f49e398abae2bc4c8565c&pvs=4"><img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/></a> <a href="https://apps.apple.com/kr/app/scoop/id6466811453"><img src="https://img.shields.io/badge/AppStore-000000?style=flat&logo=AppStore&logoColor=white"/></a>
 
-![scoop_ssjpg](https://github.com/onthelots/Scoop/assets/107039500/874d4371-c1dc-41b8-b386-c605be90c657)
+![sss](https://github.com/onthelots/Scoop/assets/107039500/9e584b46-9a18-401c-bf93-244501be0115)
+
 
 <br> 
 
