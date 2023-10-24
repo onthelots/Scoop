@@ -292,7 +292,7 @@
 - [ ] Map의 경도, 위도값이 상이하여 비 규칙적인 데이터 파싱문제 발생 
 
 2) UI
-- [x] Floatingbutton 로직 및 형태 수정
+- [x] Floatingbutton 로직 및 형태 수정(Configuration을 활용하여 대체)
 - [ ] CollectionView Cell의 FooterView로 UIPageControl 할당하기
 - [ ] 우리동네 날씨 외 HomeView에서 지역기반 컨텐츠 추가하기
 
