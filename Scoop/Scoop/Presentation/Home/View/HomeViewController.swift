@@ -8,6 +8,7 @@
 import Combine
 import UIKit
 import Firebase
+import GoogleMobileAds
 
 class HomeViewController: UIViewController {
 
@@ -21,6 +22,16 @@ class HomeViewController: UIViewController {
         let categoryView = NewIssueCategoryView()
         categoryView.delegate = self
         return categoryView
+    }()
+
+    // MARK: - Admobs mock up view
+    private lazy var advertisementView: GADBannerView = {
+        let view = GADBannerView(adSize: GADAdSizeBanner)
+        view.adUnitID = "ca-app-pub-9226895249664414/7618872934"
+        view.rootViewController = self
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private func getCategoryCode(for categoryName: String) -> String? {
@@ -386,5 +397,23 @@ extension HomeViewController: NewIssueCategoryViewDelegate {
             snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .newIssue))
             dataSource.apply(snapshot)
         }
+    }
+}
+
+extension HomeViewController: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("bannerViewDidReceiveAd")
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
+        print("bannerViewDidRecordClick")
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+        print("bannerViewDidRecordImpression")
     }
 }
