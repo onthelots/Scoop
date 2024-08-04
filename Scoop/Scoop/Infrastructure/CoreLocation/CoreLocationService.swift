@@ -8,12 +8,17 @@
 import CoreLocation
 import Combine
 
+// 해당 View에서 활용할 수 있도록 Delegate 설정
 protocol CoreLocationServiceDelegate: AnyObject {
     func updateLocation(coordinate: CLLocation)
     func showLocationServiceError()
     func presentDisallowedView()
 }
 
+// MARK: - CoreLoactionService
+/*
+
+ */
 class CoreLocationService: NSObject, CLLocationManagerDelegate {
 
     static let shared = CoreLocationService()
@@ -48,6 +53,7 @@ class CoreLocationService: NSObject, CLLocationManagerDelegate {
         checkUserDeviceLocationServicesAuthorization()
     }
 
+    // 권한 확인
     func checkUserDeviceLocationServicesAuthorization() {
         DispatchQueue.global().async {
             guard CLLocationManager.locationServicesEnabled() else {

@@ -12,12 +12,15 @@ import GoogleMobileAds
 
 class HomeViewController: UIViewController {
 
+    private var userProfileViewModel: UserProfileViewModel!
     private var viewModel: HomeViewModel!
     private var subscription: Set<AnyCancellable> = []
 
     // MARK: - Components
     private var collectionView: UICollectionView!
 
+    // TODO: - 현재 CustomView -> Segment Controller로 변경할 것
+    // Index에 따른 관리가 용이함
     private lazy var newIssueCategoryView: NewIssueCategoryView = {
         let categoryView = NewIssueCategoryView()
         categoryView.delegate = self
@@ -34,6 +37,7 @@ class HomeViewController: UIViewController {
         return view
     }()
 
+    // TODO: - 반환 코드는 enum으로 설정한 후, rawValue에 따라 String값으로 전환할 것
     private func getCategoryCode(for categoryName: String) -> String? {
         switch categoryName {
         case "교통":
@@ -52,6 +56,8 @@ class HomeViewController: UIViewController {
     }
 
     // MARK: - CollectionView Section
+    // 전체적으로 Localizable 실시할 것 (최소 eng, kor)
+    // TODO: - API를 통해 내려오는 데이터가 단순한 Web 텍스트를 번역, eng로 넘겨줄 수 있는지 여부 파악
     enum Section: CaseIterable, Hashable {
         case newIssue
         case culturalEvent
@@ -70,7 +76,7 @@ class HomeViewController: UIViewController {
 
     // MARK: - DiffableDataSource
 
-    // Item
+    // Item (type item 값 설정)
     enum Item: Hashable {
         case newIssue(NewIssueDTO)
         case event(EventDetailDTO)
@@ -78,11 +84,23 @@ class HomeViewController: UIViewController {
     // DataSource
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
 
+    init(userProfileViewModel: UserProfileViewModel) {
+        self.userProfileViewModel = userProfileViewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+
+        // viewModel init
         initalizerViewModel()
+
+        //
         viewModel.userInfoFetch()
         bind()
         configureCollectionView()
@@ -96,8 +114,7 @@ class HomeViewController: UIViewController {
                 seoulOpenDataManager: SeoulOpenDataManager()
             )
         )
-        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
-        viewModel = HomeViewModel(localEventUseCase: localEventUseCase, userInfoUseCase: userInfoUseCase)
+        viewModel = HomeViewModel(localEventUseCase: localEventUseCase)
     }
 
     // Snapshot 초기화
@@ -186,6 +203,7 @@ class HomeViewController: UIViewController {
             .combineLatest(viewModel.culturalEventSubject, viewModel.educationEventSubject)
             .receive(on: RunLoop.main)
             .sink { [weak self] newIssue, culturalEvent, educationEvent in
+
                 var newIssues: [NewIssueDTO] = []
                 newIssues = newIssue.compactMap { items in
                     NewIssueDTO(
@@ -201,6 +219,7 @@ class HomeViewController: UIViewController {
                         attributedContent: items.attributedContent ?? NSAttributedString(string: "")
                     )
                 }
+
                 var culturalEvents: [EventDetailDTO] = []
                 culturalEvents = culturalEvent.compactMap { items in
                     EventDetailDTO(title: items.title,
@@ -212,6 +231,7 @@ class HomeViewController: UIViewController {
                                    thumbNail: items.mainImg,
                                    url: items.hmpgAddr)
                 }
+
                 var educationEvents: [EventDetailDTO] = []
                 educationEvents = educationEvent.compactMap { items in
                     let dateFormatter = DateFormatter()
@@ -232,6 +252,7 @@ class HomeViewController: UIViewController {
                     }
                     return nil
                 }
+                
                 self?.applyItem(newIssues: newIssues, culturalEvents: culturalEvents, educationEvents: educationEvents)
             }
             .store(in: &subscription)

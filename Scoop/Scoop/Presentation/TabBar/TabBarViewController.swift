@@ -11,9 +11,18 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let vc1 = HomeViewController()
+        // TODO: - 강제 update 및 FCM을 통한 배너 이벤트 설정 필요
+        // checkVersionTask()
+        // bannerEventTask()
+        // 위 2개 사항 모두, FCM Messaging을 통해 앱 실행 시 전달할 것
+        let userInfoUseCase = DefaultsUserInfoUseCase(userInfoRepository: DefaultsUserInfoRepository())
+        let userProfileViewModel = UserProfileViewModel(userInfoUseCase: userInfoUseCase)
+
+        // vc 이동 (root)=
+        let vc1 = HomeViewController(userProfileViewModel: userProfileViewModel)
         let vc2 = MapViewController()
         let vc3 = ProfileViewController()
+
         vc1.navigationItem.largeTitleDisplayMode = .always
         vc2.navigationItem.largeTitleDisplayMode = .always
         vc3.navigationItem.largeTitleDisplayMode = .always

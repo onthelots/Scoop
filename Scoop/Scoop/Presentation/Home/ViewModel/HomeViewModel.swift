@@ -9,10 +9,9 @@ import Foundation
 import Combine
 import Firebase
 
-class HomeViewModel: ObservableObject {
+class HomeViewModel {
 
     private let localEventUseCase: LocalEventUseCase
-    private let userInfoUseCase: UserInfoUseCase
 
     enum Item: Hashable {
         case newIssue(NewIssueDTO)
@@ -21,13 +20,7 @@ class HomeViewModel: ObservableObject {
 
     // MARK: - Input
     @Published var userInfo: UserInfo!
-    @Published var selectedCategory: String? {
-         didSet {
-             if let category = selectedCategory {
-                 newIssueFetch(category: category)
-             }
-         }
-     }
+    @Published var selectedCategory: String?
 
 
     // MARK: - OutPut
@@ -38,27 +31,8 @@ class HomeViewModel: ObservableObject {
 
     private var subscription = Set<AnyCancellable>()
 
-    init(localEventUseCase: LocalEventUseCase, userInfoUseCase: UserInfoUseCase) {
+    init(localEventUseCase: LocalEventUseCase) {
         self.localEventUseCase = localEventUseCase
-        self.userInfoUseCase = userInfoUseCase
-        self.selectedCategory = "21"
-    }
-
-    // 유저 정보 가져오기
-    func userInfoFetch() {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            return
-        }
-        userInfoUseCase.getUserInfo(userId: userId) { result in
-            switch result {
-            case .success(let userInfo):
-                self.userInfo = userInfo
-                self.culturalEventFetch(location: userInfo.location ?? "")
-                self.educationEventFetch(location: userInfo.location ?? "")
-            case .failure(let error):
-                print("error: \(error)")
-            }
-        }
     }
 
     // NewIssue 데이터 파싱

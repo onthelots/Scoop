@@ -12,7 +12,6 @@
 		3F0BE8C62AAB1E9300B65954 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BE8C52AAB1E9300B65954 /* PostTableViewCell.swift */; };
 		3F0F00E72AA019C000F0A36C /* NewIssueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F00E62AA019C000F0A36C /* NewIssueCategoryView.swift */; };
 		3F0FAB2B2AC3F59C00953CC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F0FAB2A2AC3F59C00953CC2 /* GoogleService-Info.plist */; };
-		3F0FAB2E2AC3FA6A00953CC2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3F0FAB2D2AC3FA6A00953CC2 /* SwiftSoup */; };
 		3F1AB7D42A8DC96E0076CEAB /* GeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78B2A8DC96E0076CEAB /* GeocodeRepository.swift */; };
 		3F1AB7D62A8DC96E0076CEAB /* ReverseGeocodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78D2A8DC96E0076CEAB /* ReverseGeocodeRepository.swift */; };
 		3F1AB7D72A8DC96E0076CEAB /* GeoLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AB78F2A8DC96E0076CEAB /* GeoLocationUseCase.swift */; };
@@ -75,6 +74,11 @@
 		3F738F412AA9A06900B6C6D2 /* MapDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F402AA9A06900B6C6D2 /* MapDetailViewModel.swift */; };
 		3F738F432AA9ABE500B6C6D2 /* PostFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */; };
 		3F738F462AA9E19600B6C6D2 /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F738F452AA9E19600B6C6D2 /* PagingInfo.swift */; };
+		3F74F6BA2C5F81170065D1E6 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F74F6B92C5F81170065D1E6 /* UserProfileViewModel.swift */; };
+		3F74F6C22C5F822B0065D1E6 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3F74F6C12C5F822B0065D1E6 /* SwiftSoup */; };
+		3F74F6C52C5F826A0065D1E6 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F74F6C42C5F826A0065D1E6 /* RealmManager.swift */; };
+		3F74F6E02C5F89910065D1E6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3F74F6DF2C5F89910065D1E6 /* Realm */; };
+		3F74F6E22C5F89910065D1E6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F74F6E12C5F89910065D1E6 /* RealmSwift */; };
 		3F7ADE992AA3281100AE2DD1 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */; };
 		3F7ADE9E2AA32A6900AE2DD1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */; };
 		3F7ADEA02AA32A7000AE2DD1 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */; };
@@ -161,6 +165,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3F74F6C72C5F87200065D1E6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3F0080762ACD4D87007C5BA2 /* PagingSectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSectionFooterView.swift; sourceTree = "<group>"; };
 		3F0BE8C32AAB1E2700B65954 /* PostsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModalViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +239,8 @@
 		3F738F402AA9A06900B6C6D2 /* MapDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewModel.swift; sourceTree = "<group>"; };
 		3F738F422AA9ABE500B6C6D2 /* PostFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooterReusableView.swift; sourceTree = "<group>"; };
 		3F738F452AA9E19600B6C6D2 /* PagingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingInfo.swift; sourceTree = "<group>"; };
+		3F74F6B92C5F81170065D1E6 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		3F74F6C42C5F826A0065D1E6 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		3F7ADE982AA3281100AE2DD1 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		3F7ADE9D2AA32A6900AE2DD1 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		3F7ADE9F2AA32A7000AE2DD1 /* ReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
@@ -303,10 +322,12 @@
 				3F2CF5F32C57CEB100B893A8 /* FirebaseAuth in Frameworks */,
 				3F2CF5F52C57CEB100B893A8 /* FirebaseDatabase in Frameworks */,
 				3F2CF5F72C57CEB100B893A8 /* FirebaseFirestore in Frameworks */,
-				3F0FAB2E2AC3FA6A00953CC2 /* SwiftSoup in Frameworks */,
 				3F2CF5F92C57CEB100B893A8 /* FirebaseStorage in Frameworks */,
 				3F2CF5FB2C57D1BE00B893A8 /* GoogleMobileAds in Frameworks */,
+				3F74F6E02C5F89910065D1E6 /* Realm in Frameworks */,
 				3F2CF5FD2C57D1E800B893A8 /* FirebaseFirestoreSwift in Frameworks */,
+				3F74F6E22C5F89910065D1E6 /* RealmSwift in Frameworks */,
+				3F74F6C22C5F822B0065D1E6 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +721,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7B8EDF2AA70F4B00B8D66B /* Location */,
+				3F74F6C32C5F82500065D1E6 /* RealmManager */,
 				3F1AB7CB2A8DC96E0076CEAB /* UserDefaults */,
 				3F1AB7D02A8DC96E0076CEAB /* SensitiveInfoManager */,
 				3F1AB7952A8DC96E0076CEAB /* Terms */,
@@ -786,6 +808,22 @@
 				3F738F452AA9E19600B6C6D2 /* PagingInfo.swift */,
 			);
 			path = PagingInfo;
+			sourceTree = "<group>";
+		};
+		3F74F6B82C5F80FF0065D1E6 /* PublicViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F74F6B92C5F81170065D1E6 /* UserProfileViewModel.swift */,
+			);
+			path = PublicViewModel;
+			sourceTree = "<group>";
+		};
+		3F74F6C32C5F82500065D1E6 /* RealmManager */ = {
+			isa = PBXGroup;
+			children = (
+				3F74F6C42C5F826A0065D1E6 /* RealmManager.swift */,
+			);
+			path = RealmManager;
 			sourceTree = "<group>";
 		};
 		3F7ADE922AA3275E00AE2DD1 /* NewIssue */ = {
@@ -912,6 +950,7 @@
 		3F8CD6D92A96D5C300307372 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				3F74F6B82C5F80FF0065D1E6 /* PublicViewModel */,
 				3F1AB7C12A8DC96E0076CEAB /* TabBarViewController.swift */,
 			);
 			path = TabBar;
@@ -1250,6 +1289,7 @@
 				3FACA8722A7CE47B00F2544C /* Frameworks */,
 				3FACA8732A7CE47B00F2544C /* Resources */,
 				3FF76A312A80CE0800A5CA29 /* SwiftLint Script */,
+				3F74F6C72C5F87200065D1E6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1258,13 +1298,15 @@
 			name = Scoop;
 			packageProductDependencies = (
 				3F8CD6E62A96D92300307372 /* Kingfisher */,
-				3F0FAB2D2AC3FA6A00953CC2 /* SwiftSoup */,
 				3F2CF5F22C57CEB100B893A8 /* FirebaseAuth */,
 				3F2CF5F42C57CEB100B893A8 /* FirebaseDatabase */,
 				3F2CF5F62C57CEB100B893A8 /* FirebaseFirestore */,
 				3F2CF5F82C57CEB100B893A8 /* FirebaseStorage */,
 				3F2CF5FA2C57D1BE00B893A8 /* GoogleMobileAds */,
 				3F2CF5FC2C57D1E800B893A8 /* FirebaseFirestoreSwift */,
+				3F74F6C12C5F822B0065D1E6 /* SwiftSoup */,
+				3F74F6DF2C5F89910065D1E6 /* Realm */,
+				3F74F6E12C5F89910065D1E6 /* RealmSwift */,
 			);
 			productName = Dangle;
 			productReference = 3FACA8752A7CE47B00F2544C /* Scoop.app */;
@@ -1346,9 +1388,10 @@
 			mainGroup = 3FACA86C2A7CE47B00F2544C;
 			packageReferences = (
 				3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				3F0FAB2C2AC3FA6A00953CC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				3F2CF5F02C57CDA900B893A8 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				3F2CF5F12C57CEB100B893A8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3F74F6C02C5F822B0065D1E6 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				3F74F6D12C5F88530065D1E6 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 3FACA8762A7CE47B00F2544C /* Products */;
 			projectDirPath = "";
@@ -1490,6 +1533,7 @@
 				3F1AB7FA2A8DC96E0076CEAB /* NetworkResource.swift in Sources */,
 				3F8CD6F22A96EA8100307372 /* LocalEventRepository.swift in Sources */,
 				3FB7F9D22AB11BDE00016290 /* MyPostCategoryView.swift in Sources */,
+				3F74F6BA2C5F81170065D1E6 /* UserProfileViewModel.swift in Sources */,
 				3FB14B5D2A90F8BE00A356DA /* UnderLineTextField.swift in Sources */,
 				3F7B8EE32AA70FB300B8D66B /* LocationDTO.swift in Sources */,
 				3FB14B772A91D9C700A356DA /* RegNicknameViewController.swift in Sources */,
@@ -1499,6 +1543,7 @@
 				3F59688D2AAF504200CFC0C8 /* ProfileViewModel.swift in Sources */,
 				3F1AB7F92A8DC96E0076CEAB /* NetworkService.swift in Sources */,
 				3FB14B622A90FA6500A356DA /* RegEmailViewModel.swift in Sources */,
+				3F74F6C52C5F826A0065D1E6 /* RealmManager.swift in Sources */,
 				3F1AB7FC2A8DC96E0076CEAB /* CoreLocationService.swift in Sources */,
 				3FB112152AA0890D00C73A3A /* NewIssueDetailView.swift in Sources */,
 				3F1AB7F82A8DC96E0076CEAB /* UserDefaultStorage.swift in Sources */,
@@ -1718,7 +1763,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1756,7 +1801,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1905,14 +1950,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3F0FAB2C2AC3FA6A00953CC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.1;
-			};
-		};
 		3F2CF5F02C57CDA900B893A8 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
@@ -1929,6 +1966,22 @@
 				minimumVersion = 10.29.0;
 			};
 		};
+		3F74F6C02C5F822B0065D1E6 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.3;
+			};
+		};
+		3F74F6D12C5F88530065D1E6 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		3F8CD6E52A96D92300307372 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1940,11 +1993,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3F0FAB2D2AC3FA6A00953CC2 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3F0FAB2C2AC3FA6A00953CC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
 		3F2CF5F22C57CEB100B893A8 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3F2CF5F12C57CEB100B893A8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1974,6 +2022,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F2CF5F12C57CEB100B893A8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		3F74F6C12C5F822B0065D1E6 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F74F6C02C5F822B0065D1E6 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		3F74F6DF2C5F89910065D1E6 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F74F6D12C5F88530065D1E6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		3F74F6E12C5F89910065D1E6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F74F6D12C5F88530065D1E6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		3F8CD6E62A96D92300307372 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

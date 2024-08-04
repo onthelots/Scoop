@@ -36,17 +36,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              let navVC = UINavigationController(rootViewController: StartPageViewController())
              window.rootViewController = navVC
          }
+
+        // MARK: - UITabBarAppearance 설정 (앱 전역)
+        let uiTabBarappearance = UITabBarAppearance()
+        let tabBar = UITabBar()
+        uiTabBarappearance.configureWithOpaqueBackground()
+        uiTabBarappearance.backgroundColor = .systemBackground
+
+        // icon Color (UITabBarItem)
+        uiTabBarappearance.stackedLayoutAppearance.selected.iconColor = .systemGray2
+
+        // title tint color
+        uiTabBarappearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray]
+        tabBar.standardAppearance = uiTabBarappearance
+        tabBar.scrollEdgeAppearance = uiTabBarappearance
+
+        UITabBar.appearance().standardAppearance = uiTabBarappearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBar.scrollEdgeAppearance
+
+        // 상단 네비게이션 바 (View)
+        // titleView 부분의 별도의 View를 설정하지 않을 경우, clear 색상을 통해 투명하게 설정할 것
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.shadowColor = .clear
+        navigationBarAppearance.backgroundColor = .clear
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+
         // set key window
         window.makeKeyAndVisible()
         self.window = window
-
-        let appearance = UITabBarAppearance()
-        let tabBar = UITabBar()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemBackground
-
-        tabBar.standardAppearance = appearance
-        UITabBar.appearance().scrollEdgeAppearance = appearance
 
         return true
     }
